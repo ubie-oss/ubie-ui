@@ -1,0 +1,14 @@
+.fallbackIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.ubieIcon {
+  font-size: 1.3em;
+  vertical-align: -0.2em;
+}
+
+.ubieIconSmall {
+  font-size: 1em;
+  vertical-align: -0.125em;
+}

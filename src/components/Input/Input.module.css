@@ -1,0 +1,39 @@
+.input {
+  width: 100%;
+  padding: var(--size-spacing-md) var(--size-spacing-sm) 0.875rem;
+  font-size: var(--text-body-md-narrow-size);
+  line-height: var(--text-body-md-narrow-line);
+  font-weight: bold;
+  color: var(--color-text-main);
+  text-align: inherit;
+  background-color: var(--color-background-gray);
+  border: none;
+  border-bottom: 2px solid var(--color-border);
+  border-radius: 8px 8px 0 0;
+  appearance: none;
+  caret-color: var(--color-primary);
+}
+
+.input.isInvalid,
+.input:invalid {
+  background: var(--color-background-accent-darken);
+  border-bottom-color: var(--color-alert-darken);
+}
+
+.input:disabled {
+  color: var(--color-text-disabled);
+}
+
+.input::placeholder {
+  color: var(--color-text-placeholder);
+}
+
+.input:focus {
+  border-bottom-color: var(--color-primary);
+  outline: none;
+}
+
+.input[type='date'] {
+  height: 3.5rem;
+  line-height: 1;
+}

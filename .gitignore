@@ -1,0 +1,19 @@
+# dependencies
+/node_modules
+
+# production
+*.log
+
+# production
+/build
+/dist
+
+# misc
+.DS_Store
+
+# debug
+npm-debug.log*
+
+# storybook
+/storybook-static
+build-storybook.log

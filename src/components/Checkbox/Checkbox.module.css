@@ -1,0 +1,41 @@
+.container {
+  user-select: none;
+  font-size: 12px;
+}
+
+.checkbox {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+}
+
+.checkIconContainer {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  border: 2px solid var(--color-primary);
+  border-radius: 4px;
+  font-size: 12px;
+  transition: background-color 200ms;
+}
+
+.checkIcon {
+  visibility: hidden;
+  color: #fff;
+}
+
+.container input:checked + .checkIconContainer {
+  background-color: var(--color-primary);
+}
+
+.container input:checked + .checkIconContainer .checkIcon {
+  visibility: initial;
+}
+
+.container input:focus-visible + .checkIconContainer {
+  outline: solid var(--color-accent) 2px;
+}

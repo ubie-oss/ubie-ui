@@ -1,0 +1,147 @@
+.text {
+  font-size: var(--font-size);
+  line-height: var(--leading);
+  color: var(--color);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* font-size */
+.body.sm {
+  --font-size: var(--text-body-sm-size);
+}
+
+.body.md {
+  --font-size: var(--text-body-md-size);
+}
+
+.body.lg {
+  --font-size: var(--text-body-lg-size);
+}
+
+.heading.xs {
+  --font-size: var(--text-heading-xs-size);
+}
+
+.heading.sm {
+  --font-size: var(--text-heading-sm-size);
+}
+
+.heading.md {
+  --font-size: var(--text-heading-sm-size);
+}
+
+.heading.lg {
+  --font-size: var(--text-heading-lg-size);
+}
+
+.heading.xl {
+  --font-size: var(--text-heading-xl-size);
+}
+
+.note.sm {
+  --font-size: var(--text-note-sm-size);
+}
+
+.note.md {
+  --font-size: var(--text-note-md-size);
+}
+
+.note.lg {
+  --font-size: var(--text-note-lg-size);
+}
+
+.button.sm {
+  --font-size: var(--text-button-sm-size);
+}
+
+.button.md {
+  --font-size: var(--text-button-md-size);
+}
+
+.button.lg {
+  --font-size: var(--text-button-lg-size);
+}
+
+.tag.sm {
+  --font-size: var(--text-tag-sm-size);
+}
+
+.tag.md {
+  --font-size: var(--text-tag-md-size);
+}
+
+.tag.lg {
+  --font-size: var(--text-tag-lg-size);
+}
+
+/* line-height */
+.default {
+  --leading: var(--text-body-md-line);
+}
+
+.default.heading.xs,
+.default.heading.sm {
+  --leading: var(--text-heading-sm-line);
+}
+
+.default.heading.md,
+.default.heading.lg,
+.default.heading.xl {
+  --leading: var(--text-heading-md-line);
+}
+
+.button.default {
+  --leading: var(--text-button-md-line);
+}
+
+.tag.default {
+  --leading: var(--text-tag-md-line);
+}
+
+.narrow {
+  --leading: var(--text-body-md-narrow-line);
+}
+
+.tight {
+  --leading: var(--text-body-md-tight-line);
+}
+
+/* color */
+.main {
+  --color: var(--color-text-main);
+}
+
+.sub {
+  --color: var(--color-text-sub);
+}
+
+.link {
+  --color: var(--color-text-link);
+}
+
+.linkSub {
+  --color: var(--color-text-link-sub);
+}
+
+.disabled {
+  --color: var(--color-text-disabled);
+}
+
+.primary {
+  --color: var(--color-primary);
+}
+
+.accent {
+  --color: var(--color-accent);
+}
+
+.alert {
+  --color: var(--color-alert);
+}
+
+.white {
+  --color: var(--color-text-white);
+}

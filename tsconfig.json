@@ -1,0 +1,25 @@
+{
+  "include": ["src"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["DOM", "ESNext"],
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "rootDir": "./src",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "resolveJsonModule": true,
+    "declaration": true,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true
+  }
+}

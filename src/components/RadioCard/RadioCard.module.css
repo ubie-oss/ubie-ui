@@ -1,0 +1,97 @@
+.wrap {
+  line-height: 1;
+}
+
+.block {
+  width: 100%;
+}
+
+.marginBottom {
+  margin-bottom: 12px;
+}
+
+.radio {
+  position: absolute;
+  opacity: 0;
+}
+
+.radio:checked + label {
+  background: var(--color-background-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.radio:checked + label::before {
+  background: var(--color-background-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.radio:checked + label::after {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  box-sizing: border-box;
+  display: block;
+  width: 12px;
+  height: 12px;
+  content: '';
+  background: var(--color-primary);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+/** 詳細度を上げるために:focus-visibleを複数指定 */
+.radio:focus-visible:focus-visible + label {
+  border-color: var(--color-primary);
+}
+
+.label {
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  padding: 16px 12px 16px 44px;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 23px;
+  color: var(--color-text-main);
+  vertical-align: text-top;
+  cursor: pointer;
+  background: #fff;
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  transition: border-color 0.3s var(--ease-out-quint);
+}
+
+.label::before {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  box-sizing: border-box;
+  display: block;
+  width: 20px;
+  height: 20px;
+  content: '';
+  background-color: #fff;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.label::after {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  box-sizing: border-box;
+  display: block;
+  content: '';
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+@media (pointer: fine) {
+  .label:hover {
+    border: 2px solid var(--color-primary);
+  }
+}
