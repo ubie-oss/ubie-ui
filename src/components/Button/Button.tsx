@@ -17,6 +17,7 @@ export const Button = forwardRef<HTMLButtonElement, BaseProps & ButtonProps>(
       icon: _icon,
       fixedIcon: _fixedIcon,
       suffixIcon: _suffixIcon,
+      type = 'button',
       ...props
     },
     ref,
@@ -35,7 +36,7 @@ export const Button = forwardRef<HTMLButtonElement, BaseProps & ButtonProps>(
       className,
     );
     return (
-      <button className={cls} ref={ref} {...props}>
+      <button type={type} className={cls} ref={ref} {...props}>
         {fixedIcon && <span className={styles.fixedIcon}>{fixedIcon}</span>}
         <span className={styles.label}>
           {icon && <span className={styles.icon}>{icon}</span>}
