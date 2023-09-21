@@ -1,16 +1,19 @@
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { BlankLinkIcon, UbieIcon } from '@ubie/ubie-icons';
-import { DummyButton } from '..';
+import { DummyButton } from '../components/Button/DummyButton';
 
-export default {
+const meta: Meta<typeof DummyButton> = {
   component: DummyButton,
-} as ComponentMeta<typeof DummyButton>;
+};
 
+export default meta;
+
+type Story = StoryObj<typeof DummyButton>;
 const defaultArgs = {
   children: 'ボタン',
 };
 
-export const Default: ComponentStoryObj<typeof DummyButton> = {
+export const Default: Story = {
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>

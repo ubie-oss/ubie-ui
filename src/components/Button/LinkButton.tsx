@@ -1,12 +1,10 @@
-'use client';
-
-import { clsx } from 'clsx';
+import clsx from 'clsx';
 import { forwardRef } from 'react';
 import styles from './Button.module.css';
 import { VariantIcon } from './VariantIcon';
-import type { BaseProps, ButtonProps } from './ButtonTypes';
+import type { BaseProps, LinkButtonProps } from './ButtonTypes';
 
-export const Button = forwardRef<HTMLButtonElement, BaseProps & ButtonProps>(
+export const LinkButton = forwardRef<HTMLAnchorElement, BaseProps & LinkButtonProps>(
   (
     {
       children,
@@ -30,21 +28,20 @@ export const Button = forwardRef<HTMLButtonElement, BaseProps & ButtonProps>(
         [styles[variant]]: true,
         [styles[size]]: true,
         [styles.block]: block,
-        [styles.disabled]: !!props.disabled,
       },
       className,
     );
     return (
-      <button className={cls} ref={ref} {...props}>
+      <a className={cls} ref={ref} {...props}>
         {fixedIcon && <span className={styles.fixedIcon}>{fixedIcon}</span>}
         <span className={styles.label}>
           {icon && <span className={styles.icon}>{icon}</span>}
           {children}
           {suffixIcon && <span className={styles.suffixIcon}>{suffixIcon}</span>}
         </span>
-      </button>
+      </a>
     );
   },
 );
 
-Button.displayName = 'Button';
+LinkButton.displayName = 'LinkButton';
