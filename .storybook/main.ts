@@ -1,13 +1,9 @@
-module.exports = {
+import type { StorybookConfig } from '@storybook/react-vite';
+
+const config: StorybookConfig = {
   stories: ['../src'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions'],
-  framework: {
-    name: '@storybook/react-webpack5',
-    options: {},
-  },
-  features: {
-    previewCsfV3: true,
-  },
+  framework: '@storybook/react-vite',
   typescript: {
     reactDocgen: false,
   },
@@ -15,3 +11,4 @@ module.exports = {
     autodocs: true,
   },
 };
+export default config;
