@@ -4,9 +4,9 @@ import { clsx } from 'clsx';
 import { forwardRef } from 'react';
 import styles from './Button.module.css';
 import { VariantIcon } from './VariantIcon';
-import type { BaseProps, ButtonProps } from './ButtonTypes';
+import type { ButtonProps } from './ButtonTypes';
 
-export const Button = forwardRef<HTMLButtonElement, BaseProps & ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,

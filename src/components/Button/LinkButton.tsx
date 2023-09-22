@@ -1,12 +1,16 @@
+'use client';
+
 import clsx from 'clsx';
-import { forwardRef } from 'react';
+import { cloneElement, forwardRef } from 'react';
 import styles from './Button.module.css';
 import { VariantIcon } from './VariantIcon';
-import type { BaseProps, LinkButtonProps } from './ButtonTypes';
+import type { LinkButtonProps } from './ButtonTypes';
+import type { ReactNode } from 'react';
 
-export const LinkButton = forwardRef<HTMLAnchorElement, BaseProps & LinkButtonProps>(
+export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
   (
     {
+      render,
       children,
       variant = 'primary',
       size = 'large',
@@ -17,7 +21,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, BaseProps & LinkButtonPr
       suffixIcon: _suffixIcon,
       ...props
     },
-    ref,
+    forwardedRef,
   ) => {
     const icon = _icon === 'default' ? <VariantIcon variant={variant} /> : _icon;
     const fixedIcon = _fixedIcon === 'default' ? <VariantIcon variant={variant} /> : _fixedIcon;
@@ -31,17 +35,27 @@ export const LinkButton = forwardRef<HTMLAnchorElement, BaseProps & LinkButtonPr
       },
       className,
     );
-    return (
-      <a className={cls} ref={ref} {...props}>
+
+    const createElement = (props: any, children: ReactNode) => {
+      return render ? cloneElement(render, props, children) : <a {...props}>{children}</a>;
+    };
+
+    return createElement(
+      {
+        className: cls,
+        ...props,
+        ref: forwardedRef,
+      },
+      <>
         {fixedIcon && <span className={styles.fixedIcon}>{fixedIcon}</span>}
         <span className={styles.label}>
           {icon && <span className={styles.icon}>{icon}</span>}
           {children}
           {suffixIcon && <span className={styles.suffixIcon}>{suffixIcon}</span>}
         </span>
-      </a>
+      </>,
     );
   },
 );
 
-LinkButton.displayName = 'LinkButton';
+LinkButton.displayName = 'Link';

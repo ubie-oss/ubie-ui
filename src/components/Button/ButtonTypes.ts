@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode, HTMLAttributes, AnchorHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, ReactNode, AnchorHTMLAttributes, ReactElement } from 'react';
 
 export type BaseProps = {
   variant?:
@@ -18,6 +18,11 @@ export type BaseProps = {
   suffixIcon?: 'default' | ReactNode;
 };
 
-export type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseProps>;
-export type LinkButtonProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseProps>;
-export type DummyButtonProps = Omit<HTMLAttributes<HTMLDivElement>, keyof BaseProps>;
+export type OnlyLinkButtonProps = {
+  render?: ReactElement;
+};
+
+export type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseProps> & BaseProps;
+export type LinkButtonProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseProps> &
+  BaseProps &
+  OnlyLinkButtonProps;
