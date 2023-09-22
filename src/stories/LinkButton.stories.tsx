@@ -50,6 +50,20 @@ export const Default: Story = {
         <LinkButton suffixIcon={<BlankLinkIcon />} {...args} variant="text" />
       </div>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+        <LinkButton suffixIcon={<BlankLinkIcon />} size="medium" {...args} />
+        <LinkButton suffixIcon={<BlankLinkIcon />} size="medium" {...args} variant="secondary" />
+        <LinkButton suffixIcon={<BlankLinkIcon />} size="medium" {...args} variant="accent" />
+        <LinkButton suffixIcon={<BlankLinkIcon />} size="medium" {...args} variant="alert" />
+        <LinkButton suffixIcon={<BlankLinkIcon />} size="medium" {...args} variant="text" />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+        <LinkButton suffixIcon={<BlankLinkIcon />} size="small" {...args} />
+        <LinkButton suffixIcon={<BlankLinkIcon />} size="small" {...args} variant="secondary" />
+        <LinkButton suffixIcon={<BlankLinkIcon />} size="small" {...args} variant="accent" />
+        <LinkButton suffixIcon={<BlankLinkIcon />} size="small" {...args} variant="alert" />
+        <LinkButton suffixIcon={<BlankLinkIcon />} size="small" {...args} variant="text" />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
         <LinkButton {...args} />
         <LinkButton {...args} variant="secondary" />
         <LinkButton {...args} variant="accent" />
