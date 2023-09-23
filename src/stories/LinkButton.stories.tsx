@@ -64,6 +64,27 @@ export const Default: Story = {
         <LinkButton suffixIcon={<BlankLinkIcon />} size="small" {...args} variant="text" />
       </div>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+        <LinkButton fixedIcon={<BlankLinkIcon />} {...args} />
+        <LinkButton fixedIcon={<BlankLinkIcon />} {...args} variant="secondary" />
+        <LinkButton fixedIcon={<BlankLinkIcon />} {...args} variant="accent" />
+        <LinkButton fixedIcon={<BlankLinkIcon />} {...args} variant="alert" />
+        <LinkButton fixedIcon={<BlankLinkIcon />} {...args} variant="text" />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+        <LinkButton fixedIcon={<BlankLinkIcon />} size="medium" {...args} />
+        <LinkButton fixedIcon={<BlankLinkIcon />} size="medium" {...args} variant="secondary" />
+        <LinkButton fixedIcon={<BlankLinkIcon />} size="medium" {...args} variant="accent" />
+        <LinkButton fixedIcon={<BlankLinkIcon />} size="medium" {...args} variant="alert" />
+        <LinkButton fixedIcon={<BlankLinkIcon />} size="medium" {...args} variant="text" />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+        <LinkButton fixedIcon={<BlankLinkIcon />} size="small" {...args} />
+        <LinkButton fixedIcon={<BlankLinkIcon />} size="small" {...args} variant="secondary" />
+        <LinkButton fixedIcon={<BlankLinkIcon />} size="small" {...args} variant="accent" />
+        <LinkButton fixedIcon={<BlankLinkIcon />} size="small" {...args} variant="alert" />
+        <LinkButton fixedIcon={<BlankLinkIcon />} size="small" {...args} variant="text" />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
         <LinkButton {...args} />
         <LinkButton {...args} variant="secondary" />
         <LinkButton {...args} variant="accent" />
@@ -86,6 +107,11 @@ export const Default: Story = {
         <LinkButton {...args} size="small" variant="alert" />
         <LinkButton {...args} size="small" variant="text" />
         <LinkButton {...args} size="small" variant="textAlert" />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '32px' }}>
+        <LinkButton {...args} size="small" block variant="secondary" />
+        <LinkButton {...args} size="medium" block variant="secondary" />
+        <LinkButton {...args} size="large" block variant="secondary" />
       </div>
     </div>
   ),

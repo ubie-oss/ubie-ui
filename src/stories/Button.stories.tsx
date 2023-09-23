@@ -66,6 +66,27 @@ export const Default: Story = {
         <Button suffixIcon={<BlankLinkIcon />} size="small" {...args} variant="text" />
       </div>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+        <Button fixedIcon={<BlankLinkIcon />} {...args} />
+        <Button fixedIcon={<BlankLinkIcon />} {...args} variant="secondary" />
+        <Button fixedIcon={<BlankLinkIcon />} {...args} variant="accent" />
+        <Button fixedIcon={<BlankLinkIcon />} {...args} variant="alert" />
+        <Button fixedIcon={<BlankLinkIcon />} {...args} variant="text" />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+        <Button fixedIcon={<BlankLinkIcon />} size="medium" {...args} />
+        <Button fixedIcon={<BlankLinkIcon />} size="medium" {...args} variant="secondary" />
+        <Button fixedIcon={<BlankLinkIcon />} size="medium" {...args} variant="accent" />
+        <Button fixedIcon={<BlankLinkIcon />} size="medium" {...args} variant="alert" />
+        <Button fixedIcon={<BlankLinkIcon />} size="medium" {...args} variant="text" />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+        <Button fixedIcon={<BlankLinkIcon />} size="small" {...args} />
+        <Button fixedIcon={<BlankLinkIcon />} size="small" {...args} variant="secondary" />
+        <Button fixedIcon={<BlankLinkIcon />} size="small" {...args} variant="accent" />
+        <Button fixedIcon={<BlankLinkIcon />} size="small" {...args} variant="alert" />
+        <Button fixedIcon={<BlankLinkIcon />} size="small" {...args} variant="text" />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
         <Button {...args} />
         <Button {...args} variant="secondary" />
         <Button {...args} variant="accent" />
@@ -88,6 +109,11 @@ export const Default: Story = {
         <Button {...args} size="small" variant="alert" />
         <Button {...args} size="small" variant="text" />
         <Button {...args} size="small" variant="textAlert" />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '32px' }}>
+        <Button {...args} size="small" block variant="secondary" />
+        <Button {...args} size="medium" block variant="secondary" />
+        <Button {...args} size="large" block variant="secondary" />
       </div>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
         <Button {...args} disabled />
