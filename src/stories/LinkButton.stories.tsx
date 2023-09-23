@@ -113,6 +113,14 @@ export const Default: Story = {
         <LinkButton {...args} size="medium" block variant="secondary" />
         <LinkButton {...args} size="large" block variant="secondary" />
       </div>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+        <LinkButton href="https://vitals.ubie.life/" {...args} disabled />
+        <LinkButton href="https://vitals.ubie.life/" {...args} variant="secondary" disabled />
+        <LinkButton href="https://vitals.ubie.life/" {...args} variant="accent" disabled />
+        <LinkButton href="https://vitals.ubie.life/" {...args} variant="alert" disabled />
+        <LinkButton href="https://vitals.ubie.life/" {...args} variant="text" disabled />
+        <LinkButton href="https://vitals.ubie.life/" {...args} variant="textAlert" disabled />
+      </div>
     </div>
   ),
   args: defaultArgs,
