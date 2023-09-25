@@ -1,11 +1,11 @@
 import { action } from '@storybook/addon-actions';
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { BlankLinkIcon, UbieIcon } from '@ubie/ubie-icons';
 import { Button } from '../';
 
 export default {
   component: Button,
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
 const defaultArgs = {
   children: 'ボタン',
@@ -13,7 +13,7 @@ const defaultArgs = {
   onClick: action('onClick'),
 };
 
-export const Default: ComponentStoryObj<typeof Button> = {
+export const Default: StoryObj<typeof Button> = {
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
@@ -98,7 +98,7 @@ export const Default: ComponentStoryObj<typeof Button> = {
   args: defaultArgs,
 };
 
-export const Auth: ComponentStoryObj<typeof Button> = {
+export const Auth: StoryObj<typeof Button> = {
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', width: '300px' }}>
       <Button block fixedIcon="default" {...args} variant="authGoogle">

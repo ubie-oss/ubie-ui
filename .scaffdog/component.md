@@ -29,16 +29,16 @@ export const {{ inputs.name | pascal }}: FC<Props> = () => {
 # `stories/{{ inputs.name | pascal }}.stories.tsx`
 
 ```typescript
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { {{ inputs.name | pascal }} } from '../';
 
 export default {
   component: {{ inputs.name | pascal }},
-} as ComponentMeta<typeof {{ inputs.name | pascal }}>;
+} as Meta<typeof {{ inputs.name | pascal }}>;
 
 const defaultArgs = {};
 
-export const Default: ComponentStoryObj<typeof {{ inputs.name | pascal }}> = {
+export const Default: StoryObj<typeof {{ inputs.name | pascal }}> = {
   render: (args) => <{{ inputs.name | pascal }} {...args} />,
   args: defaultArgs,
 };

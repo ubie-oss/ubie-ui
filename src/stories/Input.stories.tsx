@@ -1,16 +1,16 @@
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Input } from '..';
 
 export default {
   component: Input,
-} as ComponentMeta<typeof Input>;
+} as Meta<typeof Input>;
 
 const defaultArgs = {
   isInvalid: false,
   disabled: false,
 };
 
-export const Default: ComponentStoryObj<typeof Input> = {
+export const Default: StoryObj<typeof Input> = {
   render: (args) => <Input {...args} />,
   args: defaultArgs,
 };

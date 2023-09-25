@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { MedicalFormIcon } from '@ubie/ubie-icons';
 import { LinkCard } from '..';
 
 export default {
   component: LinkCard,
-} as ComponentMeta<typeof LinkCard>;
+} as Meta<typeof LinkCard>;
 
 const defaultArgs = {
   title: 'タイトル',
@@ -12,7 +12,7 @@ const defaultArgs = {
     'これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。',
 };
 
-export const Default: ComponentStoryObj<typeof LinkCard> = {
+export const Default: StoryObj<typeof LinkCard> = {
   render: (args) => (
     <>
       <div>

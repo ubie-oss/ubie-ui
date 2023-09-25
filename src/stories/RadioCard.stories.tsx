@@ -1,16 +1,16 @@
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { RadioCard } from '..';
 
 export default {
   component: RadioCard,
-} as ComponentMeta<typeof RadioCard>;
+} as Meta<typeof RadioCard>;
 
 const defaultArgs = {
   children: 'ラジオボタン',
   name: 'radio',
 };
 
-export const Default: ComponentStoryObj<typeof RadioCard> = {
+export const Default: StoryObj<typeof RadioCard> = {
   render: (args) => (
     <div>
       <RadioCard {...args} id="foo" />

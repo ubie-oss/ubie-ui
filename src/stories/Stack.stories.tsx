@@ -1,16 +1,16 @@
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Stack } from '..';
 import { Spacing } from '../types/style';
 
 export default {
   component: Stack,
-} as ComponentMeta<typeof Stack>;
+} as Meta<typeof Stack>;
 
 const defaultArgs = {
   spacing: 'md' as Spacing,
 };
 
-export const Default: ComponentStoryObj<typeof Stack> = {
+export const Default: StoryObj<typeof Stack> = {
   render: (args) => (
     <div>
       <Stack {...args}>

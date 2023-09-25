@@ -1,17 +1,10 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryObj, Meta } from '@storybook/react';
 import { useState, ComponentProps } from 'react';
 import { ActionModal } from '../';
 
 export default {
-  title: 'Component/Feedback/ActionModal',
   component: ActionModal,
-  argTypes: {
-    overlayOpacity: {
-      control: { type: 'select' },
-      options: ['normal', 'darker'],
-    },
-  },
-} as ComponentMeta<typeof ActionModal>;
+} as Meta<typeof ActionModal>;
 
 const defaultArgs: Partial<ComponentProps<typeof ActionModal>> = {
   header: 'モーダル',
@@ -21,47 +14,45 @@ const defaultArgs: Partial<ComponentProps<typeof ActionModal>> = {
   isStatic: false,
 };
 
-const Template: ComponentStory<typeof ActionModal> = (args) => {
-  const [open, setOpen] = useState(true);
+export const Default: StoryObj<typeof ActionModal> = {
+  render: (args) => {
+    const [open, setOpen] = useState(true);
 
-  return (
-    <>
-      <button type="button" onClick={() => setOpen(true)}>
-        Open Modal
-      </button>
-      <ActionModal {...args} open={open} onPrimaryAction={() => setOpen(false)} onClose={() => setOpen(false)}>
-        Default
-      </ActionModal>
-    </>
-  );
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionModal {...args} open={open} onPrimaryAction={() => setOpen(false)} onClose={() => setOpen(false)}>
+          Default
+        </ActionModal>
+      </>
+    );
+  },
+  args: defaultArgs,
 };
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
-Default.storyName = '';
+export const Secondary: StoryObj<typeof ActionModal> = {
+  render: (args) => {
+    const [open, setOpen] = useState(true);
 
-const TemplateSecondary: ComponentStory<typeof ActionModal> = (args) => {
-  const [open, setOpen] = useState(true);
-
-  return (
-    <>
-      <button type="button" onClick={() => setOpen(true)}>
-        Open Modal
-      </button>
-      <ActionModal
-        {...args}
-        open={open}
-        onPrimaryAction={() => setOpen(false)}
-        secondaryActionLabel={'このまま回答を続ける'}
-        onSecondaryAction={() => setOpen(false)}
-        onClose={() => setOpen(false)}
-      >
-        Default
-      </ActionModal>
-    </>
-  );
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionModal
+          {...args}
+          open={open}
+          onPrimaryAction={() => setOpen(false)}
+          secondaryActionLabel={'このまま回答を続ける'}
+          onSecondaryAction={() => setOpen(false)}
+          onClose={() => setOpen(false)}
+        >
+          Default
+        </ActionModal>
+      </>
+    );
+  },
+  args: defaultArgs,
 };
-
-export const ShowSecondary = TemplateSecondary.bind({});
-ShowSecondary.args = defaultArgs;
-ShowSecondary.storyName = 'Show secondary button';

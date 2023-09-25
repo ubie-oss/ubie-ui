@@ -1,4 +1,4 @@
-type Opacity = 'normal' | 'darker';
+export type Opacity = 'normal' | 'darker';
 export const opacityToClassName = (opacity: Opacity) => {
   let className;
   switch (opacity) {

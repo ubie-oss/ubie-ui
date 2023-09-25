@@ -1,13 +1,13 @@
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Text } from '../';
 
 export default {
   component: Text,
-} as ComponentMeta<typeof Text>;
+} as Meta<typeof Text>;
 
 const defaultArgs = {};
 
-export const Default: ComponentStoryObj<typeof Text> = {
+export const Default: StoryObj<typeof Text> = {
   render: () => (
     <div>
       <Text>ダミーテキスト</Text>

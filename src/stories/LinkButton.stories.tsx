@@ -1,17 +1,17 @@
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { BlankLinkIcon, UbieIcon } from '@ubie/ubie-icons';
 import { LinkButton } from '..';
 
 export default {
   component: LinkButton,
-} as ComponentMeta<typeof LinkButton>;
+} as Meta<typeof LinkButton>;
 
 const defaultArgs = {
   children: 'ボタン',
   href: 'https://example.com',
 };
 
-export const Default: ComponentStoryObj<typeof LinkButton> = {
+export const Default: StoryObj<typeof LinkButton> = {
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
