@@ -15,12 +15,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Configure .npmrc
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
-
       - uses: ./actions/setup-node-and-install-deps
-        with:
-          access-token-read-github-package-registry: ${{ secrets.ACCESS_TOKEN_READ_GITHUB_PACKAGE_REGISTRY }}
 
       - name: Generate Storybook
         run: npm run build-storybook

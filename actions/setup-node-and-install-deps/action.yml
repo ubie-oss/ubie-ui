@@ -1,0 +1,27 @@
+name: Seup Node.js and install dependencies
+description: Action for setting up Node.js and installing dependencies
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Install npm 9
+      shell: bash
+      run: |
+        npm install -g npm@9
+
+    - name: Cache node_modules
+      id: node_modules_cache
+      uses: actions/cache@v3
+      with:
+        path: './node_modules'
+        key: ${{ runner.os }}-modules-${{ hashFiles('./package-lock.json') }}-{{ checksum "patches.hash" }}
+        restore-keys: |
+          ${{ runner.os }}-modules-
+
+    - name: npm ci
+      shell: bash
+      run: npm ci
