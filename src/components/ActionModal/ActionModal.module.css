@@ -1,0 +1,97 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: var(--z-index-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.normalOverlay {
+  background: rgb(0 0 0 / 50%);
+}
+
+.darkerOverlay {
+  background: rgb(0 0 0 / 80%);
+}
+
+.modalBody {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-spacing-lg);
+  width: calc(100% - 32px);
+  max-width: 600px;
+  max-height: calc(100% - 48px);
+  padding: var(--size-spacing-lg) var(--size-spacing-md);
+  margin: 0 auto;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 12px;
+}
+
+.modalBody.headerLess {
+  padding-top: var(--size-spacing-xl);
+}
+
+.modalBody.fixedHeight {
+  height: calc(100% - 48px);
+}
+
+.modalBody.fixedHeight .contents {
+  height: 100%;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.header {
+  font-size: var(--text-heading-xs-size);
+  font-weight: bold;
+  line-height: var(--text-heading-xs-line);
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+.buttonContainer {
+  display: grid;
+  gap: var(--size-spacing-md);
+}
+
+.panelEnter {
+  transition-timing-function: ease-out;
+  transition-duration: 250ms;
+  transition-property: opacity;
+}
+
+.panelEnterFrom {
+  opacity: 0;
+}
+
+.panelEnterTo {
+  opacity: 1;
+}
+
+.panelLeave {
+  transition-timing-function: ease-in;
+  transition-duration: 200ms;
+}
+
+.panelLeaveFrom {
+  opacity: 1;
+}
+
+.panelLeaveTo {
+  opacity: 0;
+}
