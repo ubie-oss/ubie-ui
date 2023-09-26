@@ -1,7 +1,8 @@
 export { ActionHalfModal } from './components/ActionHalfModal/ActionHalfModal';
 export { MessageModal } from './components/MessageModal/MessageModal';
 export { ActionModal } from './components/ActionModal/ActionModal';
-export { Button, LinkButton, DummyButton } from './components/Button/Button';
+export { Button } from './components/Button/Button';
+export { LinkButton } from './components/Button/LinkButton';
 export { Checkbox } from './components/Checkbox/Checkbox';
 export { Input } from './components/Input/Input';
 export { LinkCard } from './components/LinkCard/LinkCard';

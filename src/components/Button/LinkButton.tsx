@@ -1,14 +1,16 @@
 'use client';
 
-import { clsx } from 'clsx';
-import { forwardRef } from 'react';
+import clsx from 'clsx';
+import { cloneElement, forwardRef } from 'react';
 import styles from './Button.module.css';
 import { VariantIcon } from './VariantIcon';
-import type { ButtonProps } from './ButtonTypes';
+import type { LinkButtonProps } from './ButtonTypes';
+import type { ReactNode } from 'react';
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
   (
     {
+      render,
       children,
       variant = 'primary',
       size = 'large',
@@ -17,10 +19,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       icon: _icon,
       fixedIcon: _fixedIcon,
       suffixIcon: _suffixIcon,
-      type = 'button',
       ...props
     },
-    ref,
+    forwardedRef,
   ) => {
     const icon = _icon === 'default' ? <VariantIcon variant={variant} /> : _icon;
     const fixedIcon = _fixedIcon === 'default' ? <VariantIcon variant={variant} /> : _fixedIcon;
@@ -31,21 +32,30 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         [styles[variant]]: true,
         [styles[size]]: true,
         [styles.block]: block,
-        [styles.disabled]: !!props.disabled,
       },
       className,
     );
-    return (
-      <button type={type} className={cls} ref={ref} {...props}>
+
+    const createElement = (props: any, children: ReactNode) => {
+      return render ? cloneElement(render, props, children) : <a {...props}>{children}</a>;
+    };
+
+    return createElement(
+      {
+        className: cls,
+        ...props,
+        ref: forwardedRef,
+      },
+      <>
         {fixedIcon && <span className={styles.fixedIcon}>{fixedIcon}</span>}
         <span className={styles.label}>
           {icon && <span className={styles.icon}>{icon}</span>}
           {children}
           {suffixIcon && <span className={styles.suffixIcon}>{suffixIcon}</span>}
         </span>
-      </button>
+      </>,
     );
   },
 );
 
-Button.displayName = 'Button';
+LinkButton.displayName = 'Link';
