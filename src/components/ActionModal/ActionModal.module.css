@@ -35,11 +35,12 @@
   width: calc(100% - 32px);
   max-width: 600px;
   max-height: calc(100% - 48px);
-  padding: var(--size-spacing-lg) var(--size-spacing-md);
+  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
   margin: 0 auto;
   overflow-y: auto;
   background: #fff;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
+  box-sizing: border-box;
 }
 
 .modalBody.headerLess {

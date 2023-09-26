@@ -5,6 +5,9 @@
   bottom: 0;
   left: 0;
   z-index: var(--z-index-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow-y: auto;
 }
 
@@ -24,40 +27,34 @@
   background: rgb(0 0 0 / 80%);
 }
 
-.modalContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
-
 .modalBody {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--size-spacing-lg);
   width: calc(100% - 32px);
-  max-width: 450px;
-  max-height: 90vh;
-  padding: 40px 16px 24px;
+  max-width: 600px;
+  max-height: calc(100% - 48px);
+  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
   margin: 0 auto;
   overflow-y: auto;
   background: #fff;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
+  box-sizing: border-box;
 }
 
-.modalBody.fullscreen {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100vh;
-  max-width: 100vh;
-  height: 100vh;
-  max-height: 100vh;
-  padding: calc(env(safe-area-inset-top) + 40px) 32px calc(env(safe-area-inset-bottom) + 24px) 32px;
-  margin: 0;
-  overflow-y: hidden;
-  border-radius: 0;
+.modalBody.fixedHeight {
+  height: calc(100% - 48px);
+}
+
+.contents {
+  text-align: center;
+}
+
+.modalBody.fixedHeight .contents {
+  height: 100%;
+  min-height: 400px;
+  overflow: hidden;
 }
 
 .header {
@@ -66,10 +63,6 @@
   line-height: var(--text-heading-xs-line);
   text-align: center;
   white-space: pre-wrap;
-}
-
-.content {
-  text-align: center;
 }
 
 .panelEnter {

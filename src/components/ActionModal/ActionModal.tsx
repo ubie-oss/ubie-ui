@@ -60,17 +60,17 @@ export const ActionModal: FC<Props> = ({
           <div className={styles.contents}>{children}</div>
           <div className={styles.buttonContainer}>
             {onPrimaryAction && primaryActionLabel && (
-              <Button block onClick={onPrimaryAction} aria-label={primaryActionLabel} variant={primaryActionColor}>
+              <Button block onClick={onPrimaryAction} variant={primaryActionColor}>
                 {primaryActionLabel}
               </Button>
             )}
             {onSecondaryAction && secondaryActionLabel && (
-              <Button block variant="secondary" onClick={onSecondaryAction} aria-label={secondaryActionLabel}>
+              <Button block variant="secondary" onClick={onSecondaryAction}>
                 {secondaryActionLabel}
               </Button>
             )}
             {showClose && (
-              <Button variant="text" onClick={onClose} aria-label={closeLabel}>
+              <Button variant="text" onClick={onClose}>
                 {closeLabel}
               </Button>
             )}

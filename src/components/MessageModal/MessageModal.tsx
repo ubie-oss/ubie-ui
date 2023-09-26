@@ -12,7 +12,7 @@ type Props = {
   onClose: () => void;
   closeLabel?: string;
   overlayOpacity?: Opacity;
-  fullscreen?: boolean;
+  fixedHeight?: boolean;
   open?: boolean;
   isStatic?: boolean;
 } & PropsWithChildren;
@@ -23,7 +23,7 @@ export const MessageModal: FC<Props> = ({
   onClose,
   overlayOpacity = 'normal',
   closeLabel = '閉じる',
-  fullscreen = false,
+  fixedHeight = false,
   open = true,
   isStatic = false,
 }) => {
@@ -41,15 +41,13 @@ export const MessageModal: FC<Props> = ({
       leaveTo={styles.panelLeaveTo}
     >
       <Dialog static={isStatic} onClose={onClose} className={styles.modal}>
-        <div className={styles.modalContainer}>
-          <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
-          <div className={clsx(styles.modalBody, fullscreen && styles.fullscreen)}>
-            {header && <Dialog.Title className={styles.header}>{header}</Dialog.Title>}
-            <div className={styles.content}>{children}</div>
-            <Button block onClick={onClose} aria-label={closeLabel}>
-              {closeLabel}
-            </Button>
-          </div>
+        <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
+        <div className={clsx(styles.modalBody, fixedHeight && styles.fixedHeight)}>
+          {header && <Dialog.Title className={styles.header}>{header}</Dialog.Title>}
+          <div className={styles.contents}>{children}</div>
+          <Button block onClick={onClose} aria-label={closeLabel}>
+            {closeLabel}
+          </Button>
         </div>
       </Dialog>
     </Transition>

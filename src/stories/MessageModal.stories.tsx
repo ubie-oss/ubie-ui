@@ -9,7 +9,7 @@ export default {
 const defaultArgs: Partial<ComponentProps<typeof MessageModal>> = {
   overlayOpacity: 'normal',
   isStatic: false,
-  fullscreen: false,
+  fixedHeight: false,
 };
 
 export const Default: StoryObj<typeof MessageModal> = {
