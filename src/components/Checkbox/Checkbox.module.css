@@ -1,6 +1,9 @@
 .container {
+  display: flex;
+  align-items: center;
+  gap: var(--size-spacing-xs);
   user-select: none;
-  font-size: 12px;
+  cursor: pointer;
 }
 
 .checkbox {
@@ -15,13 +18,30 @@
 
 .checkIconContainer {
   display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin-right: 6px;
-  border: 2px solid var(--color-primary);
-  border-radius: 4px;
-  font-size: 12px;
+  border: 2px solid var(--color-ubie-black-400);
+  border-radius: var(--radius-sm);
   transition: background-color 200ms;
+  box-sizing: border-box;
+}
+
+.container.medium {
+  font-size: var(--text-body-md-tight-size);
+  line-height: var(--text-body-md-tight-line);
+}
+
+.container.small {
+  font-size: var(--text-body-sm-tight-size);
+  line-height: var(--text-body-sm-tight-line);
+}
+
+.medium .checkIconContainer {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.small .checkIconContainer {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .checkIcon {
@@ -29,8 +49,17 @@
   color: #fff;
 }
 
+.medium .checkIcon {
+  font-size: 1.25rem;
+}
+
+.small .checkIcon {
+  font-size: 1rem;
+}
+
 .container input:checked + .checkIconContainer {
   background-color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .container input:checked + .checkIconContainer .checkIcon {

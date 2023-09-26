@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { FC, TextareaHTMLAttributes } from 'react';
-import styles from './TextArea.module.scss';
+import styles from './TextArea.module.css';
 
 type Props = {
   isInvalid?: boolean;

@@ -1,32 +1,40 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ChangeEventHandler, useState, useCallback } from 'react';
-import { Select } from '../';
+import { RadioButton, Stack } from '../';
 
 export default {
-  component: Select,
-} as Meta<typeof Select>;
-
-const options = ['option1', 'option2', 'option3'];
+  component: RadioButton,
+} as Meta<typeof RadioButton>;
 
 const defaultArgs = {
-  isInvalid: false,
   disabled: false,
+  name: 'sample',
 };
 
-export const Default: StoryObj<typeof Select> = {
+export const Default: StoryObj<typeof RadioButton> = {
   render: (args) => {
-    const [selectedItem, setSelectedItem] = useState(options[0]);
+    const [selectedItem, setSelectedItem] = useState('medium');
 
-    const onChange: ChangeEventHandler<HTMLSelectElement> = useCallback((event) => {
+    const onChange: ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
       setSelectedItem(event.target.value);
     }, []);
 
     return (
-      <Select {...args} value={selectedItem} onChange={onChange}>
-        {options.map((o) => (
-          <option key={o}>{o}</option>
-        ))}
-      </Select>
+      <Stack spacing="xs">
+        <RadioButton {...args} value="medium" id="medium" onChange={onChange} checked={selectedItem === 'medium'}>
+          Medium
+        </RadioButton>
+        <RadioButton
+          {...args}
+          value="small"
+          id="small"
+          onChange={onChange}
+          checked={selectedItem === 'small'}
+          size="small"
+        >
+          Small
+        </RadioButton>
+      </Stack>
     );
   },
   args: defaultArgs,

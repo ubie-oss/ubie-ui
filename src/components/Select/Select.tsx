@@ -1,7 +1,7 @@
 import { UnfoldMoreIcon } from '@ubie/ubie-icons';
 import clsx from 'clsx';
 import { FC, forwardRef, InputHTMLAttributes } from 'react';
-import styles from './Select.module.scss';
+import styles from './Select.module.css';
 
 type Props = {
   isInvalid?: boolean;

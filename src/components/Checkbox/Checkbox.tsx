@@ -1,16 +1,18 @@
 'use client';
 
 import { CheckAIcon } from '@ubie/ubie-icons';
-import { FC, ReactNode } from 'react';
+import clsx from 'clsx';
+import { FC, PropsWithChildren, InputHTMLAttributes } from 'react';
 import styles from './Checkbox.module.css';
 
 type Props = {
-  children: ReactNode;
-};
+  size?: 'medium' | 'small';
+} & InputHTMLAttributes<HTMLInputElement> &
+  PropsWithChildren;
 
-export const Checkbox: FC<Props> = ({ children }) => {
+export const Checkbox: FC<Props> = ({ size = 'medium', children }) => {
   return (
-    <label className={styles.container}>
+    <label className={clsx(styles.container, styles[size])}>
       <input type="checkbox" className={styles.checkbox} />
       <span className={styles.checkIconContainer}>
         <CheckAIcon className={styles.checkIcon} />

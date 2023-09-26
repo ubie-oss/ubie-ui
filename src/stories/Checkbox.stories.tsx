@@ -1,15 +1,17 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from '../';
+import { Checkbox, Stack } from '../';
 
 export default {
   component: Checkbox,
 } as Meta<typeof Checkbox>;
 
-const defaultArgs = {
-  children: 'Checkbox',
-};
-
 export const Default: StoryObj<typeof Checkbox> = {
-  render: (args) => <Checkbox {...args} />,
-  args: defaultArgs,
+  render: () => {
+    return (
+      <Stack spacing="xs">
+        <Checkbox>Medium</Checkbox>
+        <Checkbox size="small">Small</Checkbox>
+      </Stack>
+    );
+  },
 };

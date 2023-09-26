@@ -1,14 +1,28 @@
-import { FC } from 'react';
-import styles from './RadioButton.module.scss';
+import clsx from 'clsx';
+import { FC, InputHTMLAttributes } from 'react';
+import styles from './RadioButton.module.css';
 
-type Props = Required<
-  Pick<React.InputHTMLAttributes<HTMLInputElement>, 'id' | 'name' | 'onChange' | 'value' | 'checked' | 'children'>
+type RadioProps = Required<
+  Pick<InputHTMLAttributes<HTMLInputElement>, 'id' | 'name' | 'onChange' | 'value' | 'checked' | 'children'>
 > &
-  React.InputHTMLAttributes<HTMLInputElement>;
+  InputHTMLAttributes<HTMLInputElement>;
 
-export const RadioButton: FC<Props> = ({ checked, onChange, value, id, name, children, ...otherProps }) => {
+type Props = {
+  size?: 'medium' | 'small';
+} & RadioProps;
+
+export const RadioButton: FC<Props> = ({
+  size = 'medium',
+  checked,
+  onChange,
+  value,
+  id,
+  name,
+  children,
+  ...otherProps
+}) => {
   return (
-    <div className={styles.container}>
+    <div className={clsx(styles.container, styles[size])}>
       <input
         type="radio"
         id={id}
