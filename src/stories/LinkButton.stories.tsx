@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { BlankLinkIcon, UbieIcon } from '@ubie/ubie-icons';
-import { LinkButton } from '..';
+import { LinkButton } from '../';
 
 const meta: Meta<typeof LinkButton> = {
   component: LinkButton,

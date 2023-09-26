@@ -36,6 +36,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
       className,
     );
 
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
     const createElement = (props: any, children: ReactNode) => {
       return render ? cloneElement(render, props, children) : <a {...props}>{children}</a>;
     };

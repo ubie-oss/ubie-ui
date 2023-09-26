@@ -1,4 +1,6 @@
 export { ActionHalfModal } from './components/ActionHalfModal/ActionHalfModal';
+export { MessageModal } from './components/MessageModal/MessageModal';
+export { ActionModal } from './components/ActionModal/ActionModal';
 export { Button } from './components/Button/Button';
 export { LinkButton } from './components/Button/LinkButton';
 export { Checkbox } from './components/Checkbox/Checkbox';
