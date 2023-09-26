@@ -5,7 +5,7 @@ import styles from './RadioButton.module.css';
 type RadioProps = Required<
   Pick<InputHTMLAttributes<HTMLInputElement>, 'id' | 'name' | 'onChange' | 'value' | 'checked' | 'children'>
 > &
-  InputHTMLAttributes<HTMLInputElement>;
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 type Props = {
   size?: 'medium' | 'small';

@@ -9,8 +9,10 @@ export const Default: StoryObj<typeof Checkbox> = {
   render: () => {
     return (
       <Stack spacing="xs">
-        <Checkbox>Medium</Checkbox>
-        <Checkbox size="small">Small</Checkbox>
+        <Checkbox value="medium">Medium</Checkbox>
+        <Checkbox value="small" size="small">
+          Small
+        </Checkbox>
       </Stack>
     );
   },
