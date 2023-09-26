@@ -1,0 +1,43 @@
+.icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-background-white);
+  border: 2px solid var(--color-border);
+  border-radius: 24px;
+}
+
+.icon::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  content: '';
+  border-radius: 16px;
+  transform: translate(-50%, -50%);
+}
+
+.radio {
+  position: absolute;
+  opacity: 0;
+}
+
+.radio:checked + label .icon {
+  border-color: var(--color-primary);
+}
+
+.radio:checked + label .icon::before {
+  background: var(--color-primary);
+}
+
+/* 詳細度を上げるために:focus-visibleを複数指定 */
+.radio:focus-visible:focus-visible + label .icon {
+  border-color: var(--color-accent);
+}
+
+.label {
+  display: flex;
+  gap: var(--size-spacing-xs);
+  align-items: center;
+}
