@@ -19,6 +19,7 @@ export type BaseProps = {
 };
 
 export type OnlyLinkButtonProps = {
+  disabled?: boolean;
   render?: ReactElement;
 };
 

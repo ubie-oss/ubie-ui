@@ -19,6 +19,8 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
       icon: _icon,
       fixedIcon: _fixedIcon,
       suffixIcon: _suffixIcon,
+      href: _href,
+      disabled = false,
       ...props
     },
     forwardedRef,
@@ -32,9 +34,11 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
         [styles[variant]]: true,
         [styles[size]]: true,
         [styles.block]: block,
+        [styles.disabled]: disabled,
       },
       className,
     );
+    const href = disabled ? undefined : _href;
 
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
     const createElement = (props: any, children: ReactNode) => {
@@ -44,6 +48,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
     return createElement(
       {
         className: cls,
+        href,
         ...props,
         ref: forwardedRef,
       },
