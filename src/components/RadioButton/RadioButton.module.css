@@ -17,6 +17,10 @@
   height: 1.25rem;
 }
 
+.label:hover .icon {
+  border-color: var(--color-primary);
+}
+
 .icon::before {
   position: absolute;
   top: 50%;

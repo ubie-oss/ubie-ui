@@ -44,6 +44,10 @@
   height: 1.25rem;
 }
 
+.container:hover .checkIconContainer {
+  border-color: var(--color-primary);
+}
+
 .checkIcon {
   visibility: hidden;
   color: #fff;
