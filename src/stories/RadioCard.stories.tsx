@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { RadioCard } from '..';
+import { RadioCard, Stack } from '..';
 
 export default {
   component: RadioCard,
@@ -12,11 +12,11 @@ const defaultArgs = {
 
 export const Default: StoryObj<typeof RadioCard> = {
   render: (args) => (
-    <div>
+    <Stack spacing="sm">
       <RadioCard {...args} id="foo" />
       <RadioCard {...args} id="bar" />
-      <RadioCard {...args} hasMarginBottom={false} id="baz" />
-    </div>
+      <RadioCard {...args} id="baz" />
+    </Stack>
   ),
   args: defaultArgs,
 };
