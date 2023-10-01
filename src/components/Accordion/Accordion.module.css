@@ -43,6 +43,7 @@ details[open].medium .button {
   height: 1.5rem;
   margin-left: 1rem;
   color: var(--color-primary);
+  flex: none;
 }
 
 details[open] .arrow {
