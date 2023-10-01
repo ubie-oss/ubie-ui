@@ -76,6 +76,10 @@
   transform: translateY(-50%);
 }
 
+.label:has(.radio:focus-visible) {
+  outline: solid var(--color-accent) 2px;
+}
+
 @media (pointer: fine) {
   .label:hover {
     border: 2px solid var(--color-primary);

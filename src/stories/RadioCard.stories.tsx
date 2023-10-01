@@ -6,9 +6,7 @@ export default {
   component: RadioCard,
 } as Meta<typeof RadioCard>;
 
-const defaultArgs = {
-  name: 'radio',
-};
+const defaultArgs = {};
 
 export const Default: StoryObj<typeof RadioCard> = {
   render: (args) => {
@@ -30,7 +28,10 @@ export const Default: StoryObj<typeof RadioCard> = {
       </Stack>
     );
   },
-  args: defaultArgs,
+  args: {
+    ...defaultArgs,
+    name: 'deafult',
+  },
 };
 
 export const Block: StoryObj<typeof RadioCard> = {
@@ -55,6 +56,7 @@ export const Block: StoryObj<typeof RadioCard> = {
   },
   args: {
     ...defaultArgs,
+    name: 'block',
     block: true,
   },
 };
