@@ -21,22 +21,21 @@ type Props = Required<Pick<React.InputHTMLAttributes<HTMLInputElement>, 'id' | '
  * @param otherProps onFocusなど、inputタグに渡せるpropsはなんでも。
  */
 const RadioCard: FC<Props> = forwardRef<HTMLInputElement, Props>(
-  ({ id, name, value, children, className, block = false, ...otherProps }, ref) => {
+  ({ id, name, value, checked, children, className, block = false, ...otherProps }, ref) => {
     return (
-      <div className={clsx(styles.wrap, block && styles.block)}>
+      <label className={clsx(styles.label, block && styles.block, checked && styles.checked)}>
         <input
           type="radio"
           id={id}
           name={name}
           value={value}
+          checked={checked}
           className={clsx(className, styles.radio)}
           {...otherProps}
           ref={ref}
         />
-        <label htmlFor={id} className={styles.label}>
-          {children}
-        </label>
-      </div>
+        {children}
+      </label>
     );
   },
 );
