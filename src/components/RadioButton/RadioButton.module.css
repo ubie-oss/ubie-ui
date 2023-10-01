@@ -17,8 +17,10 @@
   height: 1.25rem;
 }
 
-.label:hover .icon {
-  border-color: var(--color-primary);
+@media (pointer: fine) {
+  .label:hover .icon {
+    border-color: var(--color-primary);
+  }
 }
 
 .icon::before {

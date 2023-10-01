@@ -10,10 +10,10 @@ type Props = {
 } & Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'value' | 'children'>> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
-export const Checkbox: FC<Props> = ({ size = 'medium', children }) => {
+export const Checkbox: FC<Props> = ({ size = 'medium', children, ...otherProps }) => {
   return (
     <label className={clsx(styles.container, styles[size])}>
-      <input type="checkbox" className={styles.checkbox} />
+      <input type="checkbox" className={styles.checkbox} {...otherProps} />
       <span className={styles.checkIconContainer}>
         <CheckAIcon className={styles.checkIcon} />
       </span>

@@ -6,6 +6,10 @@
   cursor: pointer;
 }
 
+.container:has(input:disabled) {
+  cursor: initial;
+}
+
 .checkbox {
   position: absolute;
   clip: rect(1px, 1px, 1px, 1px);
@@ -17,7 +21,9 @@
 }
 
 .checkIconContainer {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 2px solid var(--color-ubie-black-400);
   border-radius: var(--radius-sm);
   transition: background-color 200ms;
@@ -44,8 +50,14 @@
   height: 1.25rem;
 }
 
-.container:hover .checkIconContainer {
-  border-color: var(--color-primary);
+@media (pointer: fine) {
+  .container:hover .checkIconContainer {
+    border-color: var(--color-primary);
+  }
+
+  .container:hover input:disabled + .checkIconContainer {
+    border-color: var(--color-text-disabled);
+  }
 }
 
 .checkIcon {
@@ -61,15 +73,24 @@
   font-size: 1rem;
 }
 
-.container input:checked + .checkIconContainer {
+input:checked + .checkIconContainer {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
 }
 
-.container input:checked + .checkIconContainer .checkIcon {
+input:checked + .checkIconContainer .checkIcon {
   visibility: initial;
 }
 
-.container input:focus-visible + .checkIconContainer {
+input:focus-visible + .checkIconContainer {
   outline: solid var(--color-accent) 2px;
+}
+
+input:disabled + .checkIconContainer {
+  border-color: var(--color-text-disabled);
+}
+
+input:disabled:checked + .checkIconContainer {
+  border: none;
+  background-color: var(--color-text-disabled);
 }
