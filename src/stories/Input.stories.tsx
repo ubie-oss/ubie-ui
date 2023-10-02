@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Input } from '..';
+import { Input, Stack } from '..';
 
 export default {
   component: Input,
@@ -11,6 +11,11 @@ const defaultArgs = {
 };
 
 export const Default: StoryObj<typeof Input> = {
-  render: (args) => <Input {...args} />,
+  render: (args) => (
+    <Stack spacing="xs">
+      <Input {...args} />
+      <Input {...args} isInvalid />
+    </Stack>
+  ),
   args: defaultArgs,
 };

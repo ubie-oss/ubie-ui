@@ -1,0 +1,90 @@
+.icon {
+  position: relative;
+  background-color: var(--color-background-white);
+  border: 2px solid var(--color-ubie-black-400);
+  border-radius: 24px;
+  box-sizing: border-box;
+  flex: none;
+}
+
+.medium .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.small .icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@media (pointer: fine) {
+  .label:hover .icon {
+    border-color: var(--color-primary);
+  }
+}
+
+.icon::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: '';
+  border-radius: 16px;
+  transform: translate(-50%, -50%);
+}
+
+.medium .icon::before {
+  width: 1rem;
+  height: 1rem;
+}
+
+.small .icon::before {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.radio {
+  position: absolute;
+  opacity: 0;
+}
+
+.radio:checked + label .icon {
+  border-color: var(--color-primary);
+}
+
+.radio:checked + label .icon::before {
+  background: var(--color-primary);
+}
+
+.radio:disabled + label {
+  color: var(--color-text-disabled);
+}
+
+.radio:disabled + label > .icon {
+  border-color: var(--color-text-disabled);
+}
+
+.radio:checked:disabled + label > .icon::before {
+  background: var(--color-text-disabled);
+}
+
+/* 詳細度を上げるために:focus-visibleを複数指定 */
+.radio:focus-visible:focus-visible + label .icon {
+  border-color: var(--color-accent);
+}
+
+.label {
+  display: flex;
+  gap: var(--size-spacing-xs);
+  align-items: center;
+  cursor: pointer;
+}
+
+.medium .label {
+  font-size: var(--text-body-md-tight-size);
+  line-height: var(--text-body-md-tight-line);
+}
+
+.small .label {
+  font-size: var(--text-body-sm-tight-size);
+  line-height: var(--text-body-sm-tight-line);
+}
