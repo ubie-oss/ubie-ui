@@ -13,6 +13,11 @@
   background-color: var(--color-background-primary);
 }
 
+/* for Safari */
+.button::-webkit-details-marker {
+  display: none;
+}
+
 .medium .button {
   width: calc(100% - 2rem - 2px);
   min-height: calc(2rem - 2px);
