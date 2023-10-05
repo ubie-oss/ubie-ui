@@ -3,6 +3,7 @@ import { ChangeEventHandler, useState, useCallback } from 'react';
 import { RadioButton, Stack } from '../';
 
 export default {
+  title: 'Form/RadioButton',
   component: RadioButton,
 } as Meta<typeof RadioButton>;
 
