@@ -1,0 +1,30 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: Configure .npmrc
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+
+      - uses: ./actions/setup-node-and-install-deps
+        with:
+          access-token-read-github-package-registry: ${{ secrets.ACCESS_TOKEN_READ_GITHUB_PACKAGE_REGISTRY }}
+
+      - name: Install playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Test
+        run: npm run test
