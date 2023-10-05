@@ -23,19 +23,19 @@ export const RadioButton: FC<Props> = ({
 }) => {
   return (
     <div className={clsx(styles.container, styles[size])}>
-      <input
-        type="radio"
-        id={id}
-        checked={checked}
-        name={name}
-        value={value}
-        className={styles.radio}
-        onChange={onChange}
-        {...otherProps}
-      />
       <label htmlFor={id} className={styles.label}>
+        <input
+          type="radio"
+          id={id}
+          checked={checked}
+          name={name}
+          value={value}
+          className={styles.radio}
+          onChange={onChange}
+          {...otherProps}
+        />
         <span className={styles.icon} />
-        {children}
+        <span className={styles.text}>{children}</span>
       </label>
     </div>
   );

@@ -1,5 +1,7 @@
 .icon {
-  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--color-background-white);
   border: 2px solid var(--color-ubie-black-400);
   border-radius: 24px;
@@ -24,12 +26,8 @@
 }
 
 .icon::before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
   content: '';
   border-radius: 16px;
-  transform: translate(-50%, -50%);
 }
 
 .medium .icon::before {
@@ -47,28 +45,27 @@
   opacity: 0;
 }
 
-.radio:checked + label .icon {
+.radio:checked + .icon {
   border-color: var(--color-primary);
 }
 
-.radio:checked + label .icon::before {
+.radio:checked + .icon::before {
   background: var(--color-primary);
 }
 
-.radio:disabled + label {
+.radio:disabled + .icon + .text {
   color: var(--color-text-disabled);
 }
 
-.radio:disabled + label > .icon {
+.radio:disabled + .icon {
   border-color: var(--color-text-disabled);
 }
 
-.radio:checked:disabled + label > .icon::before {
+.radio:checked:disabled + .icon::before {
   background: var(--color-text-disabled);
 }
 
-/* 詳細度を上げるために:focus-visibleを複数指定 */
-.radio:focus-visible:focus-visible + label .icon {
+.radio:focus-visible + .icon {
   border-color: var(--color-accent);
 }
 

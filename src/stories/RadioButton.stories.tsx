@@ -8,12 +8,15 @@ export default {
 
 const defaultArgs = {
   disabled: false,
-  name: 'sample',
 };
 
-export const Default: StoryObj<typeof RadioButton> = {
+type Story = StoryObj<typeof RadioButton>;
+
+const options = ['option1', 'option2', 'option3'];
+
+export const Default: Story = {
   render: (args) => {
-    const [selectedItem, setSelectedItem] = useState('medium');
+    const [selectedItem, setSelectedItem] = useState(options[0]);
 
     const onChange: ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
       setSelectedItem(event.target.value);
@@ -21,21 +24,63 @@ export const Default: StoryObj<typeof RadioButton> = {
 
     return (
       <Stack spacing="xs">
-        <RadioButton {...args} value="medium" id="medium" onChange={onChange} checked={selectedItem === 'medium'}>
-          Medium
-        </RadioButton>
-        <RadioButton
-          {...args}
-          value="small"
-          id="small"
-          onChange={onChange}
-          checked={selectedItem === 'small'}
-          size="small"
-        >
-          Small
-        </RadioButton>
+        {options.map((option) => (
+          <RadioButton
+            key={option}
+            {...args}
+            value={option}
+            id={option}
+            onChange={onChange}
+            checked={selectedItem === option}
+          >
+            {option}
+          </RadioButton>
+        ))}
+
+        <dl>
+          <dt>Values</dt>
+          <dd>{selectedItem}</dd>
+        </dl>
       </Stack>
     );
   },
-  args: defaultArgs,
+  args: {
+    ...defaultArgs,
+    name: 'default',
+  },
+};
+
+export const Size: Story = {
+  render: (args) => (
+    <Stack spacing="xs">
+      <RadioButton {...args} value="medium" id="medium">
+        Medium
+      </RadioButton>
+      <RadioButton {...args} value="small" id="small" size="small">
+        Small
+      </RadioButton>
+    </Stack>
+  ),
+  args: {
+    ...defaultArgs,
+    name: 'size',
+  },
+};
+
+export const Disabled: Story = {
+  render: (args) => (
+    <Stack spacing="xs">
+      <RadioButton {...args} value="checked" id="checked" checked disabled>
+        Checked
+      </RadioButton>
+
+      <RadioButton {...args} value="unchecked" id="unchecked" disabled>
+        Unchecked
+      </RadioButton>
+    </Stack>
+  ),
+  args: {
+    ...defaultArgs,
+    name: 'disabled',
+  },
 };
