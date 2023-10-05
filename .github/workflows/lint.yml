@@ -16,10 +16,15 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: ./actions/setup-node-and-install-deps
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
       - name: Lint
         run: npm run lint
 
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
       - name: Test
         run: npm run test
