@@ -1,2 +1,0 @@
-import{j as o,c as r}from"./clsx-4547bf08.js";const i="_stack_bluv1_1",x={stack:i},k=({as:s="div",children:t,className:a,spacing:c,direction:e="column",alignItems:l="flex-start",justifyContent:n="flex-start"})=>o(s,{style:{flexDirection:`${e}`,alignItems:`${l}`,justifyContent:`${n}`,gap:`var(--size-spacing-${c})`},className:r(a,x.stack),children:t});export{k as S};
-//# sourceMappingURL=Stack-b3b2c406.js.map
