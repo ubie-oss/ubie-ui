@@ -8,11 +8,11 @@ type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name' | 'value' 
   /**
    * グループ化（排他制御）したい要素には同じ名前をつける
    */
-  name: Required<React.InputHTMLAttributes<HTMLInputElement>['name']>;
+  name: string;
   /**
    * 選択時のコールバックで渡される値
    */
-  value: React.InputHTMLAttributes<HTMLInputElement>['value'];
+  value: string | number;
   /**
    * * ラベルに表示されるテキストまたは要素
    */

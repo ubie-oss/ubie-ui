@@ -9,15 +9,15 @@ type Props = {
   /**
    * グループ化（排他制御）したい要素には同じ名前をつける
    */
-  name: Required<React.InputHTMLAttributes<HTMLInputElement>['name']>;
+  name: string;
   /**
    * 選択時のコールバックで渡される値
    */
-  value: Required<React.InputHTMLAttributes<HTMLInputElement>['value']>;
+  value: string | number;
   /**
    * ラベルに表示されるテキストまたは要素
    */
-  children: Required<InputHTMLAttributes<HTMLInputElement>['children']>;
+  children: InputHTMLAttributes<HTMLInputElement>['children'];
   /**
    * サイズ
    */
