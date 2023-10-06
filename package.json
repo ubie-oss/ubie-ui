@@ -1,5 +1,5 @@
 {
-  "name": "ubie-ui",
+  "name": "@ubie/ubie-ui",
   "version": "0.0.1",
   "description": "React components for creating Ubie applications.",
   "main": "dist/index.js",
@@ -16,6 +16,9 @@
     }
   },
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup",
     "test": "vitest run",
