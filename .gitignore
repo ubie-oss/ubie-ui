@@ -17,3 +17,8 @@ npm-debug.log*
 # storybook
 /storybook-static
 build-storybook.log
+
+# Test
+/test-results/
+/playwright-report/
+/playwright/.cache/
