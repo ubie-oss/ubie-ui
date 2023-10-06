@@ -1,127 +1,130 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { BlankLinkIcon, UbieIcon } from '@ubie/ubie-icons';
-import { LinkButton } from '../';
+import { BlankLinkIcon, UbieIcon, TrashIcon } from '@ubie/ubie-icons';
+import { LinkButton, Stack } from '../';
+import type { ComponentProps } from 'react';
 
-const meta: Meta<typeof LinkButton> = {
+export default {
+  title: 'Button/LinkButton',
   component: LinkButton,
-};
-
-export default meta;
+} satisfies Meta<typeof LinkButton>;
 
 type Story = StoryObj<typeof LinkButton>;
 
+/**
+ * Using Story's args, a non-existent prop is treated as having a value if its type is required.
+ */
 const defaultArgs = {
   children: 'ボタン',
-  href: 'https://example.com',
-};
+  href: 'https://vitals.ubie.life/',
+} satisfies Partial<ComponentProps<typeof LinkButton>>;
 
 export const Default: Story = {
-  render: (args) => (
+  render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-        <LinkButton icon={<UbieIcon />} {...args} />
-        <LinkButton icon={<UbieIcon />} {...args} variant="secondary" />
-        <LinkButton icon={<UbieIcon />} {...args} variant="accent" />
-        <LinkButton icon={<UbieIcon />} {...args} variant="alert" />
-        <LinkButton icon={<UbieIcon />} {...args} variant="text" />
-        <LinkButton icon={<UbieIcon />} {...args} variant="textAlert" />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-        <LinkButton icon={<UbieIcon />} {...args} size="medium" />
-        <LinkButton icon={<UbieIcon />} {...args} size="medium" variant="secondary" />
-        <LinkButton icon={<UbieIcon />} {...args} size="medium" variant="accent" />
-        <LinkButton icon={<UbieIcon />} {...args} size="medium" variant="alert" />
-        <LinkButton icon={<UbieIcon />} {...args} size="medium" variant="text" />
-        <LinkButton icon={<UbieIcon />} {...args} size="medium" variant="textAlert" />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-        <LinkButton icon={<UbieIcon />} {...args} size="small" />
-        <LinkButton icon={<UbieIcon />} {...args} size="small" variant="secondary" />
-        <LinkButton icon={<UbieIcon />} {...args} size="small" variant="accent" />
-        <LinkButton icon={<UbieIcon />} {...args} size="small" variant="alert" />
-        <LinkButton icon={<UbieIcon />} {...args} size="small" variant="text" />
-        <LinkButton icon={<UbieIcon />} {...args} size="small" variant="textAlert" />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-        <LinkButton suffixIcon={<BlankLinkIcon />} {...args} />
-        <LinkButton suffixIcon={<BlankLinkIcon />} {...args} variant="secondary" />
-        <LinkButton suffixIcon={<BlankLinkIcon />} {...args} variant="accent" />
-        <LinkButton suffixIcon={<BlankLinkIcon />} {...args} variant="alert" />
-        <LinkButton suffixIcon={<BlankLinkIcon />} {...args} variant="text" />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-        <LinkButton suffixIcon={<BlankLinkIcon />} size="medium" {...args} />
-        <LinkButton suffixIcon={<BlankLinkIcon />} size="medium" {...args} variant="secondary" />
-        <LinkButton suffixIcon={<BlankLinkIcon />} size="medium" {...args} variant="accent" />
-        <LinkButton suffixIcon={<BlankLinkIcon />} size="medium" {...args} variant="alert" />
-        <LinkButton suffixIcon={<BlankLinkIcon />} size="medium" {...args} variant="text" />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-        <LinkButton suffixIcon={<BlankLinkIcon />} size="small" {...args} />
-        <LinkButton suffixIcon={<BlankLinkIcon />} size="small" {...args} variant="secondary" />
-        <LinkButton suffixIcon={<BlankLinkIcon />} size="small" {...args} variant="accent" />
-        <LinkButton suffixIcon={<BlankLinkIcon />} size="small" {...args} variant="alert" />
-        <LinkButton suffixIcon={<BlankLinkIcon />} size="small" {...args} variant="text" />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-        <LinkButton fixedIcon={<BlankLinkIcon />} {...args} />
-        <LinkButton fixedIcon={<BlankLinkIcon />} {...args} variant="secondary" />
-        <LinkButton fixedIcon={<BlankLinkIcon />} {...args} variant="accent" />
-        <LinkButton fixedIcon={<BlankLinkIcon />} {...args} variant="alert" />
-        <LinkButton fixedIcon={<BlankLinkIcon />} {...args} variant="text" />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-        <LinkButton fixedIcon={<BlankLinkIcon />} size="medium" {...args} />
-        <LinkButton fixedIcon={<BlankLinkIcon />} size="medium" {...args} variant="secondary" />
-        <LinkButton fixedIcon={<BlankLinkIcon />} size="medium" {...args} variant="accent" />
-        <LinkButton fixedIcon={<BlankLinkIcon />} size="medium" {...args} variant="alert" />
-        <LinkButton fixedIcon={<BlankLinkIcon />} size="medium" {...args} variant="text" />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-        <LinkButton fixedIcon={<BlankLinkIcon />} size="small" {...args} />
-        <LinkButton fixedIcon={<BlankLinkIcon />} size="small" {...args} variant="secondary" />
-        <LinkButton fixedIcon={<BlankLinkIcon />} size="small" {...args} variant="accent" />
-        <LinkButton fixedIcon={<BlankLinkIcon />} size="small" {...args} variant="alert" />
-        <LinkButton fixedIcon={<BlankLinkIcon />} size="small" {...args} variant="text" />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-        <LinkButton {...args} />
-        <LinkButton {...args} variant="secondary" />
-        <LinkButton {...args} variant="accent" />
-        <LinkButton {...args} variant="alert" />
-        <LinkButton {...args} variant="text" />
-        <LinkButton {...args} variant="textAlert" />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-        <LinkButton {...args} size="medium" />
-        <LinkButton {...args} size="medium" variant="secondary" />
-        <LinkButton {...args} size="medium" variant="accent" />
-        <LinkButton {...args} size="medium" variant="alert" />
-        <LinkButton {...args} size="medium" variant="text" />
-        <LinkButton {...args} size="medium" variant="textAlert" />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-        <LinkButton {...args} size="small" />
-        <LinkButton {...args} size="small" variant="secondary" />
-        <LinkButton {...args} size="small" variant="accent" />
-        <LinkButton {...args} size="small" variant="alert" />
-        <LinkButton {...args} size="small" variant="text" />
-        <LinkButton {...args} size="small" variant="textAlert" />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '32px' }}>
-        <LinkButton {...args} size="small" block variant="secondary" />
-        <LinkButton {...args} size="medium" block variant="secondary" />
-        <LinkButton {...args} size="large" block variant="secondary" />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-        <LinkButton href="https://vitals.ubie.life/" {...args} disabled />
-        <LinkButton href="https://vitals.ubie.life/" {...args} variant="secondary" disabled />
-        <LinkButton href="https://vitals.ubie.life/" {...args} variant="accent" disabled />
-        <LinkButton href="https://vitals.ubie.life/" {...args} variant="alert" disabled />
-        <LinkButton href="https://vitals.ubie.life/" {...args} variant="text" disabled />
-        <LinkButton href="https://vitals.ubie.life/" {...args} variant="textAlert" disabled />
+        <LinkButton {...defaultArgs} />
+        <LinkButton {...defaultArgs} variant="secondary" />
+        <LinkButton {...defaultArgs} variant="accent" />
+        <LinkButton {...defaultArgs} variant="alert" />
+        <LinkButton {...defaultArgs} variant="text" />
+        <LinkButton {...defaultArgs} variant="textAlert" />
       </div>
     </div>
   ),
-  args: defaultArgs,
+};
+
+export const Size: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+        <LinkButton {...defaultArgs} size="small">
+          Small
+        </LinkButton>
+        <LinkButton {...defaultArgs} size="medium">
+          Medium
+        </LinkButton>
+        <LinkButton {...defaultArgs}>Large</LinkButton>
+      </div>
+    </div>
+  ),
+};
+
+export const WithIcon: Story = {
+  render: () => (
+    <Stack spacing="lg">
+      <Stack spacing="lg" as="dl">
+        <dt style={{ fontWeight: 'bold' }}>Default Position</dt>
+
+        <dd style={{ margin: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+            <LinkButton icon={<UbieIcon />} {...defaultArgs} />
+            <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="secondary" />
+            <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="accent" />
+            <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="alert" />
+            <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="text" />
+            <LinkButton icon={<TrashIcon />} {...defaultArgs} variant="textAlert" />
+          </div>
+        </dd>
+      </Stack>
+
+      <Stack spacing="lg" as="dl">
+        <dt style={{ fontWeight: 'bold' }}>Position Suffix</dt>
+        <dd style={{ margin: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+            <LinkButton suffixIcon={<BlankLinkIcon />} {...defaultArgs} />
+            <LinkButton suffixIcon={<BlankLinkIcon />} {...defaultArgs} variant="secondary" />
+            <LinkButton suffixIcon={<BlankLinkIcon />} {...defaultArgs} variant="accent" />
+            <LinkButton suffixIcon={<BlankLinkIcon />} {...defaultArgs} variant="alert" />
+            <LinkButton suffixIcon={<BlankLinkIcon />} {...defaultArgs} variant="text" />
+            <LinkButton suffixIcon={<BlankLinkIcon />} {...defaultArgs} variant="textAlert" />
+            <LinkButton suffixIcon={<TrashIcon />} {...defaultArgs} variant="textAlert" />
+          </div>
+        </dd>
+      </Stack>
+
+      <Stack spacing="lg" as="dl">
+        <dt style={{ fontWeight: 'bold' }}>Position Fixed</dt>
+
+        <dd style={{ margin: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+            <LinkButton fixedIcon={<BlankLinkIcon />} {...defaultArgs} />
+            <LinkButton fixedIcon={<BlankLinkIcon />} {...defaultArgs} variant="secondary" />
+            <LinkButton fixedIcon={<BlankLinkIcon />} {...defaultArgs} variant="accent" />
+            <LinkButton fixedIcon={<BlankLinkIcon />} {...defaultArgs} variant="alert" />
+            <LinkButton fixedIcon={<BlankLinkIcon />} {...defaultArgs} variant="text" />
+            <LinkButton fixedIcon={<TrashIcon />} {...defaultArgs} variant="textAlert" />
+          </div>
+        </dd>
+      </Stack>
+    </Stack>
+  ),
+};
+
+export const Block: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+      <div>
+        <LinkButton {...defaultArgs} size="small" variant="secondary" block />
+      </div>
+      <div>
+        <LinkButton {...defaultArgs} size="medium" variant="secondary" block />
+      </div>
+      <div>
+        <LinkButton {...defaultArgs} size="large" variant="secondary" block />
+      </div>
+    </div>
+  ),
+};
+
+export const Disabled: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+      <LinkButton {...defaultArgs} disabled />
+      <LinkButton {...defaultArgs} variant="secondary" disabled />
+      <LinkButton {...defaultArgs} variant="accent" disabled />
+      <LinkButton {...defaultArgs} variant="alert" disabled />
+      <LinkButton {...defaultArgs} variant="text" disabled />
+      <LinkButton {...defaultArgs} variant="textAlert" disabled />
+    </div>
+  ),
 };

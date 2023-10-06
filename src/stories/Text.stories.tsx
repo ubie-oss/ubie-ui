@@ -1,36 +1,289 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Text } from '../';
+import { Text, Stack } from '../';
 
 export default {
   component: Text,
 } as Meta<typeof Text>;
 
-const defaultArgs = {};
+type Story = StoryObj<typeof Text>;
 
-export const Default: StoryObj<typeof Text> = {
+const defaultArgs = {};
+export const Default: Story = {
   render: () => (
-    <div>
-      <Text>ダミーテキスト</Text>
-      <Text as={'span'} bold leading="narrow">
-        ダミーテキスト
-      </Text>
-      <Text leading="tight">ダミーテキスト</Text>
-      <Text color="sub" type="note" size="sm">
-        ダミーテキスト
-      </Text>
-      <Text color="sub" type="note" size="lg" leading="narrow">
-        ダミーテキスト
-      </Text>
-      <Text color="sub" type="tag" size="sm">
-        ダミーテキスト
-      </Text>
-      <Text as={'h1'} type="heading" size="xl">
-        ダミーテキスト
-      </Text>
-      <Text as={'h1'} type="heading" size="sm" color="primary">
-        ダミーテキスト
-      </Text>
-    </div>
+    <Text as="h1" type="heading" size="xl" leading="tight" color="primary">
+      Dummy Text
+    </Text>
   ),
+  args: defaultArgs,
+};
+
+export const Color: Story = {
+  render: () => (
+    <Stack spacing="md" direction="row">
+      <Text color="main">main</Text>
+      <Text color="sub">sub</Text>
+      <Text color="link">link</Text>
+      <Text color="linkSub">linkSub</Text>
+      <Text color="disabled">disabled</Text>
+      <Text color="primary">primary</Text>
+      <Text color="accent">accent</Text>
+      <Text color="alert">alert</Text>
+      <span style={{ background: 'black', padding: '0 0.5em' }}>
+        <Text color="white">white</Text>
+      </span>
+    </Stack>
+  ),
+  args: defaultArgs,
+};
+
+export const Heading: Story = {
+  render: () => {
+    const headingText = '近くの医療機関から調べる';
+
+    return (
+      <Stack spacing="md" direction="row" alignItems="center">
+        <Text bold type="heading" size="xs">
+          xs
+          <br />
+          {`${headingText}`}
+        </Text>
+        <Text bold type="heading" size="sm">
+          sm
+          <br />
+          {`${headingText}`}
+        </Text>
+        <Text bold type="heading" size="md">
+          md
+          <br />
+          {`${headingText}`}
+        </Text>
+        <Text bold type="heading" size="lg">
+          lg
+          <br />
+          {`${headingText}`}
+        </Text>
+        <Text bold type="heading" size="xl">
+          xl
+          <br />
+          {`${headingText}`}
+        </Text>
+      </Stack>
+    );
+  },
+  args: defaultArgs,
+};
+
+export const Body: Story = {
+  render: () => {
+    const bodyText =
+      '症状検索エンジン「ユビー」は「適切なタイミングでの適切な医療との出会い」の橋渡しによって、みなさんの健康・安全をサポートし、医療についての不安・悩み・苦痛を和らげます。';
+
+    return (
+      <Stack as="dl" spacing="md">
+        <div>
+          <dt>Default Leading</dt>
+          <dd>
+            <Stack spacing="md" direction="row" alignItems="center">
+              <Text type="body" size="sm">
+                sm
+                <br />
+                {`${bodyText}`}
+              </Text>
+              <Text type="body" size="md">
+                md
+                <br />
+                {`${bodyText}`}
+              </Text>
+              <Text type="body" size="lg">
+                lg
+                <br />
+                {`${bodyText}`}
+              </Text>
+            </Stack>
+          </dd>
+        </div>
+
+        <div>
+          <dt>Narrow Leading</dt>
+          <dd>
+            <Stack spacing="md" direction="row" alignItems="center">
+              <Text leading="narrow" type="body" size="sm">
+                sm
+                <br />
+                {`${bodyText}`}
+              </Text>
+              <Text leading="narrow" type="body" size="md">
+                md
+                <br />
+                {`${bodyText}`}
+              </Text>
+              <Text leading="narrow" type="body" size="lg">
+                lg
+                <br />
+                {`${bodyText}`}
+              </Text>
+            </Stack>
+          </dd>
+        </div>
+
+        <div>
+          <dt>Tight Leading</dt>
+          <dd>
+            <Stack spacing="md" direction="row" alignItems="center">
+              <Text leading="tight" type="body" size="sm">
+                sm
+                <br />
+                {`${bodyText}`}
+              </Text>
+              <Text leading="tight" type="body" size="md">
+                md
+                <br />
+                {`${bodyText}`}
+              </Text>
+              <Text leading="tight" type="body" size="lg">
+                lg
+                <br />
+                {`${bodyText}`}
+              </Text>
+            </Stack>
+          </dd>
+        </div>
+      </Stack>
+    );
+  },
+  args: defaultArgs,
+};
+
+export const Note: Story = {
+  render: () => {
+    const noteText =
+      '症状検索エンジン「ユビー」は「適切なタイミングでの適切な医療との出会い」の橋渡しによって、みなさんの健康・安全をサポートし、医療についての不安・悩み・苦痛を和らげます。';
+
+    return (
+      <Stack as="dl" spacing="md">
+        <div>
+          <dt>Default Leading</dt>
+          <dd>
+            <Stack spacing="md" direction="row" alignItems="center">
+              <Text type="note" size="sm">
+                sm
+                <br />
+                {`${noteText}`}
+              </Text>
+              <Text type="note" size="md">
+                md
+                <br />
+                {`${noteText}`}
+              </Text>
+              <Text type="note" size="lg">
+                lg
+                <br />
+                {`${noteText}`}
+              </Text>
+            </Stack>
+          </dd>
+        </div>
+
+        <div>
+          <dt>Narrow Leading</dt>
+          <dd>
+            <Stack spacing="md" direction="row" alignItems="center">
+              <Text leading="narrow" type="note" size="sm">
+                sm
+                <br />
+                {`${noteText}`}
+              </Text>
+              <Text leading="narrow" type="note" size="md">
+                md
+                <br />
+                {`${noteText}`}
+              </Text>
+              <Text leading="narrow" type="note" size="lg">
+                lg
+                <br />
+                {`${noteText}`}
+              </Text>
+            </Stack>
+          </dd>
+        </div>
+        <div>
+          <dt>Tight Leading</dt>
+          <dd>
+            <Stack spacing="md" direction="row" alignItems="center">
+              <Text leading="tight" type="note" size="sm">
+                sm
+                <br />
+                {`${noteText}`}
+              </Text>
+              <Text leading="tight" type="note" size="md">
+                md
+                <br />
+                {`${noteText}`}
+              </Text>
+              <Text leading="tight" type="note" size="lg">
+                lg
+                <br />
+                {`${noteText}`}
+              </Text>
+            </Stack>
+          </dd>
+        </div>
+      </Stack>
+    );
+  },
+  args: defaultArgs,
+};
+
+export const Button: Story = {
+  render: () => {
+    const buttonText = '同意して症状から調べる';
+
+    return (
+      <Stack spacing="md" direction="row" alignItems="center">
+        <Text type="button" size="sm">
+          sm
+          <br />
+          {`${buttonText}`}
+        </Text>
+        <Text type="button" size="md">
+          md
+          <br />
+          {`${buttonText}`}
+        </Text>
+        <Text type="button" size="lg">
+          lg
+          <br />
+          {`${buttonText}`}
+        </Text>
+      </Stack>
+    );
+  },
+  args: defaultArgs,
+};
+
+export const Tag: Story = {
+  render: () => {
+    const tagText = '循環器内科';
+
+    return (
+      <Stack spacing="md" direction="row" alignItems="center">
+        <Text type="tag" size="sm">
+          sm
+          <br />
+          {`${tagText}`}
+        </Text>
+        <Text type="tag" size="md">
+          md
+          <br />
+          {`${tagText}`}
+        </Text>
+        <Text type="tag" size="lg">
+          lg
+          <br />
+          {`${tagText}`}
+        </Text>
+      </Stack>
+    );
+  },
   args: defaultArgs,
 };
