@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { MedicalFormIcon } from '@ubie/ubie-icons';
-import { LinkCard } from '..';
+import { LinkCard, Stack } from '..';
 
 export default {
   component: LinkCard,
@@ -14,14 +14,15 @@ const defaultArgs = {
 
 export const Default: StoryObj<typeof LinkCard> = {
   render: (args) => (
-    <>
-      <div>
-        <LinkCard {...args} href="/" icon={MedicalFormIcon} />
-      </div>
-      <div style={{ marginTop: '1rem' }}>
-        <LinkCard {...args} href="/" />
-      </div>
-    </>
+    <Stack spacing="md">
+      <LinkCard {...args} href="/" />
+      <LinkCard {...args} href="/" />
+    </Stack>
   ),
+  args: defaultArgs,
+};
+
+export const WithIcon: StoryObj<typeof LinkCard> = {
+  render: (args) => <LinkCard {...args} href="/" icon={MedicalFormIcon} />,
   args: defaultArgs,
 };

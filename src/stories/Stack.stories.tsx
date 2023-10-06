@@ -4,22 +4,127 @@ import { Spacing } from '../types/style';
 
 export default {
   component: Stack,
-} as Meta<typeof Stack>;
+} satisfies Meta<typeof Stack>;
 
 const defaultArgs = {
   spacing: 'md' as Spacing,
 };
 
-export const Default: StoryObj<typeof Stack> = {
+type Story = StoryObj<typeof Stack>;
+
+export const Default: Story = {
   render: (args) => (
-    <div>
-      <Stack {...args}>
-        <p>テスト</p>
-        <p>テスト</p>
-        <p>テスト</p>
-        <p>テスト</p>
+    <Stack {...args}>
+      <p style={{ margin: 0 }}>テスト</p>
+      <p style={{ margin: 0 }}>テスト</p>
+      <p style={{ margin: 0 }}>テスト</p>
+      <p style={{ margin: 0 }}>テスト</p>
+    </Stack>
+  ),
+  args: defaultArgs,
+};
+
+export const Vertical: Story = {
+  render: (args) => (
+    <Stack {...args} direction="row">
+      <p>テスト</p>
+      <p>テスト</p>
+      <p>テスト</p>
+      <p>テスト</p>
+    </Stack>
+  ),
+  args: defaultArgs,
+};
+
+export const Nested: Story = {
+  render: () => (
+    <Stack spacing="xl">
+      <Stack spacing="lg">
+        <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
+        <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
+        <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
       </Stack>
-    </div>
+
+      <Stack spacing="lg">
+        <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
+        <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
+        <Stack spacing="xs">
+          <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
+          <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
+          <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
+        </Stack>
+      </Stack>
+    </Stack>
+  ),
+};
+
+export const MarkupAsList: Story = {
+  render: (args) => (
+    <Stack {...args} as="li">
+      <li>テスト</li>
+      <li>テスト</li>
+      <li>テスト</li>
+      <li>テスト</li>
+    </Stack>
+  ),
+  args: defaultArgs,
+};
+
+export const Centralized: Story = {
+  render: (args) => (
+    <Stack {...args} direction="row" justifyContent="center" alignItems="center">
+      <span>
+        Words
+        <br />
+        crowded
+      </span>
+      <span>in</span>
+      <span>
+        simply
+        <br />
+        dummy
+        <br />
+        text
+      </span>
+    </Stack>
+  ),
+  args: defaultArgs,
+};
+
+export const PutOnTheEnd: Story = {
+  render: (args) => (
+    <Stack {...args} alignItems="flex-end">
+      <p style={{ margin: 0 }}>テスト</p>
+      <p style={{ margin: 0 }}>テスト</p>
+      <p style={{ margin: 0 }}>テスト</p>
+      <p style={{ margin: 0 }}>テスト</p>
+    </Stack>
+  ),
+  args: defaultArgs,
+};
+
+export const BlockLevelElementsToFullWidth: Story = {
+  render: (args) => (
+    <Stack spacing="lg" alignItems="normal">
+      <Stack {...args} alignItems="normal">
+        <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
+        <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
+        <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
+        <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
+      </Stack>
+
+      <Stack spacing="xs">
+        <p style={{ margin: 0 }}>
+          If you do not use <code>alignItems=&quot;normal&quot;</code>:
+        </p>
+        <Stack {...args}>
+          <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
+          <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
+          <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
+          <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
+        </Stack>
+      </Stack>
+    </Stack>
   ),
   args: defaultArgs,
 };

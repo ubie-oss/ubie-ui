@@ -8,7 +8,14 @@ import styles from './Accordion.module.css';
 export type Size = 'small' | 'medium';
 
 type Props = {
+  /**
+   * 見出しに表示するテキスト
+   */
   header: string;
+  /**
+   * サイズ
+   * @default medium
+   */
   size?: Size;
 };
 

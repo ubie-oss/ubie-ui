@@ -6,9 +6,28 @@ import { FC, InputHTMLAttributes } from 'react';
 import styles from './Checkbox.module.css';
 
 type Props = {
+  /**
+   * サイズ
+   * @default medium
+   */
   size?: 'medium' | 'small';
-} & Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'value' | 'children'>> &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+  /**
+   * ネイティブ要素のname属性。グループ化したい項目に同じ名前をつける
+   */
+  name: string;
+  /**
+   * 選択時のコールバックに渡される値
+   */
+  value: string | number;
+  /**
+   * ラベルとして表示される文字列、または要素
+   */
+  children: InputHTMLAttributes<HTMLInputElement>['children'];
+  /**
+   * 値が変化した場合のコールバック
+   */
+  onChange?: InputHTMLAttributes<HTMLInputElement>['onChange'];
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'children' | 'onChange'>;
 
 export const Checkbox: FC<Props> = ({ size = 'medium', children, ...otherProps }) => {
   return (
