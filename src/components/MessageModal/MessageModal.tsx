@@ -10,12 +10,38 @@ import { opacityToClassName } from '../../utils/style';
 type Opacity = 'normal' | 'darker';
 
 type Props = {
+  /**
+   * プライマリーアクションボタンのラベル
+   */
   header?: string;
+  /**
+   * 閉じるアクションが実行された場合のコールバック
+   */
   onClose: () => void;
+  /**
+   * 閉じるボタンのラベル
+   * @default 閉じる
+   */
   closeLabel?: string;
+  /**
+   * オーバーレイの透過度
+   * @default normal
+   */
   overlayOpacity?: Opacity;
+  /**
+   * 画面を占有する高さで固定するかどうか
+   * @default false
+   */
   fixedHeight?: boolean;
+  /**
+   * モーダルダイアログを開くかどうか
+   * @default true
+   */
   open?: boolean;
+  /**
+   * openを無視してモーダルを開いたままにするかどうか。アニメーションライブラリとの連携で、ActionHalfModal自身が開閉に関与しない場合に使用
+   * @default false
+   */
   isStatic?: boolean;
 } & PropsWithChildren;
 

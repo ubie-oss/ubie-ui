@@ -11,20 +11,73 @@ import { Button } from '../Button/Button';
 type Opacity = 'normal' | 'darker';
 
 type BaseProps = {
+  /**
+   * 閉じるアクションが実行された場合のコールバック
+   */
   onClose: () => void;
+  /**
+   * ヘッダーに表示する見出しテキスト
+   */
   header?: string;
+  /**
+   * プライマリーアクションボタンのカラースキーム
+   */
   primaryActionColor?: 'primary' | 'alert';
+  /**
+   * 閉じるボタンのラベル
+   * @default 閉じる
+   */
   closeLabel?: string;
+  /**
+   * オーバーレイの透過度
+   * @default normal
+   */
   overlayOpacity?: Opacity;
+  /**
+   * 閉じるボタンを表示するかどうか
+   * @default true
+   */
   showClose?: boolean;
+  /**
+   * モーダルを開くかどうか
+   * @default true
+   */
   open?: boolean;
+  /**
+   * openを無視してモーダルを開いたままにするかどうか。アニメーションライブラリとの連携で、ActionHalfModal自身が開閉に関与しない場合に使用
+   * @default false
+   */
   isStatic?: boolean;
+  /**
+   * モーダルをフルスクリーンで表示するかどうか
+   * @default true
+   */
   fullscreen?: boolean;
 };
 
-type Props = BaseProps &
-  AllOrNone<{ onPrimaryAction: () => void; primaryActionLabel: string }> &
-  AllOrNone<{ onSecondaryAction: () => void; secondaryActionLabel: string }>;
+type PrimaryActionProps = {
+  /**
+   * プライマリーアクションボタンが実行された場合のコールバック
+   */
+  onPrimaryAction: () => void;
+  /**
+   * プライマリーアクションボタンのラベル
+   */
+  primaryActionLabel: string;
+};
+
+type SecondaryActionProps = {
+  /**
+   * セカンダリーアクションボタンが実行された場合のコールバック
+   */
+  onSecondaryAction: () => void;
+  /**
+   * セカンダリーアクションボタンのラベル
+   */
+  secondaryActionLabel: string;
+};
+
+type Props = BaseProps & AllOrNone<PrimaryActionProps> & AllOrNone<SecondaryActionProps>;
 
 export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
   children,

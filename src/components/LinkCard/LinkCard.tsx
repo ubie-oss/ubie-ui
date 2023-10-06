@@ -6,11 +6,30 @@ import { ComponentType, ElementType, FC, ReactNode } from 'react';
 import styles from './LinkCard.module.css';
 
 type Props = {
+  /**
+   * 遷移先URL
+   */
   href: string;
+  /**
+   * 見出しのテキスト
+   */
   title: string;
+  /**
+   * 説明のテキスト
+   */
   description: string;
+  /**
+   * CSSのクラス
+   */
   className?: string;
+  /**
+   * リンクとして機能させるコンポーネント、または `<a>` 要素
+   * @default a
+   */
   linkComponent?: ElementType<{ href: string | UrlObject; className?: string; children: ReactNode }>;
+  /**
+   * アイコン
+   */
   icon?: ComponentType<{ className?: string }>;
 };
 

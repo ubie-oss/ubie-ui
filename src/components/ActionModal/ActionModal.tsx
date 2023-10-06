@@ -11,20 +11,70 @@ import { AllOrNone } from '../../utils/types';
 type Opacity = 'normal' | 'darker';
 
 type BaseProps = {
+  /**
+   * 閉じるアクションが実行された場合のコールバック
+   */
   onClose: () => void;
+  /**
+   * プライマリーアクションボタンが実行された場合のコールバック
+   */
   onPrimaryAction?: () => void;
+  /**
+   * ヘッダーに表示する見出しテキスト
+   */
   header?: string;
+  /**
+   * プライマリーアクションボタンのラベル
+   */
   primaryActionLabel?: string;
+  /**
+   * プライマリーアクションボタンのカラースキーム
+   */
   primaryActionColor?: 'primary' | 'alert';
+  /**
+   * 閉じるボタンのラベル
+   * @default 閉じる
+   */
   closeLabel?: string;
+  /**
+   * オーバーレイの透過度
+   * @default normal
+   */
   overlayOpacity?: Opacity;
+  /**
+   * 画面を占有する高さで固定するかどうか
+   * @default false
+   */
   fixedHeight?: boolean;
+  /**
+   * 閉じるボタンを表示するかどうか
+   * @default true
+   */
   showClose?: boolean;
+  /**
+   * モーダルダイアログを開くかどうか
+   * @default true
+   */
   open?: boolean;
+  /**
+   * openを無視してモーダルを開いたままにするかどうか。アニメーションライブラリとの連携で、ActionHalfModal自身が開閉に関与しない場合に使用
+   * @default false
+   */
   isStatic?: boolean;
 };
 
-type Props = PropsWithChildren<BaseProps> & AllOrNone<{ onSecondaryAction: () => void; secondaryActionLabel: string }>;
+type SecondaryActionProps = {
+  /**
+   * セカンダリーアクションが実行された場合のコールバック
+   */
+  onSecondaryAction: () => void;
+  /**
+   * セカンダリーアクションボタンのラベル
+   */
+  secondaryActionLabel: string;
+};
+
+type Props = PropsWithChildren<BaseProps> & AllOrNone<SecondaryActionProps>;
 
 export const ActionModal: FC<Props> = ({
   children,
