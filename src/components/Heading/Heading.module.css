@@ -24,6 +24,10 @@
   text-align: right;
 }
 
+.heading.secondary {
+  color: var(--color-text-main);
+}
+
 .heading.primary {
   color: var(--color-primary);
 }
