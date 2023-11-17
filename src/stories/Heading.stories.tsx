@@ -178,7 +178,7 @@ export const LeadingBorder: Story = {
   ),
 };
 
-export const textAlign: Story = {
+export const TextAlign: Story = {
   render: () => (
     <Stack spacing="md" alignItems="normal">
       <Heading as="p" size="md" textAlign="left">
