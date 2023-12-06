@@ -1,13 +1,9 @@
 export type Opacity = 'normal' | 'darker';
 export const opacityToClassName = (opacity: Opacity) => {
-  let className;
   switch (opacity) {
     case 'normal':
-      className = 'normalOverlay';
-      break;
+      return 'normalOverlay';
     case 'darker':
-      className = 'darkerOverlay';
-      break;
+      return 'darkerOverlay';
   }
-  return className;
 };

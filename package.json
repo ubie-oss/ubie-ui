@@ -20,7 +20,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsup",
+    "build": "npm run tcm && tsup",
     "test": "run-p test:*",
     "test:unit": "vitest run",
     "test:e2e": "playwright test -c playwright.config.ts",
@@ -38,9 +38,11 @@
     "generate:scaffold": "scaffdog generate component",
     "generate:barrel": "node ./scripts/barrel.mjs",
     "prestorybook": "npm run build",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "npm run tcm:watch & storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "tcm": "tcm src",
+    "tcm:watch": "tcm -w src"
   },
   "repository": {
     "type": "git",
@@ -105,6 +107,7 @@
     "stylelint": "14.16.1",
     "stylelint-config-standard": "29.0.0",
     "tsup": "^7.2.0",
+    "typed-css-modules": "^0.8.1",
     "typescript": "5.2.2",
     "vite": "^4.4.9",
     "vitest": "^0.34.3"

@@ -1,0 +1,201 @@
+.heading {
+  font-weight: bold;
+  box-sizing: border-box;
+  color: var(--color-text-main);
+  position: relative;
+
+  --medium-leading-border-width: 4px;
+  --large-leading-border-width: 5px;
+}
+
+:where(.heading) {
+  margin: 0;
+}
+
+.heading.left {
+  text-align: left;
+}
+
+.heading.center {
+  text-align: center;
+}
+
+.heading.right {
+  text-align: right;
+}
+
+.heading.secondary {
+  color: var(--color-text-main);
+}
+
+.heading.primary {
+  color: var(--color-primary);
+}
+
+.heading > a {
+  color: var(--color-text-link);
+}
+
+@media (hover: hover) {
+  .heading > a:hover {
+    color: var(--color-primary-darken);
+  }
+}
+
+.heading > a:active {
+  text-decoration: none;
+}
+
+.heading.accent,
+.heading.accent > a {
+  color: var(--color-accent);
+}
+
+@media (hover: hover) {
+  .heading.accent > a:hover {
+    color: var(--color-accent-darken);
+  }
+}
+
+.heading.white {
+  color: var(--color-text-white);
+}
+
+.heading.white,
+.heading.white > a {
+  color: var(--color-text-white);
+}
+
+@media (hover: hover) {
+  .heading.white > a:hover {
+    text-decoration: none;
+  }
+}
+
+.heading.white > a:active {
+  position: relative;
+  top: 1px;
+  text-decoration: underline;
+}
+
+.heading.xs {
+  font-size: var(--text-heading-xs-size);
+  line-height: var(--text-heading-xs-line);
+}
+
+.heading.sm {
+  font-size: var(--text-heading-sm-size);
+  line-height: var(--text-heading-sm-line);
+}
+
+.heading.md {
+  font-size: var(--text-heading-md-size);
+  line-height: var(--text-heading-md-line);
+}
+
+.heading.lg {
+  font-size: var(--text-heading-lg-size);
+  line-height: var(--text-heading-lg-line);
+}
+
+.heading.xl {
+  font-size: var(--text-heading-xl-size);
+  line-height: var(--text-heading-xl-line);
+}
+
+.heading.leadingBorder {
+  padding-left: calc(var(--size-spacing-sm) + var(--medium-leading-border-width));
+}
+
+.heading.leadingBorder::before {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  content: '';
+  width: var(--medium-leading-border-width);
+  border-radius: 3px;
+  background-color: var(--color-primary);
+  vertical-align: top;
+  height: 100%;
+}
+
+.heading.lg.leadingBorder,
+.heading.xl.leadingBorder {
+  padding-left: calc(var(--size-spacing-sm) + var(--large-leading-border-width));
+}
+
+.heading.lg.leadingBorder::before,
+.heading.xl.leadingBorder::before {
+  width: var(--large-leading-border-width);
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+}
+
+.icon.primary {
+  color: var(--color-primary);
+}
+
+.icon.accent {
+  color: var(--color-accent);
+}
+
+.icon.white {
+  color: var(--color-text-white);
+}
+
+.icon > svg {
+  vertical-align: baseline;
+  width: 100%;
+  height: 100%;
+}
+
+.heading.xs.hasIcon {
+  padding-left: calc(var(--text-heading-xs-size) * var(--text-heading-xs-line) + 0.5em);
+}
+
+.heading.sm.hasIcon {
+  padding-left: calc(var(--text-heading-sm-size) * var(--text-heading-sm-line) + 0.5em);
+}
+
+.heading.md.hasIcon {
+  padding-left: calc(var(--text-heading-md-size) * var(--text-heading-md-line) + 0.5em);
+}
+
+.heading.lg.hasIcon {
+  padding-left: calc(var(--text-heading-lg-size) * var(--text-heading-lg-line) + 0.5em);
+}
+
+.heading.xl.hasIcon {
+  padding-left: calc(var(--text-heading-xl-size) * var(--text-heading-xl-line) + 0.5em);
+}
+
+.heading.xs > .icon {
+  width: calc(var(--text-heading-xs-size) * var(--text-heading-xs-line));
+  height: calc(var(--text-heading-xs-size) * var(--text-heading-xs-line));
+}
+
+.heading.sm > .icon {
+  width: calc(var(--text-heading-sm-size) * var(--text-heading-sm-line));
+  height: calc(var(--text-heading-sm-size) * var(--text-heading-sm-line));
+}
+
+.heading.md > .icon {
+  width: calc(var(--text-heading-md-size) * var(--text-heading-md-line));
+  height: calc(var(--text-heading-md-size) * var(--text-heading-md-line));
+}
+
+.heading.lg > .icon {
+  width: calc(var(--text-heading-lg-size) * var(--text-heading-lg-line));
+  height: calc(var(--text-heading-lg-size) * var(--text-heading-lg-line));
+}
+
+.heading.xl > .icon {
+  width: calc(var(--text-heading-xl-size) * var(--text-heading-xl-line));
+  height: calc(var(--text-heading-xl-size) * var(--text-heading-xl-line));
+}
