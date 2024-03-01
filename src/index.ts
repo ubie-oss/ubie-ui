@@ -13,3 +13,4 @@ export { RadioCard } from './components/RadioCard/RadioCard';
 export { Text } from './components/Text/Text';
 export { Stack } from './components/Stack/Stack';
 export { Accordion } from './components/Accordion/Accordion';
+export { Toggle } from './components/Toggle/Toggle';
