@@ -30,7 +30,7 @@ type Props = {
 export const Input: FC<Props> = forwardRef<HTMLInputElement, Props>(({ isInvalid, ...props }, ref) => {
   const className = clsx({ [styles.isInvalid]: isInvalid && !props.disabled }, styles.input, props.className);
 
-  return <input {...props} className={className} ref={ref} />;
+  return <input {...props} className={className} ref={ref} aria-invalid={isInvalid} />;
 });
 
 Input.displayName = 'Input';
