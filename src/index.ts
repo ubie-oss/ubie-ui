@@ -3,6 +3,8 @@ export { ActionHalfModal } from './components/ActionHalfModal/ActionHalfModal';
 export { ActionModal } from './components/ActionModal/ActionModal';
 export { Button } from './components/Button/Button';
 export { LinkButton } from './components/Button/LinkButton';
+export { ErrorMessage } from './components/ErrorMessage/ErrorMessage';
+export { HelperMessage } from './components/HelperMessage/HelperMessage';
 export { Checkbox } from './components/Checkbox/Checkbox';
 export { Input } from './components/Input/Input';
 export { LinkCard } from './components/LinkCard/LinkCard';
