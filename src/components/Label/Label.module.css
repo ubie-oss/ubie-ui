@@ -1,0 +1,9 @@
+.label {
+  font-size: var(--text-body-sm-size);
+  font-weight: bold;
+  color: var(--color-text-sub);
+}
+
+legend.label {
+  padding: 0;
+}
