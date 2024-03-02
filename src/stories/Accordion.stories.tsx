@@ -3,7 +3,7 @@ import { Accordion } from '..';
 
 export default {
   component: Accordion,
-} as Meta<typeof Accordion>;
+} satisfies Meta<typeof Accordion>;
 
 type Story = StoryObj<typeof Accordion>;
 
