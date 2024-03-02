@@ -15,3 +15,9 @@ export const DefaultChecked: Story = {
     defaultChecked: true,
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+  },
+};

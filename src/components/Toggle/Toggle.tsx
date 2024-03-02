@@ -18,6 +18,11 @@ type Props = {
    * 値が変化した場合のコールバック
    */
   onChange?: InputHTMLAttributes<HTMLInputElement>['onChange'];
+  /**
+   * 無効状態かどうか
+   * @default false
+   */
+  disabled?: boolean;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'children' | 'onChange'>;
 
 export const Toggle: FC<Props> = forwardRef<HTMLLabelElement, Props>(

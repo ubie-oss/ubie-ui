@@ -9,6 +9,10 @@
   transition: background-color 200ms;
 }
 
+.root:has(input:disabled) {
+  background-color: var(--color-text-disabled);
+}
+
 .on {
   background-color: var(--color-primary);
 }
