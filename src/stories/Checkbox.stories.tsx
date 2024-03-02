@@ -6,7 +6,7 @@ import type { ChangeEventHandler } from 'react';
 export default {
   title: 'Form/Checkbox',
   component: Checkbox,
-} as Meta<typeof Checkbox>;
+} satisfies Meta<typeof Checkbox>;
 
 type Story = StoryObj<typeof Checkbox>;
 

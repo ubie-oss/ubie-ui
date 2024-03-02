@@ -5,7 +5,7 @@ import { RadioButton, Stack } from '../';
 export default {
   title: 'Form/RadioButton',
   component: RadioButton,
-} as Meta<typeof RadioButton>;
+} satisfies Meta<typeof RadioButton>;
 
 const defaultArgs = {
   disabled: false,
