@@ -5,7 +5,7 @@ import { TextArea } from '../';
 export default {
   title: 'Form/TextArea',
   component: TextArea,
-} as Meta<typeof TextArea>;
+} satisfies Meta<typeof TextArea>;
 
 type Story = StoryObj<typeof TextArea>;
 

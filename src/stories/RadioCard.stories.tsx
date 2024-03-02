@@ -6,7 +6,7 @@ import type { ChangeEventHandler } from 'react';
 export default {
   title: 'Form/RadioCard',
   component: RadioCard,
-} as Meta<typeof RadioCard>;
+} satisfies Meta<typeof RadioCard>;
 
 type Story = StoryObj<typeof RadioCard>;
 

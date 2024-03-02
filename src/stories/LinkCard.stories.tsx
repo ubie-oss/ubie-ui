@@ -4,7 +4,7 @@ import { LinkCard, Stack } from '..';
 
 export default {
   component: LinkCard,
-} as Meta<typeof LinkCard>;
+} satisfies Meta<typeof LinkCard>;
 
 const defaultArgs = {
   title: 'タイトル',

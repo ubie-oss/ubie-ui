@@ -34,7 +34,7 @@ import { {{ inputs.name | pascal }} } from '../';
 
 export default {
   component: {{ inputs.name | pascal }},
-} as Meta<typeof {{ inputs.name | pascal }}>;
+} satisfies Meta<typeof {{ inputs.name | pascal }}>;
 
 const defaultArgs = {};
 
