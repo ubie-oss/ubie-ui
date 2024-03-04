@@ -5,7 +5,7 @@ import { Select, Stack } from '../';
 export default {
   title: 'Form/Select',
   component: Select,
-} as Meta<typeof Select>;
+} satisfies Meta<typeof Select>;
 
 const defaultArgs = {
   isInvalid: false,

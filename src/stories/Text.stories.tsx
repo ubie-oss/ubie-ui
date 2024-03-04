@@ -3,7 +3,7 @@ import { Text, Stack } from '../';
 
 export default {
   component: Text,
-} as Meta<typeof Text>;
+} satisfies Meta<typeof Text>;
 
 type Story = StoryObj<typeof Text>;
 
