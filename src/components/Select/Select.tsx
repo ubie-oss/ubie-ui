@@ -28,7 +28,7 @@ const Select: FC<Props> = forwardRef<HTMLSelectElement, Props>(
   ({ isInvalid = false, disabled = false, children, className, ...props }, ref) => {
     return (
       <div className={clsx({ [styles.isInvalid]: isInvalid, [styles.disabled]: disabled }, styles.wrapper, className)}>
-        <select {...props} disabled={disabled} className={styles.select} ref={ref}>
+        <select {...props} disabled={disabled} className={styles.select} ref={ref} aria-invalid={isInvalid}>
           {children}
         </select>
         <UnfoldMoreIcon aria-hidden className={styles.icon} />

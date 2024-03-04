@@ -113,5 +113,5 @@ export const Disabled: Story = {
 };
 
 export const IsInvalid: Story = {
-  render: () => <Input value="wrong value" />,
+  render: () => <Input value="wrong value" isInvalid />,
 };

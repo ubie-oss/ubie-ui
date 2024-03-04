@@ -29,5 +29,5 @@ type Props = {
 export const TextArea: FC<Props> = ({ isInvalid = false, className, ...props }) => {
   const _className = clsx({ [styles.isInvalid]: isInvalid }, styles.textArea, className);
 
-  return <textarea {...props} className={_className} />;
+  return <textarea {...props} className={_className} aria-invalid={isInvalid} />;
 };
