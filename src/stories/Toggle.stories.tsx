@@ -4,7 +4,7 @@ import { Toggle } from '..';
 export default {
   title: 'Form/Toggle',
   component: Toggle,
-} as Meta<typeof Toggle>;
+} satisfies Meta<typeof Toggle>;
 
 type Story = StoryObj<typeof Toggle>;
 
