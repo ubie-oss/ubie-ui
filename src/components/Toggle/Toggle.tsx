@@ -41,7 +41,7 @@ export const Toggle: FC<Props> = forwardRef<HTMLLabelElement, Props>(
 
     return (
       <label ref={ref} className={clsx(styles.root, isChecked ? styles.on : styles.off)}>
-        <input type="checkbox" checked={isChecked} onChange={handleChange} className={styles.input} {...otherProps} />
+        <input type="checkbox" role="switch" checked={isChecked} onChange={handleChange} className={styles.input} {...otherProps} />
         <span className={clsx(styles.thumb, isChecked ? styles.thumbOn : styles.thumbOff)} />
       </label>
     );
