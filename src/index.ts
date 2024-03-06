@@ -7,6 +7,7 @@ export { ErrorMessage } from './components/ErrorMessage/ErrorMessage';
 export { HelperMessage } from './components/HelperMessage/HelperMessage';
 export { Checkbox } from './components/Checkbox/Checkbox';
 export { Input } from './components/Input/Input';
+export { Label } from './components/Label/Label';
 export { LinkCard } from './components/LinkCard/LinkCard';
 export { MessageModal } from './components/MessageModal/MessageModal';
 export { RadioButton } from './components/RadioButton/RadioButton';
