@@ -16,3 +16,4 @@ export { Select } from './components/Select/Select';
 export { Text } from './components/Text/Text';
 export { TextArea } from './components/TextArea/TextArea';
 export { Stack } from './components/Stack/Stack';
+export { Toggle } from './components/Toggle/Toggle';
