@@ -9,4 +9,5 @@
   font-weight: bold;
   color: var(--color-text-sub);
   margin-bottom: var(--size-spacing-md);
+  padding: 0;
 }
