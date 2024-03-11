@@ -44,7 +44,7 @@ export const Error: StoryObj = {
   },
 };
 
-export const InputGroup: StoryObj = {
+export const RadioButtons: StoryObj = {
   render: () => {
     const options = ['項目1', '項目2', '項目3'];
     const [selectedItem, setSelectedItem] = useState<string>(options[0]);

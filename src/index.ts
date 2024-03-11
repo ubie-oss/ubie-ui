@@ -6,6 +6,7 @@ export { LinkButton } from './components/Button/LinkButton';
 export { ErrorMessage } from './components/ErrorMessage/ErrorMessage';
 export { HelperMessage } from './components/HelperMessage/HelperMessage';
 export { Checkbox } from './components/Checkbox/Checkbox';
+export { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 export { Input } from './components/Input/Input';
 export { Label } from './components/Label/Label';
 export { LinkCard } from './components/LinkCard/LinkCard';
