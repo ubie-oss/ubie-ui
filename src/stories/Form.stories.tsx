@@ -1,6 +1,6 @@
 import { StoryObj } from '@storybook/react';
 import { useCallback, useState } from 'react';
-import { Stack, Label, Input, HelperMessage, ErrorMessage, RadioButton } from '..';
+import { Stack, Label, Input, HelperMessage, ErrorMessage, RadioButton, RadioGroup } from '..';
 import type { ChangeEventHandler } from 'react';
 
 export default {
@@ -54,9 +54,8 @@ export const InputGroup: StoryObj = {
     }, []);
 
     return (
-      <fieldset style={{ border: 'none', padding: 0 }}>
-        <Stack spacing="xs" alignItems="normal">
-          <Label as="legend">通院状況</Label>
+      <Stack spacing="md" alignItems="normal">
+        <RadioGroup label="通院状況">
           {options.map((option) => (
             <RadioButton
               name="commuting"
@@ -68,12 +67,15 @@ export const InputGroup: StoryObj = {
               {option}
             </RadioButton>
           ))}
+        </RadioGroup>
+
+        <Stack spacing="xs">
           <ErrorMessage>何かしらのエラーメッセージ</ErrorMessage>
           <ErrorMessage>何かしらのエラーメッセージ</ErrorMessage>
           <HelperMessage>説明文です</HelperMessage>
           <HelperMessage>説明文です</HelperMessage>
         </Stack>
-      </fieldset>
+      </Stack>
     );
   },
 };

@@ -12,6 +12,7 @@ export { LinkCard } from './components/LinkCard/LinkCard';
 export { MessageModal } from './components/MessageModal/MessageModal';
 export { RadioButton } from './components/RadioButton/RadioButton';
 export { RadioCard } from './components/RadioCard/RadioCard';
+export { RadioGroup } from './components/RadioGroup/RadioGroup';
 export { Select } from './components/Select/Select';
 export { Text } from './components/Text/Text';
 export { TextArea } from './components/TextArea/TextArea';
