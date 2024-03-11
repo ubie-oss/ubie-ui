@@ -25,7 +25,7 @@ type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name' | 'value' 
 
 /**
  * アクセシビリティに配慮したラジオボタン。
- * TimeQuestionContentのような、選択した後自動で遷移しないタイプのラジオボタン（選択してもなにもおきないボタン）に使用する。
+ * 選択した後自動で遷移しないタイプのラジオボタン（選択してもなにもおきないボタン）に使用
  */
 const RadioCard: FC<Props> = forwardRef<HTMLInputElement, Props>(
   ({ name, value, checked, children, className, block = false, ...otherProps }, ref) => {
