@@ -1,0 +1,13 @@
+.wrapper {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.legend {
+  font-size: var(--text-body-sm-size);
+  font-weight: bold;
+  color: var(--color-text-sub);
+  margin-bottom: var(--size-spacing-md);
+  padding: 0;
+}

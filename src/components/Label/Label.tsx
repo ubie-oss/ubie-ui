@@ -5,7 +5,7 @@ import type { ElementType, FC, ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;
-  as?: ElementType<{ className?: string; children: ReactNode }> | 'label' | 'legend' | 'p';
+  as?: ElementType<{ className?: string; children: ReactNode }> | 'label' | 'p';
   htmlFor?: string;
 };
 

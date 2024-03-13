@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState, useCallback } from 'react';
-import { Checkbox, Stack } from '../';
+import { Checkbox, CheckboxGroup, Stack } from '../';
 import type { ChangeEventHandler } from 'react';
 
 export default {
@@ -28,18 +28,60 @@ export const Default: Story = {
     );
 
     return (
-      <Stack spacing="md">
-        {options.map((option) => (
-          <Checkbox
-            name="options"
-            value={option}
-            onChange={onChange}
-            checked={selectedItem.includes(option)}
-            key={option}
-          >
-            {option}
-          </Checkbox>
-        ))}
+      <Stack spacing="lg">
+        <CheckboxGroup label="Checkbox">
+          {options.map((option) => (
+            <Checkbox
+              name="default"
+              value={option}
+              onChange={onChange}
+              checked={selectedItem.includes(option)}
+              key={option}
+            >
+              {option}
+            </Checkbox>
+          ))}
+        </CheckboxGroup>
+
+        <dl>
+          <dt>Values</dt>
+          <dd>{selectedItem.join(',')}</dd>
+        </dl>
+      </Stack>
+    );
+  },
+};
+
+export const Horizontally: Story = {
+  render: () => {
+    const [selectedItem, setSelectedItem] = useState<string[]>([options[0]]);
+
+    const onChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+      (event) => {
+        if (event.target.checked) {
+          setSelectedItem([...selectedItem, event.target.value]);
+        } else {
+          setSelectedItem(selectedItem.filter((item) => item !== event.target.value));
+        }
+      },
+      [selectedItem],
+    );
+
+    return (
+      <Stack spacing="lg">
+        <CheckboxGroup label="Checkbox" direction="row">
+          {options.map((option) => (
+            <Checkbox
+              name="horizontally"
+              value={option}
+              onChange={onChange}
+              checked={selectedItem.includes(option)}
+              key={option}
+            >
+              {option}
+            </Checkbox>
+          ))}
+        </CheckboxGroup>
 
         <dl>
           <dt>Values</dt>
