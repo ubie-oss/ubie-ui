@@ -1,16 +1,22 @@
 .root {
-  width: 2.75rem;
-  height: 1.25rem;
+  width: 3rem;
+  height: 1.5rem;
   border-radius: 3rem;
-  border-radius: 1.5rem;
-  padding: 2px;
+  padding: 0.125rem;
   position: relative;
   display: inline-flex;
   transition: background-color 200ms;
+  cursor: pointer;
+}
+
+.root,
+.root * {
+  box-sizing: border-box;
 }
 
 .root:has(input:disabled) {
   background-color: var(--color-text-disabled);
+  cursor: default;
 }
 
 .on {
