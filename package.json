@@ -2,9 +2,7 @@
   "name": "@ubie/ubie-ui",
   "version": "0.0.3",
   "description": "React components for creating Ubie applications.",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "README.md",
     "dist"
