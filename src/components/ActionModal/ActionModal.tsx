@@ -4,9 +4,9 @@ import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import { FC, Fragment, PropsWithChildren } from 'react';
 import styles from './ActionModal.module.css';
-import { Button } from '../../';
 import { opacityToClassName } from '../../utils/style';
 import { AllOrNone } from '../../utils/types';
+import { Button } from '../Button/Button';
 
 type Opacity = 'normal' | 'darker';
 
