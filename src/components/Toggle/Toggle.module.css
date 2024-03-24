@@ -7,6 +7,7 @@
   display: inline-flex;
   transition: background-color 200ms;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .root,
@@ -23,16 +24,18 @@
   background-color: var(--color-primary);
 }
 
-.on:hover {
-  background-color: var(--color-primary-darken);
-}
-
 .off {
   background-color: var(--color-ubie-black-400);
 }
 
-.off:hover {
-  background-color: var(--color-ubie-black-700);
+@media (pointer: fine) {
+  .on:hover {
+    background-color: var(--color-primary-darken);
+  }
+
+  .off:hover {
+    background-color: var(--color-ubie-black-700);
+  }
 }
 
 .thumb {
