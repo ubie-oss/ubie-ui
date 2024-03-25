@@ -25,6 +25,7 @@
   text-decoration: none;
   transition: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
+  overflow-wrap: anywhere;
 }
 
 .button:focus-visible {
