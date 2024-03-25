@@ -12,7 +12,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       variant = 'primary',
       size = 'large',
-      className,
       block = false,
       icon: _icon,
       fixedIcon: _fixedIcon,
@@ -25,16 +24,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const icon = _icon === 'default' ? <VariantIcon variant={variant} /> : _icon;
     const fixedIcon = _fixedIcon === 'default' ? <VariantIcon variant={variant} /> : _fixedIcon;
     const suffixIcon = _suffixIcon === 'default' ? <VariantIcon variant={variant} /> : _suffixIcon;
-    const cls = clsx(
-      {
-        [styles.button]: true,
-        [styles[variant]]: true,
-        [styles[size]]: true,
-        [styles.block]: block,
-        [styles.disabled]: !!props.disabled,
-      },
-      className,
-    );
+    const cls = clsx({
+      [styles.button]: true,
+      [styles[variant]]: true,
+      [styles[size]]: true,
+      [styles.block]: block,
+      [styles.disabled]: !!props.disabled,
+    });
     return (
       <button type={type} className={cls} ref={ref} {...props}>
         {fixedIcon && <span className={styles.fixedIcon}>{fixedIcon}</span>}

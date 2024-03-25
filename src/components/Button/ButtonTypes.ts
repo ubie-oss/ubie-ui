@@ -58,9 +58,12 @@ export type OnlyLinkButtonProps = {
   render?: ReactElement;
 };
 
-export type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseProps & keyof OnlyButtonProps> &
+export type ButtonProps = Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  'className' | keyof BaseProps | keyof OnlyButtonProps
+> &
   BaseProps &
   OnlyButtonProps;
-export type LinkButtonProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseProps> &
+export type LinkButtonProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'className' | keyof BaseProps> &
   BaseProps &
   OnlyLinkButtonProps;
