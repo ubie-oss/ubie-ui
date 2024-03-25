@@ -80,7 +80,7 @@
   outline: solid var(--color-accent) 2px;
 }
 
-@media (pointer: fine) {
+@media (hover: hover) {
   .label:hover {
     border: 2px solid var(--color-primary);
   }

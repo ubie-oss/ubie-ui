@@ -31,7 +31,7 @@
   outline: solid var(--color-accent) 2px;
 }
 
-@media (pointer: fine) {
+@media (hover: hover) {
   .button:hover {
     cursor: pointer;
     color: var(--text-hover);

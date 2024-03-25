@@ -50,7 +50,7 @@
   height: 1.25rem;
 }
 
-@media (pointer: fine) {
+@media (hover: hover) {
   .container:hover .checkIconContainer {
     border-color: var(--color-primary);
   }
