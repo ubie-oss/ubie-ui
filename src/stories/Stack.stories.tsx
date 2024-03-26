@@ -60,7 +60,7 @@ export const Nested: Story = {
 
 export const MarkupAsList: Story = {
   render: (args) => (
-    <Stack {...args} as="li">
+    <Stack {...args} as="ul">
       <li>テスト</li>
       <li>テスト</li>
       <li>テスト</li>
