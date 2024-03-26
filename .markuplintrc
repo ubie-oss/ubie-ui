@@ -7,13 +7,5 @@
   },
   "specs": {
     ".tsx$": "@markuplint/react-spec"
-  },
-  "nodeRules": [
-    {
-      "selector": "input[role='switch']",
-      "rules": {
-        "wai-aria": false
-      }
-    }
-  ]
+  }
 }
