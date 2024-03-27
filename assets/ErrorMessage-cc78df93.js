@@ -1,0 +1,1 @@
+import{j as e}from"./jsx-runtime-9c4ae004.js";const s="_error_1r0vy_1",o={error:s},t=({children:r})=>e.jsx("p",{"aria-live":"polite",className:o.error,children:r});t.__docgenInfo={description:"",methods:[],displayName:"ErrorMessage",props:{children:{required:!0,tsType:{name:"ReactNode"},description:""}}};export{t as E};
