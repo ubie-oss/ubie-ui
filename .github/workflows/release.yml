@@ -1,0 +1,41 @@
+name: Create Release PR
+on:
+  workflow_dispatch:
+    inputs:
+      semver:
+        description: 'New Version(semver)'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  auto-release:
+    runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.UBIE_NPM_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: git config
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install
+        run: npm ci
+      - name: Build
+        run: npm run build
+
+      - name: Release
+        run: npx release-it -i ${{ github.event.inputs.semver }} --ci

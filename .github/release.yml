@@ -1,0 +1,11 @@
+changelog:
+  categories:
+    - title: Features
+      labels:
+        - '*'
+      exclude:
+        authors:
+          - renovate
+    - title: Dependencies
+      labels:
+        - dependencies
