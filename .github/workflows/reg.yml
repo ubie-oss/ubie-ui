@@ -1,0 +1,45 @@
+name: reg-suit
+
+on: push
+
+jobs:
+  visual-regression-test:
+    name: Visual Regression Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    container:
+      image: regviz/node-xcb
+      env:
+        GIT_DISCOVERY_ACROSS_FILESYSTEM: 1
+        GITHUB_WORKSPACE: /home/runner/work/ubie-oss/ubie-ui
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: /home/runner/work/ubie-oss/ubie-ui
+
+      - uses: ./actions/setup-node-and-install-deps
+
+      - name: Installing Chrome via Puppeteer
+        run: node ./node_modules/puppeteer/install.js
+
+      - name: Build
+        if: success()
+        run: npm run build
+
+      # https://github.com/reg-viz/reg-suit/tree/master?tab=readme-ov-file#workaround-for-detached-head
+      - name: workaround for detached HEAD
+        run: |
+          git config --global --add safe.directory /__w/ubie-oss/ubie-ui
+          git checkout ${GITHUB_REF#refs/heads/} || git checkout -b ${GITHUB_REF#refs/heads/} && git pull
+
+      - name: Capture screen shots
+        run: npm run screenshot
+
+      - name: Run reg-suit
+        run: npm run regression
+
+env:
+  # TODO: Set your service account key
+  GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}

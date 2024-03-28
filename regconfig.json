@@ -1,0 +1,22 @@
+{
+  "core": {
+    "workingDir": ".reg",
+    "actualDir": "__screenshots__",
+    "thresholdRate": 0,
+    "addIgnore": true,
+    "ximgdiff": {
+      "invocationType": "client"
+    }
+  },
+  "plugins": {
+    "reg-keygen-git-hash-plugin": true,
+    "reg-notify-github-plugin": {
+      "prComment": true,
+      "prCommentBehavior": "default",
+      "clientId": "TODO: install https://github.com/apps/reg-suit and copy paste the client id here"
+    },
+    "reg-publish-gcs-plugin": {
+      "bucketName": "TODO: add bucket name and credentials https://github.com/reg-viz/reg-suit/blob/master/packages/reg-publish-gcs-plugin/README.md#authorizing-gcp"
+    }
+  }
+}

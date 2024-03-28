@@ -22,3 +22,5 @@ build-storybook.log
 /test-results/
 /playwright-report/
 /playwright/.cache/
+.reg
+__screenshots__
