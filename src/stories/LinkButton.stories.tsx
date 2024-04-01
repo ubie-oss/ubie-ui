@@ -115,16 +115,3 @@ export const Block: Story = {
     </div>
   ),
 };
-
-export const Disabled: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-      <LinkButton {...defaultArgs} disabled />
-      <LinkButton {...defaultArgs} variant="secondary" disabled />
-      <LinkButton {...defaultArgs} variant="accent" disabled />
-      <LinkButton {...defaultArgs} variant="alert" disabled />
-      <LinkButton {...defaultArgs} variant="text" disabled />
-      <LinkButton {...defaultArgs} variant="textAlert" disabled />
-    </div>
-  ),
-};
