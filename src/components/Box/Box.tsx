@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import styles from './Box.module.css';
+import { Spacing, Radius, BackgroundColor } from '../../types/style';
 import type { FC, PropsWithChildren } from 'react';
-
-type Spacing = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'xxs';
 
 type Props = {
   pt?: Spacing;
@@ -13,8 +12,8 @@ type Props = {
   mr?: Spacing;
   mb?: Spacing;
   ml?: Spacing;
-  radius?: 'lg' | 'md' | 'sm' | 'xs';
-  backgroundColor?: 'primary' | 'primaryDarken' | 'accent' | 'accentDarken' | 'alert' | 'gray' | 'white';
+  radius?: Radius;
+  backgroundColor?: BackgroundColor;
   border?: 'gray' | 'grayThick' | 'primary' | 'primaryThick';
   width?: 'full';
 };
