@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { MedicalFormIcon } from '@ubie/ubie-icons';
+import { HospitalIcon } from '@ubie/ubie-icons';
 import { LinkCard, Stack } from '..';
 
 export default {
@@ -7,14 +7,12 @@ export default {
 } satisfies Meta<typeof LinkCard>;
 
 const defaultArgs = {
-  title: 'タイトル',
-  description:
-    'これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。',
+  title: '見出しテキスト',
 };
 
 export const Default: StoryObj<typeof LinkCard> = {
   render: (args) => (
-    <Stack spacing="md">
+    <Stack spacing="md" alignItems="normal">
       <LinkCard {...args} href="/" />
       <LinkCard {...args} href="/" />
     </Stack>
@@ -23,6 +21,15 @@ export const Default: StoryObj<typeof LinkCard> = {
 };
 
 export const WithIcon: StoryObj<typeof LinkCard> = {
-  render: (args) => <LinkCard {...args} href="/" icon={MedicalFormIcon} />,
+  render: (args) => <LinkCard {...args} href="/" icon={HospitalIcon} />,
   args: defaultArgs,
+};
+
+export const WithDescription: StoryObj<typeof LinkCard> = {
+  render: (args) => <LinkCard {...args} href="/" icon={HospitalIcon} />,
+  args: {
+    ...defaultArgs,
+    description:
+      'これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。',
+  },
 };
