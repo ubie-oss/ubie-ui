@@ -1,6 +1,7 @@
 'use client';
 
 import { UrlObject } from 'url';
+import { ArrowBRightIcon } from '@ubie/ubie-icons';
 import clsx from 'clsx';
 import { ComponentType, ElementType, FC, ReactNode } from 'react';
 import styles from './LinkCard.module.css';
@@ -48,6 +49,7 @@ export const LinkCard: FC<Props> = ({
         <p className={styles.title}>{title}</p>
         <p className={styles.description}>{description}</p>
       </div>
+      <ArrowBRightIcon className={styles.caret} />
     </LinkComponent>
   );
 };
