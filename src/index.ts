@@ -1,6 +1,7 @@
 export { Accordion } from './components/Accordion/Accordion';
 export { ActionHalfModal } from './components/ActionHalfModal/ActionHalfModal';
 export { ActionModal } from './components/ActionModal/ActionModal';
+export { Box } from './components/Box/Box';
 export { Button } from './components/Button/Button';
 export { LinkButton } from './components/Button/LinkButton';
 export { ErrorMessage } from './components/ErrorMessage/ErrorMessage';
