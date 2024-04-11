@@ -42,12 +42,15 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   height,
   width,
 }) => {
+  // Directly specifying the markuplint will result in a markuplint error.
+  const gapStyle = spacing ? `var(--size-spacing-${spacing})` : undefined;
+
   return (
     <div
       className={clsx(styles.flex, height === 'full' && styles.heightFull, width === 'full' && styles.widthFull)}
       style={
         {
-          '--gap': spacing ? `var(--size-spacing-${spacing})` : undefined,
+          '--gap': gapStyle,
           '--flex-direction': direction,
           '--align-items': alignItems,
           '--justify-content': justifyContent,
