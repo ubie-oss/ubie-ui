@@ -1,0 +1,10 @@
+.flex {
+  --gap: 0;
+  --align-items: center;
+  --justify-content: flex-start;
+
+  display: flex;
+  gap: var(--gap);
+  align-items: var(--align-items);
+  justify-content: var(--justify-content);
+}
