@@ -1,19 +1,57 @@
+import clsx from 'clsx';
 import styles from './Flex.module.css';
-import { Spacing, AlignItems, JustifyContent } from '../../types/style';
+import { Spacing, AlignItems, JustifyContent, FlexDirection } from '../../types/style';
 import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
+  /**
+   * 子要素同士の間隔
+   */
   spacing?: Spacing;
-  alginItems?: AlignItems;
+  /**
+   * direction 重ねる向き
+   * @default row
+   */
+  direction?: FlexDirection;
+  /**
+   * 主軸方向における子要素のレイアウトを定める。`direction` prop が `column` の場合は水平軸、 `row` の場合は垂直軸のレイアウトを制御する。水平軸の場合に、ブロックレベル要素を幅いっぱいに占有させたい場合は `normal` を使うこと
+   * @default flex-start
+   */
+  alignItems?: AlignItems;
+  /**
+   * 交差軸方向における子要素のレイアウトを定める。directionが `column` の場合は垂軸直、`row` の場合は水平軸のレイアウトを制御する。水平軸の場合に、ブロックレベル要素を幅いっぱいに占有させたい場合は `normal` を使うこと
+   * @default flex-start
+   */
   justifyContent?: JustifyContent;
+  /**
+   * 親要素に対し、100%としたい場合に使用
+   */
+  height?: 'full';
+  /**
+   * デフォルトで<Flex>は横幅いっぱいを専有する。しかし例えば、フレックスコンテナの子要素として配置した場合、横幅が自身の子に合わせて小さくなる。これが不都合の場合に100%とする事が可能
+   */
+  width?: 'full';
 };
 
-export const Flex: FC<PropsWithChildren<Props>> = ({ children, alginItems, justifyContent, spacing }) => {
+export const Flex: FC<PropsWithChildren<Props>> = ({
+  children,
+  direction = 'row',
+  alignItems = 'flex-start',
+  justifyContent = 'flex-start',
+  spacing,
+  height,
+  width,
+}) => {
   return (
     <div
-      className={styles.flex}
+      className={clsx(styles.flex, height === 'full' && styles.heightFull, width === 'full' && styles.widthFull)}
       style={
-        { '--gap': spacing, '--align-items': alginItems, '--justify-content': justifyContent } as React.CSSProperties
+        {
+          '--gap': spacing ? `var(--size-spacing-${spacing})` : undefined,
+          '--flex-direction': direction,
+          '--align-items': alignItems,
+          '--justify-content': justifyContent,
+        } as React.CSSProperties
       }
     >
       {children}
