@@ -3,7 +3,6 @@ import styles from './Box.module.css';
 import type { FC, PropsWithChildren } from 'react';
 
 type Spacing = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'xxs';
-type Border = 'gray' | 'grayThick' | 'primary' | 'primaryThick';
 
 type Props = {
   pt?: Spacing;
@@ -16,7 +15,7 @@ type Props = {
   ml?: Spacing;
   radius?: 'lg' | 'md' | 'sm' | 'xs';
   backgroundColor?: 'primary' | 'primaryDarken' | 'accent' | 'accentDarken' | 'alert' | 'gray' | 'white';
-  border?: Border;
+  border?: 'gray' | 'grayThick' | 'primary' | 'primaryThick';
   width?: 'full';
 };
 
