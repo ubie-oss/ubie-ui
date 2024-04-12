@@ -124,3 +124,38 @@ export const Centralized: Story = {
     </Flex>
   ),
 };
+
+export const Wrap: Story = {
+  render: () => (
+    <div style={{ width: 500 }}>
+      <Flex direction="row" alignItems="center" spacing="lg" wrap>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+      </Flex>
+    </div>
+  ),
+};

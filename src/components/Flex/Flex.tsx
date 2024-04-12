@@ -24,6 +24,11 @@ type Props = {
    */
   justifyContent?: JustifyContent;
   /**
+   * 折り返しの有無
+   * @default false
+   */
+  wrap?: boolean;
+  /**
    * 親要素に対し、100%としたい場合に使用
    */
   height?: 'full';
@@ -38,12 +43,13 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   direction = 'row',
   alignItems = 'flex-start',
   justifyContent = 'flex-start',
+  wrap = false,
   spacing,
   height,
   width,
 }) => {
   // Directly specifying the markuplint will result in a markuplint error.
-  const gapStyle = spacing ? `var(--size-spacing-${spacing})` : undefined;
+  const gapStyle = spacing ? `var(--size-spacing-${spacing})` : '0';
 
   return (
     <div
@@ -54,6 +60,7 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
           '--flex-direction': direction,
           '--align-items': alignItems,
           '--justify-content': justifyContent,
+          '--flex-wrap': wrap ? 'wrap' : 'nowrap',
         } as React.CSSProperties
       }
     >

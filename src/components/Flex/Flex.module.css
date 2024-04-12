@@ -1,11 +1,9 @@
 .flex {
-  --gap: 0;
-
   display: flex;
   gap: var(--gap);
-  flex-direction: var(--flex-direction);
   align-items: var(--align-items);
   justify-content: var(--justify-content);
+  flex-flow: var(--flex-direction) var(--flex-wrap);
 }
 
 .flex.heightFull {
