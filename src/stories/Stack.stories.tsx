@@ -24,18 +24,6 @@ export const Default: Story = {
   args: defaultArgs,
 };
 
-export const Vertical: Story = {
-  render: (args) => (
-    <Stack {...args} direction="row">
-      <p>テスト</p>
-      <p>テスト</p>
-      <p>テスト</p>
-      <p>テスト</p>
-    </Stack>
-  ),
-  args: defaultArgs,
-};
-
 export const Nested: Story = {
   render: () => (
     <Stack spacing="xl">
@@ -65,27 +53,6 @@ export const MarkupAsList: Story = {
       <li>テスト</li>
       <li>テスト</li>
       <li>テスト</li>
-    </Stack>
-  ),
-  args: defaultArgs,
-};
-
-export const Centralized: Story = {
-  render: (args) => (
-    <Stack {...args} direction="row" justifyContent="center" alignItems="center">
-      <span>
-        Words
-        <br />
-        crowded
-      </span>
-      <span>in</span>
-      <span>
-        simply
-        <br />
-        dummy
-        <br />
-        text
-      </span>
     </Stack>
   ),
   args: defaultArgs,

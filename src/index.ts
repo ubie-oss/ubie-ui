@@ -5,6 +5,7 @@ export { Box } from './components/Box/Box';
 export { Button } from './components/Button/Button';
 export { LinkButton } from './components/Button/LinkButton';
 export { ErrorMessage } from './components/ErrorMessage/ErrorMessage';
+export { Flex } from './components/Flex/Flex';
 export { HelperMessage } from './components/HelperMessage/HelperMessage';
 export { Checkbox } from './components/Checkbox/Checkbox';
 export { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
