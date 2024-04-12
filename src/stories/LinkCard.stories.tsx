@@ -13,20 +13,20 @@ const defaultArgs = {
 export const Default: StoryObj<typeof LinkCard> = {
   render: (args) => (
     <Stack spacing="md" alignItems="normal">
-      <LinkCard {...args} href="/" />
-      <LinkCard {...args} href="/" />
+      <LinkCard {...args} href="https://vitals.ubie.life/" />
+      <LinkCard {...args} href="https://vitals.ubie.life/" />
     </Stack>
   ),
   args: defaultArgs,
 };
 
 export const WithIcon: StoryObj<typeof LinkCard> = {
-  render: (args) => <LinkCard {...args} href="/" icon={HospitalIcon} />,
+  render: (args) => <LinkCard {...args} href="https://vitals.ubie.life/" icon={HospitalIcon} />,
   args: defaultArgs,
 };
 
 export const WithDescription: StoryObj<typeof LinkCard> = {
-  render: (args) => <LinkCard {...args} href="/" icon={HospitalIcon} />,
+  render: (args) => <LinkCard {...args} href="https://vitals.ubie.life/" icon={HospitalIcon} />,
   args: {
     ...defaultArgs,
     description:
