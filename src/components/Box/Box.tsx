@@ -4,17 +4,53 @@ import { Spacing, Radius, BackgroundColor } from '../../types/style';
 import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
+  /**
+   * padding-topの値。Spacing Tokenのキーを指定
+   */
   pt?: Spacing;
+  /**
+   * padding-rightの値。Spacing Tokenのキーを指定
+   */
   pr?: Spacing;
+  /**
+   * padding-bottomの値。Spacing Tokenのキーを指定
+   */
   pb?: Spacing;
+  /**
+   * padding-leftの値。Spacing Tokenのキーを指定
+   */
   pl?: Spacing;
+  /**
+   * margin-topの値。Spacing Tokenのキーを指定
+   */
   mt?: Spacing;
+  /**
+   * margin-rightの値。Spacing Tokenのキーを指定
+   */
   mr?: Spacing;
+  /**
+   * margin-bottomの値。Spacing Tokenのキーを指定
+   */
   mb?: Spacing;
+  /**
+   * margin-leftの値。Spacing Tokenのキーを指定
+   */
   ml?: Spacing;
+  /**
+   * 角丸を指定。Radius Tokenのキーを指定
+   */
   radius?: Radius;
+  /**
+   * 背景色
+   */
   backgroundColor?: BackgroundColor;
+  /**
+   * ボーダーの種類
+   */
   border?: 'gray' | 'grayThick' | 'primary' | 'primaryThick';
+  /**
+   * 幅を指定。他のスタイルの影響を受け、幅が100%とならない場合にのみ使用
+   */
   width?: 'full';
 };
 
