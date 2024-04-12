@@ -10,26 +10,47 @@ const defaultArgs = {
   title: '見出しテキスト',
 };
 
-export const Default: StoryObj<typeof LinkCard> = {
+type Story = StoryObj<typeof LinkCard>;
+
+export const Default: Story = {
   render: (args) => (
     <Stack spacing="md" alignItems="normal">
-      <LinkCard {...args} href="/" />
-      <LinkCard {...args} href="/" />
+      <LinkCard {...args} href="https://vitals.ubie.life/" />
+      <LinkCard {...args} href="https://vitals.ubie.life/" />
     </Stack>
   ),
   args: defaultArgs,
 };
 
-export const WithIcon: StoryObj<typeof LinkCard> = {
-  render: (args) => <LinkCard {...args} href="/" icon={HospitalIcon} />,
+export const WithIcon: Story = {
+  render: (args) => <LinkCard {...args} href="https://vitals.ubie.life/" icon={HospitalIcon} />,
   args: defaultArgs,
 };
 
-export const WithDescription: StoryObj<typeof LinkCard> = {
-  render: (args) => <LinkCard {...args} href="/" icon={HospitalIcon} />,
+export const WithDescription: Story = {
+  render: (args) => <LinkCard {...args} href="https://vitals.ubie.life/" icon={HospitalIcon} />,
   args: {
     ...defaultArgs,
     description:
       'これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。',
   },
+};
+
+export const SizeSmall: Story = {
+  render: (args) => {
+    return (
+      <Stack spacing="md" alignItems="normal">
+        <LinkCard {...args} href="https://vitals.ubie.life/" size="small" />
+        <LinkCard {...args} href="https://vitals.ubie.life/" icon={HospitalIcon} size="small" />
+        <LinkCard
+          {...args}
+          href="https://vitals.ubie.life/"
+          icon={HospitalIcon}
+          description="これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。これはこのカードの遷移先の説明です。"
+          size="small"
+        />
+      </Stack>
+    );
+  },
+  args: defaultArgs,
 };

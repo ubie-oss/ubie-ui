@@ -1,16 +1,16 @@
 'use client';
 
-import { UrlObject } from 'url';
 import { ArrowBRightIcon } from '@ubie/ubie-icons';
 import clsx from 'clsx';
-import { ComponentType, ElementType, FC, ReactNode } from 'react';
+import { cloneElement, forwardRef } from 'react';
 import styles from './LinkCard.module.css';
+import type { ComponentType, ReactElement, ReactNode } from 'react';
 
 type Props = {
   /**
    * 遷移先URL
    */
-  href: string;
+  href?: string;
   /**
    * サイズ
    */
@@ -28,35 +28,40 @@ type Props = {
    */
   className?: string;
   /**
-   * リンクとして機能させるコンポーネント、または `<a>` 要素
-   * @default a
+   * レンダリングされる要素を変更。フレームワークのリンクコンポーネントなどを指定
    */
-  linkComponent?: ElementType<{ href: string | UrlObject; className?: string; children: ReactNode }>;
+  render?: ReactElement;
   /**
    * アイコン
    */
   icon?: ComponentType<{ className?: string }>;
 };
 
-export const LinkCard: FC<Props> = ({
-  href,
-  title,
-  size = 'medium',
-  className,
-  icon: IconComponent,
-  description,
-  linkComponent: LinkComponent = 'a',
-}) => {
-  return (
-    <LinkComponent href={href} className={clsx(styles[size], styles.card, className)}>
-      {IconComponent && <IconComponent className={styles.icon} />}
-      <div className={styles.text}>
-        <p className={styles.title}>{title}</p>
-        {description && <p className={styles.description}>{description}</p>}
-      </div>
-      <ArrowBRightIcon className={styles.caret} />
-    </LinkComponent>
-  );
-};
+export const LinkCard = forwardRef<HTMLAnchorElement, Props>(
+  ({ title, size = 'medium', className, icon: IconComponent, description, render, ...props }, forwardedRef) => {
+    const cls = clsx(styles[size], styles.card, className);
+
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+    const createElement = (props: any, children: ReactNode) => {
+      return render ? cloneElement(render, props, children) : <a {...props}>{children}</a>;
+    };
+
+    return createElement(
+      {
+        className: cls,
+        ...props,
+        ref: forwardedRef,
+      },
+      <>
+        {IconComponent && <IconComponent className={styles.icon} />}
+        <div className={styles.text}>
+          <p className={styles.title}>{title}</p>
+          {description && <p className={styles.description}>{description}</p>}
+        </div>
+        <ArrowBRightIcon className={styles.caret} />
+      </>,
+    );
+  },
+);
 
 LinkCard.displayName = 'LinkCard';
