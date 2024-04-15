@@ -287,3 +287,11 @@ export const Tag: Story = {
   },
   args: defaultArgs,
 };
+
+export const WithId: Story = {
+  render: () => (
+    <Text id="text-id" type="heading" size="xl" as="h2" color="primary" bold>
+      Dummy Text
+    </Text>
+  ),
+};

@@ -25,9 +25,9 @@ type BaseProps = {
    */
   children: ReactNode;
   /**
-   * CSSのクラス
+   * HTMLのid属性
    */
-  className?: string;
+  id?: string;
 };
 
 type BodyFontSize = 'sm' | 'md' | 'lg';
@@ -125,19 +125,12 @@ export const Text: FC<TextProps> = ({
   bold = false,
   color = 'main',
   children,
-  className,
+  id,
 }) => {
   return (
     <TextComponent
-      className={clsx(
-        className,
-        styles.text,
-        bold && styles.bold,
-        styles[size],
-        styles[type],
-        styles[leading],
-        styles[color],
-      )}
+      id={id}
+      className={clsx(styles.text, bold && styles.bold, styles[size], styles[type], styles[leading], styles[color])}
     >
       {children}
     </TextComponent>
