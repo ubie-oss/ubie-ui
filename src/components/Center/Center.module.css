@@ -1,0 +1,15 @@
+.center {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+}
+
+.center.textCenter {
+  text-align: center;
+}
+
+.center.childrenCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
