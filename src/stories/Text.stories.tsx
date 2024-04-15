@@ -10,7 +10,7 @@ type Story = StoryObj<typeof Text>;
 const defaultArgs = {};
 export const Default: Story = {
   render: () => (
-    <Text as="h1" type="heading" size="xl" leading="tight" color="primary">
+    <Text as="h1" type="heading" size="xl" color="primary">
       Dummy Text
     </Text>
   ),
