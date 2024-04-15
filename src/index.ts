@@ -3,6 +3,7 @@ export { ActionHalfModal } from './components/ActionHalfModal/ActionHalfModal';
 export { ActionModal } from './components/ActionModal/ActionModal';
 export { Box } from './components/Box/Box';
 export { Button } from './components/Button/Button';
+export { Center } from './components/Center/Center';
 export { LinkButton } from './components/Button/LinkButton';
 export { ErrorMessage } from './components/ErrorMessage/ErrorMessage';
 export { Flex } from './components/Flex/Flex';
