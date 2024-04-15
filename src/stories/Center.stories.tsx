@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Center, Box, Button } from '..';
+import { Center, Box } from '..';
 
 export default {
   component: Center,
@@ -42,7 +42,9 @@ export const TextCenter: Story = {
 export const ChildrenCenter: Story = {
   render: () => (
     <Center maxWidth="400px" childrenCenter>
-      <Button>Center Button</Button>
+      <Box border="gray" pt="md" pr="md" pb="md" pl="md">
+        Centered Child
+      </Box>
     </Center>
   ),
 };
