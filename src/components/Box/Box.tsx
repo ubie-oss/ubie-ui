@@ -39,15 +39,6 @@ export const Box: FC<PropsWithChildren<Props>> = ({
   border,
   width,
 }) => {
-  console.log(
-    paddingVariables({
-      pt,
-      pr,
-      pb,
-      pl,
-    }),
-  );
-
   return (
     <div
       className={clsx([
