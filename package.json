@@ -36,9 +36,9 @@
     "generate:scaffold": "scaffdog generate component",
     "generate:barrel": "node ./scripts/barrel.mjs",
     "prestorybook": "npm run build",
-    "storybook": "npm run tcm:watch & storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
