@@ -28,6 +28,7 @@ type Props = {
   justifyContent?: JustifyContent;
   /**
    * CSSのクラス
+   * @deprecated マージンなどをつけたい場合は<Box>を使ってください
    */
   className?: string;
   /**
