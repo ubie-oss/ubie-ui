@@ -48,3 +48,13 @@ export const ChildrenCenter: Story = {
     </Center>
   ),
 };
+
+export const AsSection: Story = {
+  render: () => (
+    <Center as="section" maxWidth="400px">
+      <h2>Heading</h2>
+
+      <p>body</p>
+    </Center>
+  ),
+};

@@ -1,10 +1,16 @@
 import clsx from 'clsx';
 import styles from './Center.module.css';
 import { paddingVariables } from '../../utils/style';
+import { HTMLTagname } from '../../utils/types';
 import type { PaddingProps } from '../../types/style';
 import type { FC, PropsWithChildren, CSSProperties } from 'react';
 
 type Props = {
+  /**
+   * レンダリングされるHTML要素
+   * @default div
+   */
+  as?: HTMLTagname;
   /**
    * 内包するテキストを中央に配置。設定は継承され、子孫要素にも影響します
    */
@@ -24,6 +30,7 @@ type Props = {
 } & PaddingProps;
 
 export const Center: FC<PropsWithChildren<Props>> = ({
+  as: CenterCopmonent = 'div',
   children,
   pt,
   pr,
@@ -35,7 +42,7 @@ export const Center: FC<PropsWithChildren<Props>> = ({
   maxWidth = 'none',
 }) => {
   return (
-    <div
+    <CenterCopmonent
       id={id}
       className={clsx(styles.center, textCenter && styles.textCenter, childrenCenter && styles.childrenCenter)}
       style={
@@ -51,6 +58,6 @@ export const Center: FC<PropsWithChildren<Props>> = ({
       }
     >
       {children}
-    </div>
+    </CenterCopmonent>
   );
 };
