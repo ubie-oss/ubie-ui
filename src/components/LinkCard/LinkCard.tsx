@@ -25,6 +25,7 @@ type Props = {
   description?: string;
   /**
    * CSSのクラス
+   * * @deprecated マージンなどをつけたい場合は<Box>や<Stack>を使ってください
    */
   className?: string;
   /**
