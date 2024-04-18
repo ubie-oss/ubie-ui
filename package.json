@@ -18,7 +18,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run tcm && tsup",
+    "build": "tsup",
     "test": "run-p test:*",
     "test:unit": "vitest run",
     "test:e2e": "playwright test -c playwright.config.ts",
@@ -39,8 +39,6 @@
     "storybook": "npm run tcm:watch & storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepublishOnly": "npm run build",
-    "tcm": "tcm src",
-    "tcm:watch": "tcm -w src"
   },
   "repository": {
     "type": "git",
@@ -107,7 +105,6 @@
     "stylelint": "14.16.1",
     "stylelint-config-standard": "29.0.0",
     "tsup": "^7.2.0",
-    "typed-css-modules": "^0.8.1",
     "typescript": "5.2.2",
     "vite": "^4.4.9",
     "vitest": "^0.34.3"
