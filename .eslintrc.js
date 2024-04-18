@@ -56,5 +56,6 @@ module.exports = {
     ],
     'unused-imports/no-unused-imports': 'error',
     'import/no-unresolved': 'off',
+    'no-console': 'error',
   },
 };
