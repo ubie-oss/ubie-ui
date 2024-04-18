@@ -21,7 +21,7 @@ type Props = {
 
 export const Accordion: FC<PropsWithChildren<Props>> = ({ header, children, size = 'medium' }) => {
   return (
-    <details className={clsx(styles[size])}>
+    <details className={clsx(styles.container, styles[size])}>
       <summary className={styles.button}>
         <span>{header}</span>
         <ArrowBDownIcon aria-hidden className={styles.arrow} />
