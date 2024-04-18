@@ -159,3 +159,14 @@ export const Wrap: Story = {
     </div>
   ),
 };
+
+export const AsSection: Story = {
+  render: () => (
+    <Flex as="section" spacing="md" alignItems="center">
+      <h1>Heading</h1>
+      <p>Section</p>
+      <p>Section</p>
+      <p>Section</p>
+    </Flex>
+  ),
+};

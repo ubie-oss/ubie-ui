@@ -2,7 +2,7 @@
 
 import styles from './CheckboxGroup.module.css';
 import { Checkbox } from '../Checkbox/Checkbox';
-import { Stack } from '../Stack/Stack';
+import { Flex } from '../Flex/Flex';
 import type { FC, ReactElement } from 'react';
 
 export type Props = {
@@ -15,9 +15,9 @@ export const CheckboxGroup: FC<Props> = ({ children, label, direction = 'column'
   return (
     <fieldset className={styles.wrapper}>
       <legend className={styles.legend}>{label}</legend>
-      <Stack spacing="md" direction={direction}>
+      <Flex spacing="md" direction={direction}>
         {children}
-      </Stack>
+      </Flex>
     </fieldset>
   );
 };

@@ -164,3 +164,13 @@ export const Width: Story = {
     </Stack>
   ),
 };
+
+export const AsSection: Story = {
+  render: () => (
+    <Box as="section" pt="md" pr="md" pb="md" pl="md" radius="md" backgroundColor="primary">
+      <h2>Heading</h2>
+
+      <p>body</p>
+    </Box>
+  ),
+};

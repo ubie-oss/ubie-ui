@@ -1,16 +1,17 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { FC, ElementType, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import styles from './Text.module.css';
 import { TextColor } from '../../types/style';
+import { HTMLTagname } from '../../utils/types';
 
 type BaseProps = {
   /**
    * コンポーネントのHTML要素
    * @default p
    */
-  as?: ElementType<{ className?: string; children: ReactNode }>;
+  as?: HTMLTagname;
   /**
    * 太字とするかどうか
    */

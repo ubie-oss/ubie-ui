@@ -1,9 +1,15 @@
 import clsx from 'clsx';
 import styles from './Flex.module.css';
 import { Spacing, AlignItems, JustifyContent, FlexDirection } from '../../types/style';
+import { HTMLTagname } from '../../utils/types';
 import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
+  /**
+   * レンダリングされるHTML要素
+   * @default div
+   */
+  as?: HTMLTagname;
   /**
    * 子要素同士の間隔
    */
@@ -39,6 +45,7 @@ type Props = {
 };
 
 export const Flex: FC<PropsWithChildren<Props>> = ({
+  as: FlexCopmonent = 'div',
   children,
   direction = 'row',
   alignItems = 'flex-start',
@@ -52,7 +59,7 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   const gapStyle = spacing ? `var(--size-spacing-${spacing})` : '0';
 
   return (
-    <div
+    <FlexCopmonent
       className={clsx(styles.flex, height === 'full' && styles.heightFull, width === 'full' && styles.widthFull)}
       style={
         {
@@ -65,6 +72,6 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
       }
     >
       {children}
-    </div>
+    </FlexCopmonent>
   );
 };

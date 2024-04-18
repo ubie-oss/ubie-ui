@@ -1,25 +1,21 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { ElementType, FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import styles from './Stack.module.css';
-import { Spacing, FlexDirection, AlignItems, JustifyContent } from '../../types/style';
+import { Spacing, AlignItems, JustifyContent } from '../../types/style';
+import { HTMLTagname } from '../../utils/types';
 
 type Props = {
   /**
    * レンダリングされるコンポーネントまたはHTML要素
    * @default div
    */
-  as?: ElementType<{ className?: string; children: ReactNode }>;
+  as?: HTMLTagname;
   /**
    * 子要素の間隔
    */
   spacing: Spacing;
-  /**
-   * direction 重ねる向き
-   * @default column
-   */
-  direction?: FlexDirection;
   /**
    * 主軸方向における子要素のレイアウトを定める。`direction` prop が `column` の場合は水平軸、 `row` の場合は垂直軸のレイアウトを制御する。水平軸の場合に、ブロックレベル要素を幅いっぱいに占有させたい場合は `normal` を使うこと
    * @default flex-start
@@ -49,14 +45,12 @@ export const Stack: FC<Props> = ({
   children,
   className,
   spacing,
-  direction = 'column',
   alignItems = 'flex-start',
   justifyContent = 'flex-start',
 }) => {
   return (
     <StackComponent
       style={{
-        flexDirection: `${direction}`,
         alignItems: `${alignItems}`,
         justifyContent: `${justifyContent}`,
         gap: `var(--size-spacing-${spacing})`,
