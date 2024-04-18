@@ -1,16 +1,16 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Text, Stack } from '../';
+import { Text, Flex, Stack } from '../';
 
 export default {
   component: Text,
-} as Meta<typeof Text>;
+} satisfies Meta<typeof Text>;
 
 type Story = StoryObj<typeof Text>;
 
 const defaultArgs = {};
 export const Default: Story = {
   render: () => (
-    <Text as="h1" type="heading" size="xl" leading="tight" color="primary">
+    <Text as="h1" type="heading" size="xl" color="primary">
       Dummy Text
     </Text>
   ),
@@ -19,7 +19,7 @@ export const Default: Story = {
 
 export const Color: Story = {
   render: () => (
-    <Stack spacing="md" direction="row">
+    <Flex spacing="md">
       <Text color="main">main</Text>
       <Text color="sub">sub</Text>
       <Text color="link">link</Text>
@@ -31,7 +31,7 @@ export const Color: Story = {
       <span style={{ background: 'black', padding: '0 0.5em' }}>
         <Text color="white">white</Text>
       </span>
-    </Stack>
+    </Flex>
   ),
   args: defaultArgs,
 };
@@ -41,7 +41,7 @@ export const Heading: Story = {
     const headingText = '近くの医療機関から調べる';
 
     return (
-      <Stack spacing="md" direction="row" alignItems="center">
+      <Flex spacing="md" alignItems="center">
         <Text bold type="heading" size="xs">
           xs
           <br />
@@ -67,7 +67,7 @@ export const Heading: Story = {
           <br />
           {`${headingText}`}
         </Text>
-      </Stack>
+      </Flex>
     );
   },
   args: defaultArgs,
@@ -83,7 +83,7 @@ export const Body: Story = {
         <div>
           <dt>Default Leading</dt>
           <dd>
-            <Stack spacing="md" direction="row" alignItems="center">
+            <Flex spacing="md" alignItems="center">
               <Text type="body" size="sm">
                 sm
                 <br />
@@ -99,14 +99,14 @@ export const Body: Story = {
                 <br />
                 {`${bodyText}`}
               </Text>
-            </Stack>
+            </Flex>
           </dd>
         </div>
 
         <div>
           <dt>Narrow Leading</dt>
           <dd>
-            <Stack spacing="md" direction="row" alignItems="center">
+            <Flex spacing="md" alignItems="center">
               <Text leading="narrow" type="body" size="sm">
                 sm
                 <br />
@@ -122,14 +122,14 @@ export const Body: Story = {
                 <br />
                 {`${bodyText}`}
               </Text>
-            </Stack>
+            </Flex>
           </dd>
         </div>
 
         <div>
           <dt>Tight Leading</dt>
           <dd>
-            <Stack spacing="md" direction="row" alignItems="center">
+            <Flex spacing="md" alignItems="center">
               <Text leading="tight" type="body" size="sm">
                 sm
                 <br />
@@ -145,7 +145,7 @@ export const Body: Story = {
                 <br />
                 {`${bodyText}`}
               </Text>
-            </Stack>
+            </Flex>
           </dd>
         </div>
       </Stack>
@@ -164,7 +164,7 @@ export const Note: Story = {
         <div>
           <dt>Default Leading</dt>
           <dd>
-            <Stack spacing="md" direction="row" alignItems="center">
+            <Flex spacing="md" alignItems="center">
               <Text type="note" size="sm">
                 sm
                 <br />
@@ -180,14 +180,14 @@ export const Note: Story = {
                 <br />
                 {`${noteText}`}
               </Text>
-            </Stack>
+            </Flex>
           </dd>
         </div>
 
         <div>
           <dt>Narrow Leading</dt>
           <dd>
-            <Stack spacing="md" direction="row" alignItems="center">
+            <Flex spacing="md" alignItems="center">
               <Text leading="narrow" type="note" size="sm">
                 sm
                 <br />
@@ -203,13 +203,13 @@ export const Note: Story = {
                 <br />
                 {`${noteText}`}
               </Text>
-            </Stack>
+            </Flex>
           </dd>
         </div>
         <div>
           <dt>Tight Leading</dt>
           <dd>
-            <Stack spacing="md" direction="row" alignItems="center">
+            <Flex spacing="md" alignItems="center">
               <Text leading="tight" type="note" size="sm">
                 sm
                 <br />
@@ -225,7 +225,7 @@ export const Note: Story = {
                 <br />
                 {`${noteText}`}
               </Text>
-            </Stack>
+            </Flex>
           </dd>
         </div>
       </Stack>
@@ -239,7 +239,7 @@ export const Button: Story = {
     const buttonText = '同意して症状から調べる';
 
     return (
-      <Stack spacing="md" direction="row" alignItems="center">
+      <Flex spacing="md" alignItems="center">
         <Text type="button" size="sm">
           sm
           <br />
@@ -255,7 +255,7 @@ export const Button: Story = {
           <br />
           {`${buttonText}`}
         </Text>
-      </Stack>
+      </Flex>
     );
   },
   args: defaultArgs,
@@ -266,7 +266,7 @@ export const Tag: Story = {
     const tagText = '循環器内科';
 
     return (
-      <Stack spacing="md" direction="row" alignItems="center">
+      <Flex spacing="md" alignItems="center">
         <Text type="tag" size="sm">
           sm
           <br />
@@ -282,8 +282,27 @@ export const Tag: Story = {
           <br />
           {`${tagText}`}
         </Text>
-      </Stack>
+      </Flex>
     );
   },
   args: defaultArgs,
+};
+
+export const WithId: Story = {
+  render: () => (
+    <Text id="text-id" type="heading" size="xl" as="h2" color="primary" bold>
+      Dummy Text
+    </Text>
+  ),
+};
+
+export const TextInText: Story = {
+  render: () => (
+    <Text type="note" size="lg">
+      <Text as="span" type="note" size="lg" color="alert" bold>
+        Alert:
+      </Text>{' '}
+      Please fill in all fields
+    </Text>
+  ),
 };

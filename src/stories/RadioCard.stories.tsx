@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState, useCallback } from 'react';
-import { RadioCard, Stack } from '..';
+import { RadioCard, Stack, RadioGroup } from '..';
 import type { ChangeEventHandler } from 'react';
 
 export default {
   title: 'Form/RadioCard',
   component: RadioCard,
-} as Meta<typeof RadioCard>;
+} satisfies Meta<typeof RadioCard>;
 
 type Story = StoryObj<typeof RadioCard>;
 
@@ -23,10 +23,44 @@ export const Default: Story = {
     }, []);
 
     return (
-      <Stack spacing="md">
+      <Stack spacing="lg" alignItems="normal">
+        <RadioGroup label="RadioCard">
+          {options.map((option) => (
+            <RadioCard
+              name="options"
+              value={option}
+              onChange={onChange}
+              checked={selectedItem === option}
+              id={option}
+              key={option}
+            >
+              {option}
+            </RadioCard>
+          ))}
+        </RadioGroup>
+
+        <dl>
+          <dt>Values</dt>
+          <dd>{selectedItem}</dd>
+        </dl>
+      </Stack>
+    );
+  },
+};
+
+export const Horizontally: Story = {
+  render: () => {
+    const [selectedItem, setSelectedItem] = useState(options[0]);
+
+    const onChange: ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
+      setSelectedItem(event.target.value);
+    }, []);
+
+    return (
+      <RadioGroup label="RadioCard" direction="row">
         {options.map((option) => (
           <RadioCard
-            name="options"
+            name="horizontally"
             value={option}
             onChange={onChange}
             checked={selectedItem === option}
@@ -36,12 +70,7 @@ export const Default: Story = {
             {option}
           </RadioCard>
         ))}
-
-        <dl>
-          <dt>Values</dt>
-          <dd>{selectedItem}</dd>
-        </dl>
-      </Stack>
+      </RadioGroup>
     );
   },
 };
@@ -59,7 +88,7 @@ export const Block: Story = {
     return (
       <Stack spacing="sm">
         {options.map((option) => (
-          <RadioCard {...args} key={option} checked={value === option} value={option} onChange={onChange}>
+          <RadioCard {...args} key={option} checked={value === option} value={option} onChange={onChange} name="block">
             {option}
           </RadioCard>
         ))}

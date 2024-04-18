@@ -2,6 +2,12 @@
   font-size: var(--font-size);
   line-height: var(--leading);
   color: var(--color);
+  font-weight: normal;
+}
+
+:where(.text) {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .bold {

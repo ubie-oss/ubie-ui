@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ChangeEventHandler, useState, useCallback } from 'react';
-import { RadioButton, Stack } from '../';
+import { RadioButton, Stack, RadioGroup } from '../';
 
 export default {
   title: 'Form/RadioButton',
   component: RadioButton,
-} as Meta<typeof RadioButton>;
+} satisfies Meta<typeof RadioButton>;
 
 const defaultArgs = {
   disabled: false,
@@ -24,19 +24,22 @@ export const Default: Story = {
     }, []);
 
     return (
-      <Stack spacing="xs">
-        {options.map((option) => (
-          <RadioButton
-            key={option}
-            {...args}
-            value={option}
-            id={option}
-            onChange={onChange}
-            checked={selectedItem === option}
-          >
-            {option}
-          </RadioButton>
-        ))}
+      <Stack spacing="lg">
+        <RadioGroup label="RadioButton">
+          {options.map((option) => (
+            <RadioButton
+              key={option}
+              {...args}
+              value={option}
+              id={option}
+              onChange={onChange}
+              checked={selectedItem === option}
+              name="default"
+            >
+              {option}
+            </RadioButton>
+          ))}
+        </RadioGroup>
 
         <dl>
           <dt>Values</dt>
@@ -51,13 +54,45 @@ export const Default: Story = {
   },
 };
 
+export const Horizontally: Story = {
+  render: (args) => {
+    const [selectedItem, setSelectedItem] = useState(options[0]);
+
+    const onChange: ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
+      setSelectedItem(event.target.value);
+    }, []);
+
+    return (
+      <RadioGroup label="RadioButton" direction="row">
+        {options.map((option) => (
+          <RadioButton
+            key={option}
+            {...args}
+            value={option}
+            id={option}
+            onChange={onChange}
+            checked={selectedItem === option}
+            name="horizontally"
+          >
+            {option}
+          </RadioButton>
+        ))}
+      </RadioGroup>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    name: 'default',
+  },
+};
+
 export const Size: Story = {
   render: (args) => (
     <Stack spacing="xs">
-      <RadioButton {...args} value="medium" id="medium">
+      <RadioButton {...args} value="medium" id="medium" name="size">
         Medium
       </RadioButton>
-      <RadioButton {...args} value="small" id="small" size="small">
+      <RadioButton {...args} value="small" id="small" size="small" name="size">
         Small
       </RadioButton>
     </Stack>
@@ -71,11 +106,11 @@ export const Size: Story = {
 export const Disabled: Story = {
   render: (args) => (
     <Stack spacing="xs">
-      <RadioButton {...args} value="checked" id="checked" checked disabled>
+      <RadioButton {...args} value="checked" id="checked" checked disabled name="disabled">
         Checked
       </RadioButton>
 
-      <RadioButton {...args} value="unchecked" id="unchecked" disabled>
+      <RadioButton {...args} value="unchecked" id="unchecked" disabled name="disabled">
         Unchecked
       </RadioButton>
     </Stack>

@@ -19,7 +19,7 @@
   height: 1.25rem;
 }
 
-@media (pointer: fine) {
+@media (hover: hover) {
   .label:hover .icon {
     border-color: var(--color-primary);
   }

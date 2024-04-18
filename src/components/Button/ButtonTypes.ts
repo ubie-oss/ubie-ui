@@ -37,10 +37,6 @@ export type BaseProps = {
    * 後方配置のアイコン
    */
   suffixIcon?: 'default' | ReactNode;
-  /**
-   * ボタンを無効化するかどうか
-   */
-  disabled?: boolean;
 };
 
 export type OnlyButtonProps = {
@@ -49,6 +45,10 @@ export type OnlyButtonProps = {
    * @default button
    */
   type?: HTMLButtonElement['type'];
+  /**
+   * ボタンを無効化するかどうか
+   */
+  disabled?: boolean;
 };
 
 export type OnlyLinkButtonProps = {
@@ -58,9 +58,12 @@ export type OnlyLinkButtonProps = {
   render?: ReactElement;
 };
 
-export type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseProps & keyof OnlyButtonProps> &
+export type ButtonProps = Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  'className' | keyof BaseProps | keyof OnlyButtonProps
+> &
   BaseProps &
   OnlyButtonProps;
-export type LinkButtonProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseProps> &
+export type LinkButtonProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'className' | keyof BaseProps> &
   BaseProps &
   OnlyLinkButtonProps;

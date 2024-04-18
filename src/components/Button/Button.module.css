@@ -25,13 +25,14 @@
   text-decoration: none;
   transition: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
+  overflow-wrap: anywhere;
 }
 
 .button:focus-visible {
   outline: solid var(--color-accent) 2px;
 }
 
-@media (pointer: fine) {
+@media (hover: hover) {
   .button:hover {
     cursor: pointer;
     color: var(--text-hover);

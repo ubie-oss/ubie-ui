@@ -14,13 +14,10 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
       children,
       variant = 'primary',
       size = 'large',
-      className,
       block = false,
       icon: _icon,
       fixedIcon: _fixedIcon,
       suffixIcon: _suffixIcon,
-      href: _href,
-      disabled = false,
       ...props
     },
     forwardedRef,
@@ -28,17 +25,12 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
     const icon = _icon === 'default' ? <VariantIcon variant={variant} /> : _icon;
     const fixedIcon = _fixedIcon === 'default' ? <VariantIcon variant={variant} /> : _fixedIcon;
     const suffixIcon = _suffixIcon === 'default' ? <VariantIcon variant={variant} /> : _suffixIcon;
-    const cls = clsx(
-      {
-        [styles.button]: true,
-        [styles[variant]]: true,
-        [styles[size]]: true,
-        [styles.block]: block,
-        [styles.disabled]: disabled,
-      },
-      className,
-    );
-    const href = disabled ? undefined : _href;
+    const cls = clsx({
+      [styles.button]: true,
+      [styles[variant]]: true,
+      [styles[size]]: true,
+      [styles.block]: block,
+    });
 
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
     const createElement = (props: any, children: ReactNode) => {
@@ -48,7 +40,6 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
     return createElement(
       {
         className: cls,
-        href,
         ...props,
         ref: forwardedRef,
       },

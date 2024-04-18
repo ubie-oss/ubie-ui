@@ -5,7 +5,7 @@ import { ActionHalfModal } from '..';
 export default {
   title: 'Modal/ActionHalfModal',
   component: ActionHalfModal,
-} as Meta<typeof ActionHalfModal>;
+} satisfies Meta<typeof ActionHalfModal>;
 
 type Story = StoryObj<typeof ActionHalfModal>;
 

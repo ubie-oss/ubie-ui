@@ -1,0 +1,62 @@
+.root {
+  width: 3rem;
+  height: 1.5rem;
+  border-radius: 3rem;
+  padding: 0.125rem;
+  position: relative;
+  display: inline-flex;
+  transition: background-color 200ms;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.root,
+.root * {
+  box-sizing: border-box;
+}
+
+.root:has(input:disabled) {
+  background-color: var(--color-text-disabled);
+  cursor: default;
+}
+
+.on {
+  background-color: var(--color-primary);
+}
+
+.off {
+  background-color: var(--color-ubie-black-400);
+}
+
+@media (hover: hover) {
+  .on:hover {
+    background-color: var(--color-primary-darken);
+  }
+
+  .off:hover {
+    background-color: var(--color-ubie-black-700);
+  }
+}
+
+.thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background-color: var(--color-ubie-white);
+  transition: transform 200ms;
+}
+
+.thumbOn {
+  transform: translateX(1.5rem);
+}
+
+.thumbOff {
+  transform: translateX(0);
+}
+
+.input {
+  visibility: hidden;
+  border: none;
+  padding: 0;
+  position: absolute;
+}

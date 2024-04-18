@@ -1,0 +1,55 @@
+.box {
+  box-sizing: border-box;
+  display: block;
+  padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+  margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
+  border-radius: var(--radius);
+}
+
+.box.backgroundColorPrimary {
+  background-color: var(--color-background-primary);
+}
+
+.box.backgroundColorPrimaryDarken {
+  background-color: var(--color-background-primary-darken);
+}
+
+.box.backgroundColorAccent {
+  background-color: var(--color-background-accent);
+}
+
+.box.backgroundColorAccentDarken {
+  background-color: var(--color-background-accent-darken);
+}
+
+.box.backgroundColorAlert {
+  background-color: var(--color-background-alert);
+}
+
+.box.backgroundColorGray {
+  background-color: var(--color-background-gray);
+}
+
+.box.backgroundColorWhite {
+  background-color: var(--color-background-white);
+}
+
+.box.borderGray {
+  border: 1px solid var(--color-border);
+}
+
+.box.borderGrayThick {
+  border: 2px solid var(--color-border);
+}
+
+.box.borderPrimary {
+  border: 1px solid var(--color-primary);
+}
+
+.box.borderPrimaryThick {
+  border: 2px solid var(--color-primary);
+}
+
+.box.widthFull {
+  width: 100%;
+}

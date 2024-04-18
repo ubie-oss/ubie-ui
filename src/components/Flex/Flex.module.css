@@ -1,0 +1,15 @@
+.flex {
+  display: flex;
+  gap: var(--gap);
+  align-items: var(--align-items);
+  justify-content: var(--justify-content);
+  flex-flow: var(--flex-direction) var(--flex-wrap);
+}
+
+.flex.heightFull {
+  height: 100%;
+}
+
+.flex.widthFull {
+  width: 100%;
+}

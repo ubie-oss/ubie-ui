@@ -30,7 +30,7 @@
   border-color: var(--color-primary);
 }
 
-@media (pointer: fine) {
+@media (hover: hover) {
   .select:hover {
     border: 2px solid var(--color-primary);
   }

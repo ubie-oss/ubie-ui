@@ -1,6 +1,7 @@
 .card {
   display: flex;
-  gap: var(--size-spacing-md);
+  align-items: center;
+  gap: var(--size-spacing-sm);
   padding: var(--size-spacing-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -13,11 +14,12 @@
 
 .icon {
   flex: none;
-  font-size: 2.5rem;
+  font-size: var(--icon-size);
   color: var(--color-primary);
 }
 
 .text {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: var(--size-spacing-xxs);
@@ -25,15 +27,35 @@
 
 .title {
   margin: 0;
-  font-size: var(--text-heading-xs-size);
+  font-size: var(--title-font-size);
   font-weight: bold;
-  line-height: var(--text-heading-xs-line);
   color: var(--color-text-main);
 }
 
 .description {
   margin: 0;
-  font-size: var(--text-note-lg-size);
-  line-height: var(--text-note-lg-line);
+  font-size: var(--description-font-size);
+  line-height: var(--description-line-height);
   color: var(--color-text-sub);
+}
+
+.caret {
+  color: var(--color-primary);
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Size */
+.medium {
+  --icon-size: 2rem;
+  --title-font-size: var(--text-heading-xs-line);
+  --description-font-size: var(--text-note-lg-size);
+  --description-line-height: var(--text-note-lg-line);
+}
+
+.small {
+  --icon-size: 1.25rem;
+  --title-font-size: var(--text-button-md-size);
+  --description-font-size: var(--text-note-md-size);
+  --description-line-height: var(--text-note-md-line);
 }

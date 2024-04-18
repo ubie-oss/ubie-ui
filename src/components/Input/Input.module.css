@@ -12,6 +12,7 @@
   border-radius: 8px 8px 0 0;
   appearance: none;
   caret-color: var(--color-primary);
+  box-sizing: border-box;
 }
 
 .input.isInvalid,
