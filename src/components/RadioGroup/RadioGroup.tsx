@@ -1,9 +1,9 @@
 'use client';
 
 import styles from './RadioGroup.module.css';
+import { Flex } from '../Flex/Flex';
 import { RadioButton } from '../RadioButton/RadioButton';
 import { RadioCard } from '../RadioCard/RadioCard';
-import { Stack } from '../Stack/Stack';
 import type { FC, ReactElement } from 'react';
 
 type RadioComponent = ReactElement<typeof RadioButton> | ReactElement<typeof RadioCard>;
@@ -21,13 +21,13 @@ export const RadioGroup: FC<Props> = ({ children, label, direction = 'column' })
   return (
     <fieldset className={styles.wrapper}>
       <legend className={styles.legend}>{label}</legend>
-      <Stack
+      <Flex
         spacing={childrenIsCard ? 'sm' : 'md'}
         alignItems={childenIsBlock ? 'normal' : undefined}
         direction={direction}
       >
         {children}
-      </Stack>
+      </Flex>
     </fieldset>
   );
 };
