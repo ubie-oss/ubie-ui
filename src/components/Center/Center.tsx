@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import styles from './Center.module.css';
 import { paddingVariables } from '../../utils/style';
@@ -13,14 +15,17 @@ type Props = {
   as?: HTMLTagname;
   /**
    * 内包するテキストを中央に配置。設定は継承され、子孫要素にも影響します
+   * @default false
    */
   textCenter?: boolean;
   /**
    * 子要素を中央に配置。孫要素には影響しません
+   * @default false
    */
   childrenCenter?: boolean;
   /**
    * 横幅の最大値
+   * @default none
    */
   maxWidth?: string;
   /**

@@ -13,6 +13,7 @@ type Props = {
   href?: string;
   /**
    * サイズ
+   * @default medium
    */
   size?: 'medium' | 'small';
   /**

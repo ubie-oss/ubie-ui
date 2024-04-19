@@ -19,6 +19,7 @@ type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name' | 'value' 
   children: React.InputHTMLAttributes<HTMLInputElement>['children'];
   /**
    * 横幅を100%占有するかどうか
+   * @default false
    */
   block?: boolean;
 };

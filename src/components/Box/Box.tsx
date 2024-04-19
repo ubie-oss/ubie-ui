@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import styles from './Box.module.css';
 import {} from '../../types/style';

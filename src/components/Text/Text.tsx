@@ -14,11 +14,12 @@ type BaseProps = {
   as?: HTMLTagname;
   /**
    * 太字とするかどうか
+   * @default false
    */
   bold?: boolean;
   /**
    * 文字色の抽象値
-   * @default textMain
+   * @default main
    */
   color?: TextColor;
   /**
@@ -36,10 +37,12 @@ type BodyLeading = 'default' | 'narrow' | 'tight';
 type BodyProps = BaseProps & {
   /**
    * テキストの種類
+   * @default body
    */
   type?: 'body';
   /**
    * フォントサイズの抽象値
+   * @default md
    */
   size?: BodyFontSize;
   /**

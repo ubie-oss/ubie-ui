@@ -11,6 +11,7 @@ type Props = {
   id?: InputHTMLAttributes<HTMLInputElement>['id'];
   /**
    * 有効でない入力を保持しているかどうか
+   * @default false
    */
   isInvalid?: boolean;
   /**
@@ -19,6 +20,7 @@ type Props = {
   value: string | number;
   /**
    * フィールドを無効化するかどうか
+   * @default false
    */
   disabled?: boolean;
   /**

@@ -47,6 +47,7 @@ export type OnlyButtonProps = {
   type?: HTMLButtonElement['type'];
   /**
    * ボタンを無効化するかどうか
+   * @default false
    */
   disabled?: boolean;
 };

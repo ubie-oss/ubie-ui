@@ -10,7 +10,14 @@ type RadioComponent = ReactElement<typeof RadioButton> | ReactElement<typeof Rad
 
 export type Props = {
   children: RadioComponent[];
+  /**
+   * ラジオグループの見出し（legend要素）
+   */
   label: string;
+  /**
+   * ラジオボタンの配置方向
+   * @default column
+   */
   direction?: 'column' | 'row';
 };
 

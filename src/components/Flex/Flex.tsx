@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import styles from './Flex.module.css';
 import { Spacing, AlignItems, JustifyContent, FlexDirection } from '../../types/style';
@@ -50,7 +52,7 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   direction = 'row',
   alignItems = 'flex-start',
   justifyContent = 'flex-start',
-  wrap = false,
+  wrap,
   spacing,
   height,
   width,
