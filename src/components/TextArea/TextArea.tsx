@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import { FC, TextareaHTMLAttributes } from 'react';
 import styles from './TextArea.module.css';

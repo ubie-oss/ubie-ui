@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import { FC, InputHTMLAttributes } from 'react';
 import styles from './RadioButton.module.css';

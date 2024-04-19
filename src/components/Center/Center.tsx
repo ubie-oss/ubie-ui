@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import styles from './Center.module.css';
 import { paddingVariables } from '../../utils/style';

@@ -1,3 +1,5 @@
+'use client';
+
 import { UnfoldMoreIcon } from '@ubie/ubie-icons';
 import clsx from 'clsx';
 import { FC, forwardRef, InputHTMLAttributes } from 'react';
