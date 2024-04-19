@@ -79,6 +79,7 @@ export const Element: Story = {
       <Heading as="h6" variant="secondary" size="md">
         h6
       </Heading>
+      {/* markuplint-disable-next-line */}
       <Heading as="label" variant="secondary" size="md" htmlFor="some-input-id">
         label
       </Heading>
