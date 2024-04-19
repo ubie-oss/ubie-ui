@@ -7,7 +7,14 @@ import type { FC, ReactElement } from 'react';
 
 export type Props = {
   children: ReactElement<typeof Checkbox>[];
+  /**
+   * チェックボックスグループの見出し（legend要素）
+   */
   label: string;
+  /**
+   * チェックボックスの配置方向
+   * @default column
+   */
   direction?: 'column' | 'row';
 };
 

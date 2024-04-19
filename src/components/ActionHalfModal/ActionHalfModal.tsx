@@ -50,7 +50,7 @@ type BaseProps = {
   isStatic?: boolean;
   /**
    * モーダルをフルスクリーンで表示するかどうか
-   * @default true
+   * @default false
    */
   fullscreen?: boolean;
 };

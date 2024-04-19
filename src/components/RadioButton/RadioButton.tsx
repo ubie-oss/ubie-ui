@@ -20,6 +20,7 @@ type Props = {
   children: InputHTMLAttributes<HTMLInputElement>['children'];
   /**
    * サイズ
+   * @default medium
    */
   size?: 'medium' | 'small';
 } & RadioProps;

@@ -18,6 +18,7 @@ type Props = {
   value: string;
   /**
    * フィールドを無効化するかどうか
+   * @default false
    */
   disabled?: boolean;
   /**

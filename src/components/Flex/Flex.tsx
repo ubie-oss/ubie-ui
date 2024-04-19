@@ -50,7 +50,7 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   direction = 'row',
   alignItems = 'flex-start',
   justifyContent = 'flex-start',
-  wrap = false,
+  wrap,
   spacing,
   height,
   width,
