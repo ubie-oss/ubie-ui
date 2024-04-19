@@ -61,8 +61,8 @@ export const Element: Story = {
       <Heading as="p" variant="secondary" size="md">
         p
       </Heading>
-      <Heading as="h1" variant="secondary" size="md">
-        h1
+      <Heading as="h1" variant="secondary" size="md" id="test-id">
+        h1 with id attribute
       </Heading>
       <Heading as="h2" variant="secondary" size="md">
         h2
@@ -78,6 +78,9 @@ export const Element: Story = {
       </Heading>
       <Heading as="h6" variant="secondary" size="md">
         h6
+      </Heading>
+      <Heading as="label" variant="secondary" size="md" htmlFor="some-input-id">
+        label
       </Heading>
     </Stack>
   ),
