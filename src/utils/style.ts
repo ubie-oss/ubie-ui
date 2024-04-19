@@ -4,16 +4,12 @@ import type { CSSProperties } from 'react';
 
 export type Opacity = 'normal' | 'darker';
 export const opacityToClassName = (opacity: Opacity) => {
-  let className;
   switch (opacity) {
     case 'normal':
-      className = 'normalOverlay';
-      break;
+      return 'normalOverlay';
     case 'darker':
-      className = 'darkerOverlay';
-      break;
+      return 'darkerOverlay';
   }
-  return className;
 };
 
 const createSpacingVariableFromKey = (key: Spacing) => {

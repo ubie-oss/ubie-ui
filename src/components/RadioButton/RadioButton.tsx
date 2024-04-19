@@ -37,7 +37,7 @@ export const RadioButton: FC<Props> = ({
   ...otherProps
 }) => {
   return (
-    <div className={clsx(styles.container, styles[size])}>
+    <div className={clsx(styles[size])}>
       <label className={styles.label}>
         <input
           type="radio"
