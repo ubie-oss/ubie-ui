@@ -63,6 +63,7 @@ type HeadingProps = BaseProps & {
   size?: HeadingFontSize;
   /**
    * 行送りの抽象値（`line-height`）
+   * @default default
    */
   leading?: 'default';
 };
@@ -80,6 +81,7 @@ type NoteProps = BaseProps & {
   size?: NoteFontSize;
   /**
    * 行送りの抽象値（`line-height`）
+   * @default default
    */
   leading?: NoteLeading;
 };
@@ -96,6 +98,7 @@ type ButtonProps = BaseProps & {
   size?: ButtonFontSize;
   /**
    * 行送りの抽象値（`line-height`）
+   * @default default
    */
   leading?: 'default';
 };
@@ -112,6 +115,7 @@ type TagProps = BaseProps & {
   size?: TagFontSize;
   /**
    * 行送りの抽象値（`line-height`）
+   * @default default
    */
   leading?: 'default';
 };
