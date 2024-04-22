@@ -35,7 +35,7 @@ type Props = {
    * レンダリングされるHTML要素
    * @default p
    */
-  as: HTMLTagname;
+  as?: HTMLTagname;
   /**
    * テキストのカラーバリエーション
    * @default secondary
