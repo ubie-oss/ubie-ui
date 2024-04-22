@@ -11,41 +11,31 @@ type Story = StoryObj<typeof Heading>;
 export const Default: Story = {
   render: () => (
     <Stack spacing="md">
-      <Heading size="xs">
-        xs: スマートフォン問診
-      </Heading>
+      <Heading size="xs">xs: スマートフォン問診</Heading>
       <Heading size="xs">
         xs: スマートフォン問診を利用できる
         <br />
         近くの医療機関から調べる
       </Heading>
-      <Heading size="sm">
-        sm: スマートフォン問診
-      </Heading>
+      <Heading size="sm">sm: スマートフォン問診</Heading>
       <Heading size="sm">
         sm: スマートフォン問診を利用できる
         <br />
         近くの医療機関から調べる
       </Heading>
-      <Heading size="md">
-        md: スマートフォン問診
-      </Heading>
+      <Heading size="md">md: スマートフォン問診</Heading>
       <Heading size="md">
         md: スマートフォン問診を利用できる
         <br />
         近くの医療機関から調べる
       </Heading>
-      <Heading size="lg">
-        lg: スマートフォン問診
-      </Heading>
+      <Heading size="lg">lg: スマートフォン問診</Heading>
       <Heading size="lg">
         lg: スマートフォン問診を利用できる
         <br />
         近くの医療機関から調べる
       </Heading>
-      <Heading size="xl">
-        xl: スマートフォン問診
-      </Heading>
+      <Heading size="xl">xl: スマートフォン問診</Heading>
       <Heading size="xl">
         xl: スマートフォン問診を利用できる
         <br />
