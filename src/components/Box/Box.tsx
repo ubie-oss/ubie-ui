@@ -62,13 +62,13 @@ type PropsWithoutText = BaseProps & {
    */
   textType?: undefined;
   /**
-   * フォントサイズの抽象値。合わせてtextTypeの指定が必須
+   * フォントサイズの抽象値。合わせてtextTypeの指定が必須で、typeに応じた値が指定可能
    */
-  textSize?: unknown;
+  textSize?: never;
   /**
-   * 行送りの抽象値（`line-height`）。合わせてtextTypeとtextSizeの指定が必須
+   * 行送りの抽象値（`line-height`）。合わせてtextTypeとtextSizeの指定が必須で、typeに応じた値が指定可能
    */
-  textLeading?: unknown;
+  textLeading?: never;
 };
 
 type PropsWithTextBody = BaseProps & {
@@ -77,11 +77,11 @@ type PropsWithTextBody = BaseProps & {
    */
   textType: Extract<TextType, 'body'>;
   /**
-   * フォントサイズの抽象値。合わせてtextTypeの指定が必須
+   * フォントサイズの抽象値。合わせてtextTypeの指定が必須で、typeに応じた値が指定可能
    */
   textSize?: BodyFontSize;
   /**
-   * 行送りの抽象値（`line-height`）。合わせてtextTypeとtextSizeの指定が必須
+   * 行送りの抽象値（`line-height`）。合わせてtextTypeとtextSizeの指定が必須で、typeに応じた値が指定可能
    */
   textLeading?: BodyLeading;
 };
@@ -92,11 +92,11 @@ type PropsWithTextNote = BaseProps & {
    */
   textType: Extract<TextType, 'note'>;
   /**
-   * フォントサイズの抽象値。合わせてtextTypeの指定が必須
+   * フォントサイズの抽象値。合わせてtextTypeの指定が必須で、typeに応じた値が指定可能
    */
   textSize?: NoteFontSize;
   /**
-   * 行送りの抽象値（`line-height`）。合わせてtextTypeとtextSizeの指定が必須
+   * 行送りの抽象値（`line-height`）。合わせてtextTypeとtextSizeの指定が必須で、typeに応じた値が指定可能
    */
   textLeading?: NoteLeading;
 };
