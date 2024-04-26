@@ -3,7 +3,19 @@
 import { clsx } from 'clsx';
 import { FC, ReactNode } from 'react';
 import styles from './Text.module.css';
-import { TextColor } from '../../types/style';
+import {
+  TextColor,
+  BodyFontSize,
+  BodyLeading,
+  HeadingFontSize,
+  HeadingLeading,
+  NoteFontSize,
+  NoteLeading,
+  ButtonFontSize,
+  ButtonLeading,
+  TagFontSize,
+  TagLeading,
+} from '../../types/style';
 import { HTMLTagname } from '../../utils/types';
 
 type BaseProps = {
@@ -32,8 +44,6 @@ type BaseProps = {
   id?: string;
 };
 
-type BodyFontSize = 'sm' | 'md' | 'lg';
-type BodyLeading = 'default' | 'narrow' | 'tight';
 type BodyProps = BaseProps & {
   /**
    * テキストの種類
@@ -51,7 +61,6 @@ type BodyProps = BaseProps & {
   leading?: BodyLeading;
 };
 
-type HeadingFontSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type HeadingProps = BaseProps & {
   /**
    * テキストの種類
@@ -65,11 +74,9 @@ type HeadingProps = BaseProps & {
    * 行送りの抽象値（`line-height`）
    * @default default
    */
-  leading?: 'default';
+  leading?: HeadingLeading;
 };
 
-type NoteFontSize = 'sm' | 'md' | 'lg';
-type NoteLeading = 'default' | 'narrow' | 'tight';
 type NoteProps = BaseProps & {
   /**
    * テキストの種類
@@ -86,7 +93,6 @@ type NoteProps = BaseProps & {
   leading?: NoteLeading;
 };
 
-type ButtonFontSize = 'sm' | 'md' | 'lg';
 type ButtonProps = BaseProps & {
   /**
    * テキストの種類
@@ -100,10 +106,9 @@ type ButtonProps = BaseProps & {
    * 行送りの抽象値（`line-height`）
    * @default default
    */
-  leading?: 'default';
+  leading?: ButtonLeading;
 };
 
-type TagFontSize = 'sm' | 'md' | 'lg';
 type TagProps = BaseProps & {
   /**
    * テキストの種類
@@ -117,7 +122,7 @@ type TagProps = BaseProps & {
    * 行送りの抽象値（`line-height`）
    * @default default
    */
-  leading?: 'default';
+  leading?: TagLeading;
 };
 
 type TextProps = BodyProps | HeadingProps | NoteProps | ButtonProps | TagProps;

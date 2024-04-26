@@ -1,5 +1,19 @@
 import DesignTokens from '@ubie/design-tokens';
-import type { Spacing, Radius } from '../types/style';
+import type {
+  Spacing,
+  Radius,
+  HeadingFontSize,
+  TextType,
+  BodyFontSize,
+  BodyLeading,
+  NoteFontSize,
+  NoteLeading,
+  ButtonFontSize,
+  ButtonLeading,
+  HeadingLeading,
+  TagLeading,
+  TextColor,
+} from '../types/style';
 import type { CSSProperties } from 'react';
 
 export type Opacity = 'normal' | 'darker';
@@ -18,6 +32,128 @@ const createSpacingVariableFromKey = (key: Spacing) => {
 
 const createRadiusVariableFromKey = (key: Radius) => {
   return `var(--${DesignTokens.radius[key].path.join('-')})`;
+};
+
+export const cssFontSizeToken = ({
+  type,
+  size,
+}:
+  | {
+      type: Extract<TextType, 'body'>;
+      size: BodyFontSize;
+    }
+  | {
+      type: Extract<TextType, 'note'>;
+      size: NoteFontSize;
+    }
+  | {
+      type: Extract<TextType, 'heading'>;
+      size: HeadingFontSize;
+    }
+  | {
+      type: Extract<TextType, 'button'>;
+      size: ButtonFontSize;
+    }
+  | {
+      type: Extract<TextType, 'tag'>;
+      size: NoteFontSize;
+    }) => {
+  switch (type) {
+    case 'body':
+      return `var(--${DesignTokens.text[`${type}-${size}-size`].path.join('-')})`;
+    case 'note':
+      return `var(--${DesignTokens.text[`${type}-${size}-size`].path.join('-')})`;
+    case 'heading':
+      return `var(--${DesignTokens.text[`${type}-${size}-size`].path.join('-')})`;
+    case 'button':
+      return `var(--${DesignTokens.text[`${type}-${size}-size`].path.join('-')})`;
+    case 'tag':
+      return `var(--${DesignTokens.text[`${type}-${size}-size`].path.join('-')})`;
+    default:
+      // eslint-disable-next-line no-case-declarations
+      const _: never = type;
+  }
+
+  return '';
+};
+
+export const cssLeadingToken = ({
+  type,
+  size,
+  leading,
+}:
+  | {
+      type: Extract<TextType, 'body'>;
+      size: BodyFontSize;
+      leading: BodyLeading;
+    }
+  | {
+      type: Extract<TextType, 'note'>;
+      size: NoteFontSize;
+      leading: NoteLeading;
+    }
+  | {
+      type: Extract<TextType, 'heading'>;
+      size: HeadingFontSize;
+      leading: HeadingLeading;
+    }
+  | {
+      type: Extract<TextType, 'button'>;
+      size: ButtonFontSize;
+      leading: ButtonLeading;
+    }
+  | {
+      type: Extract<TextType, 'tag'>;
+      size: NoteFontSize;
+      leading: TagLeading;
+    }) => {
+  switch (type) {
+    case 'body':
+      return leading === 'default'
+        ? `var(--${DesignTokens.text[`${type}-${size}-line`].path.join('-')})`
+        : `var(--${DesignTokens.text[`${type}-${size}-${leading}-line`].path.join('-')})`;
+    case 'heading':
+      return `var(--${DesignTokens.text[`${type}-${size}-line`].path.join('-')})`;
+    case 'note':
+      return leading === 'default'
+        ? `var(--${DesignTokens.text[`${type}-${size}-line`].path.join('-')})`
+        : `var(--${DesignTokens.text[`${type}-${size}-${leading}-line`].path.join('-')})`;
+    case 'button':
+      return `var(--${DesignTokens.text[`${type}-${size}-line`].path.join('-')})`;
+    case 'tag':
+      return `var(--${DesignTokens.text[`${type}-${size}-line`].path.join('-')})`;
+    default:
+      // eslint-disable-next-line no-case-declarations
+      const _: never = type;
+  }
+
+  return '';
+};
+
+export const colorVariable = (color: TextColor | undefined): CSSProperties => {
+  if (color == null) {
+    return {
+      '--text-color': 'inherit',
+    } as CSSProperties;
+  }
+
+  let _color = '';
+
+  if (color === 'linkSub') {
+    _color = `var(--${DesignTokens.color[`text-link-sub`].path.join('-')})`;
+  } else if (color === 'primary') {
+    _color = `var(--${DesignTokens.color['primary'].path.join('-')})`;
+  } else if (color === 'accent') {
+    _color = `var(--${DesignTokens.color['accent'].path.join('-')})`;
+  } else if (color === 'alert') {
+    _color = `var(--${DesignTokens.color['alert'].path.join('-')})`;
+  } else {
+    _color = `var(--${DesignTokens.color[`text-${color}`].path.join('-')})`;
+  }
+
+  return {
+    '--text-color': _color,
+  } as CSSProperties;
 };
 
 /**
