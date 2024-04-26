@@ -37,6 +37,10 @@ export type BaseProps = {
    * 後方配置のアイコン
    */
   suffixIcon?: 'default' | ReactNode;
+  /**
+   * ローディング状態を示す
+   */
+  loading?: boolean;
 };
 
 export type OnlyButtonProps = {
