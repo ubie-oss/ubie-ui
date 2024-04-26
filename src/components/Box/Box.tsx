@@ -26,7 +26,7 @@ import type {
 } from '../../types/style';
 import type { CSSProperties, FC, PropsWithChildren } from 'react';
 
-type Props = {
+type BaseProps = {
   /**
    * レンダリングされるHTML要素
    * @default div
@@ -48,39 +48,57 @@ type Props = {
    * 内包するテキストをボールドとするかどうか
    */
   textBold?: boolean;
+  /**
+   * 文字色の抽象値。のかのtext系Propとは独立して指定可能
+   */
+  textColor?: TextColor;
 } & PaddingProps &
   MarginProps &
-  RadiusProp & {
-    /**
-     * テキストの種類
-     */
-    textType?: undefined;
-    /**
-     * フォントサイズの抽象値。合わせてtextTypeの指定が必須
-     */
-    textSize?: unknown;
-    /**
-     * 行送りの抽象値（`line-height`）。合わせてtextTypeとtextSizeの指定が必須
-     */
-    textLeading?: unknown;
-    /**
-     * 文字色の抽象値
-     */
-    textColor?: TextColor;
-  };
+  RadiusProp;
 
-type PropsWithBody = Omit<Props, 'textType' | 'textSize' | 'textLeading'> & {
-  textType: Extract<TextType, 'body'>;
-  textSize?: BodyFontSize;
-  textLeading?: BodyLeading;
-  textColor?: TextColor;
+type PropsWithoutText = BaseProps & {
+  /**
+   * テキストの種類
+   */
+  textType?: undefined;
+  /**
+   * フォントサイズの抽象値。合わせてtextTypeの指定が必須
+   */
+  textSize?: unknown;
+  /**
+   * 行送りの抽象値（`line-height`）。合わせてtextTypeとtextSizeの指定が必須
+   */
+  textLeading?: unknown;
 };
 
-type PropsWithNote = Omit<Props, 'textType' | 'textSize' | 'textLeading'> & {
+type PropsWithTextBody = BaseProps & {
+  /**
+   * テキストの種類
+   */
+  textType: Extract<TextType, 'body'>;
+  /**
+   * フォントサイズの抽象値。合わせてtextTypeの指定が必須
+   */
+  textSize?: BodyFontSize;
+  /**
+   * 行送りの抽象値（`line-height`）。合わせてtextTypeとtextSizeの指定が必須
+   */
+  textLeading?: BodyLeading;
+};
+
+type PropsWithTextNote = BaseProps & {
+  /**
+   * テキストの種類
+   */
   textType: Extract<TextType, 'note'>;
+  /**
+   * フォントサイズの抽象値。合わせてtextTypeの指定が必須
+   */
   textSize?: NoteFontSize;
+  /**
+   * 行送りの抽象値（`line-height`）。合わせてtextTypeとtextSizeの指定が必須
+   */
   textLeading?: NoteLeading;
-  textColor?: TextColor;
 };
 
 /**
@@ -94,8 +112,8 @@ export const textStyleVariables = ({
 }:
   | {
       type: undefined;
-      size: unknown;
-      leading: unknown;
+      size: never;
+      leading: never;
     }
   | {
       type: Extract<TextType, 'body'>;
@@ -133,7 +151,7 @@ export const textStyleVariables = ({
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-export const Box: FC<PropsWithChildren<Props | PropsWithBody | PropsWithNote>> = ({
+export const Box: FC<PropsWithChildren<PropsWithoutText | PropsWithTextBody | PropsWithTextNote>> = ({
   as: BoxComponent = 'div',
   children,
   pt,
