@@ -16,7 +16,6 @@ export const CircularProgress: FC = ({ ...props }) => {
           fill="none"
           strokeWidth={THICKNESS}
         />
-        s
       </svg>
     </span>
   );
