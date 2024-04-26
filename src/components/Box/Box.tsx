@@ -45,7 +45,7 @@ type BaseProps = {
    */
   width?: 'full';
   /**
-   * 内包するテキストをボールドとするかどうか
+   * 内包するテキストをボールドとするかどうか。指定しない場合は親要素のスタイルを継承、trueでボールド、falseとするとnormal
    */
   textBold?: boolean;
   /**
@@ -188,6 +188,7 @@ export const Box: FC<PropsWithChildren<PropsWithoutText | PropsWithTextBody | Pr
         border && styles[`border${capitalize(border)}`],
         width && styles.widthFull,
         textBold && styles.textBold,
+        textBold === false && styles.textNormal,
       ])}
       style={{
         ...paddingVariables({

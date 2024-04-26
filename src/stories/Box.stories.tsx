@@ -192,10 +192,22 @@ export const TextVariations: Story = {
         textLeading="narrow"
       >
         <p>Text Bold</p>
-      </Box>
 
-      <Box {...defaultArgs} mt="lg" backgroundColor="gray" textColor="main" textBold>
-        <p>Text Bold</p>
+        <Box {...defaultArgs} backgroundColor="gray">
+          <p>nested</p>
+        </Box>
+
+        <Box
+          {...defaultArgs}
+          mt="md"
+          backgroundColor="gray"
+          textType="note"
+          textSize="lg"
+          textLeading="tight"
+          textBold={false}
+        >
+          <p>nested. reset styles</p>
+        </Box>
       </Box>
 
       <Box {...defaultArgs} backgroundColor="gray" mt="xl" textColor="main">

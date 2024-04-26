@@ -61,3 +61,7 @@
 .box.textBold {
   font-weight: bold;
 }
+
+.box.textNormal {
+  font-weight: normal;
+}
