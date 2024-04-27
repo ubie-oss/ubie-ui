@@ -7,7 +7,11 @@ const THICKNESS = 3.6;
 export const CircularProgress: FC = ({ ...props }) => {
   return (
     <span role="progressbar" className={styles.root} {...props}>
-      <svg role="img" aria-label="読み込み中" viewBox={`${CIRCLE_SIZE / 2} ${CIRCLE_SIZE / 2} ${CIRCLE_SIZE} ${CIRCLE_SIZE}`}>
+      <svg
+        role="img"
+        aria-label="読み込み中"
+        viewBox={`${CIRCLE_SIZE / 2} ${CIRCLE_SIZE / 2} ${CIRCLE_SIZE} ${CIRCLE_SIZE}`}
+      >
         <circle
           className={styles.circle}
           cx={CIRCLE_SIZE}
