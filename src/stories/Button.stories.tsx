@@ -130,3 +130,11 @@ export const Disabled: Story = {
   ),
   args: defaultArgs,
 };
+
+export const CustomDataAttribute: Story = {
+  render: (args) => <Button {...args} />,
+  args: {
+    ['data-test-id']: 'some-test',
+    ...defaultArgs,
+  },
+};
