@@ -5,6 +5,7 @@ import styles from './Box.module.css';
 import {} from '../../types/style';
 import { paddingVariables, marginVariables, radiusVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
+import type { CustomDataAttributeProps } from '../../types/attributes';
 import type { PaddingProps, MarginProps, RadiusProp, BackgroundColor } from '../../types/style';
 import type { FC, PropsWithChildren } from 'react';
 
@@ -28,7 +29,8 @@ type Props = {
   width?: 'full';
 } & PaddingProps &
   MarginProps &
-  RadiusProp;
+  RadiusProp &
+  CustomDataAttributeProps;
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
@@ -47,6 +49,7 @@ export const Box: FC<PropsWithChildren<Props>> = ({
   backgroundColor,
   border,
   width,
+  ...props
 }) => {
   return (
     <BoxCopmonent
@@ -71,6 +74,7 @@ export const Box: FC<PropsWithChildren<Props>> = ({
         }),
         ...radiusVariables(radius),
       }}
+      {...props}
     >
       {children}
     </BoxCopmonent>

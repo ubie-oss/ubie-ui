@@ -174,3 +174,11 @@ export const AsSection: Story = {
     </Box>
   ),
 };
+
+export const CustomDataAttribute: Story = {
+  render: (args) => <Box {...args} />,
+  args: {
+    ['data-test-id']: 'some-test',
+    ...defaultArgs,
+  },
+};
