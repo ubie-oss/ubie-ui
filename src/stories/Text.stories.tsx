@@ -306,3 +306,11 @@ export const TextInText: Story = {
     </Text>
   ),
 };
+
+export const CustomDataAttribute: Story = {
+  render: () => (
+    <Text date-test-id="some-id" bold>
+      Text
+    </Text>
+  ),
+};

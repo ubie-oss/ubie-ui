@@ -104,3 +104,24 @@ export const Customized: Story = {
     closeLabel: 'キャンセル',
   },
 };
+
+export const CustomDataAttribute: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionModal {...args} open={open} onPrimaryAction={() => setOpen(false)} onClose={() => setOpen(false)}>
+          <p>Default</p>
+        </ActionModal>
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    [`data-test-id`]: 'some-id',
+  },
+};

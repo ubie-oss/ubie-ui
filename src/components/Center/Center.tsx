@@ -2,6 +2,7 @@
 
 import clsx from 'clsx';
 import styles from './Center.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes';
 import { paddingVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
 import type { PaddingProps } from '../../types/style';
@@ -32,7 +33,8 @@ type Props = {
    * HTMLのID属性の値
    */
   id?: string;
-} & PaddingProps;
+} & PaddingProps &
+  CustomDataAttributeProps;
 
 export const Center: FC<PropsWithChildren<Props>> = ({
   as: CenterCopmonent = 'div',
@@ -45,6 +47,7 @@ export const Center: FC<PropsWithChildren<Props>> = ({
   childrenCenter,
   id,
   maxWidth = 'none',
+  ...props
 }) => {
   return (
     <CenterCopmonent
@@ -61,6 +64,7 @@ export const Center: FC<PropsWithChildren<Props>> = ({
           }),
         } as CSSProperties
       }
+      {...props}
     >
       {children}
     </CenterCopmonent>

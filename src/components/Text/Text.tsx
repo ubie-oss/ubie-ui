@@ -3,6 +3,7 @@
 import { clsx } from 'clsx';
 import { FC, ReactNode } from 'react';
 import styles from './Text.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes';
 import { TextColor } from '../../types/style';
 import { HTMLTagname } from '../../utils/types';
 
@@ -30,7 +31,7 @@ type BaseProps = {
    * HTMLのid属性
    */
   id?: string;
-};
+} & CustomDataAttributeProps;
 
 type BodyFontSize = 'sm' | 'md' | 'lg';
 type BodyLeading = 'default' | 'narrow' | 'tight';
@@ -134,11 +135,13 @@ export const Text: FC<TextProps> = ({
   color = 'main',
   children,
   id,
+  ...props
 }) => {
   return (
     <TextComponent
       id={id}
       className={clsx(styles.text, bold && styles.bold, styles[size], styles[type], styles[leading], styles[color])}
+      {...props}
     >
       {children}
     </TextComponent>
