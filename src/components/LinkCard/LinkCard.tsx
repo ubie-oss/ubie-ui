@@ -4,6 +4,7 @@ import { ArrowBRightIcon } from '@ubie/ubie-icons';
 import clsx from 'clsx';
 import { cloneElement, forwardRef } from 'react';
 import styles from './LinkCard.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import type { ComponentType, ReactElement, ReactNode } from 'react';
 
 type Props = {
@@ -37,7 +38,7 @@ type Props = {
    * アイコン
    */
   icon?: ComponentType<{ className?: string }>;
-};
+} & CustomDataAttributeProps;
 
 export const LinkCard = forwardRef<HTMLAnchorElement, Props>(
   ({ title, size = 'medium', className, icon: IconComponent, description, render, ...props }, forwardedRef) => {

@@ -1,5 +1,6 @@
 import { clsx } from 'clsx';
 import styles from './Heading.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import { HTMLTagname } from '../../utils/types';
 import type { FC, PropsWithChildren, ReactNode } from 'react';
 
@@ -49,7 +50,7 @@ type Props = {
    * HTMLのfor属性。label要素の場合に使用
    */
   htmlFor?: string;
-};
+} & CustomDataAttributeProps;
 
 const Heading: FC<PropsWithChildren<Props>> = ({
   textAlign = 'left',
@@ -63,6 +64,7 @@ const Heading: FC<PropsWithChildren<Props>> = ({
   as: HeadingComponent = 'p',
   id,
   htmlFor,
+  ...otherProps
 }) => {
   const className = clsx(
     styles.heading,
@@ -74,7 +76,7 @@ const Heading: FC<PropsWithChildren<Props>> = ({
   );
 
   return (
-    <HeadingComponent className={className} id={id} htmlFor={htmlFor}>
+    <HeadingComponent className={className} id={id} htmlFor={htmlFor} {...otherProps}>
       {primaryIcon && (
         <span aria-hidden className={clsx(styles.icon, styles.primary)}>
           {primaryIcon}

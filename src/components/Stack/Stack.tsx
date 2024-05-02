@@ -3,10 +3,11 @@
 import { clsx } from 'clsx';
 import { FC, ReactNode } from 'react';
 import styles from './Stack.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import { Spacing, AlignItems, JustifyContent } from '../../types/style';
 import { HTMLTagname } from '../../utils/types';
 
-type Props = {
+type Props = CustomDataAttributeProps & {
   /**
    * レンダリングされるコンポーネントまたはHTML要素
    * @default div
@@ -48,6 +49,7 @@ export const Stack: FC<Props> = ({
   spacing,
   alignItems = 'flex-start',
   justifyContent = 'flex-start',
+  ...otherProps
 }) => {
   return (
     <StackComponent
@@ -57,6 +59,7 @@ export const Stack: FC<Props> = ({
         gap: `var(--size-spacing-${spacing})`,
       }}
       className={clsx(className, styles.stack)}
+      {...otherProps}
     >
       {children}
     </StackComponent>

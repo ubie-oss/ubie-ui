@@ -95,3 +95,12 @@ export const BlockLevelElementsToFullWidth: Story = {
   ),
   args: defaultArgs,
 };
+
+export const CustomDataAttribute: Story = {
+  render: (args) => (
+    <Stack {...args}>
+      <p>This is a paragraph.</p>
+    </Stack>
+  ),
+  args: { ...defaultArgs, 'data-test-id': 'custom-attribute' },
+};

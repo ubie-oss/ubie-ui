@@ -170,3 +170,11 @@ export const AsSection: Story = {
     </Flex>
   ),
 };
+
+export const CustomDataAttribute: Story = {
+  render: () => (
+    <Flex data-test-id="flex-custom-attribute" spacing="md" alignItems="center">
+      <div>Flex component with custom data attribute</div>
+    </Flex>
+  ),
+};

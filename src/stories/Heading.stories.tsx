@@ -270,3 +270,10 @@ export const Icon: Story = {
     </Stack>
   ),
 };
+
+export const CustomDataAttribute: Story = {
+  render: (args) => <Heading {...args}>Heading with Custom Data Attribute</Heading>,
+  args: {
+    [`data-test-id`]: 'heading-custom-attribute',
+  },
+};

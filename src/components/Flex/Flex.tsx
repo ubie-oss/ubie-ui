@@ -2,6 +2,7 @@
 
 import clsx from 'clsx';
 import styles from './Flex.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import { Spacing, AlignItems, JustifyContent, FlexDirection } from '../../types/style';
 import { HTMLTagname } from '../../utils/types';
 import type { FC, PropsWithChildren } from 'react';
@@ -44,7 +45,7 @@ type Props = {
    * デフォルトで<Flex>は横幅いっぱいを専有する。しかし例えば、フレックスコンテナの子要素として配置した場合、横幅が自身の子に合わせて小さくなる。これが不都合の場合に100%とする事が可能
    */
   width?: 'full';
-};
+} & CustomDataAttributeProps;
 
 export const Flex: FC<PropsWithChildren<Props>> = ({
   as: FlexCopmonent = 'div',
@@ -56,6 +57,7 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   spacing,
   height,
   width,
+  ...otherProps
 }) => {
   // Directly specifying the markuplint will result in a markuplint error.
   const gapStyle = spacing ? `var(--size-spacing-${spacing})` : '0';
@@ -72,6 +74,7 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
           '--flex-wrap': wrap ? 'wrap' : 'nowrap',
         } as React.CSSProperties
       }
+      {...otherProps}
     >
       {children}
     </FlexCopmonent>

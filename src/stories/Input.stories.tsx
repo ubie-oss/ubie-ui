@@ -115,3 +115,9 @@ export const Disabled: Story = {
 export const IsInvalid: Story = {
   render: () => <Input value="wrong value" isInvalid />,
 };
+export const CustomDataAttribute: Story = {
+  args: {
+    'data-test-id': 'input-custom-attribute',
+  },
+  render: (args) => <Input {...args} />,
+};

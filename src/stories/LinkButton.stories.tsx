@@ -115,3 +115,11 @@ export const Block: Story = {
     </div>
   ),
 };
+
+export const CustomDataAttribute: Story = {
+  args: {
+    ...defaultArgs,
+    'data-test-id': 'link-button-custom-attribute',
+  },
+  render: (args) => <LinkButton {...args}>Please enter in English</LinkButton>,
+};

@@ -1,6 +1,7 @@
 'use client';
 
 import styles from './CheckboxGroup.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import { Checkbox } from '../Checkbox/Checkbox';
 import { Flex } from '../Flex/Flex';
 import type { FC, ReactElement } from 'react';
@@ -16,11 +17,11 @@ export type Props = {
    * @default column
    */
   direction?: 'column' | 'row';
-};
+} & CustomDataAttributeProps;
 
-export const CheckboxGroup: FC<Props> = ({ children, label, direction = 'column' }) => {
+export const CheckboxGroup: FC<Props> = ({ children, label, direction = 'column', ...otherProps }) => {
   return (
-    <fieldset className={styles.wrapper}>
+    <fieldset className={styles.wrapper} {...otherProps}>
       <legend className={styles.legend}>{label}</legend>
       <Flex spacing="md" direction={direction}>
         {children}
