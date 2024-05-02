@@ -4,6 +4,10 @@
   padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
   margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
   border-radius: var(--radius);
+  font-size: var(--text-size);
+  color: var(--text-color);
+  line-height: var(--text-leading);
+  font-weight: var(--text-bold);
 }
 
 .box.backgroundColorPrimary {
@@ -52,4 +56,12 @@
 
 .box.widthFull {
   width: 100%;
+}
+
+.box.textBold {
+  font-weight: bold;
+}
+
+.box.textNormal {
+  font-weight: normal;
 }

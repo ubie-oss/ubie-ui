@@ -6,6 +6,26 @@ export type Leading = 'default' | 'narrow' | 'tight';
 
 export type TextColor = 'main' | 'sub' | 'link' | 'linkSub' | 'disabled' | 'primary' | 'accent' | 'alert' | 'white';
 
+export type BodyFontSize = Extract<FontSize, 'sm' | 'md' | 'lg'>;
+
+export type BodyLeading = Extract<Leading, 'default' | 'narrow' | 'tight'>;
+
+export type HeadingFontSize = Extract<FontSize, 'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
+
+export type HeadingLeading = Extract<Leading, 'default'>;
+
+export type NoteFontSize = Extract<FontSize, 'sm' | 'md' | 'lg'>;
+
+export type NoteLeading = Extract<Leading, 'default' | 'narrow' | 'tight'>;
+
+export type ButtonFontSize = Extract<FontSize, 'sm' | 'md' | 'lg'>;
+
+export type ButtonLeading = Extract<Leading, 'default'>;
+
+export type TagFontSize = Extract<FontSize, 'sm' | 'md' | 'lg'>;
+
+export type TagLeading = Extract<Leading, 'default'>;
+
 export type Spacing = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 export type PaddingProps = {

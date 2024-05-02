@@ -57,5 +57,14 @@ module.exports = {
     'unused-imports/no-unused-imports': 'error',
     'import/no-unresolved': 'off',
     'no-console': 'error',
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "_",
+        "varsIgnorePattern": "_",
+        "caughtErrorsIgnorePattern": "_",
+        "destructuredArrayIgnorePattern": "_"
+      }
+    ]
   },
 };
