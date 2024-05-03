@@ -20,6 +20,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       type = 'button',
       disabled = false,
       loading = false,
+      onClick,
       ...props
     },
     ref,
@@ -36,8 +37,25 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       [styles.loading]: loading,
     });
 
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (loading) {
+        e.preventDefault();
+        return;
+      }
+
+      onClick?.(e);
+    };
+
     return (
-      <button type={type} className={cls} ref={ref} disabled={disabled || loading} {...props}>
+      <button
+        type={type}
+        className={cls}
+        ref={ref}
+        disabled={disabled}
+        aria-disabled={loading}
+        onClick={handleClick}
+        {...props}
+      >
         {fixedIcon && <span className={styles.fixedIcon}>{fixedIcon}</span>}
         <span className={styles.label}>
           {icon && <span className={styles.icon}>{icon}</span>}
