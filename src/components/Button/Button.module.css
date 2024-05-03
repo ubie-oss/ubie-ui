@@ -58,6 +58,11 @@
   border-color: var(--border-color-disabled);
 }
 
+.loading {
+  pointer-events: none;
+  cursor: wait;
+}
+
 /* Variant */
 
 .primary {

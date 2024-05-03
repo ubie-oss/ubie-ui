@@ -50,6 +50,10 @@ export type OnlyButtonProps = {
    * @default false
    */
   disabled?: boolean;
+  /**
+   * ローディング状態を示す
+   */
+  loading?: boolean;
 };
 
 export type OnlyLinkButtonProps = {

@@ -1,0 +1,38 @@
+.root {
+  display: flex;
+  animation: spin 1.4s linear infinite;
+  transform-origin: center;
+}
+
+.circle {
+  stroke: currentcolor;
+  animation: circular-progress 1.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes circular-progress {
+  0% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -16px;
+  }
+
+  100% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -124px;
+  }
+}
