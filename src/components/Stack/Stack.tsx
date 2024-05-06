@@ -17,13 +17,13 @@ type Props = {
    */
   spacing: Spacing;
   /**
-   * 主軸方向における子要素のレイアウトを定める。`direction` prop が `column` の場合は水平軸、 `row` の場合は垂直軸のレイアウトを制御する。水平軸の場合に、ブロックレベル要素を幅いっぱいに占有させたい場合は `normal` を使うこと
+   * 水平方向における子要素のレイアウトを定める。ブロックレベル要素を幅いっぱいに占有させたい場合は `normal` を使うこと
    * @default flex-start
    */
   alignItems?: AlignItems;
   /**
-   * 交差軸方向における子要素のレイアウトを定める。directionが `column` の場合は垂軸直、`row` の場合は水平軸のレイアウトを制御する。水平軸の場合に、ブロックレベル要素を幅いっぱいに占有させたい場合は `normal` を使うこと
-   * @default flex-start
+   * 垂直方向における子要素のレイアウトを定める。
+   * @deprecated directionが削除されたため必要なくなりました
    */
   justifyContent?: JustifyContent;
   /**
