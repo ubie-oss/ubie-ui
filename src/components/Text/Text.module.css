@@ -36,7 +36,7 @@
 }
 
 .heading.md {
-  --font-size: var(--text-heading-sm-size);
+  --font-size: var(--text-heading-md-size);
 }
 
 .heading.lg {
