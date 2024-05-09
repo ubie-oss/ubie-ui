@@ -1,5 +1,8 @@
 import { clsx } from 'clsx';
 import styles from './Heading.module.css';
+import {
+  TextColor,
+} from '../../types/style';
 import { HTMLTagname } from '../../utils/types';
 import type { FC, PropsWithChildren, ReactNode } from 'react';
 
@@ -40,7 +43,7 @@ type Props = {
    * テキストのカラーバリエーション
    * @default secondary
    */
-  variant?: 'primary' | 'secondary' | 'accent' | 'white';
+  color?: Extract<TextColor, 'main' | 'primary' | 'accent' | 'white'>;
   /**
    * HTMLのID属性
    */
@@ -63,7 +66,7 @@ const Heading: FC<PropsWithChildren<Props>> = ({
   accentIcon,
   whiteIcon,
   size = 'md',
-  variant = 'secondary',
+  color = 'main',
   leadingBorder,
   as: HeadingComponent = 'p',
   id,
