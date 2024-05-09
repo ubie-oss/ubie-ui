@@ -49,6 +49,11 @@ type Props = {
    * HTMLのfor属性。label要素の場合に使用
    */
   htmlFor?: string;
+  /**
+   * 太字とするかどうか、falseの場合はnormal
+   * @default true
+   */
+  bold?: boolean;
 };
 
 const Heading: FC<PropsWithChildren<Props>> = ({
@@ -63,14 +68,17 @@ const Heading: FC<PropsWithChildren<Props>> = ({
   as: HeadingComponent = 'p',
   id,
   htmlFor,
+  bold = true,
 }) => {
   const className = clsx(
     styles.heading,
     primaryIcon || accentIcon || whiteIcon ? styles.hasIcon : null,
     styles[textAlign],
     styles[size],
-    leadingBorder ? styles.secondary : styles[variant],
+    // For leadingBorder, only the main text colour is supported.
+    leadingBorder ? styles.secondary : styles[color],
     leadingBorder ? styles.leadingBorder : null,
+    bold ? styles.bold : null
   );
 
   return (

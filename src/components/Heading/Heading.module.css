@@ -1,11 +1,15 @@
 .heading {
-  font-weight: bold;
+  font-weight: normal;
   box-sizing: border-box;
   color: var(--color-text-main);
   position: relative;
 
   --medium-leading-border-width: 4px;
   --large-leading-border-width: 5px;
+}
+
+.heading.bold {
+  font-weight: bold;
 }
 
 :where(.heading) {
