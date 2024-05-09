@@ -66,6 +66,17 @@ export type MarginProps = {
   ml?: Spacing;
 };
 
+export type MarginYProps = {
+  /**
+   * margin-topの値。Spacing Tokenのキーを指定
+   */
+  mt?: Spacing;
+  /**
+   * margin-bottomの値。Spacing Tokenのキーを指定
+   */
+  mb?: Spacing;
+};
+
 export type FlexDirection = 'row' | 'column';
 
 export type AlignItems = 'normal' | 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline';

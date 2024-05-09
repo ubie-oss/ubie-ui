@@ -4,6 +4,8 @@
   align-items: var(--align-items);
   justify-content: var(--justify-content);
   flex-flow: var(--flex-direction) var(--flex-wrap);
+  padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+  margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
 }
 
 .flex.heightFull {
