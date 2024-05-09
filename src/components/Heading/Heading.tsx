@@ -1,8 +1,6 @@
 import { clsx } from 'clsx';
 import styles from './Heading.module.css';
-import {
-  TextColor,
-} from '../../types/style';
+import { TextColor } from '../../types/style';
 import { HTMLTagname } from '../../utils/types';
 import type { FC, PropsWithChildren, ReactNode } from 'react';
 
@@ -76,12 +74,12 @@ const Heading: FC<PropsWithChildren<Props>> = ({
   const className = clsx(
     styles.heading,
     primaryIcon || accentIcon || whiteIcon ? styles.hasIcon : null,
-    textAlign? styles[textAlign] : null,
+    textAlign ? styles[textAlign] : null,
     styles[size],
     // For leadingBorder, only the main text colour is supported.
     leadingBorder ? styles.secondary : styles[color],
     leadingBorder ? styles.leadingBorder : null,
-    bold ? styles.bold : null
+    bold ? styles.bold : null,
   );
 
   return (
