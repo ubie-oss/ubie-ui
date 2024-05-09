@@ -77,7 +77,7 @@ export const Element: Story = {
   ),
 };
 
-export const colors: Story = {
+export const Colors: Story = {
   render: () => (
     <Stack spacing="md">
       <Heading as="p" color="main" size="md">
