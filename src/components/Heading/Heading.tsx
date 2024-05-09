@@ -1,5 +1,6 @@
 import { clsx } from 'clsx';
 import styles from './Heading.module.css';
+import { TextColor } from '../../types/style';
 import { HTMLTagname } from '../../utils/types';
 import type { FC, PropsWithChildren, ReactNode } from 'react';
 
@@ -40,7 +41,7 @@ type Props = {
    * テキストのカラーバリエーション
    * @default secondary
    */
-  variant?: 'primary' | 'secondary' | 'accent' | 'white';
+  color?: Extract<TextColor, 'main' | 'primary' | 'accent' | 'white'>;
   /**
    * HTMLのID属性
    */
@@ -49,28 +50,36 @@ type Props = {
    * HTMLのfor属性。label要素の場合に使用
    */
   htmlFor?: string;
+  /**
+   * 太字とするかどうか、falseの場合はnormal
+   * @default true
+   */
+  bold?: boolean;
 };
 
 const Heading: FC<PropsWithChildren<Props>> = ({
-  textAlign = 'left',
+  textAlign,
   children,
   primaryIcon,
   accentIcon,
   whiteIcon,
   size = 'md',
-  variant = 'secondary',
+  color = 'main',
   leadingBorder,
   as: HeadingComponent = 'p',
   id,
   htmlFor,
+  bold = true,
 }) => {
   const className = clsx(
     styles.heading,
     primaryIcon || accentIcon || whiteIcon ? styles.hasIcon : null,
-    styles[textAlign],
+    textAlign ? styles[textAlign] : null,
     styles[size],
-    leadingBorder ? styles.secondary : styles[variant],
+    // For leadingBorder, only the main text colour is supported.
+    leadingBorder ? styles.secondary : styles[color],
     leadingBorder ? styles.leadingBorder : null,
+    bold ? styles.bold : null,
   );
 
   return (
