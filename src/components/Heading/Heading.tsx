@@ -60,7 +60,7 @@ type Props = {
 };
 
 const Heading: FC<PropsWithChildren<Props>> = ({
-  textAlign = 'left',
+  textAlign,
   children,
   primaryIcon,
   accentIcon,
@@ -76,7 +76,7 @@ const Heading: FC<PropsWithChildren<Props>> = ({
   const className = clsx(
     styles.heading,
     primaryIcon || accentIcon || whiteIcon ? styles.hasIcon : null,
-    styles[textAlign],
+    textAlign? styles[textAlign] : null,
     styles[size],
     // For leadingBorder, only the main text colour is supported.
     leadingBorder ? styles.secondary : styles[color],

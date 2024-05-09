@@ -175,14 +175,18 @@ export const LeadingBorder: Story = {
 export const TextAlign: Story = {
   render: () => (
     <Stack spacing="md" alignItems="normal">
+      <Heading as="p" size="md">
+        スマートフォン問診（inherit）
+      </Heading>
+
       <Heading as="p" size="md" textAlign="left">
-        スマートフォン問診
+        スマートフォン問診（left）
       </Heading>
       <Heading as="p" size="md" textAlign="center">
-        スマートフォン問診
+        スマートフォン問診（center）
       </Heading>
       <Heading as="p" size="md" textAlign="right">
-        スマートフォン問診
+        スマートフォン問診（right）
       </Heading>
     </Stack>
   ),
