@@ -54,15 +54,11 @@ export const Center: FC<PropsWithChildren<Props>> = ({
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const createElement = (props: any, children: ReactNode) => {
     if (isValidElement(CenterCopmonent)) {
-      return (
-          <div {...props}>
-            {cloneElement(CenterCopmonent, CenterCopmonent.props, children)}
-          </div>
-      )
+      return <div {...props}>{cloneElement(CenterCopmonent, CenterCopmonent.props, children)}</div>;
     } else {
       return <CenterCopmonent {...props}>{children}</CenterCopmonent>;
     }
-};
+  };
 
   return createElement(
     {

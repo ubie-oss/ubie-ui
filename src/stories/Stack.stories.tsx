@@ -110,7 +110,7 @@ export const MarginAndPadding: Story = {
 
 export const AsBox: Story = {
   render: (args) => (
-    <Stack {...args} as={<Box radius="md" backgroundColor='primary' pt="lg" pr="lg" pb="lg" pl="lg" />}>
+    <Stack {...args} as={<Box radius="md" backgroundColor="primary" pt="lg" pr="lg" pb="lg" pl="lg" />}>
       <p style={{ margin: 0 }}>Text</p>
       <p style={{ margin: 0 }}>Text</p>
       <p style={{ margin: 0 }}>Text</p>

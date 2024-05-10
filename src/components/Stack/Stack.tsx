@@ -64,19 +64,11 @@ export const Stack: FC<Props> = ({
 }) => {
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const createElement = (props: any, children: ReactNode) => {
-      if (isValidElement(StackComponent)) {
-        return cloneElement(
-          StackComponent,
-          StackComponent.props,
-          (
-            <div {...props}>
-              {children}
-            </div>
-          )
-        )
-      } else {
-        return <StackComponent {...props}>{children}</StackComponent>;
-      }
+    if (isValidElement(StackComponent)) {
+      return cloneElement(StackComponent, StackComponent.props, <div {...props}>{children}</div>);
+    } else {
+      return <StackComponent {...props}>{children}</StackComponent>;
+    }
   };
 
   return createElement(
@@ -100,6 +92,6 @@ export const Stack: FC<Props> = ({
         }),
       },
     },
-    children
+    children,
   );
 };

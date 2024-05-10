@@ -75,19 +75,11 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
 
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const createElement = (props: any, children: ReactNode) => {
-      if (isValidElement(FlexCopmonent)) {
-        return cloneElement(
-          FlexCopmonent,
-          FlexCopmonent.props,
-          (
-            <div {...props}>
-              {children}
-            </div>
-          )
-        )
-      } else {
-        return <FlexCopmonent {...props}>{children}</FlexCopmonent>;
-      }
+    if (isValidElement(FlexCopmonent)) {
+      return cloneElement(FlexCopmonent, FlexCopmonent.props, <div {...props}>{children}</div>);
+    } else {
+      return <FlexCopmonent {...props}>{children}</FlexCopmonent>;
+    }
   };
 
   return createElement(
