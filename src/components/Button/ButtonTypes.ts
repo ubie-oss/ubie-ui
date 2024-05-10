@@ -1,3 +1,4 @@
+import type { MarginProps } from '../../types/style';
 import type { ButtonHTMLAttributes, ReactNode, AnchorHTMLAttributes, ReactElement } from 'react';
 
 export type BaseProps = {
@@ -37,7 +38,7 @@ export type BaseProps = {
    * 後方配置のアイコン
    */
   suffixIcon?: 'default' | ReactNode;
-};
+} & MarginProps;
 
 export type OnlyButtonProps = {
   /**

@@ -26,6 +26,7 @@
   transition: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
   overflow-wrap: anywhere;
+  margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
 }
 
 .button:focus-visible {
