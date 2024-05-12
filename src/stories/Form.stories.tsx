@@ -16,7 +16,7 @@ export const Default: StoryObj = {
 
     return (
       <Stack spacing="xs">
-        <Label htmlFor="field">項目</Label>
+        <Label htmlFor="field" showRequiredLabel>項目</Label>
         <Input id="field" value={value} onChange={onChange} />
         <HelperMessage>説明文です</HelperMessage>
         <HelperMessage>説明文です</HelperMessage>
@@ -55,7 +55,7 @@ export const RadioButtons: StoryObj = {
 
     return (
       <Stack spacing="md" alignItems="normal">
-        <RadioGroup label="通院状況">
+        <RadioGroup label="通院状況" showRequiredLabel>
           {options.map((option) => (
             <RadioButton
               name="commuting"

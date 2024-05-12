@@ -11,3 +11,7 @@ type Story = StoryObj<typeof Label>;
 export const Default: Story = {
   render: () => <Label htmlFor="id">全角カタカナでご入力ください</Label>,
 };
+
+export const Rqruied: Story = {
+  render: () => <Label htmlFor="id" showRequiredLabel>全角カタカナでご入力ください</Label>,
+};
