@@ -13,5 +13,9 @@ export const Default: Story = {
 };
 
 export const Rqruied: Story = {
-  render: () => <Label htmlFor="id" showRequiredLabel>全角カタカナでご入力ください</Label>,
+  render: () => (
+    <Label htmlFor="id" showRequiredLabel>
+      全角カタカナでご入力ください
+    </Label>
+  ),
 };

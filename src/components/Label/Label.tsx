@@ -4,7 +4,6 @@ import styles from './Label.module.css';
 import { RequiredLabel } from '../../sharedComponents/RequiredLabel/RequiredLabel';
 import type { ElementType, FC, ReactNode } from 'react';
 
-
 type Props = {
   children: ReactNode;
   /**
@@ -27,7 +26,7 @@ export const Label: FC<Props> = ({ children, as: LabelComponent = 'label', htmlF
   return (
     <LabelComponent htmlFor={htmlFor} className={styles.label}>
       {children}
-      {showRequiredLabel && <RequiredLabel/>}
+      {showRequiredLabel && <RequiredLabel />}
     </LabelComponent>
   );
 };

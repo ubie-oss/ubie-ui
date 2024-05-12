@@ -16,7 +16,9 @@ export const Default: StoryObj = {
 
     return (
       <Stack spacing="xs">
-        <Label htmlFor="field" showRequiredLabel>項目</Label>
+        <Label htmlFor="field" showRequiredLabel>
+          項目
+        </Label>
         <Input id="field" value={value} onChange={onChange} />
         <HelperMessage>説明文です</HelperMessage>
         <HelperMessage>説明文です</HelperMessage>

@@ -121,7 +121,6 @@ export const Disabled: Story = {
   },
 };
 
-
 export const ShowRequiredLabel: Story = {
   render: (args) => {
     const [selectedItem, setSelectedItem] = useState(options[0]);
