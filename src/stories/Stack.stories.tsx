@@ -95,3 +95,15 @@ export const BlockLevelElementsToFullWidth: Story = {
   ),
   args: defaultArgs,
 };
+
+export const MarginAndPadding: Story = {
+  render: (args) => (
+    <Stack {...args} mt="lg" mr="lg" mb="lg" ml="lg" pt="xxl" pr="xxl" pb="xxl" pl="xxl">
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+    </Stack>
+  ),
+  args: defaultArgs,
+};

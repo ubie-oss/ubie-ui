@@ -164,6 +164,17 @@ export const AsSection: Story = {
   render: () => (
     <Flex as="section" spacing="md" alignItems="center">
       <h1>Heading</h1>
+      <p>text</p>
+      <p>text</p>
+      <p>text</p>
+    </Flex>
+  ),
+};
+
+export const MarginAndPadding: Story = {
+  render: () => (
+    <Flex spacing="md" alignItems="center" mt="lg" mr="lg" mb="lg" ml="lg" pt="xxl" pr="xxl" pb="xxl" pl="xxl">
+      <h1>Heading</h1>
       <p>Section</p>
       <p>Section</p>
       <p>Section</p>

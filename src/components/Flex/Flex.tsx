@@ -3,7 +3,9 @@
 import clsx from 'clsx';
 import styles from './Flex.module.css';
 import { Spacing, AlignItems, JustifyContent, FlexDirection } from '../../types/style';
+import { paddingVariables, marginVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
+import type { PaddingProps, MarginProps } from '../../types/style';
 import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
@@ -44,7 +46,8 @@ type Props = {
    * デフォルトで<Flex>は横幅いっぱいを専有する。しかし例えば、フレックスコンテナの子要素として配置した場合、横幅が自身の子に合わせて小さくなる。これが不都合の場合に100%とする事が可能
    */
   width?: 'full';
-};
+} & MarginProps &
+  PaddingProps;
 
 export const Flex: FC<PropsWithChildren<Props>> = ({
   as: FlexCopmonent = 'div',
@@ -56,6 +59,14 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   spacing,
   height,
   width,
+  pt,
+  pr,
+  pb,
+  pl,
+  mt,
+  mr,
+  mb,
+  ml,
 }) => {
   // Directly specifying the markuplint will result in a markuplint error.
   const gapStyle = spacing ? `var(--size-spacing-${spacing})` : '0';
@@ -70,6 +81,18 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
           '--align-items': alignItems,
           '--justify-content': justifyContent,
           '--flex-wrap': wrap ? 'wrap' : 'nowrap',
+          ...paddingVariables({
+            pt,
+            pr,
+            pb,
+            pl,
+          }),
+          ...marginVariables({
+            mt,
+            mr,
+            mb,
+            ml,
+          }),
         } as React.CSSProperties
       }
     >

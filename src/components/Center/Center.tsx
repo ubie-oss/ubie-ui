@@ -2,9 +2,9 @@
 
 import clsx from 'clsx';
 import styles from './Center.module.css';
-import { paddingVariables } from '../../utils/style';
+import { createSpacingVariableFromKey, paddingVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
-import type { PaddingProps } from '../../types/style';
+import type { MarginYProps, PaddingProps } from '../../types/style';
 import type { FC, PropsWithChildren, CSSProperties } from 'react';
 
 type Props = {
@@ -32,7 +32,8 @@ type Props = {
    * HTMLのID属性の値
    */
   id?: string;
-} & PaddingProps;
+} & MarginYProps &
+  PaddingProps;
 
 export const Center: FC<PropsWithChildren<Props>> = ({
   as: CenterCopmonent = 'div',
@@ -41,6 +42,8 @@ export const Center: FC<PropsWithChildren<Props>> = ({
   pr,
   pb,
   pl,
+  mt,
+  mb,
   textCenter,
   childrenCenter,
   id,
@@ -59,6 +62,10 @@ export const Center: FC<PropsWithChildren<Props>> = ({
             pb,
             pl,
           }),
+          ...{
+            '--margin-top': mt ? createSpacingVariableFromKey(mt) : 0,
+            '--margin-bottom': mb ? createSpacingVariableFromKey(mb) : 0,
+          },
         } as CSSProperties
       }
     >

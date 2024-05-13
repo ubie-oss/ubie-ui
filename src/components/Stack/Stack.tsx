@@ -4,7 +4,9 @@ import { clsx } from 'clsx';
 import { FC, ReactNode } from 'react';
 import styles from './Stack.module.css';
 import { Spacing, AlignItems, JustifyContent } from '../../types/style';
+import { paddingVariables, marginVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
+import type { PaddingProps, MarginProps } from '../../types/style';
 
 type Props = {
   /**
@@ -35,7 +37,8 @@ type Props = {
    * 子要素
    */
   children: ReactNode;
-};
+} & MarginProps &
+  PaddingProps;
 
 /**
  * Stackコンポーネント
@@ -48,6 +51,14 @@ export const Stack: FC<Props> = ({
   spacing,
   alignItems = 'flex-start',
   justifyContent = 'flex-start',
+  pt,
+  pr,
+  pb,
+  pl,
+  mt,
+  mr,
+  mb,
+  ml,
 }) => {
   return (
     <StackComponent
@@ -55,6 +66,18 @@ export const Stack: FC<Props> = ({
         alignItems: `${alignItems}`,
         justifyContent: `${justifyContent}`,
         gap: `var(--size-spacing-${spacing})`,
+        ...paddingVariables({
+          pt,
+          pr,
+          pb,
+          pl,
+        }),
+        ...marginVariables({
+          mt,
+          mr,
+          mb,
+          ml,
+        }),
       }}
       className={clsx(className, styles.stack)}
     >

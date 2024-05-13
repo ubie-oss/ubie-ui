@@ -26,7 +26,7 @@ export const opacityToClassName = (opacity: Opacity) => {
   }
 };
 
-const createSpacingVariableFromKey = (key: Spacing) => {
+export const createSpacingVariableFromKey = (key: Spacing) => {
   return `var(--${DesignTokens.size[`spacing-${key}`].path.join('-')})`;
 };
 

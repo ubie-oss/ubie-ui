@@ -5,6 +5,7 @@ import { forwardRef } from 'react';
 import styles from './Button.module.css';
 import { CircularProgress } from './CircularProgress';
 import { VariantIcon } from './VariantIcon';
+import { marginVariables } from '../../utils/style';
 import type { ButtonProps } from './ButtonTypes';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -21,6 +22,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       disabled = false,
       loading = false,
       onClick,
+      mt,
+      mr,
+      mb,
+      ml,
       ...props
     },
     ref,
@@ -50,6 +55,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         type={type}
         className={cls}
+        style={{
+          ...marginVariables({
+            mt,
+            mr,
+            mb,
+            ml,
+          }),
+        }}
         ref={ref}
         disabled={disabled}
         aria-disabled={loading}

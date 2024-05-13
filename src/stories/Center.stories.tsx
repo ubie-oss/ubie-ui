@@ -58,3 +58,20 @@ export const AsSection: Story = {
     </Center>
   ),
 };
+
+export const MarginAndPadding: Story = {
+  render: () => (
+    <div style={{ backgroundColor: 'var(--color-background-primary)', overflow: 'hidden' }}>
+      <div>prev element</div>
+
+      <Center mt="lg" mb="lg" pt="xxl" pr="xxl" pb="xxl" pl="xxl" maxWidth="400px">
+        <div style={{ width: '100%', backgroundColor: 'var(--color-background-accent-darken)', overflow: 'hidden' }}>
+          <h2>Heading</h2>
+          <p>body</p>
+        </div>
+      </Center>
+
+      <div>next element</div>
+    </div>
+  ),
+};

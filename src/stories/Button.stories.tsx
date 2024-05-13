@@ -143,3 +143,11 @@ export const Loading: Story = {
     </div>
   ),
 };
+
+export const Margin: Story = {
+  render: () => (
+    <div style={{ backgroundColor: 'var(--color-background-gray)', width: 'fit-content', overflow: 'hidden' }}>
+      <Button {...defaultArgs} mt="lg" mr="lg" mb="lg" ml="lg" />
+    </div>
+  ),
+};
