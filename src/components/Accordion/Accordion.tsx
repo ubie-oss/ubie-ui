@@ -17,11 +17,15 @@ type Props = {
    * @default medium
    */
   size?: Size;
+  /**
+   * ネイティブ要素の`id`属性。ページで固有のIDを指定
+   */
+  id?: string;
 };
 
-export const Accordion: FC<PropsWithChildren<Props>> = ({ header, children, size = 'medium' }) => {
+export const Accordion: FC<PropsWithChildren<Props>> = ({ header, children, size = 'medium', id }) => {
   return (
-    <details className={clsx(styles.container, styles[size])}>
+    <details className={clsx(styles.container, styles[size])} id={id}>
       <summary className={styles.button}>
         <span>{header}</span>
         <ArrowBDownIcon aria-hidden className={styles.arrow} />
