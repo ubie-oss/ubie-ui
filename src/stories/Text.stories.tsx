@@ -307,7 +307,7 @@ export const TextInText: Story = {
   ),
 };
 
-export const Align: Story = {
+export const TextAlign: Story = {
   render: () => (
     <Stack spacing="md" alignItems="normal">
       <Text textAlign="left">Left</Text>
