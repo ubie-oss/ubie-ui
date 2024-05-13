@@ -309,18 +309,13 @@ export const TextInText: Story = {
 
 export const Align: Story = {
   render: () => (
-    <Stack spacing='md' alignItems='normal'>
-      <Text textAlign='left'>Left
-      </Text>
-      <Text textAlign='center'>Center
-      </Text>
-      <Text textAlign='right'>Right
-      </Text>
+    <Stack spacing="md" alignItems="normal">
+      <Text textAlign="left">Left</Text>
+      <Text textAlign="center">Center</Text>
+      <Text textAlign="right">Right</Text>
       <div style={{ textAlign: 'center' }}>
-      <Text textAlign='center'>Inherit(undefined)
-      </Text>
+        <Text textAlign="center">Inherit(undefined)</Text>
       </div>
     </Stack>
   ),
 };
-
