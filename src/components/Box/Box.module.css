@@ -65,3 +65,15 @@
 .box.textNormal {
   font-weight: normal;
 }
+
+.box.textCenter {
+  text-align: center;
+}
+
+.box.textLeft {
+  text-align: left;
+}
+
+.box.textRight {
+  text-align: right;
+}
