@@ -6,8 +6,7 @@ import type { FC, PropsWithChildren, ReactNode } from 'react';
 
 type Props = {
   /**
-   * テキストの配置
-   * @default left
+   * テキストの配置。指定しない場合、親要素の配置を継承
    */
   textAlign?: 'left' | 'center' | 'right';
   /**
