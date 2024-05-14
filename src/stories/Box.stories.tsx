@@ -298,9 +298,21 @@ export const TextVariations: Story = {
       <Box {...defaultArgs} mt="md" textType="note" textSize="lg" textLeading="narrow">
         <p>Note Large Narrow</p>
       </Box>
-      <Box {...defaultArgs} mt="md" textType="note" textSize="lg" textLeading="tight">
-        <p>Note Large Tight</p>
+
+      <Box {...defaultArgs} mt="xl" textAlign="left">
+        <p>Text Left</p>
       </Box>
+      <Box {...defaultArgs} mt="md" textAlign="center">
+        <p>Text Center</p>
+      </Box>
+      <Box {...defaultArgs} mt="md" textAlign="right">
+        <p>Text Right</p>
+      </Box>
+      <div style={{ textAlign: 'center' }}>
+        <Box {...defaultArgs} mt="md">
+          <p>Inherit(undefined)</p>
+        </Box>
+      </div>
     </div>
   ),
 };
