@@ -36,7 +36,7 @@
 }
 
 .heading.md {
-  --font-size: var(--text-heading-sm-size);
+  --font-size: var(--text-heading-md-size);
 }
 
 .heading.lg {
@@ -150,4 +150,16 @@
 
 .white {
   --color: var(--color-text-white);
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
 }
