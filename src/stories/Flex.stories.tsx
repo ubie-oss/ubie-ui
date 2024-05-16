@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Flex } from '..';
+import { Flex, Box } from '..';
 
 export default {
   component: Flex,
@@ -178,6 +178,16 @@ export const MarginAndPadding: Story = {
       <p>Section</p>
       <p>Section</p>
       <p>Section</p>
+    </Flex>
+  ),
+};
+
+export const AsBox: Story = {
+  render: () => (
+    <Flex spacing="md" as={<Box radius="md" backgroundColor="primary" pt="lg" pr="lg" pb="lg" pl="lg" />}>
+      <div>item</div>
+      <div>item</div>
+      <div>item</div>
     </Flex>
   ),
 };

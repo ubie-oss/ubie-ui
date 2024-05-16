@@ -75,3 +75,16 @@ export const MarginAndPadding: Story = {
     </div>
   ),
 };
+
+export const AsBox: Story = {
+  render: () => (
+    <Center
+      maxWidth="320px"
+      pr="sm"
+      pl="sm"
+      as={<Box radius="md" backgroundColor="primary" pt="lg" pr="lg" pb="lg" pl="lg" />}
+    >
+      <div>Center</div>
+    </Center>
+  ),
+};
