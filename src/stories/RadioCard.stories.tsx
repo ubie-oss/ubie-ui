@@ -101,3 +101,60 @@ export const Block: Story = {
     block: true,
   },
 };
+
+export const ShowRequiredLabel: Story = {
+  render: () => {
+    const [selectedItem, setSelectedItem] = useState(options[0]);
+
+    const onChange: ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
+      setSelectedItem(event.target.value);
+    }, []);
+
+    return (
+      <RadioGroup label="RadioCard" showRequiredLabel>
+        {options.map((option) => (
+          <RadioCard
+            name="options"
+            value={option}
+            onChange={onChange}
+            checked={selectedItem === option}
+            id={option}
+            key={option}
+          >
+            {option}
+          </RadioCard>
+        ))}
+      </RadioGroup>
+    );
+  },
+};
+
+export const CustomDataAttribute: Story = {
+  args: defaultArgs,
+  render: (args) => {
+    const options = ['option1', 'option2', 'option3'];
+    const [value, setValue] = useState<string>('option1');
+
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(event.target.value);
+    };
+
+    return (
+      <Stack spacing="sm">
+        {options.map((option, index) => (
+          <RadioCard
+            {...args}
+            key={option}
+            checked={value === option}
+            value={option}
+            onChange={onChange}
+            name="customDataAttribute"
+            data-test-id={index}
+          >
+            {option}
+          </RadioCard>
+        ))}
+      </Stack>
+    );
+  },
+};

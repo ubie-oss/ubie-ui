@@ -4,6 +4,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { clsx } from 'clsx';
 import { FC, Fragment, PropsWithChildren } from 'react';
 import styles from './ActionHalfModal.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
 import { AllOrNone } from '../../utils/types';
 import { Button } from '../Button/Button';
@@ -77,7 +78,7 @@ type SecondaryActionProps = {
   secondaryActionLabel: string;
 };
 
-type Props = BaseProps & AllOrNone<PrimaryActionProps> & AllOrNone<SecondaryActionProps>;
+type Props = BaseProps & AllOrNone<PrimaryActionProps> & AllOrNone<SecondaryActionProps> & CustomDataAttributeProps;
 
 export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
   children,
@@ -94,12 +95,18 @@ export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
   open = true,
   isStatic = false,
   fullscreen = false,
+  ...props
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
 
   return (
     <Transition show={open}>
-      <Dialog static={isStatic} onClose={onClose} className={clsx(styles.modal, fullscreen && styles.fullscreen)}>
+      <Dialog
+        static={isStatic}
+        onClose={onClose}
+        className={clsx(styles.modal, fullscreen && styles.fullscreen)}
+        {...props}
+      >
         <Transition.Child
           as={Fragment}
           enter={styles.overlayEnter}

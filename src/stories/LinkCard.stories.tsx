@@ -54,3 +54,11 @@ export const SizeSmall: Story = {
   },
   args: defaultArgs,
 };
+
+export const CustomDataAttribute: Story = {
+  render: (args) => <LinkCard {...args} href="https://vitals.ubie.life/" />,
+  args: {
+    ...defaultArgs,
+    'data-test-id': 'link-card-custom-attribute',
+  },
+};

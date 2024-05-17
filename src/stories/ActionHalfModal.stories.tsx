@@ -112,7 +112,10 @@ export const NoCloseButton: Story = {
       </>
     );
   },
-  args: defaultArgs,
+  args: {
+    ...defaultArgs,
+    [`data-test-id`]: 'some-id',
+  },
 };
 
 export const Customized: Story = {
@@ -136,6 +139,33 @@ export const Customized: Story = {
           overlayOpacity="darker"
           closeLabel="キャンセル"
           {...args}
+          open={open}
+          onClose={onClose}
+        />
+      </>
+    );
+  },
+  args: defaultArgs,
+};
+
+export const CustomDataAttribute: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+
+    const onClose = useCallback(() => {
+      setOpen(false);
+    }, []);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionHalfModal
+          {...args}
+          data-test-id="some-id"
+          primaryActionLabel="アクション"
+          onPrimaryAction={onClose}
           open={open}
           onClose={onClose}
         />

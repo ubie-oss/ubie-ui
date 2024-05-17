@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { cloneElement, forwardRef } from 'react';
 import styles from './Button.module.css';
 import { VariantIcon } from './VariantIcon';
+import { marginVariables } from '../../utils/style';
 import type { LinkButtonProps } from './ButtonTypes';
 import type { ReactNode } from 'react';
 
@@ -18,6 +19,10 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
       icon: _icon,
       fixedIcon: _fixedIcon,
       suffixIcon: _suffixIcon,
+      mt,
+      mr,
+      mb,
+      ml,
       ...props
     },
     forwardedRef,
@@ -40,6 +45,14 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
     return createElement(
       {
         className: cls,
+        style: {
+          ...marginVariables({
+            mt,
+            mr,
+            mb,
+            ml,
+          }),
+        },
         ...props,
         ref: forwardedRef,
       },

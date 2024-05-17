@@ -3,6 +3,7 @@
 import clsx from 'clsx';
 import { FC, InputHTMLAttributes } from 'react';
 import styles from './RadioButton.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes';
 
 type RadioProps = Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'checked'>> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'children' | 'value' | 'name'>;
@@ -25,7 +26,8 @@ type Props = {
    * @default medium
    */
   size?: 'medium' | 'small';
-} & RadioProps;
+} & RadioProps &
+  CustomDataAttributeProps;
 
 export const RadioButton: FC<Props> = ({
   size = 'medium',

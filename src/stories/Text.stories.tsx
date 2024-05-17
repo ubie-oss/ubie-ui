@@ -306,3 +306,24 @@ export const TextInText: Story = {
     </Text>
   ),
 };
+
+export const TextAlign: Story = {
+  render: () => (
+    <Stack spacing="md" alignItems="normal">
+      <Text textAlign="left">Left</Text>
+      <Text textAlign="center">Center</Text>
+      <Text textAlign="right">Right</Text>
+      <div style={{ textAlign: 'center' }}>
+        <Text textAlign="center">Inherit(undefined)</Text>
+      </div>
+    </Stack>
+  ),
+};
+
+export const CustomDataAttribute: Story = {
+  render: () => (
+    <Text date-test-id="some-id" bold>
+      Text
+    </Text>
+  ),
+};

@@ -32,3 +32,10 @@ export const IdInvalid: Story = {
     return <TextArea value={'wrong\nvalue'} isInvalid />;
   },
 };
+
+export const CustomDataAttribute: Story = {
+  args: {
+    'data-test-id': 'textarea-custom-attribute',
+  },
+  render: (args) => <TextArea {...args} value="This is a text area with a custom data attribute." />,
+};
