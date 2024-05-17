@@ -2,6 +2,7 @@
 
 import styles from './Label.module.css';
 import { RequiredLabel } from '../../sharedComponents/RequiredLabel/RequiredLabel';
+import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import type { ElementType, FC, ReactNode } from 'react';
 
 type Props = {
@@ -20,11 +21,17 @@ type Props = {
    * 注意: trueとしてもinput要素のrequired属性は付与されません
    */
   showRequiredLabel?: boolean;
-};
+} & CustomDataAttributeProps;
 
-export const Label: FC<Props> = ({ children, as: LabelComponent = 'label', htmlFor, showRequiredLabel }) => {
+export const Label: FC<Props> = ({
+  children,
+  as: LabelComponent = 'label',
+  htmlFor,
+  showRequiredLabel,
+  ...otherProps
+}) => {
   return (
-    <LabelComponent htmlFor={htmlFor} className={styles.label}>
+    <LabelComponent htmlFor={htmlFor} className={styles.label} {...otherProps}>
       {children}
       {showRequiredLabel && <RequiredLabel />}
     </LabelComponent>

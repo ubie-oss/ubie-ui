@@ -325,3 +325,11 @@ export const TextVariations: Story = {
   ),
   args: defaultArgs,
 };
+
+export const CustomDataAttribute: Story = {
+  render: (args) => <Box {...args} />,
+  args: {
+    ['data-test-id']: 'some-test',
+    ...defaultArgs,
+  },
+};

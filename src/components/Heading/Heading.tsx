@@ -1,5 +1,6 @@
 import { clsx } from 'clsx';
 import styles from './Heading.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import { TextColor } from '../../types/style';
 import { HTMLTagname } from '../../utils/types';
 import type { FC, PropsWithChildren, ReactNode } from 'react';
@@ -54,7 +55,7 @@ type Props = {
    * @default true
    */
   bold?: boolean;
-};
+} & CustomDataAttributeProps;
 
 const Heading: FC<PropsWithChildren<Props>> = ({
   textAlign,
@@ -69,6 +70,7 @@ const Heading: FC<PropsWithChildren<Props>> = ({
   id,
   htmlFor,
   bold = true,
+  ...otherProps
 }) => {
   const className = clsx(
     styles.heading,
@@ -82,7 +84,7 @@ const Heading: FC<PropsWithChildren<Props>> = ({
   );
 
   return (
-    <HeadingComponent className={className} id={id} htmlFor={htmlFor}>
+    <HeadingComponent className={className} id={id} htmlFor={htmlFor} {...otherProps}>
       {primaryIcon && (
         <span aria-hidden className={clsx(styles.icon, styles.primary)}>
           {primaryIcon}

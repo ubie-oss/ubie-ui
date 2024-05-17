@@ -1,3 +1,4 @@
+import { CustomDataAttributeProps } from '../../types/attributes';
 import type { MarginProps } from '../../types/style';
 import type { ButtonHTMLAttributes, ReactNode, AnchorHTMLAttributes, ReactElement } from 'react';
 
@@ -38,7 +39,8 @@ export type BaseProps = {
    * 後方配置のアイコン
    */
   suffixIcon?: 'default' | ReactNode;
-} & MarginProps;
+} & MarginProps &
+  CustomDataAttributeProps;
 
 export type OnlyButtonProps = {
   /**

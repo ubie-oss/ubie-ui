@@ -2,6 +2,7 @@
 
 import styles from './CheckboxGroup.module.css';
 import { RequiredLabel } from '../../sharedComponents/RequiredLabel/RequiredLabel';
+import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import { Checkbox } from '../Checkbox/Checkbox';
 import { Flex } from '../Flex/Flex';
 import type { FC, ReactElement } from 'react';
@@ -22,11 +23,17 @@ export type Props = {
    * @default column
    */
   direction?: 'column' | 'row';
-};
+} & CustomDataAttributeProps;
 
-export const CheckboxGroup: FC<Props> = ({ children, label, showRequiredLabel, direction = 'column' }) => {
+export const CheckboxGroup: FC<Props> = ({
+  children,
+  label,
+  showRequiredLabel,
+  direction = 'column',
+  ...otherProps
+}) => {
   return (
-    <fieldset className={styles.wrapper}>
+    <fieldset className={styles.wrapper} {...otherProps}>
       <legend className={styles.legend}>
         {label}
         {showRequiredLabel && <RequiredLabel />}

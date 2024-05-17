@@ -152,3 +152,17 @@ export const ShowRequiredLabel: Story = {
     name: 'default',
   },
 };
+
+export const CustomDataAttribute: Story = {
+  render: (args) => (
+    <Stack spacing="xs">
+      <RadioButton {...args} value="data1" id="data1" name="customData" data-test-id="1">
+        Data 1
+      </RadioButton>
+      <RadioButton {...args} value="data2" id="data2" name="customData" data-test-id="2">
+        Data 2
+      </RadioButton>
+    </Stack>
+  ),
+  args: defaultArgs,
+};

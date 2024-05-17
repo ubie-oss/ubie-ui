@@ -3,6 +3,7 @@
 import { clsx } from 'clsx';
 import { isValidElement, cloneElement } from 'react';
 import styles from './Stack.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import { Spacing, AlignItems, JustifyContent } from '../../types/style';
 import { paddingVariables, marginVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
@@ -40,7 +41,8 @@ type Props = {
    */
   children: ReactNode;
 } & MarginProps &
-  PaddingProps;
+  PaddingProps &
+  CustomDataAttributeProps;
 
 /**
  * Stackコンポーネント
@@ -61,6 +63,7 @@ export const Stack: FC<Props> = ({
   mr,
   mb,
   ml,
+  ...otherProps
 }) => {
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const createElement = (props: any, children: ReactNode) => {
@@ -91,6 +94,7 @@ export const Stack: FC<Props> = ({
           ml,
         }),
       },
+      ...otherProps,
     },
     children,
   );

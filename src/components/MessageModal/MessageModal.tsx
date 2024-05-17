@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { FC, Fragment, PropsWithChildren } from 'react';
 import styles from './MessageModal.module.css';
 import { Button } from '../../';
+import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import { opacityToClassName } from '../../utils/style';
 
 type Opacity = 'normal' | 'darker';
@@ -43,7 +44,8 @@ type Props = {
    * @default false
    */
   isStatic?: boolean;
-} & PropsWithChildren;
+} & PropsWithChildren &
+  CustomDataAttributeProps;
 
 export const MessageModal: FC<Props> = ({
   header,
@@ -54,6 +56,7 @@ export const MessageModal: FC<Props> = ({
   fixedHeight = false,
   open = true,
   isStatic = false,
+  ...otherProps
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
 
@@ -68,7 +71,7 @@ export const MessageModal: FC<Props> = ({
       leaveFrom={styles.panelLeaveFrom}
       leaveTo={styles.panelLeaveTo}
     >
-      <Dialog static={isStatic} onClose={onClose} className={styles.modal}>
+      <Dialog static={isStatic} onClose={onClose} className={styles.modal} {...otherProps}>
         <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
         <div className={clsx(styles.modalBody, fixedHeight && styles.fixedHeight)}>
           {header && <Dialog.Title className={styles.header}>{header}</Dialog.Title>}

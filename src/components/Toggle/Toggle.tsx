@@ -3,6 +3,7 @@
 import clsx from 'clsx';
 import { FC, InputHTMLAttributes, forwardRef, useRef, useState } from 'react';
 import styles from './Toggle.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes';
 
 type Props = {
   /**
@@ -23,9 +24,10 @@ type Props = {
    * @default false
    */
   disabled?: boolean;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'children' | 'onChange'>;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'children' | 'onChange'> &
+  CustomDataAttributeProps;
 
-export const Toggle: FC<Props> = forwardRef<HTMLLabelElement, Props>(
+export const Toggle: FC<Props> = forwardRef<HTMLInputElement, Props>(
   ({ checked: checkedProps, defaultChecked, onChange, ...otherProps }, ref) => {
     const { current: isUnControlled } = useRef(checkedProps === undefined);
     const [isUnControlledChecked, setIsUnControlledChecked] = useState(defaultChecked);
@@ -40,8 +42,9 @@ export const Toggle: FC<Props> = forwardRef<HTMLLabelElement, Props>(
     };
 
     return (
-      <label ref={ref} className={clsx(styles.root, isChecked ? styles.on : styles.off)}>
+      <label className={clsx(styles.root, isChecked ? styles.on : styles.off)}>
         <input
+          ref={ref}
           type="checkbox"
           role="switch"
           checked={isChecked}

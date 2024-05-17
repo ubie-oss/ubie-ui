@@ -319,3 +319,11 @@ export const TextAlign: Story = {
     </Stack>
   ),
 };
+
+export const CustomDataAttribute: Story = {
+  render: () => (
+    <Text date-test-id="some-id" bold>
+      Text
+    </Text>
+  ),
+};

@@ -19,3 +19,14 @@ export const Rqruied: Story = {
     </Label>
   ),
 };
+
+export const CustomDataAttribute: Story = {
+  args: {
+    'data-test-id': 'label-test-id',
+  },
+  render: (args) => (
+    <Label {...args} htmlFor="id">
+      Please enter in English
+    </Label>
+  ),
+};

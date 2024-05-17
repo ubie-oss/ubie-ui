@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { FC, Fragment, PropsWithChildren } from 'react';
 import styles from './ActionModal.module.css';
 import { Button } from '../../';
+import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
 import { AllOrNone } from '../../utils/types';
 
@@ -74,7 +75,7 @@ type SecondaryActionProps = {
   secondaryActionLabel: string;
 };
 
-type Props = PropsWithChildren<BaseProps> & AllOrNone<SecondaryActionProps>;
+type Props = PropsWithChildren<BaseProps> & AllOrNone<SecondaryActionProps> & CustomDataAttributeProps;
 
 export const ActionModal: FC<Props> = ({
   children,
@@ -91,6 +92,7 @@ export const ActionModal: FC<Props> = ({
   showClose = true,
   open = true,
   isStatic = false,
+  ...props
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
 
@@ -105,7 +107,7 @@ export const ActionModal: FC<Props> = ({
       leaveFrom={styles.panelLeaveFrom}
       leaveTo={styles.panelLeaveTo}
     >
-      <Dialog static={isStatic} onClose={onClose} className={styles.modal}>
+      <Dialog static={isStatic} onClose={onClose} className={styles.modal} {...props}>
         <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
         <div className={clsx(styles.modalBody, !header && styles.headerLess, fixedHeight && styles.fixedHeight)}>
           {header && <Dialog.Title className={styles.header}>{header}</Dialog.Title>}

@@ -88,3 +88,11 @@ export const AsBox: Story = {
     </Center>
   ),
 };
+
+export const CustomDataAttribute: Story = {
+  render: () => (
+    <Center maxWidth="400px" data-test-id="some-id">
+      Center
+    </Center>
+  ),
+};

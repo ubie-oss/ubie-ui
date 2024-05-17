@@ -3,6 +3,7 @@
 import { clsx } from 'clsx';
 import { FC, ReactNode } from 'react';
 import styles from './Text.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes';
 import {
   TextColor,
   BodyFontSize,
@@ -46,7 +47,7 @@ type BaseProps = {
    * テキストの配置。指定しない場合、親要素の配置を継承
    */
   textAlign?: 'left' | 'center' | 'right';
-};
+} & CustomDataAttributeProps;
 
 type BodyProps = BaseProps & {
   /**
@@ -144,6 +145,7 @@ export const Text: FC<TextProps> = ({
   children,
   id,
   textAlign,
+  ...props
 }) => {
   return (
     <TextComponent
@@ -157,6 +159,7 @@ export const Text: FC<TextProps> = ({
         styles[color],
         textAlign && styles[textAlign],
       )}
+      {...props}
     >
       {children}
     </TextComponent>

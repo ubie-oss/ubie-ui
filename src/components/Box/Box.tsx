@@ -11,6 +11,7 @@ import {
   colorVariable,
 } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
+import type { CustomDataAttributeProps } from '../../types/attributes';
 import type {
   PaddingProps,
   MarginProps,
@@ -57,7 +58,8 @@ type BaseProps = {
   textAlign?: 'left' | 'center' | 'right';
 } & PaddingProps &
   MarginProps &
-  RadiusProp;
+  RadiusProp &
+  CustomDataAttributeProps;
 
 type PropsWithoutText = BaseProps & {
   /**
@@ -175,6 +177,7 @@ export const Box: FC<PropsWithChildren<PropsWithoutText | PropsWithTextBody | Pr
   textColor,
   textBold,
   textAlign,
+  ...props
 }) => {
   let _textVariables: CSSProperties = {};
 
@@ -212,6 +215,7 @@ export const Box: FC<PropsWithChildren<PropsWithoutText | PropsWithTextBody | Pr
         ..._textVariables,
         ...colorVariable(textColor),
       }}
+      {...props}
     >
       {children}
     </BoxComponent>

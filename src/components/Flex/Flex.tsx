@@ -3,6 +3,7 @@
 import clsx from 'clsx';
 import { isValidElement, cloneElement } from 'react';
 import styles from './Flex.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import { Spacing, AlignItems, JustifyContent, FlexDirection } from '../../types/style';
 import { paddingVariables, marginVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
@@ -49,7 +50,8 @@ type Props = {
    */
   width?: 'full';
 } & MarginProps &
-  PaddingProps;
+  PaddingProps &
+  CustomDataAttributeProps;
 
 export const Flex: FC<PropsWithChildren<Props>> = ({
   as: FlexCopmonent = 'div',
@@ -69,6 +71,7 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   mr,
   mb,
   ml,
+  ...otherProps
 }) => {
   // Directly specifying the markuplint will result in a markuplint error.
   const gapStyle = spacing ? `var(--size-spacing-${spacing})` : '0';
@@ -104,6 +107,7 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
           ml,
         }),
       },
+      ...otherProps,
     },
     children,
   );

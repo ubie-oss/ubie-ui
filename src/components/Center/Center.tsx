@@ -3,6 +3,7 @@
 import clsx from 'clsx';
 import { isValidElement, cloneElement } from 'react';
 import styles from './Center.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes';
 import { createSpacingVariableFromKey, paddingVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
 import { Box } from '../Box/Box';
@@ -35,7 +36,8 @@ type Props = {
    */
   id?: string;
 } & MarginYProps &
-  PaddingProps;
+  PaddingProps &
+  CustomDataAttributeProps;
 
 export const Center: FC<PropsWithChildren<Props>> = ({
   as: CenterCopmonent = 'div',
@@ -50,6 +52,7 @@ export const Center: FC<PropsWithChildren<Props>> = ({
   childrenCenter,
   id,
   maxWidth = 'none',
+  ...props
 }) => {
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const createElement = (props: any, children: ReactNode) => {
@@ -77,6 +80,7 @@ export const Center: FC<PropsWithChildren<Props>> = ({
           '--margin-bottom': mb ? createSpacingVariableFromKey(mb) : 0,
         },
       } as CSSProperties,
+      ...props,
     },
     children,
   );
