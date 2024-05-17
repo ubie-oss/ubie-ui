@@ -1,1 +1,0 @@
-import{j as s}from"./jsx-runtime-9c4ae004.js";const a="_message_8gwj8_1",o={message:a},t=({children:e})=>s.jsx("p",{className:o.message,children:e});t.__docgenInfo={description:"",methods:[],displayName:"HelperMessage",props:{children:{required:!0,tsType:{name:"ReactNode"},description:""}}};export{t as H};
