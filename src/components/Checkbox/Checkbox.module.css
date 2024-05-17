@@ -1,9 +1,9 @@
 .container {
   display: flex;
-  align-items: center;
   gap: var(--size-spacing-xs);
-  user-select: none;
+  align-items: center;
   cursor: pointer;
+  user-select: none;
 }
 
 .container:has(input:disabled) {
@@ -12,22 +12,22 @@
 
 .checkbox {
   position: absolute;
-  clip: rect(1px, 1px, 1px, 1px);
-  overflow: hidden;
   width: 1px;
   height: 1px;
   padding: 0;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
   border: 0;
 }
 
 .checkIconContainer {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 2px solid var(--color-ubie-black-400);
   border-radius: var(--radius-sm);
   transition: background-color 200ms;
-  box-sizing: border-box;
 }
 
 .container.medium {
@@ -61,8 +61,8 @@
 }
 
 .checkIcon {
-  visibility: hidden;
   color: #fff;
+  visibility: hidden;
 }
 
 .medium .checkIcon {
@@ -91,6 +91,6 @@ input:disabled + .checkIconContainer {
 }
 
 input:disabled:checked + .checkIconContainer {
-  border: none;
   background-color: var(--color-text-disabled);
+  border: none;
 }

@@ -1,13 +1,13 @@
 .root {
   display: flex;
-  animation: spin 1.4s linear infinite;
   transform-origin: center;
+  animation: spin 1.4s linear infinite;
 }
 
 .circle {
   stroke: currentcolor;
-  animation: circular-progress 1.4s ease-in-out infinite;
   transform-origin: center;
+  animation: circular-progress 1.4s ease-in-out infinite;
 }
 
 @keyframes spin {

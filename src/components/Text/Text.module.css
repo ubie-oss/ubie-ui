@@ -1,8 +1,8 @@
 .text {
   font-size: var(--font-size);
+  font-weight: normal;
   line-height: var(--leading);
   color: var(--color);
-  font-weight: normal;
 }
 
 :where(.text) {
