@@ -3,10 +3,8 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { clsx } from 'clsx';
 import { FC, Fragment, PropsWithChildren } from 'react';
-import styles from './ActionHalfModal.module.css';
-import { CustomDataAttributeProps } from '../../types/attributes';
+import styles from './MessageHalfModal.module.css';
 import { opacityToClassName } from '../../utils/style';
-import { AllOrNone } from '../../utils/types';
 import { Button } from '../Button/Button';
 
 type Opacity = 'normal' | 'darker';
@@ -20,10 +18,7 @@ type BaseProps = {
    * ヘッダーに表示する見出しテキスト
    */
   header?: string;
-  /**
-   * プライマリーアクションボタンのカラースキーム
-   */
-  primaryActionColor?: 'primary' | 'alert';
+
   /**
    * 閉じるボタンのラベル
    * @default 閉じる
@@ -61,39 +56,12 @@ type BaseProps = {
   bodyScroll?: boolean;
 };
 
-type PrimaryActionProps = {
-  /**
-   * プライマリーアクションボタンが実行された場合のコールバック
-   */
-  onPrimaryAction: () => void;
-  /**
-   * プライマリーアクションボタンのラベル
-   */
-  primaryActionLabel: string;
-};
+type Props = BaseProps;
 
-type SecondaryActionProps = {
-  /**
-   * セカンダリーアクションボタンが実行された場合のコールバック
-   */
-  onSecondaryAction: () => void;
-  /**
-   * セカンダリーアクションボタンのラベル
-   */
-  secondaryActionLabel: string;
-};
-
-type Props = BaseProps & AllOrNone<PrimaryActionProps> & AllOrNone<SecondaryActionProps> & CustomDataAttributeProps;
-
-export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
+export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
   children,
   onClose,
-  onPrimaryAction,
-  onSecondaryAction,
   header,
-  primaryActionLabel,
-  secondaryActionLabel,
-  primaryActionColor,
   closeLabel = '閉じる',
   overlayOpacity = 'normal',
   showClose = true,
@@ -101,18 +69,12 @@ export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
   isStatic = false,
   fullscreen = false,
   bodyScroll = true,
-  ...props
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
 
   return (
     <Transition show={open}>
-      <Dialog
-        static={isStatic}
-        onClose={onClose}
-        className={clsx(styles.modal, fullscreen && styles.fullscreen)}
-        {...props}
-      >
+      <Dialog static={isStatic} onClose={onClose} className={clsx(styles.modal, fullscreen && styles.fullscreen)}>
         <Transition.Child
           as={Fragment}
           enter={styles.overlayEnter}
@@ -144,18 +106,8 @@ export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
             {header && <Dialog.Title className={styles.header}>{header}</Dialog.Title>}
             <div className={styles.contents}>{children}</div>
             <div className={styles.buttonContainer}>
-              {onPrimaryAction && primaryActionLabel && (
-                <Button block onClick={onPrimaryAction} aria-label={primaryActionLabel} variant={primaryActionColor}>
-                  {primaryActionLabel}
-                </Button>
-              )}
-              {onSecondaryAction && secondaryActionLabel && (
-                <Button block variant="secondary" onClick={onSecondaryAction} aria-label={secondaryActionLabel}>
-                  {secondaryActionLabel}
-                </Button>
-              )}
               {showClose && (
-                <Button variant="text" onClick={onClose} aria-label={closeLabel}>
+                <Button variant="primary" onClick={onClose} aria-label={closeLabel}>
                   {closeLabel}
                 </Button>
               )}

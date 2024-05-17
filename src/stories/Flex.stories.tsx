@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Flex } from '..';
+import { Flex, Box } from '..';
 
 export default {
   component: Flex,
@@ -164,9 +164,38 @@ export const AsSection: Story = {
   render: () => (
     <Flex as="section" spacing="md" alignItems="center">
       <h1>Heading</h1>
+      <p>text</p>
+      <p>text</p>
+      <p>text</p>
+    </Flex>
+  ),
+};
+
+export const MarginAndPadding: Story = {
+  render: () => (
+    <Flex spacing="md" alignItems="center" mt="lg" mr="lg" mb="lg" ml="lg" pt="xxl" pr="xxl" pb="xxl" pl="xxl">
+      <h1>Heading</h1>
       <p>Section</p>
       <p>Section</p>
       <p>Section</p>
+    </Flex>
+  ),
+};
+
+export const AsBox: Story = {
+  render: () => (
+    <Flex spacing="md" as={<Box radius="md" backgroundColor="primary" pt="lg" pr="lg" pb="lg" pl="lg" />}>
+      <div>item</div>
+      <div>item</div>
+      <div>item</div>
+    </Flex>
+  ),
+};
+
+export const CustomDataAttribute: Story = {
+  render: () => (
+    <Flex data-test-id="flex-custom-attribute" spacing="md" alignItems="center">
+      <div>Flex component with custom data attribute</div>
     </Flex>
   ),
 };

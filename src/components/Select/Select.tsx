@@ -4,8 +4,9 @@ import { UnfoldMoreIcon } from '@ubie/ubie-icons';
 import clsx from 'clsx';
 import { FC, forwardRef, InputHTMLAttributes } from 'react';
 import styles from './Select.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes';
 
-type Props = {
+type Props = CustomDataAttributeProps & {
   /**
    * ネイティブ要素の `id` 属性。ページで固有のIDを指定
    */

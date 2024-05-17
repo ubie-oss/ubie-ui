@@ -1,11 +1,15 @@
 .heading {
-  font-weight: bold;
-  box-sizing: border-box;
-  color: var(--color-text-main);
   position: relative;
+  box-sizing: border-box;
+  font-weight: normal;
+  color: var(--color-text-main);
 
   --medium-leading-border-width: 4px;
   --large-leading-border-width: 5px;
+}
+
+.heading.bold {
+  font-weight: bold;
 }
 
 :where(.heading) {
@@ -24,7 +28,7 @@
   text-align: right;
 }
 
-.heading.secondary {
+.heading.main {
   color: var(--color-text-main);
 }
 
@@ -109,15 +113,15 @@
 
 .heading.leadingBorder::before {
   position: absolute;
-  display: block;
   top: 0;
   left: 0;
-  content: '';
+  display: block;
   width: var(--medium-leading-border-width);
-  border-radius: 3px;
-  background-color: var(--color-primary);
-  vertical-align: top;
   height: 100%;
+  vertical-align: top;
+  content: '';
+  background-color: var(--color-primary);
+  border-radius: 3px;
 }
 
 .heading.lg.leadingBorder,
@@ -150,9 +154,9 @@
 }
 
 .icon > svg {
-  vertical-align: baseline;
   width: 100%;
   height: 100%;
+  vertical-align: baseline;
 }
 
 .heading.xs.hasIcon {

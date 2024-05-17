@@ -3,6 +3,7 @@
 import { clsx } from 'clsx';
 import { FC, forwardRef, InputHTMLAttributes } from 'react';
 import styles from './Input.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 
 type Props = {
   /**
@@ -27,7 +28,8 @@ type Props = {
    * 値が変化した場合のコールバック
    */
   onChange?: InputHTMLAttributes<HTMLInputElement>['onChange'];
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'invalid' | 'value' | 'disabled' | 'onChange'>;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'invalid' | 'value' | 'disabled' | 'onChange'> &
+  CustomDataAttributeProps;
 
 export const Input: FC<Props> = forwardRef<HTMLInputElement, Props>(({ isInvalid, ...props }, ref) => {
   const className = clsx({ [styles.isInvalid]: isInvalid && !props.disabled }, styles.input, props.className);

@@ -2,7 +2,6 @@
 
 import clsx from 'clsx';
 import styles from './Box.module.css';
-import {} from '../../types/style';
 import {
   paddingVariables,
   marginVariables,
@@ -12,6 +11,7 @@ import {
   colorVariable,
 } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
+import type { CustomDataAttributeProps } from '../../types/attributes';
 import type {
   PaddingProps,
   MarginProps,
@@ -49,12 +49,17 @@ type BaseProps = {
    */
   textBold?: boolean;
   /**
-   * 文字色の抽象値。のかのtext系Propとは独立して指定可能
+   * 文字色の抽象値
    */
   textColor?: TextColor;
+  /**
+   * テキストの配置。指定しない場合、親要素の配置を継承
+   */
+  textAlign?: 'left' | 'center' | 'right';
 } & PaddingProps &
   MarginProps &
-  RadiusProp;
+  RadiusProp &
+  CustomDataAttributeProps;
 
 type PropsWithoutText = BaseProps & {
   /**
@@ -171,6 +176,8 @@ export const Box: FC<PropsWithChildren<PropsWithoutText | PropsWithTextBody | Pr
   textLeading,
   textColor,
   textBold,
+  textAlign,
+  ...props
 }) => {
   let _textVariables: CSSProperties = {};
 
@@ -189,6 +196,7 @@ export const Box: FC<PropsWithChildren<PropsWithoutText | PropsWithTextBody | Pr
         width && styles.widthFull,
         textBold && styles.textBold,
         textBold === false && styles.textNormal,
+        textAlign && styles[`text${capitalize(textAlign)}`],
       ])}
       style={{
         ...paddingVariables({
@@ -207,6 +215,7 @@ export const Box: FC<PropsWithChildren<PropsWithoutText | PropsWithTextBody | Pr
         ..._textVariables,
         ...colorVariable(textColor),
       }}
+      {...props}
     >
       {children}
     </BoxComponent>

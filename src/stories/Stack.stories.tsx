@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Stack } from '..';
+import { Stack, Box } from '..';
 import { Spacing } from '../types/style';
 
 export default {
@@ -94,4 +94,38 @@ export const BlockLevelElementsToFullWidth: Story = {
     </Stack>
   ),
   args: defaultArgs,
+};
+
+export const MarginAndPadding: Story = {
+  render: (args) => (
+    <Stack {...args} mt="lg" mr="lg" mb="lg" ml="lg" pt="xxl" pr="xxl" pb="xxl" pl="xxl">
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+    </Stack>
+  ),
+  args: defaultArgs,
+};
+
+export const AsBox: Story = {
+  render: (args) => (
+    <Stack {...args} as={<Box radius="md" backgroundColor="primary" pt="lg" pr="lg" pb="lg" pl="lg" />}>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+    </Stack>
+  ),
+  args: defaultArgs,
+};
+
+export const CustomDataAttribute: Story = {
+  render: (args) => (
+    <Stack {...args}>
+      <p>This is a paragraph.</p>
+      <p>This is a paragraph.</p>
+    </Stack>
+  ),
+  args: { ...defaultArgs, 'data-test-id': 'custom-attribute' },
 };

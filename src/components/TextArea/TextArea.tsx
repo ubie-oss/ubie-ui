@@ -3,6 +3,7 @@
 import clsx from 'clsx';
 import { FC, TextareaHTMLAttributes } from 'react';
 import styles from './TextArea.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes';
 
 type Props = {
   /**
@@ -27,7 +28,8 @@ type Props = {
    * 値が変化した場合のコールバック
    */
   onChange?: TextareaHTMLAttributes<HTMLTextAreaElement>['onChange'];
-} & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'id' | 'value' | 'onChange'>;
+} & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'id' | 'value' | 'onChange'> &
+  CustomDataAttributeProps;
 
 export const TextArea: FC<Props> = ({ isInvalid = false, className, ...props }) => {
   const _className = clsx({ [styles.isInvalid]: isInvalid }, styles.textArea, className);

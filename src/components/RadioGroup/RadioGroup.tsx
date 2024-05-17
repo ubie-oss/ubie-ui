@@ -1,6 +1,8 @@
 'use client';
 
 import styles from './RadioGroup.module.css';
+import { RequiredLabel } from '../../sharedComponents/RequiredLabel/RequiredLabel';
+import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import { Flex } from '../Flex/Flex';
 import { RadioButton } from '../RadioButton/RadioButton';
 import { RadioCard } from '../RadioCard/RadioCard';
@@ -15,19 +17,33 @@ export type Props = {
    */
   label: string;
   /**
+   * 必須マークを表示するか
+   * 注意: trueとしてもinput要素のrequired属性は付与されません
+   */
+  showRequiredLabel?: boolean;
+  /**
    * ラジオボタンの配置方向
    * @default column
    */
   direction?: 'column' | 'row';
-};
+} & CustomDataAttributeProps;
 
-export const RadioGroup: FC<Props> = ({ children, label, direction = 'column' }) => {
+export const RadioGroup: FC<Props> = ({
+  children,
+  label,
+  showRequiredLabel = false,
+  direction = 'column',
+  ...otherProps
+}) => {
   const childrenIsCard = children.some((child) => child.type === RadioCard);
   const childenIsBlock = direction === 'row' || (childrenIsCard && direction === 'column');
 
   return (
-    <fieldset className={styles.wrapper}>
-      <legend className={styles.legend}>{label}</legend>
+    <fieldset className={styles.wrapper} {...otherProps}>
+      <legend className={styles.legend}>
+        {label}
+        {showRequiredLabel && <RequiredLabel />}
+      </legend>
       <Flex
         spacing={childrenIsCard ? 'sm' : 'md'}
         alignItems={childenIsBlock ? 'normal' : undefined}

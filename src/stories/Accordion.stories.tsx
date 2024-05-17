@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Accordion } from '..';
+import type { ComponentProps } from 'react';
 
 export default {
   component: Accordion,
@@ -7,17 +8,36 @@ export default {
 
 type Story = StoryObj<typeof Accordion>;
 
+const defaultArgs = {
+  header: '夏目漱石「私の個人主義」',
+  children:
+    '何は時分どうもどんな観念顔というののところを云ったいまし。とうてい今日に説明院は現にこういう反対たますくらいから思わて来るないにも撲殺なるたたて、始終にも願うただですん。',
+} satisfies Partial<ComponentProps<typeof Accordion>>;
+
 export const Default: Story = {
-  render: () => (
-    <Accordion header="夏目漱石「私の個人主義」">
-      何は時分どうもどんな観念顔というののところを云ったいまし。とうてい今日に説明院は現にこういう反対たますくらいから思わて来るないにも撲殺なるたたて、始終にも願うただですん。
-    </Accordion>
-  ),
+  render: (args) => <Accordion {...args}></Accordion>,
+  args: defaultArgs,
 };
 
 export const Small: Story = {
+  render: (args) => <Accordion {...args}></Accordion>,
+  args: {
+    ...defaultArgs,
+    size: 'small',
+  },
+};
+
+export const CustomDataAttribute: Story = {
+  render: (args) => <Accordion {...args}></Accordion>,
+  args: {
+    ...defaultArgs,
+    ['data-test-id']: 'some-id',
+  },
+};
+
+export const Id: Story = {
   render: () => (
-    <Accordion header="夏目漱石「私の個人主義」" size="small">
+    <Accordion header="夏目漱石「私の個人主義」" id="some-id">
       何は時分どうもどんな観念顔というののところを云ったいまし。とうてい今日に説明院は現にこういう反対たますくらいから思わて来るないにも撲殺なるたたて、始終にも願うただですん。
     </Accordion>
   ),

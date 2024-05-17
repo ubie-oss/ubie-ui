@@ -43,7 +43,7 @@ export const Default: Story = {
 
 export const WithHeader: Story = {
   render: (args) => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     return (
       <>
@@ -62,7 +62,7 @@ export const WithHeader: Story = {
 
 export const FixedHeight: Story = {
   render: (args) => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     return (
       <>
@@ -81,7 +81,7 @@ export const FixedHeight: Story = {
 
 export const OverlayDarker: Story = {
   render: (args) => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     return (
       <>
@@ -95,5 +95,24 @@ export const OverlayDarker: Story = {
   args: {
     ...defaultArgs,
     overlayOpacity: 'darker',
+  },
+};
+
+export const CustomDataAttribute: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <MessageModal {...args} open={open} onClose={() => setOpen(false)} />
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    'data-test-id': 'message-modal-custom',
   },
 };

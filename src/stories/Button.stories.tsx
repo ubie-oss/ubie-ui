@@ -130,3 +130,32 @@ export const Disabled: Story = {
   ),
   args: defaultArgs,
 };
+
+export const Loading: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+      <Button {...defaultArgs} loading />
+      <Button {...defaultArgs} variant="secondary" loading />
+      <Button {...defaultArgs} variant="accent" loading />
+      <Button {...defaultArgs} variant="alert" loading />
+      <Button {...defaultArgs} variant="text" loading />
+      <Button {...defaultArgs} variant="textAlert" loading />
+    </div>
+  ),
+};
+
+export const Margin: Story = {
+  render: () => (
+    <div style={{ backgroundColor: 'var(--color-background-gray)', width: 'fit-content', overflow: 'hidden' }}>
+      <Button {...defaultArgs} mt="lg" mr="lg" mb="lg" ml="lg" />
+    </div>
+  ),
+};
+
+export const CustomDataAttribute: Story = {
+  render: (args) => <Button {...args} />,
+  args: {
+    ['data-test-id']: 'some-test',
+    ...defaultArgs,
+  },
+};

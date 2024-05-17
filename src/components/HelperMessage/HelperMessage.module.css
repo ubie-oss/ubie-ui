@@ -1,6 +1,6 @@
 .message {
+  margin: 0;
   font-size: var(--text-note-lg-size);
   line-height: var(--text-note-lg-tight-line);
   color: var(--color-text-sub);
-  margin: 0;
 }
