@@ -1,6 +1,6 @@
 {
   "name": "@ubie/ubie-ui",
-  "version": "0.0.16",
+  "version": "0.0.20",
   "description": "React components for creating Ubie applications.",
   "types": "dist/index.d.ts",
   "files": [
@@ -110,7 +110,7 @@
     "vitest": "^0.34.3"
   },
   "peerDependencies": {
-    "@headlessui/react": ">1.7.0",
+    "@headlessui/react": ">1.7.0 <2.0.0",
     "@ubie/design-tokens": "^0.0.10 || ^0.1.0",
     "clsx": ">1.2.0",
     "react": "^17 || ^18",

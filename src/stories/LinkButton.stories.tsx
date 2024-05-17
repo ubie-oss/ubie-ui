@@ -116,6 +116,14 @@ export const Block: Story = {
   ),
 };
 
+export const Margin: Story = {
+  render: () => (
+    <div style={{ backgroundColor: 'var(--color-background-gray)', width: 'fit-content', overflow: 'hidden' }}>
+      <LinkButton {...defaultArgs} mt="lg" mr="lg" mb="lg" ml="lg" />
+    </div>
+  ),
+};
+
 export const CustomDataAttribute: Story = {
   args: {
     ...defaultArgs,

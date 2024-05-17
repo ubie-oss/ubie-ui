@@ -133,6 +133,39 @@ export const Disabled: Story = {
   ),
 };
 
+export const ShowRequiredLabel: Story = {
+  render: () => {
+    const [selectedItem, setSelectedItem] = useState<string[]>([options[0]]);
+
+    const onChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+      (event) => {
+        if (event.target.checked) {
+          setSelectedItem([...selectedItem, event.target.value]);
+        } else {
+          setSelectedItem(selectedItem.filter((item) => item !== event.target.value));
+        }
+      },
+      [selectedItem],
+    );
+
+    return (
+      <CheckboxGroup label="Checkbox" showRequiredLabel>
+        {options.map((option) => (
+          <Checkbox
+            name="default"
+            value={option}
+            onChange={onChange}
+            checked={selectedItem.includes(option)}
+            key={option}
+          >
+            {option}
+          </Checkbox>
+        ))}
+      </CheckboxGroup>
+    );
+  },
+};
+
 export const CustomDataAttribute: Story = {
   render: () => (
     <Stack spacing="xs">

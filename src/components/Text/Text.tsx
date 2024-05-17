@@ -43,6 +43,10 @@ type BaseProps = {
    * HTMLのid属性
    */
   id?: string;
+  /**
+   * テキストの配置。指定しない場合、親要素の配置を継承
+   */
+  textAlign?: 'left' | 'center' | 'right';
 } & CustomDataAttributeProps;
 
 type BodyProps = BaseProps & {
@@ -140,12 +144,21 @@ export const Text: FC<TextProps> = ({
   color = 'main',
   children,
   id,
+  textAlign,
   ...props
 }) => {
   return (
     <TextComponent
       id={id}
-      className={clsx(styles.text, bold && styles.bold, styles[size], styles[type], styles[leading], styles[color])}
+      className={clsx(
+        styles.text,
+        bold && styles.bold,
+        styles[size],
+        styles[type],
+        styles[leading],
+        styles[color],
+        textAlign && styles[textAlign],
+      )}
       {...props}
     >
       {children}

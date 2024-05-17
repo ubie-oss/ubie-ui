@@ -102,6 +102,33 @@ export const Block: Story = {
   },
 };
 
+export const ShowRequiredLabel: Story = {
+  render: () => {
+    const [selectedItem, setSelectedItem] = useState(options[0]);
+
+    const onChange: ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
+      setSelectedItem(event.target.value);
+    }, []);
+
+    return (
+      <RadioGroup label="RadioCard" showRequiredLabel>
+        {options.map((option) => (
+          <RadioCard
+            name="options"
+            value={option}
+            onChange={onChange}
+            checked={selectedItem === option}
+            id={option}
+            key={option}
+          >
+            {option}
+          </RadioCard>
+        ))}
+      </RadioGroup>
+    );
+  },
+};
+
 export const CustomDataAttribute: Story = {
   args: defaultArgs,
   render: (args) => {
