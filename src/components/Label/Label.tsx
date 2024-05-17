@@ -23,7 +23,13 @@ type Props = {
   showRequiredLabel?: boolean;
 } & CustomDataAttributeProps;
 
-export const Label: FC<Props> = ({ children, as: LabelComponent = 'label', htmlFor, showRequiredLabel, ...otherProps }) => {
+export const Label: FC<Props> = ({
+  children,
+  as: LabelComponent = 'label',
+  htmlFor,
+  showRequiredLabel,
+  ...otherProps
+}) => {
   return (
     <LabelComponent htmlFor={htmlFor} className={styles.label} {...otherProps}>
       {children}

@@ -39,7 +39,8 @@ export type BaseProps = {
    * 後方配置のアイコン
    */
   suffixIcon?: 'default' | ReactNode;
-} & MarginProps & CustomDataAttributeProps;
+} & MarginProps &
+  CustomDataAttributeProps;
 
 export type OnlyButtonProps = {
   /**

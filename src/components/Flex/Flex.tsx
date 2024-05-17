@@ -50,7 +50,8 @@ type Props = {
    */
   width?: 'full';
 } & MarginProps &
-  PaddingProps & CustomDataAttributeProps;;
+  PaddingProps &
+  CustomDataAttributeProps;
 
 export const Flex: FC<PropsWithChildren<Props>> = ({
   as: FlexCopmonent = 'div',
@@ -106,7 +107,7 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
           ml,
         }),
       },
-      ...otherProps
+      ...otherProps,
     },
     children,
   );

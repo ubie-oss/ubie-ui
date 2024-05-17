@@ -28,7 +28,13 @@ export type Props = {
   direction?: 'column' | 'row';
 } & CustomDataAttributeProps;
 
-export const RadioGroup: FC<Props> = ({ children, label, showRequiredLabel = false, direction = 'column', ...otherProps }) => {
+export const RadioGroup: FC<Props> = ({
+  children,
+  label,
+  showRequiredLabel = false,
+  direction = 'column',
+  ...otherProps
+}) => {
   const childrenIsCard = children.some((child) => child.type === RadioCard);
   const childenIsBlock = direction === 'row' || (childrenIsCard && direction === 'column');
 

@@ -35,7 +35,8 @@ type Props = {
    * HTMLのID属性の値
    */
   id?: string;
-} & MarginYProps & PaddingProps &
+} & MarginYProps &
+  PaddingProps &
   CustomDataAttributeProps;
 
 export const Center: FC<PropsWithChildren<Props>> = ({

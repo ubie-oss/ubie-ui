@@ -55,7 +55,7 @@ type Props = {
    * @default true
    */
   bold?: boolean;
-} & CustomDataAttributeProps;;
+} & CustomDataAttributeProps;
 
 const Heading: FC<PropsWithChildren<Props>> = ({
   textAlign,

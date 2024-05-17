@@ -25,7 +25,13 @@ export type Props = {
   direction?: 'column' | 'row';
 } & CustomDataAttributeProps;
 
-export const CheckboxGroup: FC<Props> = ({ children, label, showRequiredLabel, direction = 'column', ...otherProps }) => {
+export const CheckboxGroup: FC<Props> = ({
+  children,
+  label,
+  showRequiredLabel,
+  direction = 'column',
+  ...otherProps
+}) => {
   return (
     <fieldset className={styles.wrapper} {...otherProps}>
       <legend className={styles.legend}>
