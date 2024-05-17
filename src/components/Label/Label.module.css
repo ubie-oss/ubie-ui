@@ -1,10 +1,10 @@
 .label {
   display: flex;
+  gap: var(--size-spacing-xs);
+  align-items: center;
   font-size: var(--text-body-sm-size);
   font-weight: bold;
   color: var(--color-text-sub);
-  align-items: center;
-  gap: var(--size-spacing-xs);
 }
 
 legend.label {

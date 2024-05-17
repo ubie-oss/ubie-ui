@@ -1,11 +1,11 @@
 .card {
   display: flex;
-  align-items: center;
   gap: var(--size-spacing-sm);
+  align-items: center;
   padding: var(--size-spacing-md);
+  text-decoration: none;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  text-decoration: none;
 }
 
 .card:hover {
@@ -19,8 +19,8 @@
 }
 
 .text {
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: var(--size-spacing-xxs);
 }
@@ -40,9 +40,9 @@
 }
 
 .caret {
-  color: var(--color-primary);
   width: 1.25rem;
   height: 1.25rem;
+  color: var(--color-primary);
 }
 
 /* Size */

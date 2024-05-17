@@ -1,9 +1,9 @@
 .required {
+  display: inline-block;
   padding: 2px var(--size-spacing-xxs) 1px;
-  border-radius: var(--radius-sm);
   font-size: var(--text-tag-md-size);
   line-height: var(--text-tag-md-line);
-  display: inline-block;
   color: var(--color-accent);
   background-color: var(--color-background-accent);
+  border-radius: var(--radius-sm);
 }

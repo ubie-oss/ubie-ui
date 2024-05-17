@@ -6,27 +6,27 @@
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   justify-content: center;
-  border-radius: var(--height);
   width: auto;
   min-width: var(--min-width);
   min-height: var(--height);
   padding: var(--padding-y) var(--padding-x);
-  border-width: var(--border-width);
-  border-style: solid;
-  color: var(--text);
-  background-color: var(--bg);
-  border-color: var(--border-color);
-  text-align: center;
-  line-height: var(--line-height);
+  margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
   font-size: var(--font-size);
   font-weight: bold;
+  line-height: var(--line-height);
+  color: var(--text);
+  text-align: center;
+  text-decoration: none;
+  overflow-wrap: anywhere;
   white-space: normal;
   appearance: none;
-  text-decoration: none;
-  transition: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
-  overflow-wrap: anywhere;
-  margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
+  background-color: var(--bg);
+  border-color: var(--border-color);
+  border-style: solid;
+  border-width: var(--border-width);
+  border-radius: var(--height);
+  transition: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .button:focus-visible {
@@ -35,8 +35,8 @@
 
 @media (hover: hover) {
   .button:hover {
-    cursor: pointer;
     color: var(--text-hover);
+    cursor: pointer;
     background-color: var(--bg-hover);
     border-color: var(--border-color-hover);
   }
@@ -44,19 +44,19 @@
 
 .label {
   display: inline-flex;
+  grid-column: 2;
   align-items: center;
   justify-content: center;
-  grid-column: 2;
 }
 
 .disabled {
+  padding: calc(var(--padding-y) + var(--border-width)) calc(var(--padding-x) + var(--border-width));
+  color: var(--text-disabled);
   pointer-events: none;
   cursor: not-allowed;
-  color: var(--text-disabled);
   background-color: var(--bg-disabled);
-  border-width: 0;
-  padding: calc(var(--padding-y) + var(--border-width)) calc(var(--padding-x) + var(--border-width));
   border-color: var(--border-color-disabled);
+  border-width: 0;
 }
 
 .loading {
@@ -229,8 +229,8 @@
 }
 
 .fixedIcon {
-  margin: 0 10%;
   display: flex;
+  margin: 0 10%;
   vertical-align: middle;
 }
 

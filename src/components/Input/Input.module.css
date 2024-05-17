@@ -1,18 +1,18 @@
 .input {
+  box-sizing: border-box;
   width: 100%;
   padding: var(--size-spacing-md) var(--size-spacing-sm) 0.875rem;
   font-size: var(--text-body-md-narrow-size);
-  line-height: var(--text-body-md-narrow-line);
   font-weight: bold;
+  line-height: var(--text-body-md-narrow-line);
   color: var(--color-text-main);
   text-align: inherit;
+  appearance: none;
+  caret-color: var(--color-primary);
   background-color: var(--color-background-gray);
   border: none;
   border-bottom: 2px solid var(--color-border);
   border-radius: 8px 8px 0 0;
-  appearance: none;
-  caret-color: var(--color-primary);
-  box-sizing: border-box;
 }
 
 .input.isInvalid,
