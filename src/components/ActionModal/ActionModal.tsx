@@ -63,11 +63,11 @@ type BaseProps = {
    */
   isStatic?: boolean;
   /**
-   * ネイティブ要素の`id`属性。ページで固有のIDを指定
+   * ネイティブ要素のid属性。ページで固有のIDを指定
    */
   id?: string;
   /**
-   * ネイティブ要素の`id`属性。ページで固有のIDを指定
+   * ネイティブのaria-labelledby属性。独自の見出しを実装する場合にダイアログとの紐づけに使用。ページで固有のIDを指定
    */
   ariaLabelledby?: string;
 };
