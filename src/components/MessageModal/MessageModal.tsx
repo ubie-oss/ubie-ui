@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { FC, Fragment, PropsWithChildren, useCallback } from 'react';
 import styles from './MessageModal.module.css';
 import { Button } from '../../';
-import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
+import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
 
 type Opacity = 'normal' | 'darker';
