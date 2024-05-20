@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { FC, Fragment, PropsWithChildren } from 'react';
+import { FC, Fragment, PropsWithChildren, useCallback } from 'react';
 import styles from './MessageModal.module.css';
 import { Button } from '../../';
 import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
@@ -44,6 +44,14 @@ type Props = {
    * @default false
    */
   isStatic?: boolean;
+  /**
+   * ネイティブ要素のid属性。ページで固有のIDを指定
+   */
+  id?: string;
+  /**
+   * ネイティブのaria-labelledby属性。独自の見出しを実装する場合にダイアログとの紐づけに使用。ページで固有のIDを指定
+   */
+  ariaLabelledby?: string;
 } & PropsWithChildren &
   CustomDataAttributeProps;
 
@@ -56,9 +64,21 @@ export const MessageModal: FC<Props> = ({
   fixedHeight = false,
   open = true,
   isStatic = false,
+  ariaLabelledby,
   ...otherProps
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
+
+  const dialogRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (node !== null && header == null && ariaLabelledby != null) {
+        node.setAttribute('aria-labelledby', ariaLabelledby);
+      } else if (node !== null && header == null && ariaLabelledby == null) {
+        node.removeAttribute('aria-labelledby');
+      }
+    },
+    [ariaLabelledby, header],
+  );
 
   return (
     <Transition
@@ -71,7 +91,7 @@ export const MessageModal: FC<Props> = ({
       leaveFrom={styles.panelLeaveFrom}
       leaveTo={styles.panelLeaveTo}
     >
-      <Dialog static={isStatic} onClose={onClose} className={styles.modal} {...otherProps}>
+      <Dialog ref={dialogRef} static={isStatic} onClose={onClose} className={styles.modal} {...otherProps}>
         <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
         <div className={clsx(styles.modalBody, fixedHeight && styles.fixedHeight)}>
           {header && <Dialog.Title className={styles.header}>{header}</Dialog.Title>}
