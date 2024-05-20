@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useCallback, useState } from 'react';
-import { ActionHalfModal } from '..';
+import { ActionHalfModal } from './ActionHalfModal';
 
 export default {
   title: 'Modal/ActionHalfModal',
@@ -148,14 +148,12 @@ export const Customized: Story = {
   args: defaultArgs,
 };
 
-export const CustomDataAttribute: Story = {
+export const WithId: Story = {
   render: (args) => {
     const [open, setOpen] = useState(false);
-
     const onClose = useCallback(() => {
       setOpen(false);
     }, []);
-
     return (
       <>
         <button type="button" onClick={() => setOpen(true)}>
@@ -172,5 +170,42 @@ export const CustomDataAttribute: Story = {
       </>
     );
   },
-  args: defaultArgs,
+  args: {
+    ...defaultArgs,
+    id: 'dialog-id',
+  },
+};
+
+export const CustomHeading: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+    const onClose = useCallback(() => {
+      setOpen(false);
+    }, []);
+
+    const headingId = 'heading-id';
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionHalfModal
+          ariaLabelledby={headingId}
+          primaryActionLabel="Action"
+          onPrimaryAction={onClose}
+          {...args}
+          open={open}
+          onClose={onClose}
+        >
+          <h2 id={headingId}>Header</h2>
+          <p>Body</p>
+        </ActionHalfModal>
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    header: undefined,
+  },
 };

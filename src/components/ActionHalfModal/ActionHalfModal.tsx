@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import { clsx } from 'clsx';
-import { FC, Fragment, PropsWithChildren } from 'react';
+import { FC, Fragment, PropsWithChildren, useCallback } from 'react';
 import styles from './ActionHalfModal.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
@@ -54,6 +54,14 @@ type BaseProps = {
    * @default false
    */
   fullscreen?: boolean;
+  /**
+   * ネイティブ要素のid属性。ページで固有のIDを指定
+   */
+  id?: string;
+  /**
+   * ネイティブのaria-labelledby属性。独自の見出しを実装する場合にダイアログとの紐づけに使用。ページで固有のIDを指定
+   */
+  ariaLabelledby?: string;
 };
 
 type PrimaryActionProps = {
@@ -95,13 +103,26 @@ export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
   open = true,
   isStatic = false,
   fullscreen = false,
+  ariaLabelledby,
   ...props
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
 
+  const dialogRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (node !== null && header == null && ariaLabelledby != null) {
+        node.setAttribute('aria-labelledby', ariaLabelledby);
+      } else if (node !== null && header == null && ariaLabelledby == null) {
+        node.removeAttribute('aria-labelledby');
+      }
+    },
+    [ariaLabelledby, header],
+  );
+
   return (
     <Transition show={open}>
       <Dialog
+        ref={dialogRef}
         static={isStatic}
         onClose={onClose}
         className={clsx(styles.modal, fullscreen && styles.fullscreen)}
