@@ -4,7 +4,7 @@ export default defineConfig({
   clean: true,
   dts: true,
   format: ['cjs', 'esm'],
-  entry: ['src', '!src/**/*.spec.*', '!src/**/*.d.ts'],
+  entry: ['src', '!src/**/*.spec.*', '!src/**/*.d.ts', '!src/**/*.test.tsx', '!src/**/*.stories.tsx'],
   external: ['react'],
   bundle: false,
   plugins: [
