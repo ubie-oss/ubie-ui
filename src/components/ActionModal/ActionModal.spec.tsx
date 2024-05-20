@@ -1,10 +1,11 @@
 import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import Meta, { Id, CustomHeading } from './ActionModal.stories';
+import Meta, { Id, CustomHeading, Default } from './ActionModal.stories';
 
 const IdStory = composeStory(Id, Meta);
 const CustomHeadingStory = composeStory(CustomHeading, Meta);
+const DefaultStory = composeStory(Default, Meta);
 
 const user = userEvent.setup();
 
@@ -29,5 +30,15 @@ describe('ActionModal', () => {
 
     expect(dialogElement).toHaveAttribute('aria-labelledby', 'heading-id');
     expect(dialogHeadingElement).toHaveAttribute('id', 'heading-id');
+  });
+
+  test('header prop can be used to automatically link to a dialog', async () => {
+    render(<DefaultStory />);
+
+    const dialogElement = await screen.findByRole('dialog');
+    const dialogHeadingElement = await screen.findByRole('heading');
+
+    expect(dialogElement).toHaveAttribute('aria-labelledby');
+    expect(dialogHeadingElement).toHaveAttribute('id', dialogElement.getAttribute('aria-labelledby'));
   });
 });
