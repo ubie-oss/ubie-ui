@@ -1,9 +1,9 @@
 import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import Meta, { Id, CustomHeading, Default } from './ActionModal.stories';
+import Meta, { WithId, CustomHeading, Default } from './ActionModal.stories';
 
-const IdStory = composeStory(Id, Meta);
+const WithIdStory = composeStory(WithId, Meta);
 const CustomHeadingStory = composeStory(CustomHeading, Meta);
 const DefaultStory = composeStory(Default, Meta);
 
@@ -11,7 +11,7 @@ const user = userEvent.setup();
 
 describe('ActionModal', () => {
   test('Add id', async () => {
-    render(<IdStory />);
+    render(<WithIdStory />);
 
     await user.click(await screen.findByRole('button'));
 
