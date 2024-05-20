@@ -1,6 +1,6 @@
 import { StoryObj, Meta } from '@storybook/react';
 import { useState, ComponentProps } from 'react';
-import { ActionModal } from '../';
+import { ActionModal } from './ActionModal';
 
 export default {
   title: 'Modal/ActionModal',
@@ -123,5 +123,55 @@ export const CustomDataAttribute: Story = {
   args: {
     ...defaultArgs,
     [`data-test-id`]: 'some-id',
+  },
+};
+
+export const WithId: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionModal {...args} open={open} onPrimaryAction={() => setOpen(false)} onClose={() => setOpen(false)}>
+          <p>Default</p>
+        </ActionModal>
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    id: 'dialog-id',
+  },
+};
+
+export const CustomHeader: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+    const headerId = 'header-id';
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionModal
+          {...args}
+          open={open}
+          onPrimaryAction={() => setOpen(false)}
+          onClose={() => setOpen(false)}
+          ariaLabelledby={headerId}
+        >
+          <h2 id={headerId}>Custom Heading</h2>
+          <p>Default</p>
+        </ActionModal>
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    header: undefined,
   },
 };

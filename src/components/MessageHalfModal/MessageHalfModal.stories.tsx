@@ -1,13 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useCallback, useState } from 'react';
-import { ActionHalfModal } from '..';
+import { MessageHalfModal } from './MessageHalfModal';
 
 export default {
-  title: 'Modal/ActionHalfModal',
-  component: ActionHalfModal,
-} satisfies Meta<typeof ActionHalfModal>;
+  title: 'Modal/MessageHalfModal',
+  component: MessageHalfModal,
+} satisfies Meta<typeof MessageHalfModal>;
 
-type Story = StoryObj<typeof ActionHalfModal>;
+type Story = StoryObj<typeof MessageHalfModal>;
 
 const defaultArgs = {
   header: 'モーダル',
@@ -27,41 +27,7 @@ export const Default: Story = {
         <button type="button" onClick={() => setOpen(true)}>
           Open Modal
         </button>
-        <ActionHalfModal
-          primaryActionLabel="アクション"
-          onPrimaryAction={onClose}
-          {...args}
-          open={open}
-          onClose={onClose}
-        />
-      </>
-    );
-  },
-  args: defaultArgs,
-};
-
-export const Secondary: Story = {
-  render: (args) => {
-    const [open, setOpen] = useState(false);
-
-    const onClose = useCallback(() => {
-      setOpen(false);
-    }, []);
-
-    return (
-      <>
-        <button type="button" onClick={() => setOpen(true)}>
-          Open Modal
-        </button>
-        <ActionHalfModal
-          primaryActionLabel="アクション1"
-          onPrimaryAction={onClose}
-          secondaryActionLabel="アクション2"
-          onSecondaryAction={onClose}
-          {...args}
-          open={open}
-          onClose={onClose}
-        />
+        <MessageHalfModal {...args} open={open} onClose={onClose} />
       </>
     );
   },
@@ -81,7 +47,7 @@ export const Fullscreen: Story = {
         <button type="button" onClick={() => setOpen(true)}>
           Open Modal
         </button>
-        <ActionHalfModal {...args} open={open} onClose={onClose} fullscreen />
+        <MessageHalfModal {...args} open={open} onClose={onClose} fullscreen />
       </>
     );
   },
@@ -101,24 +67,37 @@ export const NoCloseButton: Story = {
         <button type="button" onClick={() => setOpen(true)}>
           Open Modal
         </button>
-        <ActionHalfModal
-          onPrimaryAction={onClose}
-          primaryActionLabel="確認"
-          showClose={false}
-          {...args}
-          open={open}
-          onClose={onClose}
-        />
+        <MessageHalfModal showClose={false} {...args} open={open} onClose={onClose} />
+      </>
+    );
+  },
+  args: defaultArgs,
+};
+
+export const WithCustomDataAttribute: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+
+    const onClose = useCallback(() => {
+      setOpen(false);
+    }, []);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <MessageHalfModal {...args} open={open} onClose={onClose} />
       </>
     );
   },
   args: {
     ...defaultArgs,
-    [`data-test-id`]: 'some-id',
+    'data-test-id': 'message-half-modal-custom',
   },
 };
 
-export const Customized: Story = {
+export const WithId: Story = {
   render: (args) => {
     const [open, setOpen] = useState(false);
 
@@ -131,24 +110,17 @@ export const Customized: Story = {
         <button type="button" onClick={() => setOpen(true)}>
           Open Modal
         </button>
-        <ActionHalfModal
-          header="削除します"
-          primaryActionColor="alert"
-          primaryActionLabel="削除"
-          onPrimaryAction={onClose}
-          overlayOpacity="darker"
-          closeLabel="キャンセル"
-          {...args}
-          open={open}
-          onClose={onClose}
-        />
+        <MessageHalfModal {...args} open={open} onClose={onClose} />
       </>
     );
   },
-  args: defaultArgs,
+  args: {
+    ...defaultArgs,
+    id: 'dialog-id',
+  },
 };
 
-export const CustomDataAttribute: Story = {
+export const CustomHeader: Story = {
   render: (args) => {
     const [open, setOpen] = useState(false);
 
@@ -156,21 +128,22 @@ export const CustomDataAttribute: Story = {
       setOpen(false);
     }, []);
 
+    const headerId = 'header-id';
+
     return (
       <>
         <button type="button" onClick={() => setOpen(true)}>
           Open Modal
         </button>
-        <ActionHalfModal
-          {...args}
-          data-test-id="some-id"
-          primaryActionLabel="アクション"
-          onPrimaryAction={onClose}
-          open={open}
-          onClose={onClose}
-        />
+        <MessageHalfModal ariaLabelledby={headerId} {...args} open={open} onClose={onClose}>
+          <h2 id={headerId}>Heading</h2>
+          <p>Body</p>
+        </MessageHalfModal>
       </>
     );
   },
-  args: defaultArgs,
+  args: {
+    ...defaultArgs,
+    header: undefined,
+  },
 };
