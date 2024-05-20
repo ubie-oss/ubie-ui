@@ -1,1 +1,0 @@
-import{j as e}from"./jsx-runtime-9c4ae004.js";const r="_required_yioio_1",s={required:r},i=()=>e.jsx("span",{className:s.required,children:"必須"});i.__docgenInfo={description:"",methods:[],displayName:"RequiredLabel"};export{i as R};

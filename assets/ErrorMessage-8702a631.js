@@ -1,0 +1,1 @@
+import{j as o}from"./jsx-runtime-69eee039.js";const a="_error_vcfee_1",t={error:a},e=({children:r,...s})=>o.jsx("p",{"aria-live":"polite",className:t.error,...s,children:r});try{e.displayName="ErrorMessage",e.__docgenInfo={description:"",displayName:"ErrorMessage",props:{}}}catch{}export{e as E};
