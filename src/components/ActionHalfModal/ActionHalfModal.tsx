@@ -55,6 +55,11 @@ type BaseProps = {
    */
   fullscreen?: boolean;
   /**
+   * モーダルボディ部分のスクロールを許可するかどうか
+   * @default true
+   */
+  bodyScroll?: boolean;
+  /**
    * ネイティブ要素のid属性。ページで固有のIDを指定
    */
   id?: string;
@@ -103,6 +108,7 @@ export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
   open = true,
   isStatic = false,
   fullscreen = false,
+  bodyScroll = true,
   ariaLabelledby,
   ...props
 }) => {
@@ -148,7 +154,14 @@ export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
           leaveFrom={styles.panelLeaveFrom}
           leaveTo={styles.panelLeaveTo}
         >
-          <div className={clsx(styles.modalBody, !header && styles.headerLess, fullscreen && styles.fullscreen)}>
+          <div
+            className={clsx(
+              styles.modalBody,
+              !header && styles.headerLess,
+              fullscreen && styles.fullscreen,
+              bodyScroll && styles.bodyScroll,
+            )}
+          >
             {header && <Dialog.Title className={styles.header}>{header}</Dialog.Title>}
             <div className={styles.contents}>{children}</div>
             <div className={styles.buttonContainer}>
