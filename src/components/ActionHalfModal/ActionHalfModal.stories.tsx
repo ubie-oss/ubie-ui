@@ -176,14 +176,14 @@ export const WithId: Story = {
   },
 };
 
-export const CustomHeading: Story = {
+export const CustomHeader: Story = {
   render: (args) => {
     const [open, setOpen] = useState(false);
     const onClose = useCallback(() => {
       setOpen(false);
     }, []);
 
-    const headingId = 'heading-id';
+    const headerId = 'header-id';
 
     return (
       <>
@@ -191,14 +191,14 @@ export const CustomHeading: Story = {
           Open Modal
         </button>
         <ActionHalfModal
-          ariaLabelledby={headingId}
+          ariaLabelledby={headerId}
           primaryActionLabel="Action"
           onPrimaryAction={onClose}
           {...args}
           open={open}
           onClose={onClose}
         >
-          <h2 id={headingId}>Header</h2>
+          <h2 id={headerId}>Header</h2>
           <p>Body</p>
         </ActionHalfModal>
       </>

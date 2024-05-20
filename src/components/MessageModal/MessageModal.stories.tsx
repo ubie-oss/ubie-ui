@@ -117,19 +117,19 @@ export const WithId: Story = {
   },
 };
 
-export const CustomHeading: Story = {
+export const CustomHeader: Story = {
   render: (args) => {
     const [open, setOpen] = useState(false);
 
-    const headingId = 'heading-id';
+    const headerId = 'header-id';
 
     return (
       <>
         <button type="button" onClick={() => setOpen(true)}>
           Open Modal
         </button>
-        <MessageModal ariaLabelledby={headingId} {...args} open={open} onClose={() => setOpen(false)}>
-          <h2 id={headingId}>Heading</h2>
+        <MessageModal ariaLabelledby={headerId} {...args} open={open} onClose={() => setOpen(false)}>
+          <h2 id={headerId}>Heading</h2>
           <p>Body</p>
         </MessageModal>
       </>

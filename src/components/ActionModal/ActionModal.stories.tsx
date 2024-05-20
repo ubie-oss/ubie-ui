@@ -147,10 +147,10 @@ export const WithId: Story = {
   },
 };
 
-export const CustomHeading: Story = {
+export const CustomHeader: Story = {
   render: (args) => {
     const [open, setOpen] = useState(false);
-    const headingId = 'heading-id';
+    const headerId = 'header-id';
 
     return (
       <>
@@ -162,9 +162,9 @@ export const CustomHeading: Story = {
           open={open}
           onPrimaryAction={() => setOpen(false)}
           onClose={() => setOpen(false)}
-          ariaLabelledby={headingId}
+          ariaLabelledby={headerId}
         >
-          <h2 id={headingId}>Custom Heading</h2>
+          <h2 id={headerId}>Custom Heading</h2>
           <p>Default</p>
         </ActionModal>
       </>

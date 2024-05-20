@@ -120,7 +120,7 @@ export const WithId: Story = {
   },
 };
 
-export const CustomHeading: Story = {
+export const CustomHeader: Story = {
   render: (args) => {
     const [open, setOpen] = useState(false);
 
@@ -128,15 +128,15 @@ export const CustomHeading: Story = {
       setOpen(false);
     }, []);
 
-    const headingId = 'heading-id';
+    const headerId = 'header-id';
 
     return (
       <>
         <button type="button" onClick={() => setOpen(true)}>
           Open Modal
         </button>
-        <MessageHalfModal ariaLabelledby={headingId} {...args} open={open} onClose={onClose}>
-          <h2 id={headingId}>Heading</h2>
+        <MessageHalfModal ariaLabelledby={headerId} {...args} open={open} onClose={onClose}>
+          <h2 id={headerId}>Heading</h2>
           <p>Body</p>
         </MessageHalfModal>
       </>
