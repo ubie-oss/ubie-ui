@@ -62,6 +62,10 @@ type BaseProps = {
    * @default false
    */
   isStatic?: boolean;
+  /**
+   * ネイティブ要素の`id`属性。ページで固有のIDを指定
+   */
+  id?: string;
 };
 
 type SecondaryActionProps = {
