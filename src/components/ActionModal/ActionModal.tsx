@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { FC, Fragment, PropsWithChildren } from 'react';
+import { FC, Fragment, PropsWithChildren, useCallback } from 'react';
 import styles from './ActionModal.module.css';
 import { Button } from '../../';
 import { CustomDataAttributeProps } from '../../types/attributes';
@@ -66,6 +66,10 @@ type BaseProps = {
    * ネイティブ要素の`id`属性。ページで固有のIDを指定
    */
   id?: string;
+  /**
+   * ネイティブ要素の`id`属性。ページで固有のIDを指定
+   */
+  ariaLabelledby?: string;
 };
 
 type SecondaryActionProps = {
@@ -96,9 +100,21 @@ export const ActionModal: FC<Props> = ({
   showClose = true,
   open = true,
   isStatic = false,
+  ariaLabelledby,
   ...props
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
+
+  const dialogRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (node !== null && header == null && ariaLabelledby != null) {
+        node.setAttribute('aria-labelledby', ariaLabelledby);
+      } else if (node !== null && header == null && ariaLabelledby == null) {
+        node.removeAttribute('aria-labelledby');
+      }
+    },
+    [ariaLabelledby, header],
+  );
 
   return (
     <Transition
@@ -111,7 +127,14 @@ export const ActionModal: FC<Props> = ({
       leaveFrom={styles.panelLeaveFrom}
       leaveTo={styles.panelLeaveTo}
     >
-      <Dialog static={isStatic} onClose={onClose} className={styles.modal} {...props}>
+      <Dialog
+        ref={dialogRef}
+        static={isStatic}
+        onClose={onClose}
+        className={styles.modal}
+        aria-labelledby={ariaLabelledby}
+        {...props}
+      >
         <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
         <div className={clsx(styles.modalBody, !header && styles.headerLess, fixedHeight && styles.fixedHeight)}>
           {header && <Dialog.Title className={styles.header}>{header}</Dialog.Title>}

@@ -146,3 +146,32 @@ export const Id: Story = {
     id: 'dialog-id',
   },
 };
+
+export const CustomHeading: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+    const headingId = 'heading-id';
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionModal
+          {...args}
+          open={open}
+          onPrimaryAction={() => setOpen(false)}
+          onClose={() => setOpen(false)}
+          ariaLabelledby={headingId}
+        >
+          <h2 id={headingId}>Custom Heading</h2>
+          <p>Default</p>
+        </ActionModal>
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    header: undefined,
+  },
+};
