@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Text, Flex, Stack } from '../';
 
 export default {
+  title: 'Typography/Text',
   component: Text,
 } satisfies Meta<typeof Text>;
 
