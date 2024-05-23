@@ -1,8 +1,8 @@
 import { type FC, PropsWithChildren } from 'react';
 import styles from './Color.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes';
 import { TextColor } from '../../types/style';
 import { colorVariable } from '../../utils/style';
-import { CustomDataAttributeProps } from '../../types/attributes';
 
 type Props = {
   /**

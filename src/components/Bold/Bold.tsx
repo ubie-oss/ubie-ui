@@ -17,5 +17,9 @@ type Props = {
 export const Bold: FC<PropsWithChildren<Props>> = ({ as = 'span', children, id, ...otherProps }) => {
   const BoldComponent = as;
 
-  return <BoldComponent className={styles.bold} id={id} {...otherProps}>{children}</BoldComponent>;
+  return (
+    <BoldComponent className={styles.bold} id={id} {...otherProps}>
+      {children}
+    </BoldComponent>
+  );
 };
