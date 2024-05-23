@@ -22,8 +22,8 @@ type Props = {
    */
   spacing: Spacing;
   /**
-   * 水平方向における子要素のレイアウトを定める。ブロックレベル要素を幅いっぱいに占有させたい場合は `normal` を使うこと
-   * @default flex-start
+   * 水平方向における子要素のレイアウトを定める。
+   * @default stretch
    */
   alignItems?: AlignItems;
   /**
@@ -53,7 +53,7 @@ export const Stack: FC<Props> = ({
   children,
   className,
   spacing,
-  alignItems = 'flex-start',
+  alignItems = 'stretch',
   justifyContent = 'flex-start',
   pt,
   pr,
