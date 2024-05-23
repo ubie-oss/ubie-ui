@@ -20,6 +20,9 @@
 
 .contents {
   padding: 0 var(--size-spacing-md);
+
+  /* May receive focus in the initial display. */
+  outline: none;
 }
 
 .modalBody {
@@ -66,6 +69,9 @@
   line-height: var(--text-heading-xs-line);
   text-align: center;
   white-space: pre-wrap;
+
+  /* May receive focus in the initial display. */
+  outline: none;
 }
 
 .buttonContainer {

@@ -43,6 +43,9 @@
 
 .contents {
   text-align: center;
+
+  /* May receive focus in the initial display. */
+  outline: none;
 }
 
 .modalBody.fixedHeight .contents {
@@ -57,6 +60,9 @@
   line-height: var(--text-heading-xs-line);
   text-align: center;
   white-space: pre-wrap;
+
+  /* May receive focus in the initial display. */
+  outline: none;
 }
 
 .panelEnter {

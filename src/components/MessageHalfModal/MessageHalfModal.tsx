@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import { clsx } from 'clsx';
-import { FC, Fragment, PropsWithChildren, useCallback } from 'react';
+import {FC, Fragment, PropsWithChildren, useCallback, useRef} from 'react';
 import styles from './MessageHalfModal.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
@@ -83,6 +83,8 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
 
+  const initialFocusRef = useRef(null);
+
   const dialogRef = useCallback(
     (node: HTMLDivElement | null) => {
       if (node !== null && header == null && ariaLabelledby != null) {
@@ -101,6 +103,7 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
         static={isStatic}
         onClose={onClose}
         className={clsx(styles.modal, fullscreen && styles.fullscreen)}
+        initialFocus={initialFocusRef}
         {...otherProps}
       >
         <Transition.Child
@@ -131,8 +134,8 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
               bodyScroll && styles.bodyScroll,
             )}
           >
-            {header && <Dialog.Title className={styles.header}>{header}</Dialog.Title>}
-            <div className={styles.contents}>{children}</div>
+            {header && <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>{header}</Dialog.Title>}
+            <div tabIndex={-1} ref={header == null ? initialFocusRef : null} className={styles.contents}>{children}</div>
             <div className={styles.buttonContainer}>
               {showClose && (
                 <Button variant="primary" onClick={onClose} aria-label={closeLabel}>

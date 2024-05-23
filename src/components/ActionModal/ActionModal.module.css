@@ -45,6 +45,11 @@
   height: calc(100% - 48px);
 }
 
+.contents {
+  /* May receive focus in the initial display. */
+  outline: none;
+}
+
 .modalBody.fixedHeight .contents {
   height: 100%;
   min-height: 400px;
@@ -57,6 +62,9 @@
   line-height: var(--text-heading-xs-line);
   text-align: center;
   white-space: pre-wrap;
+
+  /* May receive focus in the initial display. */
+  outline: none;
 }
 
 .buttonContainer {
