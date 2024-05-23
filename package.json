@@ -11,6 +11,17 @@
     ".": {
       "import": "./dist/index.mjs",
       "default": "./dist/index.js"
+    },
+    "./font": {
+      "import": "./dist/font.mjs",
+      "default": "./dist/font.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "font": [
+        "./dist/font.d.ts"
+      ]
     }
   },
   "sideEffects": false,
