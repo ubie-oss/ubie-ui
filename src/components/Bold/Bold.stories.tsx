@@ -34,3 +34,21 @@ export const WithText: Story = {
     );
   },
 };
+
+export const WithId: Story = {
+  render: (args) => {
+    return <Bold {...args}>太字</Bold>;
+  },
+  args: {
+    id: 'some-id',
+  },
+};
+
+export const CustomDataAttribute: Story = {
+  render: (args) => {
+    return <Bold {...args}>太字</Bold>;
+  },
+  args: {
+    [`data-test-id`]: 'some-id',
+  },
+};

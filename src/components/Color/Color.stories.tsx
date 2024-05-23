@@ -41,3 +41,21 @@ export const WithText: Story = {
     );
   },
 };
+
+export const WithId: Story = {
+  render: (args) => {
+    return <Color {...args}>色</Color>;
+  },
+  args: {
+    id: 'some-id',
+  },
+};
+
+export const WithCustomDataAttribute: Story = {
+  render: (args) => {
+    return <Color {...args}>色</Color>;
+  },
+  args: {
+    'data-test-id': 'some-id',
+  },
+};
