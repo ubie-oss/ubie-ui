@@ -3,6 +3,7 @@ import { UbieIcon, ThumbUpOutlineIcon, SetupIcon } from '@ubie/ubie-icons';
 import { Heading, Stack } from '../';
 
 export default {
+  title: 'Typography/Heading',
   component: Heading,
 } as Meta<typeof Heading>;
 
