@@ -43,6 +43,16 @@ describe('MessageHalfModal', () => {
     expect(dialogHeadingElement).toHaveAttribute('id', 'header-id');
   });
 
+  test('If no header prop is present, text is inserted that serves as the default heading', async () => {
+    render(<CustomHeaderStory />);
+
+    await user.click(await screen.findByRole('button'));
+
+    const dialogHeadingElement = await screen.findByText('ダイアログ');
+
+    expect(document.activeElement).toEqual(dialogHeadingElement);
+  });
+
   test('header prop can be used to automatically link to a dialog', async () => {
     render(<DefaultStory />);
 
