@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import {FC, Fragment, PropsWithChildren, useCallback, useRef} from 'react';
+import { FC, Fragment, PropsWithChildren, useCallback, useRef } from 'react';
 import styles from './MessageModal.module.css';
 import { Button } from '../../';
 import { CustomDataAttributeProps } from '../../types/attributes';
@@ -93,11 +93,24 @@ export const MessageModal: FC<Props> = ({
       leaveFrom={styles.panelLeaveFrom}
       leaveTo={styles.panelLeaveTo}
     >
-      <Dialog ref={dialogRef} static={isStatic} onClose={onClose} className={styles.modal} initialFocus={initialFocusRef} {...otherProps}>
+      <Dialog
+        ref={dialogRef}
+        static={isStatic}
+        onClose={onClose}
+        className={styles.modal}
+        initialFocus={initialFocusRef}
+        {...otherProps}
+      >
         <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
         <div className={clsx(styles.modalBody, fixedHeight && styles.fixedHeight)}>
-          {header && <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>{header}</Dialog.Title>}
-          <div tabIndex={-1} ref={header == null ? initialFocusRef : null} className={styles.contents}>{children}</div>
+          {header && (
+            <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
+              {header}
+            </Dialog.Title>
+          )}
+          <div tabIndex={-1} ref={header == null ? initialFocusRef : null} className={styles.contents}>
+            {children}
+          </div>
           <Button block onClick={onClose} aria-label={closeLabel}>
             {closeLabel}
           </Button>

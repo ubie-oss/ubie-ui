@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import { clsx } from 'clsx';
-import {FC, Fragment, PropsWithChildren, useCallback, useRef} from 'react';
+import { FC, Fragment, PropsWithChildren, useCallback, useRef } from 'react';
 import styles from './MessageHalfModal.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
@@ -134,8 +134,14 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
               bodyScroll && styles.bodyScroll,
             )}
           >
-            {header && <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>{header}</Dialog.Title>}
-            <div tabIndex={-1} ref={header == null ? initialFocusRef : null} className={styles.contents}>{children}</div>
+            {header && (
+              <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
+                {header}
+              </Dialog.Title>
+            )}
+            <div tabIndex={-1} ref={header == null ? initialFocusRef : null} className={styles.contents}>
+              {children}
+            </div>
             <div className={styles.buttonContainer}>
               {showClose && (
                 <Button variant="primary" onClick={onClose} aria-label={closeLabel}>

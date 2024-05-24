@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import {FC, Fragment, PropsWithChildren, useCallback, useRef} from 'react';
+import { FC, Fragment, PropsWithChildren, useCallback, useRef } from 'react';
 import styles from './ActionModal.module.css';
 import { Button } from '../../';
 import { CustomDataAttributeProps } from '../../types/attributes';
@@ -140,8 +140,14 @@ export const ActionModal: FC<Props> = ({
       >
         <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
         <div className={clsx(styles.modalBody, !header && styles.headerLess, fixedHeight && styles.fixedHeight)}>
-          {header && <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>{header}</Dialog.Title>}
-          <div tabIndex={-1} ref={header == null ? initialFocusRef : null} className={styles.contents}>{children}</div>
+          {header && (
+            <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
+              {header}
+            </Dialog.Title>
+          )}
+          <div tabIndex={-1} ref={header == null ? initialFocusRef : null} className={styles.contents}>
+            {children}
+          </div>
           <div className={styles.buttonContainer}>
             {onPrimaryAction && primaryActionLabel && (
               <Button block onClick={onPrimaryAction} variant={primaryActionColor}>
