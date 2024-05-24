@@ -4,7 +4,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { clsx } from 'clsx';
 import { FC, Fragment, PropsWithChildren, useCallback, useRef } from 'react';
 import styles from './ActionHalfModal.module.css';
-import { VisuallyHidden } from "../../sharedComponents/VisuallyHidden/VisuallyHidden";
+import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
 import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
 import { AllOrNone } from '../../utils/types';
@@ -170,10 +170,12 @@ export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
               <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
                 {header}
               </Dialog.Title>
-            ) : <VisuallyHidden tabIndex={-1} ref={initialFocusRef}>ダイアログ</VisuallyHidden>}
-            <div className={styles.contents}>
-              {children}
-            </div>
+            ) : (
+              <VisuallyHidden tabIndex={-1} ref={initialFocusRef}>
+                ダイアログ
+              </VisuallyHidden>
+            )}
+            <div className={styles.contents}>{children}</div>
             <div className={styles.buttonContainer}>
               {onPrimaryAction && primaryActionLabel && (
                 <Button block onClick={onPrimaryAction} aria-label={primaryActionLabel} variant={primaryActionColor}>

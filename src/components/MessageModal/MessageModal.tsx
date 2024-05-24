@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { FC, Fragment, PropsWithChildren, useCallback, useRef } from 'react';
 import styles from './MessageModal.module.css';
 import { Button } from '../../';
-import { VisuallyHidden } from "../../sharedComponents/VisuallyHidden/VisuallyHidden";
+import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
 import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
 
@@ -108,10 +108,12 @@ export const MessageModal: FC<Props> = ({
             <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
               {header}
             </Dialog.Title>
-          ) : <VisuallyHidden tabIndex={-1} ref={initialFocusRef}>ダイアログ</VisuallyHidden>}
-          <div className={styles.contents}>
-            {children}
-          </div>
+          ) : (
+            <VisuallyHidden tabIndex={-1} ref={initialFocusRef}>
+              ダイアログ
+            </VisuallyHidden>
+          )}
+          <div className={styles.contents}>{children}</div>
           <Button block onClick={onClose} aria-label={closeLabel}>
             {closeLabel}
           </Button>

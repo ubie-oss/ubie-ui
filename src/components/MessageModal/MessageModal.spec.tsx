@@ -42,7 +42,6 @@ describe('MessageModal', () => {
     expect(document.activeElement).toEqual(dialogHeadingElement);
   });
 
-
   test('header prop can be used to automatically link to a dialog', async () => {
     render(<DefaultStory />);
 
