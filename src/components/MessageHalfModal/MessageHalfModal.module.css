@@ -20,9 +20,6 @@
 
 .contents {
   padding: 0 var(--size-spacing-md);
-
-  /* May receive focus in the initial display. */
-  outline: none;
 }
 
 .modalBody {

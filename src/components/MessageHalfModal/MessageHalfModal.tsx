@@ -4,6 +4,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { clsx } from 'clsx';
 import { FC, Fragment, PropsWithChildren, useCallback, useRef } from 'react';
 import styles from './MessageHalfModal.module.css';
+import { VisuallyHidden } from "../../sharedComponents/VisuallyHidden/VisuallyHidden";
 import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
 import { Button } from '../Button/Button';
@@ -134,12 +135,12 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
               bodyScroll && styles.bodyScroll,
             )}
           >
-            {header && (
+            {header != null ? (
               <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
                 {header}
               </Dialog.Title>
-            )}
-            <div tabIndex={-1} ref={header == null ? initialFocusRef : null} className={styles.contents}>
+            ) : <VisuallyHidden tabIndex={-1} ref={initialFocusRef}>ダイアログ</VisuallyHidden>}
+            <div className={styles.contents}>
               {children}
             </div>
             <div className={styles.buttonContainer}>

@@ -43,9 +43,6 @@
 
 .contents {
   text-align: center;
-
-  /* May receive focus in the initial display. */
-  outline: none;
 }
 
 .modalBody.fixedHeight .contents {
