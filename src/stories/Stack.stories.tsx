@@ -70,32 +70,6 @@ export const PutOnTheEnd: Story = {
   args: defaultArgs,
 };
 
-export const BlockLevelElementsToFullWidth: Story = {
-  render: (args) => (
-    <Stack spacing="lg" alignItems="normal">
-      <Stack {...args} alignItems="normal">
-        <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-        <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-        <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-        <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-      </Stack>
-
-      <Stack spacing="xs">
-        <p style={{ margin: 0 }}>
-          If you do not use <code>alignItems=&quot;normal&quot;</code>:
-        </p>
-        <Stack {...args}>
-          <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-          <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-          <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-          <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-        </Stack>
-      </Stack>
-    </Stack>
-  ),
-  args: defaultArgs,
-};
-
 export const MarginAndPadding: Story = {
   render: (args) => (
     <Stack {...args} mt="lg" mr="lg" mb="lg" ml="lg" pt="xxl" pr="xxl" pb="xxl" pl="xxl">
