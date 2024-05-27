@@ -2,9 +2,10 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { FC, Fragment, PropsWithChildren, useCallback } from 'react';
+import { FC, Fragment, PropsWithChildren, useCallback, useRef } from 'react';
 import styles from './ActionModal.module.css';
 import { Button } from '../../';
+import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
 import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
 import { AllOrNone } from '../../utils/types';
@@ -105,6 +106,8 @@ export const ActionModal: FC<Props> = ({
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
 
+  const initialFocusRef = useRef(null);
+
   const dialogRef = useCallback(
     (node: HTMLDivElement | null) => {
       if (node !== null && header == null && ariaLabelledby != null) {
@@ -133,11 +136,20 @@ export const ActionModal: FC<Props> = ({
         onClose={onClose}
         className={styles.modal}
         aria-labelledby={ariaLabelledby}
+        initialFocus={initialFocusRef}
         {...props}
       >
         <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
         <div className={clsx(styles.modalBody, !header && styles.headerLess, fixedHeight && styles.fixedHeight)}>
-          {header && <Dialog.Title className={styles.header}>{header}</Dialog.Title>}
+          {header != null ? (
+            <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
+              {header}
+            </Dialog.Title>
+          ) : (
+            <VisuallyHidden tabIndex={-1} ref={initialFocusRef}>
+              ダイアログ
+            </VisuallyHidden>
+          )}
           <div className={styles.contents}>{children}</div>
           <div className={styles.buttonContainer}>
             {onPrimaryAction && primaryActionLabel && (
