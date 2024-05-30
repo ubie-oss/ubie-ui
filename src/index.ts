@@ -11,6 +11,7 @@ export { Flex } from './components/Flex/Flex';
 export { HelperMessage } from './components/HelperMessage/HelperMessage';
 export { Checkbox } from './components/Checkbox/Checkbox';
 export { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
+export { Icon } from './components/Icon/Icon';
 export { Input } from './components/Input/Input';
 export { Label } from './components/Label/Label';
 export { LinkCard } from './components/LinkCard/LinkCard';
