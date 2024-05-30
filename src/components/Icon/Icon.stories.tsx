@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
-import { Icon, Flex, Box, Stack } from '../';
+import { Icon, Flex, Box, Stack } from '../../index';
 
 export default {
   component: Icon,
@@ -66,4 +66,20 @@ export const Decorative: Story = {
       </div>
     </Stack>
   ),
+};
+
+export const WithCustomDataAttribute: Story = {
+  render: (args) => <Icon {...args} />,
+  args: {
+    ...defaultArgs,
+    'data-test-id': 'icon-custom-attribute',
+  },
+};
+
+export const WithId: Story = {
+  render: (args) => <Icon {...args} />,
+  args: {
+    ...defaultArgs,
+    id: 'icon-id',
+  },
 };
