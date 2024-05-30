@@ -1,5 +1,6 @@
 import * as Icons from '@ubie/ubie-icons';
 import styles from './Icon.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes';
 import { TextColor } from '../../types/style';
 import { colorVariable } from '../../utils/style';
 import type { FC, CSSProperties } from 'react';
@@ -48,17 +49,12 @@ type BaseProps = {
    */
   size?: IconSize;
   /**
-   * ariaHiddenがfalseの場合、アイコンはテキスト情報が必要です。labelを指定してください
-   * @default false
+   * ネイティブの`id`属性。ページで固有のIDを指定
    */
-  ariaHidden?: boolean;
-  /**
-   * アイコンが何を表すかを説明するテキスト
-   */
-  label: string;
-};
+  id?: string;
+} & CustomDataAttributeProps;
 
-type CaseDecorative = {
+type DecorativeIcon = BaseProps & {
   /**
    * ariaHiddenがfalseの場合、アイコンはテキスト情報が必要です。labelを指定してください
    * @default false
@@ -66,7 +62,7 @@ type CaseDecorative = {
   ariaHidden: true;
 };
 
-type CaseInformative = {
+type InformativeIcon = BaseProps & {
   /**
    * ariaHiddenがfalseの場合、アイコンはテキスト情報が必要です。labelを指定してください
    * @default false
@@ -77,15 +73,38 @@ type CaseInformative = {
    */
   label: string;
 };
-
-type DecorativeIcon = Omit<BaseProps, 'ariaHidden' | 'label'> & CaseDecorative;
-type InformativeIcon = Omit<BaseProps, 'ariaHidden' | 'label'> & CaseInformative;
 type Props = DecorativeIcon | InformativeIcon;
+
+const extranctProps = (props: Props) => {
+  if (props.ariaHidden) {
+    const { icon, color, size = 'md', ariaHidden = false, ...otherProps } = props;
+    return {
+      icon,
+      color,
+      size,
+      ariaHidden,
+      label: undefined,
+      ...otherProps,
+    };
+  } else {
+    const { icon, color, size = 'md', ariaHidden = false, label, ...otherProps } = props;
+    return {
+      icon,
+      color,
+      size,
+      ariaHidden,
+      label,
+      ...otherProps,
+    };
+  }
+};
 
 /**
  * アイコンコンポーネント。個別のアイコンと比べ、最適化されています
  */
-export const Icon: FC<Props> = ({ icon, color, size = 'md', ariaHidden = false, label }) => {
+export const Icon: FC<Props> = (props) => {
+  const { icon, color, size = 'md', ariaHidden = false, label, ...otherProps } = extranctProps(props);
+
   const IconComponent = Icons[icon];
   const _sizeValue = toIconSizeEmValue(size);
   return (
@@ -99,6 +118,7 @@ export const Icon: FC<Props> = ({ icon, color, size = 'md', ariaHidden = false, 
           '--size': _sizeValue,
         } as CSSProperties
       }
+      {...otherProps}
     />
   );
 };
