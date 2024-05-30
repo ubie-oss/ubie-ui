@@ -109,6 +109,7 @@ export const Icon: FC<Props> = (props) => {
   const _sizeValue = toIconSizeEmValue(size);
   return (
     <IconComponent
+      role="img"
       aria-hidden={ariaHidden}
       aria-label={label}
       className={styles.icon}
