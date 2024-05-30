@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { HospitalIcon } from '@ubie/ubie-icons';
-import { LinkCard, Stack } from '..';
+import { LinkCard, Stack, Icon } from '..';
 
 export default {
   component: LinkCard,
@@ -23,7 +23,12 @@ export const Default: Story = {
 };
 
 export const WithIcon: Story = {
-  render: (args) => <LinkCard {...args} href="https://vitals.ubie.life/" icon={HospitalIcon} />,
+  render: (args) => (
+    <Stack spacing="md">
+      <LinkCard {...args} href="https://vitals.ubie.life/" icon={HospitalIcon} />
+      <LinkCard {...args} href="https://vitals.ubie.life/" icon={<Icon icon="HospitalIcon" ariaHidden />} />
+    </Stack>
+  ),
   args: defaultArgs,
 };
 

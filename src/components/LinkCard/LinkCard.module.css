@@ -14,8 +14,13 @@
 
 .icon {
   flex: none;
-  font-size: var(--icon-size);
   color: var(--color-primary);
+}
+
+.icon > * {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  vertical-align: bottom;
 }
 
 .text {

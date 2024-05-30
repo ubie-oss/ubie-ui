@@ -2,9 +2,9 @@
 
 import { ArrowBRightIcon } from '@ubie/ubie-icons';
 import clsx from 'clsx';
-import { cloneElement, forwardRef } from 'react';
+import { cloneElement, forwardRef, isValidElement } from 'react';
 import styles from './LinkCard.module.css';
-import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
+import { CustomDataAttributeProps } from '../../types/attributes';
 import type { ComponentType, ReactElement, ReactNode } from 'react';
 
 type Props = {
@@ -37,11 +37,29 @@ type Props = {
   /**
    * アイコン
    */
-  icon?: ComponentType<{ className?: string }>;
+  icon?: ComponentType | ReactElement;
 } & CustomDataAttributeProps;
 
+// ref https://github.com/microsoft/TypeScript/issues/53178
+const _isValidElement = (el: ComponentType | ReactElement): el is ReactElement => {
+  return isValidElement(el);
+};
+
+const renderPropIcon = (icon: ComponentType | ReactElement) => {
+  if (icon == null) {
+    return null;
+  }
+
+  if (_isValidElement(icon)) {
+    return icon;
+  }
+
+  const IconComponent = icon;
+  return <IconComponent />;
+};
+
 export const LinkCard = forwardRef<HTMLAnchorElement, Props>(
-  ({ title, size = 'medium', className, icon: IconComponent, description, render, ...props }, forwardedRef) => {
+  ({ title, size = 'medium', className, icon, description, render, ...props }, forwardedRef) => {
     const cls = clsx(styles[size], styles.card, className);
 
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
@@ -56,7 +74,7 @@ export const LinkCard = forwardRef<HTMLAnchorElement, Props>(
         ref: forwardedRef,
       },
       <>
-        {IconComponent && <IconComponent className={styles.icon} />}
+        {icon != null && <span className={styles.icon}>{renderPropIcon(icon)}</span>}
         <div className={styles.text}>
           <p className={styles.title}>{title}</p>
           {description && <p className={styles.description}>{description}</p>}
