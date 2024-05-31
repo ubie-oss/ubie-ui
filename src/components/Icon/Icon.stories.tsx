@@ -8,7 +8,6 @@ export default {
 
 const defaultArgs: Partial<ComponentProps<typeof Icon>> = {
   icon: 'UbieIcon',
-  label: 'ユビーのロゴ',
 };
 
 type Story = StoryObj<typeof Icon>;
@@ -55,14 +54,16 @@ export const Color: Story = {
   args: defaultArgs,
 };
 
-export const Decorative: Story = {
+export const CaseOnlyIcon: Story = {
   render: () => (
     <Stack spacing="sm">
       <p>
-        装飾的なアイコンの場合は、<code>ariaHidden</code> propをtrueとし、<code>label</code>には何も指定しません。
+        ラベルや付随する文章を伴わずにアイコン単独で使う場合、アイコンが保つ意味を<code>label</code> propで付与します
+        <br />
+        例: アイコンボタンなど
       </p>
       <div>
-        <Icon icon="AlertIcon" color="alert" ariaHidden /> 注意
+        <Icon icon="SetupIcon" label="設定" />
       </div>
     </Stack>
   ),
@@ -72,7 +73,7 @@ export const WithCustomDataAttribute: Story = {
   render: (args) => <Icon {...args} />,
   args: {
     ...defaultArgs,
-    'data-test-id': 'icon-custom-attribute',
+    'data-testid': 'testid',
   },
 };
 
@@ -81,5 +82,6 @@ export const WithId: Story = {
   args: {
     ...defaultArgs,
     id: 'icon-id',
+    'data-testid': 'testid',
   },
 };

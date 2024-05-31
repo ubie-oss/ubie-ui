@@ -34,7 +34,7 @@ const toIconSizeEmValue = (size: IconSize): string => {
   }
 };
 
-type BaseProps = {
+type Props = {
   /**
    * アイコンの種類
    */
@@ -52,65 +52,23 @@ type BaseProps = {
    * ネイティブの`id`属性。ページで固有のIDを指定
    */
   id?: string;
-} & CustomDataAttributeProps;
-
-type DecorativeIcon = BaseProps & {
-  /**
-   * ariaHiddenがfalseの場合、アイコンはテキスト情報が必要です。labelを指定してください
-   * @default false
-   */
-  ariaHidden: true;
-};
-
-type InformativeIcon = BaseProps & {
-  /**
-   * ariaHiddenがfalseの場合、アイコンはテキスト情報が必要です。labelを指定してください
-   * @default false
-   */
-  ariaHidden?: false;
   /**
    * アイコンが何を表すかを説明するテキスト
+   * 単に装飾的なアイコンの場合は指定しない
    */
-  label: string;
-};
-type Props = DecorativeIcon | InformativeIcon;
-
-const extranctProps = (props: Props) => {
-  if (props.ariaHidden) {
-    const { icon, color, size = 'md', ariaHidden = false, ...otherProps } = props;
-    return {
-      icon,
-      color,
-      size,
-      ariaHidden,
-      label: undefined,
-      ...otherProps,
-    };
-  } else {
-    const { icon, color, size = 'md', ariaHidden = false, label, ...otherProps } = props;
-    return {
-      icon,
-      color,
-      size,
-      ariaHidden,
-      label,
-      ...otherProps,
-    };
-  }
-};
+  label?: string;
+} & CustomDataAttributeProps;
 
 /**
- * アイコンコンポーネント。個別のアイコンと比べ、最適化されています
+ * アイコンコンポーネント。labelを指定しない場合は単に装飾的なアイコンであるとみなされ、aria-hiddenが付与されます
  */
-export const Icon: FC<Props> = (props) => {
-  const { icon, color, size = 'md', ariaHidden = false, label, ...otherProps } = extranctProps(props);
-
+export const Icon: FC<Props> = ({ icon, color, size = 'md', label, ...otherProps }) => {
   const IconComponent = Icons[icon];
   const _sizeValue = toIconSizeEmValue(size);
   return (
     <IconComponent
       role="img"
-      aria-hidden={ariaHidden}
+      aria-hidden={label === undefined || label === '' ? true : undefined}
       aria-label={label}
       className={styles.icon}
       style={

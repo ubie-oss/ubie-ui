@@ -9,15 +9,15 @@ describe('Icon', () => {
   test('Add custom data attributes', async () => {
     render(<WithCustomDataAttributeStory />);
 
-    const iconElement = await screen.findByRole('img');
+    const iconElement = await screen.findByTestId('testid');
 
-    expect(iconElement).toHaveAttribute('data-test-id', 'icon-custom-attribute');
+    expect(iconElement).toBeInTheDocument();
   });
 
   test('Add id', async () => {
     render(<WithIdStory />);
 
-    const iconElement = await screen.findByRole('img');
+    const iconElement = await screen.findByTestId('testid');
 
     expect(iconElement).toHaveAttribute('id', 'icon-id');
   });

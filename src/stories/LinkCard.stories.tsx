@@ -26,7 +26,7 @@ export const WithIcon: Story = {
   render: (args) => (
     <Stack spacing="md">
       <LinkCard {...args} href="https://vitals.ubie.life/" icon={HospitalIcon} />
-      <LinkCard {...args} href="https://vitals.ubie.life/" icon={<Icon icon="HospitalIcon" ariaHidden />} />
+      <LinkCard {...args} href="https://vitals.ubie.life/" icon={<Icon icon="HospitalIcon" />} />
     </Stack>
   ),
   args: defaultArgs,

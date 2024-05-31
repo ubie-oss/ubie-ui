@@ -55,12 +55,12 @@ export const WithIcon: Story = {
         <dt style={{ fontWeight: 'bold' }}>Default Position</dt>
         <dd style={{ margin: 0 }}>
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-            <Button icon={<Icon icon="UbieIcon" ariaHidden />} {...defaultArgs} />
-            <Button icon={<Icon icon="UbieIcon" ariaHidden />} {...defaultArgs} variant="secondary" />
-            <Button icon={<Icon icon="UbieIcon" ariaHidden />} {...defaultArgs} variant="accent" />
-            <Button icon={<Icon icon="UbieIcon" ariaHidden />} {...defaultArgs} variant="alert" />
-            <Button icon={<Icon icon="UbieIcon" ariaHidden />} {...defaultArgs} variant="text" />
-            <Button icon={<Icon icon="TrashIcon" ariaHidden />} {...defaultArgs} variant="textAlert" />
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} />
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="secondary" />
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="accent" />
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="alert" />
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="text" />
+            <Button icon={<Icon icon="TrashIcon" />} {...defaultArgs} variant="textAlert" />
           </div>
         </dd>
       </Stack>
