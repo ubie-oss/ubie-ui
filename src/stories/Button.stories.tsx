@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { BlankLinkIcon, UbieIcon, TrashIcon } from '@ubie/ubie-icons';
-import { Button, Stack } from '../';
+import { BlankLinkIcon, TrashIcon } from '@ubie/ubie-icons';
+import { Button, Stack, Icon } from '../';
 import type { ComponentProps } from 'react';
 
 export default {
@@ -55,12 +55,12 @@ export const WithIcon: Story = {
         <dt style={{ fontWeight: 'bold' }}>Default Position</dt>
         <dd style={{ margin: 0 }}>
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-            <Button icon={<UbieIcon />} {...defaultArgs} />
-            <Button icon={<UbieIcon />} {...defaultArgs} variant="secondary" />
-            <Button icon={<UbieIcon />} {...defaultArgs} variant="accent" />
-            <Button icon={<UbieIcon />} {...defaultArgs} variant="alert" />
-            <Button icon={<UbieIcon />} {...defaultArgs} variant="text" />
-            <Button icon={<TrashIcon />} {...defaultArgs} variant="textAlert" />
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} />
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="secondary" />
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="accent" />
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="alert" />
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="text" />
+            <Button icon={<Icon icon="TrashIcon" />} {...defaultArgs} variant="textAlert" />
           </div>
         </dd>
       </Stack>
