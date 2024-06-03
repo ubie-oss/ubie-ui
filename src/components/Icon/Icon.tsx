@@ -40,7 +40,7 @@ type Props = {
    */
   icon: Icon;
   /**
-   * 色。指定しない場合はinheritとなり、親要素のfont-colorを継承します
+   * 色。指定しない場合はinheritとなり、親要素のcolorプロパティを継承します
    */
   color?: TextColor;
   /**
