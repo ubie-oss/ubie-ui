@@ -7,10 +7,6 @@ import { CustomDataAttributeProps } from '../../types/attributes'; // 追加し�
 
 type Props = {
   /**
-   * ネイティブ要素の `id` 属性。ページで固有のIDを指定
-   */
-  id?: InputHTMLAttributes<HTMLInputElement>['id'];
-  /**
    * 有効でない入力を保持しているかどうか
    * @default false
    */
@@ -19,16 +15,7 @@ type Props = {
    * 値
    */
   value: string | number;
-  /**
-   * フィールドを無効化するかどうか
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * 値が変化した場合のコールバック
-   */
-  onChange?: InputHTMLAttributes<HTMLInputElement>['onChange'];
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'invalid' | 'value' | 'disabled' | 'onChange'> &
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'invalid' | 'value'> &
   CustomDataAttributeProps;
 
 export const Input: FC<Props> = forwardRef<HTMLInputElement, Props>(({ isInvalid, ...props }, ref) => {
