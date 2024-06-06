@@ -18,6 +18,8 @@ npm install @ubie/ubie-ui
 ```
 
 You need to install React and React-DOM as peerDependencies.
+You need to install React and React-DOM as peerDependencies.
+You need to install React and React-DOM as peerDependencies.
 
 ```sh
 npm install react react-dom
