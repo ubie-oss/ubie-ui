@@ -7,10 +7,6 @@ import { CustomDataAttributeProps } from '../../types/attributes';
 
 type Props = {
   /**
-   * ネイティブ要素の `id` 属性。ページで固有のIDを指定
-   */
-  id?: TextareaHTMLAttributes<HTMLTextAreaElement>['id'];
-  /**
    * 有効でない入力を保持しているかどうか
    * @default false
    */
@@ -24,11 +20,7 @@ type Props = {
    * @default false
    */
   disabled?: boolean;
-  /**
-   * 値が変化した場合のコールバック
-   */
-  onChange?: TextareaHTMLAttributes<HTMLTextAreaElement>['onChange'];
-} & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'id' | 'value' | 'onChange'> &
+} & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value'> &
   CustomDataAttributeProps;
 
 export const TextArea: FC<Props> = ({ isInvalid = false, className, ...props }) => {
