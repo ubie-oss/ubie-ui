@@ -19,7 +19,7 @@ const defaultArgs: Partial<ComponentProps<typeof ActionModal>> = {
 
 const LongBody = () => (
   <>
-    <p>
+    <p style={{ margin: 0 }}>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
       industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
       scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
@@ -27,7 +27,7 @@ const LongBody = () => (
       Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
       PageMaker including versions of Lorem Ipsum.
     </p>
-    <p>
+    <p style={{ margin: '12px 0 0' }}>
       Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
       literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
       College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
@@ -59,7 +59,7 @@ export const Default: Story = {
 
 export const Secondary: Story = {
   render: (args) => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     return (
       <>
@@ -92,7 +92,7 @@ export const FixedHeight: Story = {
           Open Modal
         </button>
         <ActionModal {...args} open={open} onPrimaryAction={() => setOpen(false)} onClose={() => setOpen(false)}>
-          <p>Content</p>
+          <p style={{ margin: 0 }}>Content</p>
         </ActionModal>
       </>
     );
@@ -186,7 +186,9 @@ export const CustomHeader: Story = {
           onClose={() => setOpen(false)}
           ariaLabelledby={headerId}
         >
-          <h2 id={headerId}>Custom Heading</h2>
+          <h2 id={headerId} style={{ margin: '0 0 12px' }}>
+            Custom Heading
+          </h2>
           <LongBody />
         </ActionModal>
       </>
@@ -195,5 +197,41 @@ export const CustomHeader: Story = {
   args: {
     ...defaultArgs,
     header: undefined,
+  },
+};
+
+export const WithHero: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionModal
+          hero={
+            <img
+              src="/images/placeholder.svg"
+              alt="Illustration: Modal"
+              style={{ width: '100%', height: 'auto', verticalAlign: 'bottom' }}
+            />
+          }
+          {...args}
+          open={open}
+          onPrimaryAction={() => setOpen(false)}
+          onClose={() => setOpen(false)}
+        >
+          <p style={{ margin: 0 }}>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book.
+          </p>
+        </ActionModal>
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
   },
 };
