@@ -26,6 +26,10 @@ type Props = {
    * 開閉をトリガーするsummary要素に付与するネイティブ要素の`id`属性。ページで固有のIDを指定
    */
   buttonId?: string;
+  /**
+   * 初期状態で開く
+   */
+  initialOpen?: boolean;
 } & CustomDataAttributeProps;
 
 export const Accordion: FC<PropsWithChildren<Props>> = ({
@@ -34,10 +38,11 @@ export const Accordion: FC<PropsWithChildren<Props>> = ({
   size = 'medium',
   id,
   buttonId,
+  initialOpen,
   ...props
 }) => {
   return (
-    <details className={clsx(styles.container, styles[size])} id={id} {...props}>
+    <details className={clsx(styles.container, styles[size])} id={id} {...props} open={initialOpen}>
       <summary id={buttonId} className={styles.button}>
         <span>{header}</span>
         <ArrowBDownIcon aria-hidden className={styles.arrow} />

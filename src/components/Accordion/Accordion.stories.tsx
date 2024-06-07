@@ -42,3 +42,11 @@ export const Id: Story = {
     </Accordion>
   ),
 };
+
+export const InitialOpen: Story = {
+  render: (args) => <Accordion {...args} />,
+  args: {
+    ...defaultArgs,
+    initialOpen: true,
+  },
+};
