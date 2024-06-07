@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { FC, InputHTMLAttributes } from 'react';
+import { forwardRef, type InputHTMLAttributes } from 'react';
 import styles from './RadioButton.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
 
@@ -29,30 +29,27 @@ type Props = {
 } & RadioProps &
   CustomDataAttributeProps;
 
-export const RadioButton: FC<Props> = ({
-  size = 'medium',
-  checked,
-  onChange,
-  value,
-  name,
-  children,
-  ...otherProps
-}) => {
-  return (
-    <div className={clsx(styles[size])}>
-      <label className={styles.label}>
-        <input
-          type="radio"
-          checked={checked}
-          name={name}
-          value={value}
-          className={styles.radio}
-          onChange={onChange}
-          {...otherProps}
-        />
-        <span className={styles.icon} />
-        <span className={styles.text}>{children}</span>
-      </label>
-    </div>
-  );
-};
+export const RadioButton = forwardRef<HTMLInputElement, Props>(
+  ({ size = 'medium', checked, onChange, value, name, children, ...otherProps }, ref) => {
+    return (
+      <div className={clsx(styles[size])}>
+        <label className={styles.label}>
+          <input
+            type="radio"
+            checked={checked}
+            name={name}
+            value={value}
+            className={styles.radio}
+            onChange={onChange}
+            ref={ref}
+            {...otherProps}
+          />
+          <span className={styles.icon} />
+          <span className={styles.text}>{children}</span>
+        </label>
+      </div>
+    );
+  },
+);
+
+RadioButton.displayName = 'RadioButton';

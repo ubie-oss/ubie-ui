@@ -1,9 +1,10 @@
 'use client';
 
 import clsx from 'clsx';
-import { FC, TextareaHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './TextArea.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
+import type { TextareaHTMLAttributes } from 'react';
 
 type Props = {
   /**
@@ -23,8 +24,10 @@ type Props = {
 } & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value'> &
   CustomDataAttributeProps;
 
-export const TextArea: FC<Props> = ({ isInvalid = false, className, ...props }) => {
+export const TextArea = forwardRef<HTMLTextAreaElement, Props>(({ isInvalid = false, className, ...props }, ref) => {
   const _className = clsx({ [styles.isInvalid]: isInvalid }, styles.textArea, className);
 
-  return <textarea {...props} className={_className} aria-invalid={isInvalid} />;
-};
+  return <textarea ref={ref} {...props} className={_className} aria-invalid={isInvalid} />;
+});
+
+TextArea.displayName = 'TextArea';
