@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState, useCallback } from 'react';
-import { Checkbox, CheckboxGroup, Stack } from '../';
+import { Checkbox, CheckboxGroup, Stack } from '../../index';
 import type { ChangeEventHandler } from 'react';
 
 export default {

@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { FC, InputHTMLAttributes, forwardRef, useRef, useState } from 'react';
+import { InputHTMLAttributes, forwardRef, useRef, useState } from 'react';
 import styles from './Toggle.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
 
@@ -27,7 +27,7 @@ type Props = {
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'children' | 'onChange'> &
   CustomDataAttributeProps;
 
-export const Toggle: FC<Props> = forwardRef<HTMLInputElement, Props>(
+export const Toggle = forwardRef<HTMLInputElement, Props>(
   ({ checked: checkedProps, defaultChecked, onChange, ...otherProps }, ref) => {
     const { current: isUnControlled } = useRef(checkedProps === undefined);
     const [isUnControlledChecked, setIsUnControlledChecked] = useState(defaultChecked);

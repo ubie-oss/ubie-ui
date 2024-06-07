@@ -2,8 +2,9 @@
 
 import { CheckAIcon } from '@ubie/ubie-icons';
 import clsx from 'clsx';
-import { FC, InputHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './Checkbox.module.css';
+import type { InputHTMLAttributes } from 'react';
 
 type Props = {
   /**
@@ -29,14 +30,16 @@ type Props = {
   onChange?: InputHTMLAttributes<HTMLInputElement>['onChange'];
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'children' | 'onChange'>;
 
-export const Checkbox: FC<Props> = ({ size = 'medium', children, ...otherProps }) => {
+export const Checkbox = forwardRef<HTMLInputElement, Props>(({ size = 'medium', children, ...otherProps }, ref) => {
   return (
     <label className={clsx(styles.container, styles[size])}>
-      <input type="checkbox" className={styles.checkbox} {...otherProps} />
+      <input ref={ref} type="checkbox" className={styles.checkbox} {...otherProps} />
       <span className={styles.checkIconContainer}>
         <CheckAIcon className={styles.checkIcon} />
       </span>
       {children}
     </label>
   );
-};
+});
+
+Checkbox.displayName = 'Checkbox';
