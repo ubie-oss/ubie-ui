@@ -16,9 +16,16 @@
 }
 
 .input.isInvalid,
-.input:invalid {
+.input:user-invalid {
   background: var(--color-background-accent-darken);
   border-bottom-color: var(--color-alert-darken);
+}
+
+@supports not (selector(:user-invalid)) {
+  .input:invalid {
+    background: var(--color-background-accent-darken);
+    border-bottom-color: var(--color-alert-darken);
+  }
 }
 
 .input:disabled {
