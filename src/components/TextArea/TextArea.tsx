@@ -13,15 +13,11 @@ type Props = {
    */
   isInvalid?: boolean;
   /**
-   * 値
-   */
-  value: string;
-  /**
    * フィールドを無効化するかどうか
    * @default false
    */
   disabled?: boolean;
-} & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value'> &
+} & TextareaHTMLAttributes<HTMLTextAreaElement> &
   CustomDataAttributeProps;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, Props>(({ isInvalid = false, className, ...props }, ref) => {

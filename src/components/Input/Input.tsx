@@ -11,11 +11,7 @@ type Props = {
    * @default false
    */
   isInvalid?: boolean;
-  /**
-   * 値
-   */
-  value: string | number;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'invalid' | 'value'> &
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'invalid'> &
   CustomDataAttributeProps;
 
 export const Input = forwardRef<HTMLInputElement, Props>(({ isInvalid, ...props }, ref) => {
