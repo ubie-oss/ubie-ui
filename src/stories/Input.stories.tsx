@@ -115,6 +115,19 @@ export const Disabled: Story = {
 export const IsInvalid: Story = {
   render: () => <Input value="wrong value" isInvalid />,
 };
+
+export const Required: Story = {
+  render: () => {
+    const [value, setValue] = useState('');
+
+    const onChangeValue: ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
+      setValue(event.target.value);
+    }, []);
+
+    return <Input required value={value} onChange={onChangeValue} />;
+  },
+};
+
 export const CustomDataAttribute: Story = {
   args: {
     'data-test-id': 'input-custom-attribute',
