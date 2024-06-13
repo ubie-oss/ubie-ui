@@ -21,31 +21,42 @@
   background: rgb(0 0 0 / 80%);
 }
 
-.modalBody {
+.dialog {
   position: relative;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: var(--size-spacing-lg);
   width: calc(100% - 32px);
   max-width: 600px;
   max-height: calc(100% - 48px);
-  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
   margin: 0 auto;
   overflow-y: auto;
   background: #fff;
   border-radius: var(--radius-lg);
 }
 
-.modalBody.fixedHeight {
+.dialog.fixedHeight {
   height: calc(100% - 48px);
 }
 
-.contents {
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-spacing-lg);
+  min-height: 0;
+  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
+}
+
+.mainContent.fixedHeight {
+  flex-grow: 1;
+  min-height: 0;
+}
+
+.body {
   text-align: center;
 }
 
-.modalBody.fixedHeight .contents {
+.body.fixedHeight {
   height: 100%;
   min-height: 400px;
   overflow: hidden;
