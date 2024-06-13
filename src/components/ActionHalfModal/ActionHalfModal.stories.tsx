@@ -231,3 +231,70 @@ export const CustomHeader: Story = {
     header: undefined,
   },
 };
+
+export const WithHero: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+    const onClose = useCallback(() => {
+      setOpen(false);
+    }, []);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionHalfModal
+          hero={
+            <img
+              src="/images/placeholder.svg"
+              alt="Illustration: Modal"
+              style={{ width: '100%', height: 'auto', verticalAlign: 'bottom' }}
+            />
+          }
+          primaryActionLabel="Action"
+          onPrimaryAction={onClose}
+          {...args}
+          open={open}
+          onClose={onClose}
+        >
+          <p>Content</p>
+        </ActionHalfModal>
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+  },
+};
+
+export const WithHeroAndFullScreen: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+    const onClose = useCallback(() => {
+      setOpen(false);
+    }, []);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionHalfModal primaryActionLabel="Action" onPrimaryAction={onClose} {...args} open={open} onClose={onClose}>
+          <p>Content</p>
+        </ActionHalfModal>
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    fullscreen: true,
+    hero: (
+      <img
+        src="/images/placeholder.svg"
+        alt="Illustration: Modal"
+        style={{ width: '100%', height: 'auto', verticalAlign: 'bottom' }}
+      />
+    ),
+  },
+};
