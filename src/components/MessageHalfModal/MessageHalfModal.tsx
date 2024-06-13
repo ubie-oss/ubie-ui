@@ -140,7 +140,7 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
                 {header}
               </Dialog.Title>
             ) : (
-              <VisuallyHidden tabIndex={-1} ref={initialFocusRef}>
+              <VisuallyHidden as="p" tabIndex={-1} ref={initialFocusRef}>
                 ダイアログ
               </VisuallyHidden>
             )}
