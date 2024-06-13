@@ -215,6 +215,8 @@ export const WithHero: Story = {
               src="/images/placeholder.svg"
               alt="Illustration: Modal"
               style={{ width: '100%', height: 'auto', verticalAlign: 'bottom' }}
+              width={560}
+              height={315}
             />
           }
           {...args}
