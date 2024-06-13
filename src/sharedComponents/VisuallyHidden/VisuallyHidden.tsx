@@ -8,6 +8,7 @@ function VisuallyHiddenInner<T extends ElementType>(
   props: {
     as?: T;
   } & DistributiveOmit<ComponentPropsWithRef<ElementType extends T ? 'span' : T>, 'as'>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ref: ForwardedRef<any>,
 ) {
   const { children, as: Component = 'span', className: _, ...otherProps } = props;
