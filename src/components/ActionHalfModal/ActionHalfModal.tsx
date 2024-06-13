@@ -163,18 +163,29 @@ export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
           leaveFrom={styles.panelLeaveFrom}
           leaveTo={styles.panelLeaveTo}
         >
-          <div className={clsx(styles.dialog, fullscreen && styles.fullscreen, bodyScroll && styles.bodyScroll)}>
+          <div
+            className={clsx(styles.dialog, {
+              [styles.fullscreen]: fullscreen,
+              [styles.bodyScroll]: bodyScroll,
+            })}
+          >
+            {header === undefined ? (
+              <VisuallyHidden tabIndex={-1} ref={initialFocusRef}>
+                ダイアログ
+              </VisuallyHidden>
+            ) : null}
             {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
-            <div className={clsx(styles.mainContent, !header && styles.headerLess, fullscreen && styles.fullscreen)}>
-              {header != null ? (
+            <div
+              className={clsx(styles.mainContent, {
+                [styles.headerLess]: header === undefined && hero === undefined,
+                [styles.fullscreen]: fullscreen,
+              })}
+            >
+              {header !== undefined ? (
                 <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
                   {header}
                 </Dialog.Title>
-              ) : (
-                <VisuallyHidden tabIndex={-1} ref={initialFocusRef}>
-                  ダイアログ
-                </VisuallyHidden>
-              )}
+              ) : null}
               <div className={styles.contents}>{children}</div>
               <div className={styles.buttonContainer}>
                 {onPrimaryAction && primaryActionLabel && (
