@@ -145,24 +145,35 @@ export const ActionModal: FC<Props> = ({
         {...props}
       >
         <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
-        <div className={clsx(styles.dialog, fixedHeight && styles.fixedHeight)}>
+        <div
+          className={clsx(styles.dialog, {
+            [styles.fixedHeight]: fixedHeight,
+          })}
+        >
+          {header === undefined ? (
+            <VisuallyHidden tabIndex={-1} ref={initialFocusRef}>
+              ダイアログ
+            </VisuallyHidden>
+          ) : null}
           {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
           <div
             className={clsx(styles.mainContent, {
-              [`${styles.headerLess}`]: header === undefined && hero === undefined,
-              [`${styles.fixedHeight}`]: fixedHeight,
+              [styles.headerLess]: header === undefined && hero === undefined,
+              [styles.fixedHeight]: fixedHeight,
             })}
           >
-            {header != null ? (
+            {header !== undefined ? (
               <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
                 {header}
               </Dialog.Title>
-            ) : (
-              <VisuallyHidden tabIndex={-1} ref={initialFocusRef}>
-                ダイアログ
-              </VisuallyHidden>
-            )}
-            <div className={clsx(styles.body, fixedHeight && styles.fixedHeight)}>{children}</div>
+            ) : null}
+            <div
+              className={clsx(styles.body, {
+                [styles.fixedHeight]: fixedHeight,
+              })}
+            >
+              {children}
+            </div>
             <div className={styles.buttonContainer}>
               {onPrimaryAction && primaryActionLabel && (
                 <Button block onClick={onPrimaryAction} variant={primaryActionColor}>
