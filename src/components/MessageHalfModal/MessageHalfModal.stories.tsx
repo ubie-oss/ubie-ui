@@ -169,3 +169,43 @@ export const CustomHeader: Story = {
     header: undefined,
   },
 };
+
+export const WithHero: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+
+    const onClose = useCallback(() => {
+      setOpen(false);
+    }, []);
+
+    const headerId = 'header-id';
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <MessageHalfModal
+          hero={
+            <img
+              src="/images/placeholder.svg"
+              alt="Illustration: Modal"
+              style={{ width: '100%', height: 'auto', verticalAlign: 'bottom' }}
+            />
+          }
+          ariaLabelledby={headerId}
+          {...args}
+          open={open}
+          onClose={onClose}
+        >
+          <h2 id={headerId}>Heading</h2>
+          <LongBody />
+        </MessageHalfModal>
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    header: undefined,
+  },
+};
