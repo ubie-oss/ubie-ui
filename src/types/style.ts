@@ -31,18 +31,22 @@ export type Spacing = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 export type PaddingProps = {
   /**
    * padding-topの値。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   pt?: Spacing;
   /**
    * padding-rightの値。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   pr?: Spacing;
   /**
    * padding-bottomの値。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   pb?: Spacing;
   /**
    * padding-leftの値。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   pl?: Spacing;
 };
@@ -50,18 +54,22 @@ export type PaddingProps = {
 export type MarginProps = {
   /**
    * margin-topの値。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   mt?: Spacing;
   /**
    * margin-rightの値。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   mr?: Spacing;
   /**
    * margin-bottomの値。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   mb?: Spacing;
   /**
    * margin-leftの値。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   ml?: Spacing;
 };
@@ -69,10 +77,12 @@ export type MarginProps = {
 export type MarginYProps = {
   /**
    * margin-topの値。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   mt?: Spacing;
   /**
    * margin-bottomの値。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   mb?: Spacing;
 };
@@ -95,6 +105,7 @@ export type Radius = 'xs' | 'sm' | 'md' | 'lg';
 export type RadiusProp = {
   /**
    * 角丸を指定。Radius Tokenのキーを指定
+   * xs=2px,sm=4px,md=8px,lg=12px
    */
   radius?: Radius;
 };

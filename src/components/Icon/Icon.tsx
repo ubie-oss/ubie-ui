@@ -45,6 +45,7 @@ type Props = {
   color?: TextColor;
   /**
    * サイズ
+   * xs=16px, sm=20px, md=24px, lg=28px, xl=32px, 2xl=64px, 3xl=80px, 4xl=104px
    * @default md
    */
   size?: IconSize;
