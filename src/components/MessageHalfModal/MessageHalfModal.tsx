@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import { clsx } from 'clsx';
-import { FC, Fragment, PropsWithChildren, useCallback, useRef } from 'react';
+import { FC, Fragment, PropsWithChildren, ReactNode, useCallback, useRef } from 'react';
 import styles from './MessageHalfModal.module.css';
 import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
 import { CustomDataAttributeProps } from '../../types/attributes';
@@ -64,6 +64,10 @@ type BaseProps = {
    * ネイティブのaria-labelledby属性。独自の見出しを実装する場合にダイアログとの紐づけに使用。ページで固有のIDを指定
    */
   ariaLabelledby?: string;
+  /**
+   * ヒーローエリア（見出しの更に上）に配置するコンテンツ
+   */
+  hero?: ReactNode;
 } & CustomDataAttributeProps;
 
 type Props = BaseProps;
@@ -80,6 +84,7 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
   fullscreen = false,
   bodyScroll = true,
   ariaLabelledby,
+  hero,
   ...otherProps
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
@@ -128,29 +133,36 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
           leaveTo={styles.panelLeaveTo}
         >
           <div
-            className={clsx(
-              styles.modalBody,
-              !header && styles.headerLess,
-              fullscreen && styles.fullscreen,
-              bodyScroll && styles.bodyScroll,
-            )}
+            className={clsx(styles.dialog, {
+              [styles.fullscreen]: fullscreen,
+              [styles.bodyScroll]: bodyScroll,
+            })}
           >
-            {header != null ? (
-              <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
-                {header}
-              </Dialog.Title>
-            ) : (
+            {header === undefined ? (
               <VisuallyHidden as="p" tabIndex={-1} ref={initialFocusRef}>
                 ダイアログ
               </VisuallyHidden>
-            )}
-            <div className={styles.contents}>{children}</div>
-            <div className={styles.buttonContainer}>
-              {showClose && (
-                <Button variant="primary" onClick={onClose} aria-label={closeLabel}>
-                  {closeLabel}
-                </Button>
-              )}
+            ) : null}
+            {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
+            <div
+              className={clsx(styles.mainContent, {
+                [styles.headerLess]: header === undefined && hero === undefined,
+                [styles.fullscreen]: fullscreen,
+              })}
+            >
+              {header !== undefined ? (
+                <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
+                  {header}
+                </Dialog.Title>
+              ) : null}
+              <div className={clsx(styles.body, { [styles.fullscreen]: fullscreen })}>{children}</div>
+              <div className={styles.buttonContainer}>
+                {showClose && (
+                  <Button variant="primary" onClick={onClose} aria-label={closeLabel}>
+                    {closeLabel}
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         </Transition.Child>
