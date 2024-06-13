@@ -170,7 +170,7 @@ export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
             })}
           >
             {header === undefined ? (
-              <VisuallyHidden tabIndex={-1} ref={initialFocusRef}>
+              <VisuallyHidden as="p" tabIndex={-1} ref={initialFocusRef}>
                 ダイアログ
               </VisuallyHidden>
             ) : null}
