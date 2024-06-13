@@ -186,7 +186,13 @@ export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
                   {header}
                 </Dialog.Title>
               ) : null}
-              <div className={styles.contents}>{children}</div>
+              <div
+                className={clsx(styles.body, {
+                  [styles.fullscreen]: fullscreen,
+                })}
+              >
+                {children}
+              </div>
               <div className={styles.buttonContainer}>
                 {onPrimaryAction && primaryActionLabel && (
                   <Button block onClick={onPrimaryAction} aria-label={primaryActionLabel} variant={primaryActionColor}>

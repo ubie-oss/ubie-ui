@@ -47,17 +47,11 @@
   height: calc(100% - 24px);
 }
 
-.dialog.fullscreen.contents {
-  height: 100%;
-  min-height: 400px;
-  overflow: hidden;
-}
-
 .mainContent {
   display: flex;
   flex-direction: column;
   gap: var(--size-spacing-lg);
-  padding: var(--size-spacing-lg) 0;
+  padding: var(--size-spacing-lg) var(--size-spacing-md);
 }
 
 .mainContent.headerLess {
@@ -66,7 +60,6 @@
 
 .mainContent.fullscreen {
   flex-grow: 1;
-  min-height: 0;
 }
 
 .header {
@@ -80,10 +73,15 @@
   outline: none;
 }
 
+.body.fullscreen {
+  height: 100%;
+  min-height: 400px;
+  overflow: hidden;
+}
+
 .buttonContainer {
   display: grid;
   gap: var(--size-spacing-md);
-  padding: 0 var(--size-spacing-md);
 }
 
 .overlayEnter {

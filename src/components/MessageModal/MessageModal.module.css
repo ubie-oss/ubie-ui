@@ -5,7 +5,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-y: auto;
 }
 
 .overlay {
@@ -43,13 +42,11 @@
   display: flex;
   flex-direction: column;
   gap: var(--size-spacing-lg);
-  min-height: 0;
   padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
 }
 
 .mainContent.fixedHeight {
   flex-grow: 1;
-  min-height: 0;
 }
 
 .body {

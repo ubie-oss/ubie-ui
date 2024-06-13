@@ -30,19 +30,12 @@
   max-width: 600px;
   max-height: calc(100% - 48px);
   margin: 0 auto;
-  overflow-y: auto;
   background: #fff;
   border-radius: var(--radius-lg);
 }
 
 .dialog.fixedHeight {
   height: calc(100% - 48px);
-}
-
-.body.fixedHeight {
-  flex-grow: 1;
-  min-height: 400px;
-  overflow: hidden;
 }
 
 .mainContent {
@@ -52,11 +45,11 @@
   gap: var(--size-spacing-lg);
   min-height: 100%;
   padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
+  overflow-y: auto;
 }
 
 .mainContent.fixedHeight {
   flex-grow: 1;
-  min-height: 0;
 }
 
 .mainContent.headerLess {
@@ -72,6 +65,12 @@
 
   /* May receive focus in the initial display. */
   outline: none;
+}
+
+.body.fixedHeight {
+  flex-grow: 1;
+  min-height: 400px;
+  overflow: hidden;
 }
 
 .buttonContainer {
