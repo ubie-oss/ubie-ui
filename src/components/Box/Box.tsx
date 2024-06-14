@@ -132,8 +132,8 @@ export const textStyleVariables = ({
     }): CSSProperties => {
   if (type == null) return {};
 
-  const size = type != null && _size == null ? 'md' : _size;
-  const leading = type != null && _leading == null ? 'default' : _leading;
+  const size = _size == null ? 'md' : _size;
+  const leading = _leading == null ? 'default' : _leading;
 
   switch (type) {
     case 'body':
@@ -159,10 +159,16 @@ const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 export const Box: FC<PropsWithChildren<PropsWithoutText | PropsWithTextBody | PropsWithTextNote>> = ({
   as: BoxComponent = 'div',
   children,
+  p,
+  px,
+  py,
   pt,
   pr,
   pb,
   pl,
+  m,
+  mx,
+  my,
   mt,
   mr,
   mb,
@@ -200,12 +206,18 @@ export const Box: FC<PropsWithChildren<PropsWithoutText | PropsWithTextBody | Pr
       ])}
       style={{
         ...paddingVariables({
+          p,
+          px,
+          py,
           pt,
           pr,
           pb,
           pl,
         }),
         ...marginVariables({
+          m,
+          mx,
+          my,
           mt,
           mr,
           mb,
