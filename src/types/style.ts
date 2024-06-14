@@ -30,15 +30,18 @@ export type Spacing = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 export type PaddingProps = {
   /**
-   * 四方のパディングを一括で設定。Spacing Tokenのキーを指定
+   * 四方のパディングを一括で設定。Spacing Tokenのキーを指定\
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   p?: Spacing;
   /**
    * 水平方向のパディングを一括で設定。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   px?: Spacing;
   /**
    * 垂直方向のパディングを一括で設定。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   py?: Spacing;
   /**
@@ -62,14 +65,17 @@ export type PaddingProps = {
 export type MarginProps = {
   /**
    * 四方のマージンを一括で設定。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   m?: Spacing;
   /**
    * 水平方向のマージンを一括で設定。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   mx?: Spacing;
   /**
    * 垂直方向のマージンを一括で設定。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   my?: Spacing;
   /**
