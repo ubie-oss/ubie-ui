@@ -5,8 +5,10 @@
   margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
   font-size: var(--text-size);
   font-weight: var(--text-bold);
+  hyphens: auto;
   line-height: var(--text-leading);
   color: var(--text-color);
+  overflow-wrap: anywhere;
   border-radius: var(--radius);
 }
 
@@ -76,4 +78,8 @@
 
 .box.textRight {
   text-align: right;
+}
+
+.box.textNoWrap {
+  white-space: nowrap;
 }

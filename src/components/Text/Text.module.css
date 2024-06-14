@@ -1,8 +1,10 @@
 .text {
   font-size: var(--font-size);
   font-weight: normal;
+  hyphens: auto;
   line-height: var(--leading);
   color: var(--color);
+  overflow-wrap: anywhere;
 }
 
 :where(.text) {
@@ -162,4 +164,8 @@
 
 .right {
   text-align: right;
+}
+
+.nowrap {
+  white-space: nowrap;
 }

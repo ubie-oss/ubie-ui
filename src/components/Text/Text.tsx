@@ -43,6 +43,10 @@ type BaseProps = {
    * テキストの配置。指定しない場合、親要素の配置を継承
    */
   textAlign?: 'left' | 'center' | 'right';
+  /**
+   * 領域が狭い場合でも折り返えさない
+   */
+  noWrap?: boolean;
 } & CustomDataAttributeProps;
 
 type BodyProps = BaseProps & {
@@ -137,6 +141,7 @@ export const Text: FC<PropsWithChildren<TextProps>> = ({
   type = 'body',
   leading = 'default',
   bold = false,
+  noWrap = false,
   color = 'main',
   children,
   id,
@@ -148,12 +153,13 @@ export const Text: FC<PropsWithChildren<TextProps>> = ({
       id={id}
       className={clsx(
         styles.text,
-        bold && styles.bold,
         styles[size],
         styles[type],
         styles[leading],
         styles[color],
         textAlign && styles[textAlign],
+        bold && styles.bold,
+        noWrap && styles.nowrap,
       )}
       {...props}
     >
