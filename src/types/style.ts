@@ -90,9 +90,7 @@ export type MarginProps = {
   ml?: Spacing;
 };
 
-export type MarginXProps = Extract<MarginProps, 'mx' | 'mr' | 'ml'>;
-
-export type MarginYProps = Extract<MarginProps, 'my' | 'mt' | 'mb'>;
+export type MarginYProps = Pick<MarginProps, 'my' | 'mt' | 'mb'>;
 
 export type FlexDirection = 'row' | 'column';
 
