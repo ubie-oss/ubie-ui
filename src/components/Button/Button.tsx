@@ -22,6 +22,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       disabled = false,
       loading = false,
       onClick,
+      m,
+      mx,
+      my,
       mt,
       mr,
       mb,
@@ -57,6 +60,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={cls}
         style={{
           ...marginVariables({
+            m,
+            mx,
+            my,
             mt,
             mr,
             mb,
