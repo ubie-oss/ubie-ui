@@ -9,6 +9,11 @@
   border-radius: 24px;
 }
 
+.text {
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}
+
 .medium .icon {
   width: 1.5rem;
   height: 1.5rem;

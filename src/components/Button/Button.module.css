@@ -13,6 +13,7 @@
   margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
   font-size: var(--font-size);
   font-weight: bold;
+  hyphens: auto;
   line-height: var(--line-height);
   color: var(--text);
   text-align: center;
