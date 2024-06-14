@@ -38,7 +38,7 @@ describe('<Button>', () => {
     expect(div).toHaveStyle('--margin-left: var(--size-spacing-xxs)');
   });
 
-  it('has a vertical margins of through mx prop', () => {
+  it('has a vertical margins of through my prop', () => {
     render(
       <Button my="xxs" data-testid="box">
         Test
