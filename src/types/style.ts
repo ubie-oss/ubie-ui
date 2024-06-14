@@ -30,52 +30,69 @@ export type Spacing = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 export type PaddingProps = {
   /**
-   * padding-topの値。Spacing Tokenのキーを指定
+   * 四方のパディングを一括で設定。Spacing Tokenのキーを指定
+   */
+  p?: Spacing;
+  /**
+   * 水平方向のパディングを一括で設定。Spacing Tokenのキーを指定
+   */
+  px?: Spacing;
+  /**
+   * 垂直方向のパディングを一括で設定。Spacing Tokenのキーを指定
+   */
+  py?: Spacing;
+  /**
+   * 上方向のパディング。Spacing Tokenのキーを指定
    */
   pt?: Spacing;
   /**
-   * padding-rightの値。Spacing Tokenのキーを指定
+   * 右方向のパディング。Spacing Tokenのキーを指定
    */
   pr?: Spacing;
   /**
-   * padding-bottomの値。Spacing Tokenのキーを指定
+   * 下方向のパディング。Spacing Tokenのキーを指定
    */
   pb?: Spacing;
   /**
-   * padding-leftの値。Spacing Tokenのキーを指定
+   * 左方向のパディング。Spacing Tokenのキーを指定
    */
   pl?: Spacing;
 };
 
 export type MarginProps = {
   /**
-   * margin-topの値。Spacing Tokenのキーを指定
+   * 四方のマージンを一括で設定。Spacing Tokenのキーを指定
+   */
+  m?: Spacing;
+  /**
+   * 水平方向のマージンを一括で設定。Spacing Tokenのキーを指定
+   */
+  mx?: Spacing;
+  /**
+   * 垂直方向のマージンを一括で設定。Spacing Tokenのキーを指定
+   */
+  my?: Spacing;
+  /**
+   * 上方向のマージン。Spacing Tokenのキーを指定
    */
   mt?: Spacing;
   /**
-   * margin-rightの値。Spacing Tokenのキーを指定
+   * 右方向のマージン。Spacing Tokenのキーを指定
    */
   mr?: Spacing;
   /**
-   * margin-bottomの値。Spacing Tokenのキーを指定
+   * 下方向のマージン。Spacing Tokenのキーを指定
    */
   mb?: Spacing;
   /**
-   * margin-leftの値。Spacing Tokenのキーを指定
+   * 左方向のマージン。Spacing Tokenのキーを指定
    */
   ml?: Spacing;
 };
 
-export type MarginYProps = {
-  /**
-   * margin-topの値。Spacing Tokenのキーを指定
-   */
-  mt?: Spacing;
-  /**
-   * margin-bottomの値。Spacing Tokenのキーを指定
-   */
-  mb?: Spacing;
-};
+export type MarginXProps = Extract<MarginProps, 'mx' | 'mr' | 'ml'>;
+
+export type MarginYProps = Extract<MarginProps, 'my' | 'mt' | 'mb'>;
 
 export type FlexDirection = 'row' | 'column';
 
