@@ -24,6 +24,7 @@ type Props = {
   whiteIcon?: ReactNode;
   /**
    * サイズ。Typographyトークンの値を指定
+   * xs=16px, sm=18px, md=20px, lg=24px, xl=28px
    * @default md
    */
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
