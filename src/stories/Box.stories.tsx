@@ -333,3 +333,37 @@ export const CustomDataAttribute: Story = {
     ...defaultArgs,
   },
 };
+
+export const TextWrap: Story = {
+  render: (args) => (
+    <div style={{ width: 400 }}>
+      <Stack spacing="md">
+        <Box {...args}>
+          <p>
+            私はすべてぼんやりその批評痛というのの中を押しだなけれ。現に十月の仕事方ももしこのお尋ねましたまでをふりまいとならませには刺戟待ったたて、とてもにはなろべきませたです。https://vitals.ubie.life/?hoge=1111111111111111111111111111111111111111111111111111
+          </p>
+          <p>
+            industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make a type specimen
+            booooooooooooooooooooooooooooooooooooooooooooook.
+          </p>
+        </Box>
+
+        <Box {...args} textNoWrap>
+          <p>noWrap</p>
+          <p>
+            私はすべてぼんやりその批評痛というのの中を押しだなけれ。現に十月の仕事方ももしこのお尋ねましたまでをふりまいとならませには刺戟待ったたて、とてもにはなろべきませたです。https://vitals.ubie.life/?hoge=1111111111111111111111111111111111111111111111111111
+          </p>
+          <p>
+            industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make a type specimen
+            booooooooooooooooooooooooooooooooooooooooooooook.
+          </p>
+        </Box>
+      </Stack>
+    </div>
+  ),
+  args: {
+    ...defaultArgs,
+  },
+};

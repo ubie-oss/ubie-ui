@@ -3,7 +3,9 @@
   gap: var(--size-spacing-sm);
   align-items: center;
   padding: var(--size-spacing-md);
+  hyphens: auto;
   text-decoration: none;
+  overflow-wrap: anywhere;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
 }

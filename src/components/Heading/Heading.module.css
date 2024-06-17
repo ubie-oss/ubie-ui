@@ -2,7 +2,9 @@
   position: relative;
   box-sizing: border-box;
   font-weight: normal;
+  hyphens: auto;
   color: var(--color-text-main);
+  overflow-wrap: anywhere;
 
   --medium-leading-border-width: 4px;
   --large-leading-border-width: 5px;
@@ -202,4 +204,8 @@
 .heading.xl > .icon {
   width: calc(var(--text-heading-xl-size) * var(--text-heading-xl-line));
   height: calc(var(--text-heading-xl-size) * var(--text-heading-xl-line));
+}
+
+.heading.noWrap {
+  white-space: nowrap;
 }

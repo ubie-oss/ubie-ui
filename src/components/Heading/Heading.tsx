@@ -56,6 +56,10 @@ type Props = {
    * @default true
    */
   bold?: boolean;
+  /**
+   * ｚ
+   */
+  noWrap?: boolean;
 } & CustomDataAttributeProps;
 
 const Heading: FC<PropsWithChildren<Props>> = ({
@@ -71,6 +75,7 @@ const Heading: FC<PropsWithChildren<Props>> = ({
   id,
   htmlFor,
   bold = true,
+  noWrap = false,
   ...otherProps
 }) => {
   const className = clsx(
@@ -81,7 +86,8 @@ const Heading: FC<PropsWithChildren<Props>> = ({
     // For leadingBorder, only the main text colour is supported.
     leadingBorder ? styles.secondary : styles[color],
     leadingBorder ? styles.leadingBorder : null,
-    bold ? styles.bold : null,
+    bold && styles.bold,
+    noWrap && styles.noWrap,
   );
 
   return (

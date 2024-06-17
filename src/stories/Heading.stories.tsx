@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { UbieIcon, ThumbUpOutlineIcon, SetupIcon } from '@ubie/ubie-icons';
-import { Heading, Stack } from '../';
+import { Box, Heading, Stack } from '../';
 
 export default {
   title: 'Typography/Heading',
@@ -296,4 +296,53 @@ export const CustomDataAttribute: Story = {
   args: {
     [`data-test-id`]: 'heading-custom-attribute',
   },
+};
+
+export const TextWrap: Story = {
+  render: () => (
+    <div style={{ width: '300px' }}>
+      <Stack spacing="md">
+        <Box border="gray">
+          <Heading>
+            私はすべてぼんやりその批評痛というのの中を押しだなけれ。現に十月の仕事方ももしこのお尋ねましたまでをふりまいとならませには刺戟待ったたて、とてもにはなろべきませたです。https://vitals.ubie.life/?hoge=1111111111111111111111111111111111111111111111111111
+          </Heading>
+        </Box>
+
+        <div lang="en">
+          <Box border="gray">
+            <Heading>
+              industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an
+              unknown printer took a galley of type and scrambled it to make a type specimen
+              booooooooooooooooooooooooooooooooooooooooooooook.
+            </Heading>
+          </Box>
+        </div>
+
+        <div>
+          <p>
+            <code>noWrap</code>
+          </p>
+
+          <Box border="gray">
+            <Heading noWrap>
+              私はすべてぼんやりその批評痛というのの中を押しだなけれ。現に十月の仕事方ももしこのお尋ねましたまでをふりまいとならませには刺戟待ったたて、とてもにはなろべきませたです。https://vitals.ubie.life/?hoge=1111111111111111111111111111111111111111111111111111
+            </Heading>
+          </Box>
+        </div>
+
+        <div>
+          <p>
+            <code>noWrap</code>
+          </p>
+
+          <Box border="gray">
+            <Heading noWrap>
+              industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an
+              unknown printer took a galley of type and scrambled it to make a type specimen book.
+            </Heading>
+          </Box>
+        </div>
+      </Stack>
+    </div>
+  ),
 };

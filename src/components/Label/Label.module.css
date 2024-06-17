@@ -4,7 +4,9 @@
   align-items: center;
   font-size: var(--text-body-sm-size);
   font-weight: bold;
+  hyphens: auto;
   color: var(--color-text-sub);
+  overflow-wrap: anywhere;
 }
 
 legend.label {
