@@ -6,14 +6,13 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    '@chromatic-com/storybook'
+    '@chromatic-com/storybook',
   ],
   framework: '@storybook/react-vite',
-
   docs: {},
-
   typescript: {
-    reactDocgen: 'react-docgen-typescript'
-  }
+    reactDocgen: 'react-docgen-typescript',
+  },
+  staticDirs: ['./public'],
 };
 export default config;

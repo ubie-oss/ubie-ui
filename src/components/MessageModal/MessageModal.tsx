@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { FC, Fragment, PropsWithChildren, useCallback, useRef } from 'react';
+import { FC, Fragment, PropsWithChildren, type ReactNode, useCallback, useRef } from 'react';
 import styles from './MessageModal.module.css';
 import { Button } from '../../';
 import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
@@ -53,6 +53,10 @@ type Props = {
    * ネイティブのaria-labelledby属性。独自の見出しを実装する場合にダイアログとの紐づけに使用。ページで固有のIDを指定
    */
   ariaLabelledby?: string;
+  /**
+   * ヒーローエリア（見出しの更に上）に配置するコンテンツ
+   */
+  hero?: ReactNode;
 } & PropsWithChildren &
   CustomDataAttributeProps;
 
@@ -66,6 +70,7 @@ export const MessageModal: FC<Props> = ({
   open = true,
   isStatic = false,
   ariaLabelledby,
+  hero,
   ...otherProps
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
@@ -103,20 +108,38 @@ export const MessageModal: FC<Props> = ({
         {...otherProps}
       >
         <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
-        <div className={clsx(styles.modalBody, fixedHeight && styles.fixedHeight)}>
-          {header != null ? (
-            <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
-              {header}
-            </Dialog.Title>
-          ) : (
-            <VisuallyHidden tabIndex={-1} ref={initialFocusRef}>
+        <div
+          className={clsx(styles.dialog, {
+            [styles.fixedHeight]: fixedHeight,
+          })}
+        >
+          {header === undefined ? (
+            <VisuallyHidden as="p" tabIndex={-1} ref={initialFocusRef}>
               ダイアログ
             </VisuallyHidden>
-          )}
-          <div className={styles.contents}>{children}</div>
-          <Button block onClick={onClose} aria-label={closeLabel}>
-            {closeLabel}
-          </Button>
+          ) : null}
+          {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
+          <div
+            className={clsx(styles.mainContent, {
+              [styles.fixedHeight]: fixedHeight,
+            })}
+          >
+            {header !== undefined ? (
+              <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
+                {header}
+              </Dialog.Title>
+            ) : null}
+            <div
+              className={clsx(styles.body, {
+                [styles.fixedHeight]: fixedHeight,
+              })}
+            >
+              {children}
+            </div>
+            <Button block onClick={onClose} aria-label={closeLabel}>
+              {closeLabel}
+            </Button>
+          </div>
         </div>
       </Dialog>
     </Transition>

@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { FC, Fragment, PropsWithChildren, useCallback, useRef } from 'react';
+import { FC, Fragment, PropsWithChildren, type ReactNode, useCallback, useRef } from 'react';
 import styles from './ActionModal.module.css';
 import { Button } from '../../';
 import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
@@ -71,6 +71,10 @@ type BaseProps = {
    * ネイティブのaria-labelledby属性。独自の見出しを実装する場合にダイアログとの紐づけに使用。ページで固有のIDを指定
    */
   ariaLabelledby?: string;
+  /**
+   * ヒーローエリア（見出しの更に上）に配置するコンテンツ
+   */
+  hero?: ReactNode;
 };
 
 type SecondaryActionProps = {
@@ -102,6 +106,7 @@ export const ActionModal: FC<Props> = ({
   open = true,
   isStatic = false,
   ariaLabelledby,
+  hero,
   ...props
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
@@ -140,33 +145,52 @@ export const ActionModal: FC<Props> = ({
         {...props}
       >
         <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
-        <div className={clsx(styles.modalBody, !header && styles.headerLess, fixedHeight && styles.fixedHeight)}>
-          {header != null ? (
-            <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
-              {header}
-            </Dialog.Title>
-          ) : (
-            <VisuallyHidden tabIndex={-1} ref={initialFocusRef}>
+        <div
+          className={clsx(styles.dialog, {
+            [styles.fixedHeight]: fixedHeight,
+          })}
+        >
+          {header === undefined ? (
+            <VisuallyHidden as="p" tabIndex={-1} ref={initialFocusRef}>
               ダイアログ
             </VisuallyHidden>
-          )}
-          <div className={styles.contents}>{children}</div>
-          <div className={styles.buttonContainer}>
-            {onPrimaryAction && primaryActionLabel && (
-              <Button block onClick={onPrimaryAction} variant={primaryActionColor}>
-                {primaryActionLabel}
-              </Button>
-            )}
-            {onSecondaryAction && secondaryActionLabel && (
-              <Button block variant="secondary" onClick={onSecondaryAction}>
-                {secondaryActionLabel}
-              </Button>
-            )}
-            {showClose && (
-              <Button variant="text" onClick={onClose}>
-                {closeLabel}
-              </Button>
-            )}
+          ) : null}
+          {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
+          <div
+            className={clsx(styles.mainContent, {
+              [styles.headerLess]: header === undefined && hero === undefined,
+              [styles.fixedHeight]: fixedHeight,
+            })}
+          >
+            {header !== undefined ? (
+              <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
+                {header}
+              </Dialog.Title>
+            ) : null}
+            <div
+              className={clsx(styles.body, {
+                [styles.fixedHeight]: fixedHeight,
+              })}
+            >
+              {children}
+            </div>
+            <div className={styles.buttonContainer}>
+              {onPrimaryAction && primaryActionLabel && (
+                <Button block onClick={onPrimaryAction} variant={primaryActionColor}>
+                  {primaryActionLabel}
+                </Button>
+              )}
+              {onSecondaryAction && secondaryActionLabel && (
+                <Button block variant="secondary" onClick={onSecondaryAction}>
+                  {secondaryActionLabel}
+                </Button>
+              )}
+              {showClose && (
+                <Button variant="text" onClick={onClose}>
+                  {closeLabel}
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </Dialog>
