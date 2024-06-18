@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Text, Flex, Stack } from '../';
+import { Text, Flex, Stack, Box } from '../';
 
 export default {
   title: 'Typography/Text',
@@ -322,9 +322,58 @@ export const TextAlign: Story = {
 };
 
 export const CustomDataAttribute: Story = {
+  render: () => <Text date-test-id="some-id">Text</Text>,
+};
+
+export const Bold: Story = {
+  render: () => <Text bold>Bold</Text>,
+};
+
+export const Wrap: Story = {
   render: () => (
-    <Text date-test-id="some-id" bold>
-      Text
-    </Text>
+    <div style={{ width: '300px' }}>
+      <Stack spacing="md">
+        <Box border="gray">
+          <Text>
+            私はすべてぼんやりその批評痛というのの中を押しだなけれ。現に十月の仕事方ももしこのお尋ねましたまでをふりまいとならませには刺戟待ったたて、とてもにはなろべきませたです。https://vitals.ubie.life/?hoge=1111111111111111111111111111111111111111111111111111
+          </Text>
+        </Box>
+
+        <div lang="en">
+          <Box border="gray">
+            <Text>
+              industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an
+              unknown printer took a galley of type and scrambled it to make a type specimen
+              booooooooooooooooooooooooooooooooooooooooooooook.
+            </Text>
+          </Box>
+        </div>
+
+        <div>
+          <p>
+            <code>noWrap</code>
+          </p>
+
+          <Box border="gray">
+            <Text noWrap>
+              私はすべてぼんやりその批評痛というのの中を押しだなけれ。現に十月の仕事方ももしこのお尋ねましたまでをふりまいとならませには刺戟待ったたて、とてもにはなろべきませたです。https://vitals.ubie.life/?hoge=1111111111111111111111111111111111111111111111111111
+            </Text>
+          </Box>
+        </div>
+
+        <div>
+          <p>
+            <code>noWrap</code>
+          </p>
+
+          <Box border="gray">
+            <Text noWrap>
+              industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an
+              unknown printer took a galley of type and scrambled it to make a type specimen book.
+            </Text>
+          </Box>
+        </div>
+      </Stack>
+    </div>
   ),
 };

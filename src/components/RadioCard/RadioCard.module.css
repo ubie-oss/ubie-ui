@@ -16,8 +16,10 @@
   padding: 16px 12px 16px 44px;
   font-size: 16px;
   font-weight: normal;
+  hyphens: auto;
   line-height: 23px;
   color: var(--color-text-main);
+  overflow-wrap: anywhere;
   vertical-align: text-top;
   cursor: pointer;
   background: #fff;

@@ -50,14 +50,17 @@ export type PaddingProps = {
   pt?: Spacing;
   /**
    * 右方向のパディング。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   pr?: Spacing;
   /**
    * 下方向のパディング。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   pb?: Spacing;
   /**
    * 左方向のパディング。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   pl?: Spacing;
 };
@@ -84,14 +87,17 @@ export type MarginProps = {
   mt?: Spacing;
   /**
    * 右方向のマージン。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   mr?: Spacing;
   /**
    * 下方向のマージン。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   mb?: Spacing;
   /**
    * 左方向のマージン。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   ml?: Spacing;
 };
@@ -116,6 +122,7 @@ export type Radius = 'xs' | 'sm' | 'md' | 'lg';
 export type RadiusProp = {
   /**
    * 角丸を指定。Radius Tokenのキーを指定
+   * xs=2px,sm=4px,md=8px,lg=12px
    */
   radius?: Radius;
 };

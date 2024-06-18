@@ -79,7 +79,7 @@ export const FixedHeight: Story = {
       </>
     );
   },
-  args: defaultArgs,
+  args: { ...defaultArgs, fixedHeight: true },
 };
 
 export const OverlayDarker: Story = {
@@ -160,5 +160,33 @@ export const CustomHeader: Story = {
   args: {
     ...defaultArgs,
     header: undefined,
+  },
+};
+
+export const WithHero: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <MessageModal {...args} open={open} onClose={() => setOpen(false)} />
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    header: 'メッセージ',
+    hero: (
+      <img
+        src="/images/placeholder.svg"
+        alt="Illustration: Modal"
+        style={{ width: '100%', height: 'auto', verticalAlign: 'bottom' }}
+        width={560}
+        height={315}
+      />
+    ),
   },
 };

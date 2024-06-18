@@ -1,17 +1,22 @@
-import { forwardRef } from 'react';
+import { ComponentPropsWithRef, ForwardedRef } from 'react';
 import styles from './VisuallyHidden.module.css';
-import type { PropsWithChildren } from 'react';
+import { fixedForwardRef } from '../../utils/component';
+import { DistributiveOmit } from '../../utils/types';
+import type { ElementType } from 'react';
 
-type Props = {
-  tabIndex?: number;
-};
-
-export const VisuallyHidden = forwardRef<HTMLSpanElement, PropsWithChildren<Props>>(({ children, tabIndex }, ref) => {
+function VisuallyHiddenInner<T extends ElementType>(
+  props: {
+    as?: T;
+  } & DistributiveOmit<ComponentPropsWithRef<ElementType extends T ? 'span' : T>, 'as'>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ref: ForwardedRef<any>,
+) {
+  const { children, as: Component = 'span', className: _, ...otherProps } = props;
   return (
-    <span ref={ref} tabIndex={tabIndex} className={styles.visuallyHidden}>
+    <Component className={styles.visuallyHidden} {...otherProps} ref={ref}>
       {children}
-    </span>
+    </Component>
   );
-});
+}
 
-VisuallyHidden.displayName = 'VisuallyHidden';
+export const VisuallyHidden = fixedForwardRef(VisuallyHiddenInner);

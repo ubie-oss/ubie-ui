@@ -56,6 +56,10 @@ type BaseProps = {
    * テキストの配置。指定しない場合、親要素の配置を継承
    */
   textAlign?: 'left' | 'center' | 'right';
+  /**
+   * 領域が狭い場合でも、テキストを折り返えさない
+   */
+  textNoWrap?: boolean;
 } & PaddingProps &
   MarginProps &
   RadiusProp &
@@ -183,6 +187,7 @@ export const Box: FC<PropsWithChildren<PropsWithoutText | PropsWithTextBody | Pr
   textColor,
   textBold,
   textAlign,
+  textNoWrap,
   ...props
 }) => {
   let _textVariables: CSSProperties = {};
@@ -203,6 +208,7 @@ export const Box: FC<PropsWithChildren<PropsWithoutText | PropsWithTextBody | Pr
         textBold && styles.textBold,
         textBold === false && styles.textNormal,
         textAlign && styles[`text${capitalize(textAlign)}`],
+        textNoWrap && styles.textNoWrap,
       ])}
       style={{
         ...paddingVariables({

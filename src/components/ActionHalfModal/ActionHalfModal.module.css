@@ -22,17 +22,15 @@
   padding: 0 var(--size-spacing-md);
 }
 
-.modalBody {
+.dialog {
   position: fixed;
   bottom: 0;
   left: 50%;
   display: flex;
   flex-direction: column;
-  gap: var(--size-spacing-lg);
   width: 100%;
   max-width: 600px;
   max-height: calc(100% - 24px);
-  padding: var(--size-spacing-lg) 0;
   margin: 0 auto;
   background: #fff;
   border-radius: 12px;
@@ -41,22 +39,27 @@
   transform: translate3d(-50%, 0, 0);
 }
 
-.modalBody.bodyScroll {
+.dialog.bodyScroll {
   overflow-y: auto;
 }
 
-.modalBody.headerLess {
-  padding-top: var(--size-spacing-xl);
-}
-
-.modalBody.fullscreen {
+.dialog.fullscreen {
   height: calc(100% - 24px);
 }
 
-.modalBody.fullscreen.contents {
-  height: 100%;
-  min-height: 400px;
-  overflow: hidden;
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-spacing-lg);
+  padding: var(--size-spacing-lg) var(--size-spacing-md);
+}
+
+.mainContent.headerLess {
+  padding-top: var(--size-spacing-xl);
+}
+
+.mainContent.fullscreen {
+  flex-grow: 1;
 }
 
 .header {
@@ -70,10 +73,15 @@
   outline: none;
 }
 
+.body.fullscreen {
+  height: 100%;
+  min-height: 400px;
+  overflow: hidden;
+}
+
 .buttonContainer {
   display: grid;
   gap: var(--size-spacing-md);
-  padding: 0 var(--size-spacing-md);
 }
 
 .overlayEnter {
