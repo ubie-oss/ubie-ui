@@ -1,14 +1,22 @@
 'use client';
 
 import clsx from 'clsx';
-import { isValidElement, cloneElement } from 'react';
+import {
+  isValidElement,
+  cloneElement,
+  type PropsWithChildren,
+  FC,
+  CSSProperties,
+  ComponentType,
+  ReactElement,
+  ReactNode,
+} from 'react';
 import styles from './Center.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
-import { createSpacingVariableFromKey, paddingVariables } from '../../utils/style';
+import { marginVariables, paddingVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
 import { Box } from '../Box/Box';
 import type { MarginYProps, PaddingProps } from '../../types/style';
-import type { FC, PropsWithChildren, CSSProperties, ComponentType, ReactElement, ReactNode } from 'react';
 
 type Props = {
   /**
@@ -42,10 +50,14 @@ type Props = {
 export const Center: FC<PropsWithChildren<Props>> = ({
   as: CenterCopmonent = 'div',
   children,
+  p,
+  px,
+  py,
   pt,
   pr,
   pb,
   pl,
+  my,
   mt,
   mb,
   textCenter,
@@ -70,15 +82,19 @@ export const Center: FC<PropsWithChildren<Props>> = ({
       style: {
         '--max-width': maxWidth,
         ...paddingVariables({
+          p,
+          px,
+          py,
           pt,
           pr,
           pb,
           pl,
         }),
-        ...{
-          '--margin-top': mt ? createSpacingVariableFromKey(mt) : 0,
-          '--margin-bottom': mb ? createSpacingVariableFromKey(mb) : 0,
-        },
+        ...marginVariables({
+          my,
+          mt,
+          mb,
+        }),
       } as CSSProperties,
       ...props,
     },

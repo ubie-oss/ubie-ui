@@ -30,22 +30,36 @@ export type Spacing = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 export type PaddingProps = {
   /**
-   * padding-topの値。Spacing Tokenのキーを指定
+   * 四方のパディングを一括で設定。Spacing Tokenのキーを指定\
    * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+   */
+  p?: Spacing;
+  /**
+   * 水平方向のパディングを一括で設定。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+   */
+  px?: Spacing;
+  /**
+   * 垂直方向のパディングを一括で設定。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+   */
+  py?: Spacing;
+  /**
+   * 上方向のパディング。Spacing Tokenのキーを指定
    */
   pt?: Spacing;
   /**
-   * padding-rightの値。Spacing Tokenのキーを指定
+   * 右方向のパディング。Spacing Tokenのキーを指定
    * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   pr?: Spacing;
   /**
-   * padding-bottomの値。Spacing Tokenのキーを指定
+   * 下方向のパディング。Spacing Tokenのキーを指定
    * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   pb?: Spacing;
   /**
-   * padding-leftの値。Spacing Tokenのキーを指定
+   * 左方向のパディング。Spacing Tokenのキーを指定
    * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   pl?: Spacing;
@@ -53,39 +67,42 @@ export type PaddingProps = {
 
 export type MarginProps = {
   /**
-   * margin-topの値。Spacing Tokenのキーを指定
+   * 四方のマージンを一括で設定。Spacing Tokenのキーを指定
    * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+   */
+  m?: Spacing;
+  /**
+   * 水平方向のマージンを一括で設定。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+   */
+  mx?: Spacing;
+  /**
+   * 垂直方向のマージンを一括で設定。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+   */
+  my?: Spacing;
+  /**
+   * 上方向のマージン。Spacing Tokenのキーを指定
    */
   mt?: Spacing;
   /**
-   * margin-rightの値。Spacing Tokenのキーを指定
+   * 右方向のマージン。Spacing Tokenのキーを指定
    * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   mr?: Spacing;
   /**
-   * margin-bottomの値。Spacing Tokenのキーを指定
+   * 下方向のマージン。Spacing Tokenのキーを指定
    * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   mb?: Spacing;
   /**
-   * margin-leftの値。Spacing Tokenのキーを指定
+   * 左方向のマージン。Spacing Tokenのキーを指定
    * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   ml?: Spacing;
 };
 
-export type MarginYProps = {
-  /**
-   * margin-topの値。Spacing Tokenのキーを指定
-   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
-   */
-  mt?: Spacing;
-  /**
-   * margin-bottomの値。Spacing Tokenのキーを指定
-   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
-   */
-  mb?: Spacing;
-};
+export type MarginYProps = Pick<MarginProps, 'my' | 'mt' | 'mb'>;
 
 export type FlexDirection = 'row' | 'column';
 

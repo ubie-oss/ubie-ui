@@ -159,24 +159,66 @@ export const colorVariable = (color: TextColor | undefined): CSSProperties => {
 /**
  * Accepts optional arguments to unify default values.
  */
-export const paddingVariables = ({ pt, pr, pb, pl }: { pt?: Spacing; pr?: Spacing; pb?: Spacing; pl?: Spacing }) => {
+export const paddingVariables = ({
+  p,
+  px,
+  py,
+  pt,
+  pr,
+  pb,
+  pl,
+}: {
+  p?: Spacing;
+  px?: Spacing;
+  py?: Spacing;
+  pt?: Spacing;
+  pr?: Spacing;
+  pb?: Spacing;
+  pl?: Spacing;
+}) => {
+  const topKey = pt ?? py ?? p;
+  const rightKey = pr ?? px ?? p;
+  const bottomKey = pb ?? py ?? p;
+  const leftKey = pl ?? px ?? p;
+
   return {
-    '--padding-top': pt ? createSpacingVariableFromKey(pt) : '0',
-    '--padding-right': pr ? createSpacingVariableFromKey(pr) : '0',
-    '--padding-bottom': pb ? createSpacingVariableFromKey(pb) : '0',
-    '--padding-left': pl ? createSpacingVariableFromKey(pl) : '0',
+    '--padding-top': topKey ? createSpacingVariableFromKey(topKey) : '0',
+    '--padding-right': rightKey ? createSpacingVariableFromKey(rightKey) : '0',
+    '--padding-bottom': bottomKey ? createSpacingVariableFromKey(bottomKey) : '0',
+    '--padding-left': leftKey ? createSpacingVariableFromKey(leftKey) : '0',
   } as CSSProperties;
 };
 
 /**
  * Accepts optional arguments to unify default values.
  */
-export const marginVariables = ({ mt, mr, mb, ml }: { mt?: Spacing; mr?: Spacing; mb?: Spacing; ml?: Spacing }) => {
+export const marginVariables = ({
+  m,
+  mx,
+  my,
+  mt,
+  mr,
+  mb,
+  ml,
+}: {
+  m?: Spacing;
+  mx?: Spacing;
+  my?: Spacing;
+  mt?: Spacing;
+  mr?: Spacing;
+  mb?: Spacing;
+  ml?: Spacing;
+}) => {
+  const topKey = mt ?? my ?? m;
+  const rightKey = mr ?? mx ?? m;
+  const bottomKey = mb ?? my ?? m;
+  const leftKey = ml ?? mx ?? m;
+
   return {
-    '--margin-top': mt ? createSpacingVariableFromKey(mt) : '0',
-    '--margin-right': mr ? createSpacingVariableFromKey(mr) : '0',
-    '--margin-bottom': mb ? createSpacingVariableFromKey(mb) : '0',
-    '--margin-left': ml ? createSpacingVariableFromKey(ml) : '0',
+    '--margin-top': topKey ? createSpacingVariableFromKey(topKey) : '0',
+    '--margin-right': rightKey ? createSpacingVariableFromKey(rightKey) : '0',
+    '--margin-bottom': bottomKey ? createSpacingVariableFromKey(bottomKey) : '0',
+    '--margin-left': leftKey ? createSpacingVariableFromKey(leftKey) : '0',
   } as CSSProperties;
 };
 

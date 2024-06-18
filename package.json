@@ -32,6 +32,7 @@
     "build": "tsup",
     "test": "run-p test:*",
     "test:unit": "vitest run",
+    "test:unit:watch": "vitest watch",
     "test:e2e": "playwright test -c playwright.config.ts",
     "lint": "run-p lint:*",
     "lint:eslint": "eslint --ext .ts,.tsx ./src --max-warnings=0",

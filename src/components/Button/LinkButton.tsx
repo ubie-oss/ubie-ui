@@ -19,6 +19,9 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
       icon: _icon,
       fixedIcon: _fixedIcon,
       suffixIcon: _suffixIcon,
+      m,
+      mx,
+      my,
       mt,
       mr,
       mb,
@@ -47,6 +50,9 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
         className: cls,
         style: {
           ...marginVariables({
+            m,
+            mx,
+            my,
             mt,
             mr,
             mb,

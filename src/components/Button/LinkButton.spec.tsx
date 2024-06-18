@@ -1,20 +1,24 @@
 import { render, screen } from '@testing-library/react';
 import { createRef } from 'react';
-import { Button } from './Button';
+import { LinkButton } from './LinkButton';
 
-describe('<Button>', () => {
+describe('<LinkButton>', () => {
   it('access to DOM through ref prop', () => {
-    const ref = createRef<HTMLButtonElement>();
-    render(<Button ref={ref}>Test</Button>);
+    const ref = createRef<HTMLAnchorElement>();
+    render(
+      <LinkButton ref={ref} href=".">
+        Test
+      </LinkButton>,
+    );
     expect(ref.current).not.toBeNull();
-    expect(ref.current?.tagName).toBe('BUTTON');
+    expect(ref.current?.tagName).toBe('A');
   });
 
   it('has all the margins through m prop', () => {
     render(
-      <Button m="xxs" data-testid="box">
+      <LinkButton m="xxs" data-testid="box">
         Test
-      </Button>,
+      </LinkButton>,
     );
     const div = screen.getByTestId('box');
 
@@ -26,9 +30,9 @@ describe('<Button>', () => {
 
   it('has a horizontal margins through mx prop', () => {
     render(
-      <Button mx="xxs" data-testid="box">
+      <LinkButton mx="xxs" data-testid="box">
         Test
-      </Button>,
+      </LinkButton>,
     );
     const div = screen.getByTestId('box');
 
@@ -40,9 +44,9 @@ describe('<Button>', () => {
 
   it('has a vertical margins of through my prop', () => {
     render(
-      <Button my="xxs" data-testid="box">
+      <LinkButton my="xxs" data-testid="box">
         Test
-      </Button>,
+      </LinkButton>,
     );
     const div = screen.getByTestId('box');
 
@@ -54,9 +58,9 @@ describe('<Button>', () => {
 
   it('has all margins through individual margin props', () => {
     render(
-      <Button mt="xxs" mr="xs" mb="sm" ml="md" data-testid="box">
+      <LinkButton mt="xxs" mr="xs" mb="sm" ml="md" data-testid="box">
         Test
-      </Button>,
+      </LinkButton>,
     );
     const div = screen.getByTestId('box');
 
@@ -68,9 +72,9 @@ describe('<Button>', () => {
 
   it('gives priority to individual margin props', () => {
     render(
-      <Button m="xxs" mx="xs" my="xs" mt="sm" mr="md" mb="lg" ml="xl" data-testid="box">
+      <LinkButton m="xxs" mx="xs" my="xs" mt="sm" mr="md" mb="lg" ml="xl" data-testid="box">
         Test
-      </Button>,
+      </LinkButton>,
     );
     const div = screen.getByTestId('box');
 

@@ -13,7 +13,8 @@ describe('Toggle', () => {
   });
 
   it('has switch role', () => {
-    const { getByRole } = render(<Toggle name="test" value="test" />);
-    expect(getByRole('switch')).toBeInTheDocument();
+    const { getByTestId } = render(<Toggle name="test" value="test" data-testid="switch" />);
+    const element = getByTestId('switch');
+    expect(element.getAttribute('role')).toBe('switch');
   });
 });
