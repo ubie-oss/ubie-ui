@@ -1,13 +1,14 @@
 .card {
   display: flex;
-  gap: var(--size-spacing-sm);
   align-items: center;
   width: 100%;
   padding: var(--size-spacing-md);
   font-size: var(--text-button-lg-size);
   font-weight: bold;
   hyphens: auto;
-  line-height: var(--text-button-lg-line);
+
+  /* TODO: Replaced by tokens when @ubie/design-tokens is up-to-date. */
+  line-height: 1.5;
   text-decoration: none;
   overflow-wrap: anywhere;
   cursor: pointer;
