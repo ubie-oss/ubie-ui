@@ -5,7 +5,7 @@ import { isValidElement, cloneElement } from 'react';
 import styles from './Stack.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import { Spacing, AlignItems, JustifyContent } from '../../types/style';
-import { paddingVariables, marginVariables } from '../../utils/style';
+import { paddingVariables, marginVariables, gapVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
 import { Box } from '../Box/Box';
 import type { PaddingProps, MarginProps } from '../../types/style';
@@ -21,7 +21,7 @@ type Props = {
    * 子要素の間隔
    * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
-  spacing: Spacing;
+  spacing?: Spacing;
   /**
    * 水平方向における子要素のレイアウトを定める。
    * @default stretch
@@ -87,7 +87,7 @@ export const Stack: FC<Props> = ({
       style: {
         alignItems: `${alignItems}`,
         justifyContent: `${justifyContent}`,
-        gap: `var(--size-spacing-${spacing})`,
+        ...gapVariables(spacing),
         ...paddingVariables({
           p,
           px,

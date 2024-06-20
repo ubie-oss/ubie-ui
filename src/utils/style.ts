@@ -230,3 +230,12 @@ export const radiusVariables = (radius?: Radius) => {
     '--radius': radius ? createRadiusVariableFromKey(radius) : '0',
   } as CSSProperties;
 };
+
+/**
+ * Accepts optional arguments to unify default values.
+ */
+export const gapVariables = (spacing?: Spacing) => {
+  return {
+    '--gap': spacing ? `var(--size-spacing-${spacing})` : '0',
+  } as CSSProperties;
+};

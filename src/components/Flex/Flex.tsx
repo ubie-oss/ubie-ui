@@ -5,7 +5,7 @@ import { isValidElement, cloneElement } from 'react';
 import styles from './Flex.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import { Spacing, AlignItems, JustifyContent, FlexDirection } from '../../types/style';
-import { paddingVariables, marginVariables } from '../../utils/style';
+import { paddingVariables, marginVariables, gapVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
 import { Box } from '../Box/Box';
 import type { PaddingProps, MarginProps } from '../../types/style';
@@ -80,9 +80,6 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   ml,
   ...otherProps
 }) => {
-  // Directly specifying the markuplint will result in a markuplint error.
-  const gapStyle = spacing ? `var(--size-spacing-${spacing})` : '0';
-
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const createElement = (props: any, children: ReactNode) => {
     if (isValidElement(FlexCopmonent)) {
@@ -96,11 +93,11 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
     {
       className: clsx(styles.flex, height === 'full' && styles.heightFull, width === 'full' && styles.widthFull),
       style: {
-        '--gap': gapStyle,
         '--flex-direction': direction,
         '--align-items': alignItems,
         '--justify-content': justifyContent,
         '--flex-wrap': wrap ? 'wrap' : 'nowrap',
+        ...gapVariables(spacing),
         ...paddingVariables({
           p,
           px,
