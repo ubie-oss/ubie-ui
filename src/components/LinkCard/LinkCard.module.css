@@ -6,6 +6,7 @@
   hyphens: auto;
   text-decoration: none;
   overflow-wrap: anywhere;
+  background-color: var(--color-ubie-white);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
 }
