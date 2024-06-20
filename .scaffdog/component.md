@@ -45,3 +45,16 @@ export const Default: StoryObj<typeof {{ inputs.name | pascal }}> = {
   args: defaultArgs,
 };
 ```
+
+# `components/{{ inputs.name | pascal }}/{{ inputs.name | pascal }}.spec.tsx`
+
+```typescript
+import { render } from '@testing-library/react';
+import { {{ inputs.name | pascal }} } from './{{ inputs.name | pascal }}';
+
+describe('<{{ inputs.name | pascal }}>', () => {
+  it('somme test', () => {
+    render(<{{ inputs.name | pascal }} />);
+  });
+});
+```
