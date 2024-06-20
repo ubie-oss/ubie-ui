@@ -1,7 +1,7 @@
 ---
 name: 'component'
 root: 'src'
-output: '**/*'
+output: '.'
 ignore: []
 questions:
   name: 'Please enter a component name.'
@@ -10,13 +10,15 @@ questions:
 # `components/{{ inputs.name | pascal }}/{{ inputs.name | pascal }}.tsx`
 
 ```typescript
-import { FC } from 'react';
+import { forwardRef, type PropsWithChildren } from 'react';
 
 type Props = {};
 
-export const {{ inputs.name | pascal }}: FC<Props> = () => {
-  return null;
-};
+export const {{ inputs.name | pascal }} = forwardRef<HTMLDivElement, PropsWithChildren<Props>>(({ children }, ref) => {
+  return <div ref={ref}>{children}</div>;
+});
+
+{{ inputs.name | pascal }}.displayName = '{{ inputs.name | pascal }}';
 ```
 
 # `components/{{ inputs.name | pascal }}/{{ inputs.name | pascal }}.module.css`
@@ -26,7 +28,7 @@ export const {{ inputs.name | pascal }}: FC<Props> = () => {
 }
 ```
 
-# `stories/{{ inputs.name | pascal }}.stories.tsx`
+# `components/{{ inputs.name | pascal }}/{{ inputs.name | pascal }}.stories.tsx`
 
 ```typescript
 import { Meta, StoryObj } from '@storybook/react';
