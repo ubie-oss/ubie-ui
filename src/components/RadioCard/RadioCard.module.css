@@ -105,5 +105,5 @@
 .label.disabled {
   color: var(--color-text-disabled);
   background-color: var(--color-background-gray);
-  outline-color:var(--color-text-disabled);
+  outline-color: var(--color-text-disabled);
 }
