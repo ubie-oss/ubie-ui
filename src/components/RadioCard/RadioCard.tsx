@@ -31,9 +31,11 @@ type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name' | 'value' 
  * 選択した後自動で遷移しないタイプのラジオボタン（選択してもなにもおきないボタン）に使用
  */
 const RadioCard: FC<Props> = forwardRef<HTMLInputElement, Props>(
-  ({ name, value, checked, children, className, block = false, ...otherProps }, ref) => {
+  ({ name, value, checked, children, className, block = false, disabled, ...otherProps }, ref) => {
     return (
-      <label className={clsx(styles.label, block && styles.block, checked && styles.checked)}>
+      <label
+        className={clsx(styles.label, block && styles.block, checked && styles.checked, disabled && styles.disabled)}
+      >
         <input
           type="radio"
           name={name}
@@ -41,6 +43,7 @@ const RadioCard: FC<Props> = forwardRef<HTMLInputElement, Props>(
           checked={checked}
           className={clsx(className, styles.radio)}
           ref={ref}
+          disabled={disabled}
           {...otherProps}
         />
         {children}

@@ -44,20 +44,18 @@
   width: 20px;
   height: 20px;
   content: '';
-  background-color: #fff;
   border-radius: 50%;
   outline: 2px solid var(--color-border);
   transform: translateY(-50%);
 }
 
 @media (hover: hover) {
-  .label:hover::before {
+  .label:hover:not(.disabled)::before {
     outline: 2px solid var(--color-primary);
   }
 }
 
 .label.checked::before {
-  background: var(--color-background-primary);
   outline: 2px solid var(--color-primary);
 }
 
@@ -86,6 +84,14 @@
   transform: translateY(-50%);
 }
 
+.label.checked.disabled::before {
+  outline-color: 2px solid var(--color-border);
+}
+
+.label.checked.disabled::after {
+  background-color: var(--color-text-disabled);
+}
+
 .label:has(.radio:focus-visible) {
   box-shadow: 0 0 0 4px var(--color-accent);
 }
@@ -94,4 +100,10 @@
   .label:hover {
     background-color: var(--color-background-primary);
   }
+}
+
+.label.disabled {
+  color: var(--color-text-disabled);
+  background-color: var(--color-background-gray);
+  outline-color:var(--color-text-disabled);
 }
