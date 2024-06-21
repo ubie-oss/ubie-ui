@@ -1,17 +1,3 @@
-.container {
-  display: flex;
-  gap: var(--size-spacing-xs);
-  align-items: center;
-  hyphens: auto;
-  overflow-wrap: anywhere;
-  cursor: pointer;
-  user-select: none;
-}
-
-.container:has(input:disabled) {
-  cursor: initial;
-}
-
 .checkbox {
   position: absolute;
   width: 1px;
@@ -20,79 +6,117 @@
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
   border: 0;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.checkIconContainer {
-  box-sizing: border-box;
+.checkbox,
+.label,
+.symbol {
+  transition: border-color 0.3s var(--ease-out-quint), background-color 0.3s var(--ease-out-quint), outline-color 0.3s var(--ease-out-quint);
+}
+
+/**
+ * label
+ */
+.label {
   display: flex;
+  gap: var(--size-spacing-xs);
   align-items: center;
-  justify-content: center;
-  border: 2px solid var(--color-ubie-black-400);
-  border-radius: var(--radius-sm);
-  transition: background-color 200ms;
+  hyphens: auto;
+  overflow-wrap: anywhere;
+  cursor: pointer;
 }
 
-.container.medium {
+.label:has(.checkbox:disabled) {
+  cursor: initial;
+}
+
+.label.medium {
   font-size: var(--text-body-md-tight-size);
   line-height: var(--text-body-md-tight-line);
 }
 
-.container.small {
+.label.small {
   font-size: var(--text-body-sm-tight-size);
   line-height: var(--text-body-sm-tight-line);
 }
 
-.medium .checkIconContainer {
+/**
+ * symbol
+ */
+.symbol {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ubie-white);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: background-color 200ms;
+  background-color: var(--color-ubie-white);
+}
+
+.symbol.medium  {
   width: 1.5rem;
   height: 1.5rem;
 }
 
-.small .checkIconContainer {
+.symbol.small {
   width: 1.25rem;
   height: 1.25rem;
 }
 
-@media (hover: hover) {
-  .container:hover .checkIconContainer {
-    border-color: var(--color-primary);
-  }
-
-  .container:hover input:disabled + .checkIconContainer {
-    border-color: var(--color-text-disabled);
-  }
-}
-
-.checkIcon {
-  color: #fff;
-  visibility: hidden;
-}
-
-.medium .checkIcon {
-  font-size: 1.25rem;
-}
-
-.small .checkIcon {
-  font-size: 1rem;
-}
-
-input:checked + .checkIconContainer {
+.symbol.isIndeterminate {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
 }
 
-input:checked + .checkIconContainer .checkIcon {
+.checkbox:checked + .symbol,
+.symbol.isIndeterminate {
+  border-width: 0;
+}
+
+.checkbox:checked + .symbol {
+  background-color: var(--color-primary);
+}
+
+.checkbox:focus-visible + .symbol {
+  outline: 2px solid var(--color-accent);
+}
+
+.checkbox:disabled:checked + .symbol,
+.checkbox:disabled + .symbol.isIndeterminate {
+  background-color: var(--color-text-disabled);
+}
+
+@media (hover: hover) {
+  .checkbox:not(:disabled) + .symbol:not(.isIndeterminate):hover {
+    border-color: var(--color-primary);
+  }
+
+  .checkbox:checked:not(:disabled) + .symbol:hover {
+    background-color: var(--color-primary-darken);
+  }
+}
+
+/**
+ * symbol icon
+ */
+.symbolCheckIcon {
+  visibility: hidden;
+}
+
+.checkbox:checked + .symbol > .symbolCheckIcon {
   visibility: initial;
 }
 
-input:focus-visible + .checkIconContainer {
-  outline: solid var(--color-accent) 2px;
+.symbolCheckIcon.medium,
+.symbolIndeterminate.medium {
+  font-size: 1.25rem;
 }
 
-input:disabled + .checkIconContainer {
-  border-color: var(--color-text-disabled);
-}
-
-input:disabled:checked + .checkIconContainer {
-  background-color: var(--color-text-disabled);
-  border: none;
+.symbolCheckIcon.small,
+.symbolIndeterminate.small {
+  font-size: 1rem;
 }
