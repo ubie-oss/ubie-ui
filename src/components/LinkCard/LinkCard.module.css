@@ -1,4 +1,6 @@
 .card {
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+
   display: flex;
   gap: var(--size-spacing-sm);
   align-items: center;
@@ -6,8 +8,10 @@
   hyphens: auto;
   text-decoration: none;
   overflow-wrap: anywhere;
+  background-color: var(--color-ubie-white);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+  transition: background-color 0.3s var(--ease-out-quint);
 }
 
 .card:hover {

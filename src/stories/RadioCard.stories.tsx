@@ -158,3 +158,38 @@ export const CustomDataAttribute: Story = {
     );
   },
 };
+
+export const Disabled: Story = {
+  render: () => {
+    const [selectedItem, setSelectedItem] = useState(options[0]);
+
+    const onChange: ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
+      setSelectedItem(event.target.value);
+    }, []);
+
+    return (
+      <Stack spacing="lg" alignItems="normal">
+        <RadioGroup label="RadioCard">
+          {options.map((option) => (
+            <RadioCard
+              name="options"
+              value={option}
+              onChange={onChange}
+              checked={selectedItem === option}
+              id={option}
+              key={option}
+              disabled
+            >
+              {option}
+            </RadioCard>
+          ))}
+        </RadioGroup>
+
+        <dl>
+          <dt>Values</dt>
+          <dd>{selectedItem}</dd>
+        </dl>
+      </Stack>
+    );
+  },
+};
