@@ -10,6 +10,8 @@ questions:
 # `components/{{ inputs.name | pascal }}/{{ inputs.name | pascal }}.tsx`
 
 ```typescript
+'use client';
+
 import { forwardRef, type PropsWithChildren } from 'react';
 
 type Props = {};
@@ -32,7 +34,7 @@ export const {{ inputs.name | pascal }} = forwardRef<HTMLDivElement, PropsWithCh
 
 ```typescript
 import { Meta, StoryObj } from '@storybook/react';
-import { {{ inputs.name | pascal }} } from '../';
+import { {{ inputs.name | pascal }} } from './{{ inputs.name | pascal }}';
 
 export default {
   component: {{ inputs.name | pascal }},
