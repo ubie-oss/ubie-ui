@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckAIcon } from '@ubie/ubie-icons';
+import { CheckAIcon, MinusAIcon } from '@ubie/ubie-icons';
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 import styles from './Checkbox.module.css';
@@ -13,33 +13,27 @@ type Props = {
    */
   size?: 'medium' | 'small';
   /**
-   * ネイティブ要素のname属性。グループ化したい項目に同じ名前をつける
+   * 中間状態の見た目とする。input要素のindeterminateプロパティの変更は行わないため注意。
    */
-  name: string;
-  /**
-   * 選択時のコールバックに渡される値
-   */
-  value: string | number;
-  /**
-   * ラベルとして表示される文字列、または要素
-   */
-  children: InputHTMLAttributes<HTMLInputElement>['children'];
-  /**
-   * 値が変化した場合のコールバック
-   */
-  onChange?: InputHTMLAttributes<HTMLInputElement>['onChange'];
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'children' | 'onChange'>;
+  isIndeterminate?: boolean;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
-export const Checkbox = forwardRef<HTMLInputElement, Props>(({ size = 'medium', children, ...otherProps }, ref) => {
-  return (
-    <label className={clsx(styles.container, styles[size])}>
-      <input ref={ref} type="checkbox" className={styles.checkbox} {...otherProps} />
-      <span className={styles.checkIconContainer}>
-        <CheckAIcon className={styles.checkIcon} />
-      </span>
-      {children}
-    </label>
-  );
-});
+export const Checkbox = forwardRef<HTMLInputElement, Props>(
+  ({ size = 'medium', children, disabled, isIndeterminate = false, ...otherProps }, ref) => {
+    return (
+      <label className={clsx(styles.label, styles[size])}>
+        <input ref={ref} type="checkbox" className={styles.checkbox} disabled={disabled} {...otherProps} />
+        <span className={clsx(styles.symbol, styles[size], isIndeterminate && styles.isIndeterminate)}>
+          {isIndeterminate ? (
+            <MinusAIcon className={clsx(styles.symbolIndeterminate, styles[size])} aria-hidden="true" />
+          ) : (
+            <CheckAIcon className={clsx(styles.symbolCheckIcon, styles[size])} aria-hidden="true" />
+          )}
+        </span>
+        {children}
+      </label>
+    );
+  },
+);
 
 Checkbox.displayName = 'Checkbox';
