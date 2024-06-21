@@ -13,7 +13,10 @@
 .checkbox,
 .label,
 .symbol {
-  transition: border-color 0.3s var(--ease-out-quint), background-color 0.3s var(--ease-out-quint), outline-color 0.3s var(--ease-out-quint);
+  transition:
+    border-color 0.3s var(--ease-out-quint),
+    background-color 0.3s var(--ease-out-quint),
+    outline-color 0.3s var(--ease-out-quint);
 }
 
 /**
@@ -51,13 +54,13 @@
   align-items: center;
   justify-content: center;
   color: var(--color-ubie-white);
+  background-color: var(--color-ubie-white);
   border: 2px solid var(--color-border);
   border-radius: var(--radius-sm);
   transition: background-color 200ms;
-  background-color: var(--color-ubie-white);
 }
 
-.symbol.medium  {
+.symbol.medium {
   width: 1.5rem;
   height: 1.5rem;
 }
