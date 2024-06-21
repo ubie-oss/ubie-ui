@@ -106,6 +106,22 @@ export const SingleUse: Story = {
   },
 };
 
+export const Intermediate: Story = {
+  render: () => {
+    return (
+      <Stack spacing="xs">
+        <Checkbox name="indeterminate" isIndeterminate checked>
+          Indeterminate (checked)
+        </Checkbox>
+
+        <Checkbox name="indeterminate" isIndeterminate>
+          Indeterminate
+        </Checkbox>
+      </Stack>
+    );
+  },
+};
+
 export const Size: Story = {
   render: () => (
     <Stack spacing="xs">
@@ -114,6 +130,12 @@ export const Size: Story = {
       </Checkbox>
       <Checkbox name="size" value="small" size="small">
         Small
+      </Checkbox>
+      <Checkbox name="size" value="medium" isIndeterminate>
+        Indeterminate & Medium
+      </Checkbox>
+      <Checkbox name="size" value="small" size="small" isIndeterminate>
+        Indeterminate & Small
       </Checkbox>
     </Stack>
   ),
@@ -128,6 +150,14 @@ export const Disabled: Story = {
 
       <Checkbox name="disabled" value="unchecked" disabled>
         Unchecked
+      </Checkbox>
+
+      <Checkbox name="disabled" value="isIndeterminate" disabled isIndeterminate checked>
+        isIndeterminate (checked)
+      </Checkbox>
+
+      <Checkbox name="disabled" value="isIndeterminate" disabled isIndeterminate>
+        isIndeterminate
       </Checkbox>
     </Stack>
   ),

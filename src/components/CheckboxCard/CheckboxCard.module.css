@@ -25,6 +25,7 @@
     background: #fff;
     border-radius: 8px;
     outline: 1px solid var(--color-border);
+    outline-offset: -1px;
 }
 
 .label,
@@ -38,6 +39,7 @@
 .label.checked {
     background: var(--color-background-primary);
     outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
 }
 
 .label::before {
@@ -50,46 +52,56 @@
     height: 24px;
     content: '';
     border-radius: var(--radius-sm);
-    outline: 2px solid var(--color-border);
+    border: 2px solid var(--color-border);
     transform: translateY(-50%);
 }
 
 @media (hover: hover) {
     .label:hover:not(.disabled, .checked)::before {
         background-color: var(--color-ubie-white);
-        outline: 2px solid var(--color-primary);
+        border-color: var(--color-primary);
     }
 }
 
 .label.checked::before {
     background-color: var(--color-primary);
-    outline: 2px solid var(--color-primary);
+    border: none;
 }
 
 
 .label.checked.disabled::before {
     background-color: var(--color-text-disabled);
-    outline-color: 2px solid var(--color-text-disabled);
+    border-color: transparent
 }
 
-.label:not(.checked):has(.checkbox:focus-visible) {
-    outline: 2px solid var(--color-primary);
-}
-
+.label:not(.checked):has(.checkbox:focus-visible),
 .label.checked:has(.checkbox:focus-visible) {
-    box-shadow: 0 0 0 4px var(--color-accent);
+    box-shadow: 0 0 0 2px var(--color-accent);
 }
+
 
 @media (hover: hover) {
     .label:hover {
         background-color: var(--color-background-primary);
+    }
+
+    .label.checked:not(.disabled):hover {
+        outline-color: var(--color-primary-darken);
+    }
+
+    .label.checked:not(.disabled):hover::before {
+        background-color: var(--color-primary-darken);
     }
 }
 
 .label.disabled {
     color: var(--color-text-disabled);
     background-color: var(--color-background-gray);
-    outline-color: var(--color-text-disabled);
+    outline-color: var(--color-border);
+}
+
+.label.disabled::before {
+    border-color: var(--color-text-disabled);
 }
 
 .checkIcon {
