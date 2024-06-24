@@ -1,5 +1,5 @@
 .button {
-  --border-width: 2px;
+  --border-width: 1px;
 
   box-sizing: border-box;
   display: inline-grid;
@@ -80,14 +80,14 @@
 }
 
 .secondary {
-  --text: var(--color-primary);
-  --text-hover: var(--color-primary-darken);
+  --text: var(--color-text-main);
+  --text-hover: var(--color-text-main);
   --text-disabled: var(--color-text-disabled);
   --bg: var(--color-background-white);
-  --bg-hover: var(--color-background-primary);
+  --bg-hover: var(--color-background-gray);
   --bg-disabled: var(--color-background-gray);
-  --border-color: var(--color-primary);
-  --border-color-hover: var(--color-primary-darken);
+  --border-color: var(--color-border);
+  --border-color-hover: var(--color-border);
   --border-color-disabled: var(--color-background-gray);
 }
 
