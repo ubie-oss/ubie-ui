@@ -193,3 +193,37 @@ export const Disabled: Story = {
     );
   },
 };
+
+export const NoLabelOnGroup: Story = {
+  render: () => {
+    const [selectedItem, setSelectedItem] = useState(options[0]);
+
+    const onChange: ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
+      setSelectedItem(event.target.value);
+    }, []);
+
+    return (
+      <Stack spacing="lg" alignItems="normal">
+        <RadioGroup>
+          {options.map((option) => (
+            <RadioCard
+              name="options"
+              value={option}
+              onChange={onChange}
+              checked={selectedItem === option}
+              id={option}
+              key={option}
+            >
+              {option}
+            </RadioCard>
+          ))}
+        </RadioGroup>
+
+        <dl>
+          <dt>Values</dt>
+          <dd>{selectedItem}</dd>
+        </dl>
+      </Stack>
+    );
+  },
+};

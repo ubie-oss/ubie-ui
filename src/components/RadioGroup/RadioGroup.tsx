@@ -14,7 +14,7 @@ export type Props = {
   /**
    * ラジオグループの見出し（legend要素）
    */
-  label: string;
+  label?: string;
   /**
    * 必須マークを表示するか
    * 注意: trueとしてもinput要素のrequired属性は付与されません
@@ -34,10 +34,12 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, Props>(
 
     return (
       <fieldset className={styles.wrapper} ref={ref} {...otherProps}>
-        <legend className={styles.legend}>
-          {label}
-          {showRequiredLabel && <RequiredLabel />}
-        </legend>
+        {label && (
+          <legend className={styles.legend}>
+            {label}
+            {showRequiredLabel && <RequiredLabel />}
+          </legend>
+        )}
         <Flex
           spacing={childrenIsCard ? 'sm' : 'md'}
           alignItems={childenIsBlock ? 'normal' : undefined}
