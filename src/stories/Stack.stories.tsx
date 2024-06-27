@@ -41,6 +41,11 @@ export const Nested: Story = {
           <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
           <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
         </Stack>
+        <Stack>
+          <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
+          <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
+          <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
+        </Stack>
       </Stack>
     </Stack>
   ),
