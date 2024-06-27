@@ -162,3 +162,43 @@ export const Block: Story = {
     block: true,
   },
 };
+
+export const NoLabelOnGroup: Story = {
+  render: (args) => {
+    const [selectedItem, setSelectedItem] = useState<string[]>([options[0]]);
+
+    const onChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+      (event) => {
+        if (event.currentTarget.checked) {
+          setSelectedItem([...selectedItem, event.currentTarget.value]);
+        } else {
+          setSelectedItem(selectedItem.filter((item) => item !== event.currentTarget.value));
+        }
+      },
+      [selectedItem],
+    );
+
+    return (
+      <CheckboxGroup>
+        {options.map((option) => (
+          <CheckboxCard
+            block
+            {...args}
+            key={option}
+            checked={selectedItem.includes(option)}
+            value={option}
+            onChange={onChange}
+            name="block"
+          >
+            {option}
+          </CheckboxCard>
+        ))}
+      </CheckboxGroup>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    name: 'block',
+    block: true,
+  },
+};
