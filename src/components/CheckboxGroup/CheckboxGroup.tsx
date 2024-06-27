@@ -1,29 +1,55 @@
 'use client';
 
-import { forwardRef } from 'react';
+import { forwardRef, useMemo } from 'react';
 import styles from './CheckboxGroup.module.css';
 import { RequiredLabel } from '../../sharedComponents/RequiredLabel/RequiredLabel';
 import { CustomDataAttributeProps } from '../../types/attributes';
 import { Checkbox } from '../Checkbox/Checkbox';
+import { CheckboxCard } from '../CheckboxCard/CheckboxCard';
 import { Flex } from '../Flex/Flex';
 import type { ReactElement } from 'react';
 
+/**
+ * チェックボックス系コンポーネントをグルーピングするコンテナー
+ */
 export type Props = {
-  children: ReactElement<typeof Checkbox>[];
-  label: string;
+  /**
+   * チェックボックス系のコンポーネント
+   */
+  children: ReactElement<typeof Checkbox>[] | ReactElement<typeof CheckboxCard>[];
+  /**
+   * グループの見出し
+   */
+  label?: string;
+  /**
+   * 必須ラベルの表示
+   */
   showRequiredLabel?: boolean;
+  /**
+   * 配置方向
+   */
   direction?: 'column' | 'row';
 } & CustomDataAttributeProps;
 
+const includesCheckboxCard = (children: Props['children']): boolean => {
+  return children.some((child) => child.type === CheckboxCard);
+};
+
 export const CheckboxGroup = forwardRef<HTMLFieldSetElement, Props>(
   ({ children, label, showRequiredLabel, direction = 'column', ...otherProps }, ref) => {
+    const spacing = useMemo(() => {
+      return includesCheckboxCard(children) ? 'sm' : 'md';
+    }, [children]);
+
     return (
       <fieldset className={styles.wrapper} ref={ref} {...otherProps}>
-        <legend className={styles.legend}>
-          {label}
-          {showRequiredLabel && <RequiredLabel />}
-        </legend>
-        <Flex spacing="md" direction={direction}>
+        {label && (
+          <legend className={styles.legend}>
+            {label}
+            {showRequiredLabel && <RequiredLabel />}
+          </legend>
+        )}
+        <Flex spacing={spacing} direction={direction}>
           {children}
         </Flex>
       </fieldset>

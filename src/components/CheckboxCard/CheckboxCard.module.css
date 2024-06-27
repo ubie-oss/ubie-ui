@@ -26,20 +26,10 @@
   border-radius: 8px;
   outline: 1px solid var(--color-border);
   outline-offset: -1px;
-}
-
-.label,
-.label::before {
   transition:
     outline-color 0.3s var(--ease-out-quint),
     background-color 0.3s var(--ease-out-quint),
     border-color 0.3s var(--ease-out-quint);
-}
-
-.label.checked {
-  background: var(--color-background-primary);
-  outline: 2px solid var(--color-primary);
-  outline-offset: -2px;
 }
 
 .label::before {

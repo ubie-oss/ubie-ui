@@ -57,7 +57,6 @@
   background-color: var(--color-ubie-white);
   border: 2px solid var(--color-border);
   border-radius: var(--radius-sm);
-  transition: background-color 200ms;
 }
 
 .symbol.medium {

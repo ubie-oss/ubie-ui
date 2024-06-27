@@ -21,10 +21,10 @@ export const Default: Story = {
 
     const onChange: ChangeEventHandler<HTMLInputElement> = useCallback(
       (event) => {
-        if (event.target.checked) {
-          setSelectedItem([...selectedItem, event.target.value]);
+        if (event.currentTarget.checked) {
+          setSelectedItem([...selectedItem, event.currentTarget.value]);
         } else {
-          setSelectedItem(selectedItem.filter((item) => item !== event.target.value));
+          setSelectedItem(selectedItem.filter((item) => item !== event.currentTarget.value));
         }
       },
       [selectedItem],
@@ -61,10 +61,10 @@ export const Disabled: Story = {
 
     const onChange: ChangeEventHandler<HTMLInputElement> = useCallback(
       (event) => {
-        if (event.target.checked) {
-          setSelectedItem([...selectedItem, event.target.value]);
+        if (event.currentTarget.checked) {
+          setSelectedItem([...selectedItem, event.currentTarget.value]);
         } else {
-          setSelectedItem(selectedItem.filter((item) => item !== event.target.value));
+          setSelectedItem(selectedItem.filter((item) => item !== event.currentTarget.value));
         }
       },
       [selectedItem],
@@ -95,10 +95,10 @@ export const Horizontally: Story = {
 
     const onChange: ChangeEventHandler<HTMLInputElement> = useCallback(
       (event) => {
-        if (event.target.checked) {
-          setSelectedItem([...selectedItem, event.target.value]);
+        if (event.currentTarget.checked) {
+          setSelectedItem([...selectedItem, event.currentTarget.value]);
         } else {
-          setSelectedItem(selectedItem.filter((item) => item !== event.target.value));
+          setSelectedItem(selectedItem.filter((item) => item !== event.currentTarget.value));
         }
       },
       [selectedItem],
@@ -129,10 +129,10 @@ export const Block: Story = {
 
     const onChange: ChangeEventHandler<HTMLInputElement> = useCallback(
       (event) => {
-        if (event.target.checked) {
-          setSelectedItem([...selectedItem, event.target.value]);
+        if (event.currentTarget.checked) {
+          setSelectedItem([...selectedItem, event.currentTarget.value]);
         } else {
-          setSelectedItem(selectedItem.filter((item) => item !== event.target.value));
+          setSelectedItem(selectedItem.filter((item) => item !== event.currentTarget.value));
         }
       },
       [selectedItem],
@@ -140,6 +140,46 @@ export const Block: Story = {
 
     return (
       <CheckboxGroup label="Checkbox">
+        {options.map((option) => (
+          <CheckboxCard
+            block
+            {...args}
+            key={option}
+            checked={selectedItem.includes(option)}
+            value={option}
+            onChange={onChange}
+            name="block"
+          >
+            {option}
+          </CheckboxCard>
+        ))}
+      </CheckboxGroup>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    name: 'block',
+    block: true,
+  },
+};
+
+export const NoLabelOnGroup: Story = {
+  render: (args) => {
+    const [selectedItem, setSelectedItem] = useState<string[]>([options[0]]);
+
+    const onChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+      (event) => {
+        if (event.currentTarget.checked) {
+          setSelectedItem([...selectedItem, event.currentTarget.value]);
+        } else {
+          setSelectedItem(selectedItem.filter((item) => item !== event.currentTarget.value));
+        }
+      },
+      [selectedItem],
+    );
+
+    return (
+      <CheckboxGroup>
         {options.map((option) => (
           <CheckboxCard
             block
