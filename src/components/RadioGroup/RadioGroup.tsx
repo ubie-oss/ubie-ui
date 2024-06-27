@@ -9,10 +9,8 @@ import { RadioButton } from '../RadioButton/RadioButton';
 import { RadioCard } from '../RadioCard/RadioCard';
 import type { ReactElement } from 'react';
 
-type RadioComponent = ReactElement<typeof RadioButton> | ReactElement<typeof RadioCard>;
-
 export type Props = {
-  children: RadioComponent[];
+  children: ReactElement<typeof RadioButton>[] | ReactElement<typeof RadioCard>[];
   /**
    * ラジオグループの見出し（legend要素）
    */
