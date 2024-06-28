@@ -30,7 +30,7 @@ type BaseProps = {
   /**
    * Box内に表示するコンテンツやコンポーネント
    */
-  children: ReactNode;
+  children?: ReactNode;
   /**
    * レンダリングされるHTML要素
    * @default div
