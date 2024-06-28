@@ -23,13 +23,12 @@
   color: var(--color-text-placeholder);
 }
 
-
 .textArea:disabled::placeholder {
   color: var(--color-text-disabled);
 }
 
 .textArea.isInvalid,
-.textArea:user-invalid{
+.textArea:user-invalid {
   background: var(--color-background-alert);
   border-bottom-color: var(--color-alert-darken);
 }

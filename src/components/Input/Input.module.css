@@ -37,7 +37,7 @@
 }
 
 .input:disabled::placeholder {
-    color: var(--color-text-disabled);
+  color: var(--color-text-disabled);
 }
 
 .input:focus {
