@@ -109,7 +109,7 @@ export const Types: Story = {
 };
 
 export const Disabled: Story = {
-  render: () => <Input value="lorem ipsum" />,
+  render: () => <Input value="lorem ipsum" disabled />,
 };
 
 export const IsInvalid: Story = {
@@ -126,6 +126,10 @@ export const Required: Story = {
 
     return <Input required value={value} onChange={onChangeValue} />;
   },
+};
+
+export const Placeholder: Story = {
+  render: () => <Input placeholder="placeholder" disabled />,
 };
 
 export const CustomDataAttribute: Story = {
