@@ -41,6 +41,10 @@ export const CheckboxGroup = forwardRef<HTMLFieldSetElement, Props>(
       return includesCheckboxCard(children) ? 'sm' : 'md';
     }, [children]);
 
+    const wrap = useMemo(() => {
+      return direction === 'row';
+    }, [direction]);
+
     return (
       <fieldset className={styles.wrapper} ref={ref} {...otherProps}>
         {label && (
@@ -49,7 +53,7 @@ export const CheckboxGroup = forwardRef<HTMLFieldSetElement, Props>(
             {showRequiredLabel && <RequiredLabel />}
           </legend>
         )}
-        <Flex spacing={spacing} direction={direction}>
+        <Flex spacing={spacing} direction={direction} wrap={wrap}>
           {children}
         </Flex>
       </fieldset>
