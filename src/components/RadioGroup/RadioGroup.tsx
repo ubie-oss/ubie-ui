@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef } from 'react';
+import { forwardRef, useMemo } from 'react';
 import styles from './RadioGroup.module.css';
 import { RequiredLabel } from '../../sharedComponents/RequiredLabel/RequiredLabel';
 import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
@@ -32,6 +32,10 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, Props>(
     const childrenIsCard = children.some((child) => child.type === RadioCard);
     const childenIsBlock = direction === 'row' || (childrenIsCard && direction === 'column');
 
+    const wrap = useMemo(() => {
+      return direction === 'row';
+    }, [direction]);
+
     return (
       <fieldset className={styles.wrapper} ref={ref} {...otherProps}>
         {label && (
@@ -44,6 +48,7 @@ export const RadioGroup = forwardRef<HTMLFieldSetElement, Props>(
           spacing={childrenIsCard ? 'sm' : 'md'}
           alignItems={childenIsBlock ? 'normal' : undefined}
           direction={direction}
+          wrap={wrap}
         >
           {children}
         </Flex>

@@ -11,7 +11,7 @@ export default {
 
 const defaultArgs: Partial<ComponentProps<typeof CheckboxCard>> = {};
 
-const options = ['option1', 'option2', 'option3'];
+const options = ['option1', 'option2', 'option3', 'option4', 'option5'];
 
 type Story = StoryObj<typeof CheckboxCard>;
 
@@ -35,6 +35,7 @@ export const Default: Story = {
         <CheckboxGroup label="Checkbox">
           {options.map((option) => (
             <CheckboxCard
+              block
               name="default"
               value={option}
               onChange={onChange}

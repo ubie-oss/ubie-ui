@@ -10,7 +10,7 @@ export default {
 
 type Story = StoryObj<typeof Checkbox>;
 
-const options = ['option1', 'option2', 'option3'];
+const options = ['option1', 'option2', 'option3', 'option4', 'option5'];
 
 export const Default: Story = {
   render: () => {
