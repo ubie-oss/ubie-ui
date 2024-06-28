@@ -129,7 +129,7 @@ export const Required: Story = {
 };
 
 export const Placeholder: Story = {
-  render: () => <Input placeholder="placeholder" disabled />,
+  render: () => <Input placeholder="placeholder" />,
 };
 
 export const CustomDataAttribute: Story = {
