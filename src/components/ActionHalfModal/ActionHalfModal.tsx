@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import { clsx } from 'clsx';
-import { FC, Fragment, PropsWithChildren, ReactNode, useCallback, useRef } from 'react';
+import { type FC, Fragment, type ReactNode, useCallback, useRef } from 'react';
 import styles from './ActionHalfModal.module.css';
 import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
 import { CustomDataAttributeProps } from '../../types/attributes';
@@ -13,6 +13,10 @@ import { Button } from '../Button/Button';
 type Opacity = 'normal' | 'darker';
 
 type BaseProps = {
+  /**
+   * コンテンツとして表示する内容
+   */
+  children: ReactNode;
   /**
    * 閉じるアクションが実行された場合のコールバック
    */
@@ -98,7 +102,7 @@ type SecondaryActionProps = {
 
 type Props = BaseProps & AllOrNone<PrimaryActionProps> & AllOrNone<SecondaryActionProps> & CustomDataAttributeProps;
 
-export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
+export const ActionHalfModal: FC<Props> = ({
   children,
   onClose,
   onPrimaryAction,

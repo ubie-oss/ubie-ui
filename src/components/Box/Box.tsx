@@ -24,9 +24,13 @@ import type {
   NoteFontSize,
   NoteLeading,
 } from '../../types/style';
-import type { CSSProperties, FC, PropsWithChildren } from 'react';
+import type { CSSProperties, FC, ReactNode } from 'react';
 
 type BaseProps = {
+  /**
+   * Box内に表示するコンテンツやコンポーネント
+   */
+  children: ReactNode;
   /**
    * レンダリングされるHTML要素
    * @default div
@@ -160,7 +164,7 @@ export const textStyleVariables = ({
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-export const Box: FC<PropsWithChildren<PropsWithoutText | PropsWithTextBody | PropsWithTextNote>> = ({
+export const Box: FC<PropsWithoutText | PropsWithTextBody | PropsWithTextNote> = ({
   as: BoxComponent = 'div',
   children,
   p,
