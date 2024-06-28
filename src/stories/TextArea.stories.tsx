@@ -27,9 +27,15 @@ export const Disabled: Story = {
   },
 };
 
-export const IdInvalid: Story = {
+export const IsInvalid: Story = {
   render: () => {
     return <TextArea value={'wrong\nvalue'} isInvalid />;
+  },
+};
+
+export const Placeholder: Story = {
+  render: () => {
+    return <TextArea placeholder={'place\nholder'} />;
   },
 };
 
