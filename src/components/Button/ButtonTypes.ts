@@ -4,6 +4,10 @@ import type { ButtonHTMLAttributes, ReactNode, AnchorHTMLAttributes, ReactElemen
 
 export type BaseProps = {
   /**
+   * ボタンのラベルとして表示する内容
+   */
+  children: ReactNode;
+  /**
    * ボタンの種類
    * @default primary
    */
@@ -68,10 +72,13 @@ export type OnlyLinkButtonProps = {
 
 export type ButtonProps = Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
-  'className' | keyof BaseProps | keyof OnlyButtonProps
+  'children' | 'className' | keyof BaseProps | keyof OnlyButtonProps
 > &
   BaseProps &
   OnlyButtonProps;
-export type LinkButtonProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'className' | keyof BaseProps> &
+export type LinkButtonProps = Omit<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  'children' | 'className' | keyof BaseProps
+> &
   BaseProps &
   OnlyLinkButtonProps;

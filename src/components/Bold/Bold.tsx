@@ -1,8 +1,14 @@
-import { type FC, PropsWithChildren } from 'react';
+import { type FC, type ReactNode } from 'react';
 import styles from './Bold.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
 
 type Props = {
+  /**
+   * 太字にするテキスト
+   * <p>や<div>などを子要素に指定しないでください（文法的にNGです）
+   *
+   */
+  children: ReactNode;
   /**
    * レンダリングされる要素
    * @default span
@@ -14,7 +20,7 @@ type Props = {
   id?: string;
 } & CustomDataAttributeProps;
 
-export const Bold: FC<PropsWithChildren<Props>> = ({ as = 'span', children, id, ...otherProps }) => {
+export const Bold: FC<Props> = ({ as = 'span', children, id, ...otherProps }) => {
   const BoldComponent = as;
 
   return (

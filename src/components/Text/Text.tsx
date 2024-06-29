@@ -1,7 +1,7 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { FC, PropsWithChildren } from 'react';
+import { FC, type ReactNode } from 'react';
 import styles from './Text.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
 import {
@@ -20,6 +20,11 @@ import {
 import { HTMLTagname } from '../../utils/types';
 
 type BaseProps = {
+  /**
+   * 表示するテキスト
+   * pやdivなどを含めないでください（文法的にNGです）
+   */
+  children: ReactNode;
   /**
    * コンポーネントのHTML要素
    * @default p
@@ -135,7 +140,7 @@ type TextProps = BodyProps | HeadingProps | NoteProps | ButtonProps | TagProps;
 /**
  * Design Systemに則ったTypographyのスタイルを提供
  */
-export const Text: FC<PropsWithChildren<TextProps>> = ({
+export const Text: FC<TextProps> = ({
   as: TextComponent = 'p',
   size = 'md',
   type = 'body',
