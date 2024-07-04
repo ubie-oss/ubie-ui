@@ -1,0 +1,12 @@
+.flexItem {
+  min-width: var(--min-width);
+  max-width: var(--max-width);
+}
+
+.none {
+  flex: none;
+}
+
+.longhand {
+  flex: var(--flex-grow) var(--flex-shrink) var(--flex-basis);
+}
