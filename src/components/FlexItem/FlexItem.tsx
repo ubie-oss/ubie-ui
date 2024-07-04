@@ -3,6 +3,8 @@
 import { clsx } from 'clsx';
 import { CSSProperties, forwardRef, type PropsWithChildren, type HTMLAttributes } from 'react';
 import styles from './FlexItem.module.css';
+import { MarginProps, PaddingProps } from '../../types/style';
+import { marginVariables, paddingVariables } from '../../utils/style';
 import { CSSWitdh, CSSMaxWidth, CSSMinWidth } from '../../utils/types';
 
 type FlexProperty = {
@@ -10,6 +12,8 @@ type FlexProperty = {
   shrink?: number;
   basis?: CSSWitdh;
 };
+
+type AllowedDivAttributes = Omit<HTMLAttributes<HTMLDivElement>, 'className'>;
 
 type Props = {
   /**
@@ -27,13 +31,38 @@ type Props = {
    * @defaultValue none
    */
   maxWidth?: CSSMaxWidth;
-} & HTMLAttributes<HTMLDivElement>;
+} & MarginProps &
+  PaddingProps &
+  AllowedDivAttributes;
 
 /**
  * FlexやStackの子として配置し、レイアウトを調整
  */
 export const FlexItem = forwardRef<HTMLDivElement, PropsWithChildren<Props>>(
-  ({ children, flex = 'none', minWidth = 'auto', maxWidth = 'none', ...rest }, ref) => {
+  (
+    {
+      children,
+      flex = 'none',
+      minWidth = 'auto',
+      maxWidth = 'none',
+      m,
+      mx,
+      my,
+      mt,
+      mr,
+      mb,
+      ml,
+      p,
+      px,
+      py,
+      pt,
+      pr,
+      pb,
+      pl,
+      ...rest
+    },
+    ref,
+  ) => {
     const flexObj: { [key: string]: string } =
       typeof flex === 'object'
         ? {
@@ -52,6 +81,24 @@ export const FlexItem = forwardRef<HTMLDivElement, PropsWithChildren<Props>>(
             '--min-width': minWidth,
             '--max-width': maxWidth,
             ...flexObj,
+            ...paddingVariables({
+              p,
+              px,
+              py,
+              pt,
+              pr,
+              pb,
+              pl,
+            }),
+            ...marginVariables({
+              m,
+              mx,
+              my,
+              mt,
+              mr,
+              mb,
+              ml,
+            }),
           } as CSSProperties
         }
         {...rest}
