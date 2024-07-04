@@ -98,16 +98,16 @@ export const WithIcon: Story = {
 };
 
 export const Block: Story = {
-  render: () => (
+  render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
       <div>
-        <Button {...defaultArgs} size="small" variant="secondary" />
+        <Button {...args} size="small" variant="secondary" />
       </div>
       <div>
-        <Button {...defaultArgs} size="medium" variant="secondary" />
+        <Button {...args} size="medium" variant="secondary" />
       </div>
       <div>
-        <Button {...defaultArgs} size="large" variant="secondary" />
+        <Button {...args} size="large" variant="secondary" />
       </div>
     </div>
   ),
@@ -132,15 +132,47 @@ export const Disabled: Story = {
 };
 
 export const Loading: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-      <Button {...defaultArgs} loading />
-      <Button {...defaultArgs} variant="secondary" loading />
-      <Button {...defaultArgs} variant="accent" loading />
-      <Button {...defaultArgs} variant="alert" loading />
-      <Button {...defaultArgs} variant="text" loading />
-      <Button {...defaultArgs} variant="textAlert" loading />
-    </div>
+  args: {
+    ...defaultArgs,
+    children: 'OK',
+    loading: true,
+  },
+  render: (args) => (
+    <Stack spacing="md">
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+        <Button {...args} />
+        <Button {...args} variant="secondary" />
+        <Button {...args} variant="accent" />
+        <Button {...args} variant="alert" />
+        <Button {...args} variant="text" />
+        <Button {...args} variant="textAlert" />
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+        <Button {...args} size="medium" />
+        <Button {...args} variant="secondary" size="medium" />
+        <Button {...args} variant="accent" size="medium" />
+        <Button {...args} variant="alert" size="medium" />
+        <Button {...args} variant="text" size="medium" />
+        <Button {...args} variant="textAlert" size="medium" />
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+        <Button {...args} size="small" />
+        <Button {...args} variant="secondary" size="small" />
+        <Button {...args} variant="accent" size="small" />
+        <Button {...args} variant="alert" size="small" />
+        <Button {...args} variant="text" size="small" />
+        <Button {...args} variant="textAlert" size="small" />
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+        <Button {...args} icon={<Icon icon="UbieIcon" />} size="medium" loadingLabel="ラベル変更">
+          次のページへ
+        </Button>
+        <Button {...args} variant="secondary" size="medium" disabled />
+      </div>
+    </Stack>
   ),
 };
 

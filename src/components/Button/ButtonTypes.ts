@@ -61,6 +61,10 @@ export type OnlyButtonProps = {
    * ローディング状態を示す
    */
   loading?: boolean;
+  /**
+   * ローディング中に表示する文言
+   */
+  loadingLabel?: string;
 };
 
 export type OnlyLinkButtonProps = {
