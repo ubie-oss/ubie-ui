@@ -1,9 +1,7 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { FC, type ReactNode } from 'react';
 import styles from './Text.module.css';
-import { CustomDataAttributeProps } from '../../types/attributes';
 import {
   TextColor,
   BodyFontSize,
@@ -17,7 +15,9 @@ import {
   TagFontSize,
   TagLeading,
 } from '../../types/style';
-import { HTMLTagname } from '../../utils/types';
+import { fixedForwardRef } from '../../utils/component';
+import { DistributiveOmit } from '../../utils/types';
+import type { ReactNode, ElementType, ForwardedRef, ComponentPropsWithRef } from 'react';
 
 type BaseProps = {
   /**
@@ -25,11 +25,6 @@ type BaseProps = {
    * pやdivなどを含めないでください（文法的にNGです）
    */
   children: ReactNode;
-  /**
-   * コンポーネントのHTML要素
-   * @default p
-   */
-  as?: HTMLTagname;
   /**
    * 太字とするかどうか
    * @default false
@@ -52,7 +47,7 @@ type BaseProps = {
    * 領域が狭い場合でも折り返えさない
    */
   noWrap?: boolean;
-} & CustomDataAttributeProps;
+};
 
 type BodyProps = BaseProps & {
   /**
@@ -137,24 +132,36 @@ type TagProps = BaseProps & {
 
 type TextProps = BodyProps | HeadingProps | NoteProps | ButtonProps | TagProps;
 
-/**
- * Design Systemに則ったTypographyのスタイルを提供
- */
-export const Text: FC<TextProps> = ({
-  as: TextComponent = 'p',
-  size = 'md',
-  type = 'body',
-  leading = 'default',
-  bold = false,
-  noWrap = false,
-  color = 'main',
-  children,
-  id,
-  textAlign,
-  ...props
-}) => {
+function TextInner<T extends ElementType>(
+  props: {
+    /**
+     * コンポーネントのHTML要素
+     * @default p
+     */
+    as?: T;
+  } & TextProps &
+    DistributiveOmit<ComponentPropsWithRef<ElementType extends T ? 'p' : T>, 'as'>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ref: ForwardedRef<any>,
+) {
+  const {
+    as: TextComponent = 'p',
+    size = 'md',
+    type = 'body',
+    leading = 'default',
+    bold = false,
+    noWrap = false,
+    color: _color,
+    children,
+    id,
+    textAlign,
+    ...rest
+  } = props;
+  const color = _color != null ? _color : TextComponent === 'a' || TextComponent === 'button' ? 'link' : 'main';
+
   return (
     <TextComponent
+      re={ref}
       id={id}
       className={clsx(
         styles.text,
@@ -166,9 +173,11 @@ export const Text: FC<TextProps> = ({
         bold && styles.bold,
         noWrap && styles.nowrap,
       )}
-      {...props}
+      {...rest}
     >
       {children}
     </TextComponent>
   );
-};
+}
+
+export const Text = fixedForwardRef(TextInner);

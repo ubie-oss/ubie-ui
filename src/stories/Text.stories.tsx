@@ -377,3 +377,11 @@ export const Wrap: Story = {
     </div>
   ),
 };
+
+export const AsLink: Story = {
+  render: () => (
+    <Text as="a" href="https://vitals.ubie.life/">
+      Link ggggg(underline確認でgをおいている)
+    </Text>
+  ),
+};

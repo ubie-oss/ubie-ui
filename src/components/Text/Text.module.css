@@ -12,6 +12,24 @@
   margin-bottom: 0;
 }
 
+a.text {
+  text-decoration: underline;
+}
+
+@media (hover:hover) {
+  a.text:hover {
+    text-decoration: none;
+  }
+}
+
+a.text:focus-visible {
+  text-decoration: none;
+}
+
+a.text:active {
+  text-decoration: underline;
+}
+
 .bold {
   font-weight: bold;
 }
