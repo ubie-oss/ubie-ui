@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Flex, Box } from '..';
+import { Flex, Box, FlexItem } from '..';
 
 export default {
   component: Flex,
@@ -197,5 +197,31 @@ export const CustomDataAttribute: Story = {
     <Flex data-test-id="flex-custom-attribute" spacing="md" alignItems="center">
       <div>Flex component with custom data attribute</div>
     </Flex>
+  ),
+};
+
+export const WithFlexItem: Story = {
+  render: () => (
+    <div style={{ height: 500 }}>
+      <Flex spacing="lg" alignItems="stretch" height="full">
+        <p style={{ margin: 0, background: '#DDD' }}>
+          column
+          <br />
+          Stretched
+        </p>
+        <FlexItem>
+          <p style={{ margin: 0, background: '#DDD' }}>
+            column
+            <br />
+            not
+            <br />
+            stretched
+          </p>
+        </FlexItem>
+        <FlexItem flex={{ grow: 1 }}>
+          <p style={{ margin: 0, background: '#DDD' }}>row grow</p>
+        </FlexItem>
+      </Flex>
+    </div>
   ),
 };

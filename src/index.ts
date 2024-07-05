@@ -9,6 +9,7 @@ export { Heading } from './components/Heading/Heading';
 export { LinkButton } from './components/Button/LinkButton';
 export { ErrorMessage } from './components/ErrorMessage/ErrorMessage';
 export { Flex } from './components/Flex/Flex';
+export { FlexItem } from './components/FlexItem/FlexItem';
 export { HelperMessage } from './components/HelperMessage/HelperMessage';
 export { Checkbox } from './components/Checkbox/Checkbox';
 export { CheckboxCard } from './components/CheckboxCard/CheckboxCard';
