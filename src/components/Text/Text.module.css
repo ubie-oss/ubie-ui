@@ -16,7 +16,7 @@ a.text {
   text-decoration: underline;
 }
 
-@media (hover:hover) {
+@media (hover: hover) {
   a.text:hover {
     text-decoration: none;
   }
@@ -45,11 +45,10 @@ button.text.link:focus-visible {
     color: var(--color-primary-darken);
   }
 
-  button.text.link:active{
+  button.text.link:active {
     color: var(--color-text-link);
   }
 }
-
 
 .bold {
   font-weight: bold;
