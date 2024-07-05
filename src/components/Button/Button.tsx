@@ -3,7 +3,6 @@
 import { clsx } from 'clsx';
 import { forwardRef } from 'react';
 import styles from './Button.module.css';
-import { CircularProgress } from './CircularProgress';
 import { VariantIcon } from './VariantIcon';
 import { marginVariables } from '../../utils/style';
 import type { ButtonProps } from './ButtonTypes';
@@ -21,6 +20,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       type = 'button',
       disabled = false,
       loading = false,
+      loadingLabel = '通信中',
       onClick,
       m,
       mx,
@@ -33,7 +33,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    const icon = loading ? <CircularProgress /> : _icon === 'default' ? <VariantIcon variant={variant} /> : _icon;
+    const icon = _icon === 'default' ? <VariantIcon variant={variant} /> : _icon;
     const fixedIcon = _fixedIcon === 'default' ? <VariantIcon variant={variant} /> : _fixedIcon;
     const suffixIcon = _suffixIcon === 'default' ? <VariantIcon variant={variant} /> : _suffixIcon;
     const cls = clsx({
@@ -75,10 +75,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         onClick={handleClick}
         {...props}
       >
+        {loading && <span className={styles.loadingLabel}>{loadingLabel}</span>}
         {fixedIcon && <span className={styles.fixedIcon}>{fixedIcon}</span>}
         <span className={styles.label}>
-          {icon && <span className={styles.icon}>{icon}</span>}
-          {children}
+          {icon && <span className={clsx(styles.icon, loading && styles.loading)}>{icon}</span>}
+          <span className={clsx(styles.children, loading && styles.loading)}>{children}</span>
           {suffixIcon && <span className={styles.suffixIcon}>{suffixIcon}</span>}
         </span>
       </button>
