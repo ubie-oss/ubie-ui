@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Text, Flex, Stack, Box } from '../';
+import type { FC, PropsWithChildren } from 'react';
 
 export default {
   title: 'Typography/Text',
@@ -378,10 +379,22 @@ export const Wrap: Story = {
   ),
 };
 
+const TestLink: FC<PropsWithChildren<{ href: string }>> = ({ href, children, ...rest }) => (
+  <a href={href} {...rest}>
+    {children}
+  </a>
+);
+
 export const AsLink: Story = {
   render: () => (
-    <Text as="a" href="https://vitals.ubie.life/">
-      Link ggggg(underline確認でgをおいている)
-    </Text>
+    <>
+      <Text as="a" href="https://vitals.ubie.life/">
+        Link ggggg(underline確認でgをおいている)
+      </Text>
+      <br />
+      <Text type="heading" size="xl" bold render={<TestLink href="https://vitals.ubie.life/" />}>
+        render propを使用したケース
+      </Text>
+    </>
   ),
 };

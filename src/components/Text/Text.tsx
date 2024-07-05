@@ -1,6 +1,7 @@
 'use client';
 
 import { clsx } from 'clsx';
+import { cloneElement } from 'react';
 import styles from './Text.module.css';
 import {
   TextColor,
@@ -17,9 +18,14 @@ import {
 } from '../../types/style';
 import { fixedForwardRef } from '../../utils/component';
 import { DistributiveOmit } from '../../utils/types';
-import type { ReactNode, ElementType, ForwardedRef, ComponentPropsWithRef } from 'react';
+import type { ReactNode, ElementType, ForwardedRef, ComponentPropsWithRef, ReactElement } from 'react';
 
 type BaseProps = {
+  /**
+   * レンダリングされる要素を変更。フレームワークのリンクコンポーネントを想定しています
+   * 指定した場合、colorがデフォルトでlinkになります
+   */
+  render?: ReactElement;
   /**
    * 表示するテキスト
    * pやdivなどを含めないでください（文法的にNGです）
@@ -135,7 +141,8 @@ type TextProps = BodyProps | HeadingProps | NoteProps | ButtonProps | TagProps;
 function TextInner<T extends ElementType>(
   props: {
     /**
-     * コンポーネントのHTML要素
+     * レンダリングされる要素を指定。renderとは違い、HTMLのネイティブ要素に限定
+     * また、指定した要素に応じて対応する属性も合わせて使用可能に
      * @default p
      */
     as?: T;
@@ -145,6 +152,7 @@ function TextInner<T extends ElementType>(
   ref: ForwardedRef<any>,
 ) {
   const {
+    render,
     as: TextComponent = 'p',
     size = 'md',
     type = 'body',
@@ -157,13 +165,19 @@ function TextInner<T extends ElementType>(
     textAlign,
     ...rest
   } = props;
-  const color = _color != null ? _color : TextComponent === 'a' || TextComponent === 'button' ? 'link' : 'main';
+  const color =
+    _color != null ? _color : TextComponent === 'a' || TextComponent === 'button' || render != null ? 'link' : 'main';
 
-  return (
-    <TextComponent
-      re={ref}
-      id={id}
-      className={clsx(
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  const createElement = (props: any, children: ReactNode) => {
+    return render ? cloneElement(render, props, children) : <TextComponent {...props}>{children}</TextComponent>;
+  };
+
+  return createElement(
+    {
+      ref,
+      id,
+      className: clsx(
         styles.text,
         styles[size],
         styles[type],
@@ -172,11 +186,10 @@ function TextInner<T extends ElementType>(
         textAlign && styles[textAlign],
         bold && styles.bold,
         noWrap && styles.nowrap,
-      )}
-      {...rest}
-    >
-      {children}
-    </TextComponent>
+      ),
+      ...rest,
+    },
+    <>{children}</>,
   );
 }
 
