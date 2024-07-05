@@ -12,6 +12,44 @@
   margin-bottom: 0;
 }
 
+a.text {
+  text-decoration: underline;
+}
+
+@media (hover: hover) {
+  a.text:hover {
+    text-decoration: none;
+  }
+}
+
+a.text:focus-visible {
+  text-decoration: none;
+}
+
+a.text:active {
+  text-decoration: underline;
+}
+
+button.text {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+button.text.link:focus-visible {
+  color: var(--color-primary-darken);
+}
+
+@media (hover: hover) {
+  button.text.link:hover {
+    color: var(--color-primary-darken);
+  }
+
+  button.text.link:active {
+    color: var(--color-text-link);
+  }
+}
+
 .bold {
   font-weight: bold;
 }

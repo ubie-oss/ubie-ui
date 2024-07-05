@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Text, Flex, Stack, Box } from '../';
+import type { FC, PropsWithChildren } from 'react';
 
 export default {
   title: 'Typography/Text',
@@ -375,5 +376,37 @@ export const Wrap: Story = {
         </div>
       </Stack>
     </div>
+  ),
+};
+
+const TestLink: FC<PropsWithChildren<{ href: string }>> = ({ href, children, ...rest }) => (
+  <a href={href} {...rest}>
+    {children}
+  </a>
+);
+
+export const AsLink: Story = {
+  render: () => (
+    <>
+      <Text as="a" href="https://vitals.ubie.life/">
+        Link ggggg(underline確認でgをおいている)
+      </Text>
+      <br />
+      <Text type="heading" size="xl" bold render={<TestLink href="https://vitals.ubie.life/" />}>
+        render propを使用したケース
+      </Text>
+    </>
+  ),
+};
+
+export const AsButton: Story = {
+  render: () => (
+    <>
+      <p>as propを使うと、type propが重複してしまう。ハッキ―だがrenderで回避</p>
+      <p>button要素に対してmarkuplintのrequire-accessible-nameを無効化する必要があります</p>
+      <Text type="heading" size="xl" bold render={<button type="button" />}>
+        ボタン
+      </Text>
+    </>
   ),
 };
