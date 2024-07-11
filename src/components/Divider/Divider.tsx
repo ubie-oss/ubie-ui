@@ -12,7 +12,7 @@ type Props = {
   /**
    * ボーダーの種類
    */
-  border?: 'gray' | 'grayThick' | 'primary' | 'primaryThick';
+  border?: 'gray' | 'primary';
 } & WidthProps &
   MarginProps &
   AllowedHRAttributes;

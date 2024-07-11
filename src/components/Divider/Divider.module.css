@@ -11,16 +11,7 @@
   background-color: var(--color-border);
 }
 
-.divider.grayThick {
-  height: 2px;
-  background-color: var(--color-border);
-}
-
 .divider.primary {
   background-color: var(--color-primary);
 }
 
-.divider.primaryThick {
-  height: 2px;
-  background-color: var(--color-primary);
-}

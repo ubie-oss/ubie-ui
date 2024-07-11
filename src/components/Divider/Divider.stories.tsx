@@ -25,9 +25,7 @@ export const BorderVariants: Story = {
     return (
       <Stack spacing="md">
         <Divider border="gray" />
-        <Divider border="grayThick" />
         <Divider border="primary" />
-        <Divider border="primaryThick" />
       </Stack>
     );
   },
