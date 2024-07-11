@@ -225,3 +225,13 @@ export const WithFlexItem: Story = {
     </div>
   ),
 };
+
+export const Inline: Story = {
+  render: () => (
+    <Flex spacing="md" inline>
+      <span>Item</span>
+      <span>Item</span>
+      <span>Item</span>
+    </Flex>
+  ),
+};
