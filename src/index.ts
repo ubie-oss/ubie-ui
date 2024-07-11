@@ -5,6 +5,7 @@ export { Box } from './components/Box/Box';
 export { Button } from './components/Button/Button';
 export { ButtonCard } from './components/ButtonCard/ButtonCard';
 export { Center } from './components/Center/Center';
+export { Divider } from './components/Divider/Divider';
 export { Heading } from './components/Heading/Heading';
 export { LinkButton } from './components/Button/LinkButton';
 export { ErrorMessage } from './components/ErrorMessage/ErrorMessage';

@@ -1,0 +1,26 @@
+.divider {
+  width: var(--width);
+  min-width: var(--min-width);
+  max-width: var(--max-width);
+  height: 1px;
+  margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
+  border: none;
+}
+
+.divider.gray {
+  background-color: var(--color-border);
+}
+
+.divider.grayThick {
+  height: 2px;
+  background-color: var(--color-border);
+}
+
+.divider.primary {
+  background-color: var(--color-primary);
+}
+
+.divider.primaryThick {
+  height: 2px;
+  background-color: var(--color-primary);
+}
