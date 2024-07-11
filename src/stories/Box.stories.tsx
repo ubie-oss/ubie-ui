@@ -367,3 +367,23 @@ export const TextWrap: Story = {
     ...defaultArgs,
   },
 };
+
+export const Inline: Story = {
+  render: (args) => (
+    <p>
+      文章文章文章
+      <Box {...args} inline>
+        インライン
+      </Box>
+      文章文章文章
+    </p>
+  ),
+  args: {
+    ...defaultArgs,
+    as: 'span',
+    backgroundColor: 'primary',
+    inline: true,
+    p: 'xs',
+    m: 'sm',
+  },
+};
