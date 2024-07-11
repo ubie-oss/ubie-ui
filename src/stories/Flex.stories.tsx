@@ -228,10 +228,20 @@ export const WithFlexItem: Story = {
 
 export const Inline: Story = {
   render: () => (
-    <Flex spacing="md" inline>
-      <span>Item</span>
-      <span>Item</span>
-      <span>Item</span>
-    </Flex>
+    <p>
+      文章文章文章文章文章文章
+      <Flex as="span" spacing="md" inline>
+        <Box as="span" inline backgroundColor="primary" p="xs" radius="md">
+          Item
+        </Box>
+        <Box as="span" inline backgroundColor="primary" p="xs" radius="md">
+          Item
+        </Box>
+        <Box as="span" inline backgroundColor="primary" p="xs" radius="md">
+          Item
+        </Box>
+      </Flex>
+      文章
+    </p>
   ),
 };
