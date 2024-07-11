@@ -3,9 +3,8 @@
 import { clsx } from 'clsx';
 import { CSSProperties, forwardRef, type PropsWithChildren, type HTMLAttributes } from 'react';
 import styles from './FlexItem.module.css';
-import { MarginProps, PaddingProps } from '../../types/style';
+import { CSSWitdh, MarginProps, PaddingProps, WidthProps } from '../../types/style';
 import { marginVariables, paddingVariables } from '../../utils/style';
-import { CSSWitdh, CSSMaxWidth, CSSMinWidth } from '../../utils/types';
 
 type FlexProperty = {
   grow?: number;
@@ -21,17 +20,8 @@ type Props = {
    * @defaultValue none
    */
   flex?: 'none' | FlexProperty;
-  /**
-   * 最小幅
-   * @defaultValue auto
-   */
-  minWidth?: CSSMinWidth;
-  /**
-   * 最大幅
-   * @defaultValue none
-   */
-  maxWidth?: CSSMaxWidth;
-} & MarginProps &
+} & Omit<WidthProps, 'width'> &
+  MarginProps &
   PaddingProps &
   AllowedDivAttributes;
 
