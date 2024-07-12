@@ -3,6 +3,7 @@ import { Pre } from './Pre';
 import { Box } from '../Box/Box';
 
 export default {
+  title: 'typography/Pre',
   component: Pre,
 } satisfies Meta<typeof Pre>;
 
