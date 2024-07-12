@@ -1,8 +1,8 @@
 .pre {
-    display: block;
-    white-space: var(--white-space);
+  display: block;
+  white-space: var(--white-space);
 }
 
 .pre.inline {
-    display: inline-block;
+  display: inline-block;
 }
