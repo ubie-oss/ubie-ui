@@ -66,7 +66,7 @@ type BaseProps = {
   textNoWrap?: boolean;
   /**
    * inline-blockとして扱う
-   * @defaultValue false
+   * @default false
    */
   inline?: boolean;
 } & PaddingProps &

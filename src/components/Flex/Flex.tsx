@@ -52,7 +52,7 @@ type Props = {
   width?: 'full';
   /**
    * inline-flexとして扱う
-   * @defaultValue false
+   * @default false
    */
   inline?: boolean;
 } & MarginProps &
