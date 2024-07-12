@@ -108,3 +108,35 @@ export const CustomDataAttribute: Story = {
   ),
   args: { ...defaultArgs, 'data-test-id': 'custom-attribute' },
 };
+
+export const Width: Story = {
+  render: (args) => (
+    <>
+      <Stack {...args} width="100%">
+        <p style={{ margin: 0 }}>width: 100%</p>
+        <p style={{ margin: 0 }}>Text</p>
+        <p style={{ margin: 0 }}>Text</p>
+        <p style={{ margin: 0 }}>Text</p>
+      </Stack>
+
+      <br />
+
+      <Stack {...args} minWidth="500px">
+        <p style={{ margin: 0 }}>min-width: 500px</p>
+        <p style={{ margin: 0 }}>Text</p>
+        <p style={{ margin: 0 }}>Text</p>
+        <p style={{ margin: 0 }}>Text</p>
+      </Stack>
+
+      <br />
+
+      <Stack {...args} maxWidth="500px">
+        <p style={{ margin: 0 }}>max-width: 500px</p>
+        <p style={{ margin: 0 }}>Text</p>
+        <p style={{ margin: 0 }}>Text</p>
+        <p style={{ margin: 0 }}>Text</p>
+      </Stack>
+    </>
+  ),
+  args: defaultArgs,
+};

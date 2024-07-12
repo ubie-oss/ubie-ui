@@ -141,4 +141,37 @@ describe('<Stack>', () => {
     expect(div).toHaveStyle('--padding-bottom: var(--size-spacing-lg)');
     expect(div).toHaveStyle('--padding-left: var(--size-spacing-xl)');
   });
+
+  it('receives width', () => {
+    render(
+      <Stack width="100px" data-testid="flex-item">
+        Test
+      </Stack>,
+    );
+    const div = screen.getByTestId('flex-item');
+
+    expect(div).toHaveStyle('--width: 100px');
+  });
+
+  it('receives max-width', () => {
+    render(
+      <Stack maxWidth="100px" data-testid="flex-item">
+        Test
+      </Stack>,
+    );
+    const div = screen.getByTestId('flex-item');
+
+    expect(div).toHaveStyle('--max-width: 100px');
+  });
+
+  it('receives min-width', () => {
+    render(
+      <Stack minWidth="100px" data-testid="flex-item">
+        Test
+      </Stack>,
+    );
+    const div = screen.getByTestId('flex-item');
+
+    expect(div).toHaveStyle('--min-width: 100px');
+  });
 });

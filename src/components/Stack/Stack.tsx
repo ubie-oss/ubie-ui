@@ -4,8 +4,8 @@ import { clsx } from 'clsx';
 import { isValidElement, cloneElement } from 'react';
 import styles from './Stack.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
-import { Spacing, AlignItems, JustifyContent } from '../../types/style';
-import { paddingVariables, marginVariables, gapVariables } from '../../utils/style';
+import { Spacing, AlignItems, JustifyContent, WidthProps } from '../../types/style';
+import { paddingVariables, marginVariables, gapVariables, widthVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
 import { Box } from '../Box/Box';
 import type { PaddingProps, MarginProps } from '../../types/style';
@@ -43,6 +43,7 @@ type Props = {
   children: ReactNode;
 } & MarginProps &
   PaddingProps &
+  WidthProps &
   CustomDataAttributeProps;
 
 /**
@@ -70,6 +71,9 @@ export const Stack: FC<Props> = ({
   mr,
   mb,
   ml,
+  width,
+  minWidth,
+  maxWidth,
   ...otherProps
 }) => {
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
@@ -105,6 +109,11 @@ export const Stack: FC<Props> = ({
           mr,
           mb,
           ml,
+        }),
+        ...widthVariables({
+          width,
+          minWidth,
+          maxWidth,
         }),
       },
       ...otherProps,
