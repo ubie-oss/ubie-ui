@@ -7,7 +7,15 @@ import styles from './Pre.module.css';
 type AllowedSpanAttributes = Omit<HTMLAttributes<HTMLSpanElement>, 'className'>;
 
 type Props = {
+  /**
+   * 折り返しや空白、改行の扱い
+   * @default 'pre-line'
+   */
   whiteSpace?: 'pre' | 'pre-wrap' | 'pre-line' | 'break-spaces';
+  /**
+   * inline-blockとして扱う
+   * @default false
+   */
   inline?: boolean;
 } & AllowedSpanAttributes;
 
