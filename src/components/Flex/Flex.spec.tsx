@@ -141,4 +141,48 @@ describe('<Flex>', () => {
     expect(div).toHaveStyle('--padding-bottom: var(--size-spacing-lg)');
     expect(div).toHaveStyle('--padding-left: var(--size-spacing-xl)');
   });
+
+  it('receives width', () => {
+    render(
+      <Flex width="100px" data-testid="flex-item">
+        Test
+      </Flex>,
+    );
+    const div = screen.getByTestId('flex-item');
+
+    expect(div).toHaveStyle('--width: 100px');
+  });
+
+  it('converted to 100% if full is received in width prop', () => {
+    render(
+      <Flex width="full" data-testid="flex-item">
+        Test
+      </Flex>,
+    );
+    const div = screen.getByTestId('flex-item');
+
+    expect(div).toHaveStyle('--width: 100%');
+  });
+
+  it('receives max-width', () => {
+    render(
+      <Flex maxWidth="100px" data-testid="flex-item">
+        Test
+      </Flex>,
+    );
+    const div = screen.getByTestId('flex-item');
+
+    expect(div).toHaveStyle('--max-width: 100px');
+  });
+
+  it('receives min-width', () => {
+    render(
+      <Flex minWidth="100px" data-testid="flex-item">
+        Test
+      </Flex>,
+    );
+    const div = screen.getByTestId('flex-item');
+
+    expect(div).toHaveStyle('--min-width: 100px');
+  });
 });

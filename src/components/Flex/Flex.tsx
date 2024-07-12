@@ -4,12 +4,14 @@ import clsx from 'clsx';
 import { isValidElement, cloneElement } from 'react';
 import styles from './Flex.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
-import { Spacing, AlignItems, JustifyContent, FlexDirection } from '../../types/style';
-import { paddingVariables, marginVariables, gapVariables } from '../../utils/style';
+import { Spacing, AlignItems, JustifyContent, FlexDirection, WidthProps } from '../../types/style';
+import { paddingVariables, marginVariables, gapVariables, widthVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
 import { Box } from '../Box/Box';
 import type { PaddingProps, MarginProps } from '../../types/style';
 import type { FC, PropsWithChildren, ReactElement, ComponentType, ReactNode } from 'react';
+
+type Width = WidthProps['width'];
 
 type Props = {
   /**
@@ -47,11 +49,13 @@ type Props = {
    */
   height?: 'full';
   /**
-   * デフォルト<Flex>は横幅いっぱいを専有する。しかし例えば、フレックスコンテナの子要素として配置した場合、横幅が自身の子に合わせて小さくなる。これが不都合の場合に100%とする事が可能
+   * 幅を指定。fullは後方互換のために残している
+   * デフォルト<Flex>は横幅いっぱいを専有する。しかし例えば、フレックスコンテナの子要素として配置した場合、横幅が自身の子に合わせて小さくなる。これが不都合の場合に100%とする
    */
-  width?: 'full';
+  width?: 'full' | Width;
 } & MarginProps &
   PaddingProps &
+  Omit<WidthProps, 'width'> &
   CustomDataAttributeProps;
 
 export const Flex: FC<PropsWithChildren<Props>> = ({
@@ -63,7 +67,6 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   wrap,
   spacing,
   height,
-  width,
   p,
   px,
   py,
@@ -78,6 +81,9 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   mr,
   mb,
   ml,
+  width: _width,
+  minWidth,
+  maxWidth,
   ...otherProps
 }) => {
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
@@ -89,9 +95,11 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
     }
   };
 
+  const width = _width === 'full' ? '100%' : _width;
+
   return createElement(
     {
-      className: clsx(styles.flex, height === 'full' && styles.heightFull, width === 'full' && styles.widthFull),
+      className: clsx(styles.flex, height === 'full' && styles.heightFull),
       style: {
         '--flex-direction': direction,
         '--align-items': alignItems,
@@ -115,6 +123,11 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
           mr,
           mb,
           ml,
+        }),
+        ...widthVariables({
+          width,
+          minWidth,
+          maxWidth,
         }),
       },
       ...otherProps,

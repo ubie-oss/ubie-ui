@@ -225,3 +225,77 @@ export const WithFlexItem: Story = {
     </div>
   ),
 };
+
+export const Width: Story = {
+  render: () => (
+    <div>
+      <Flex direction="row" alignItems="center" spacing="lg" wrap width="100%">
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+      </Flex>
+
+      <br />
+
+      <Flex direction="row" alignItems="center" spacing="lg" wrap maxWidth="500px">
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+      </Flex>
+
+      <Flex direction="row" alignItems="center" spacing="lg" wrap minWidth="500px">
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+      </Flex>
+    </div>
+  ),
+};
