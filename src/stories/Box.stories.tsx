@@ -169,6 +169,18 @@ export const Width: Story = {
         Width Full
       </Box>
 
+      <Box {...defaultArgs} width="100%">
+        Width 100%
+      </Box>
+
+      <Box {...defaultArgs} maxWidth="500px">
+        Max Width 500px
+      </Box>
+
+      <Box {...defaultArgs} minWidth="500px">
+        Min Width 500px
+      </Box>
+
       <Box {...defaultArgs}>Not Width Full</Box>
     </Stack>
   ),

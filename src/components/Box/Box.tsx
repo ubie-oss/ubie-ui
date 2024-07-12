@@ -9,6 +9,7 @@ import {
   cssFontSizeToken,
   cssLeadingToken,
   colorVariable,
+  widthVariables,
 } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
 import type { CustomDataAttributeProps } from '../../types/attributes';
@@ -23,8 +24,11 @@ import type {
   BodyLeading,
   NoteFontSize,
   NoteLeading,
+  WidthProps,
 } from '../../types/style';
 import type { CSSProperties, FC, ReactNode } from 'react';
+
+type Width = WidthProps['width'];
 
 type BaseProps = {
   /**
@@ -45,9 +49,10 @@ type BaseProps = {
    */
   border?: 'gray' | 'grayThick' | 'primary' | 'primaryThick';
   /**
-   * 幅を指定。他のスタイルの影響を受け、幅が100%とならない場合にのみ使用
+   * 幅を指定。fullは後方互換のため残している
+   * @defaultValue 'autp'
    */
-  width?: 'full';
+  width?: 'full' | Width;
   /**
    * 内包するテキストをボールドとするかどうか。指定しない場合は親要素のスタイルを継承、trueでボールド、falseとするとnormal
    */
@@ -67,6 +72,7 @@ type BaseProps = {
 } & PaddingProps &
   MarginProps &
   RadiusProp &
+  Omit<WidthProps, 'width'> &
   CustomDataAttributeProps;
 
 type PropsWithoutText = BaseProps & {
@@ -184,7 +190,9 @@ export const Box: FC<PropsWithoutText | PropsWithTextBody | PropsWithTextNote> =
   radius,
   backgroundColor,
   border,
-  width,
+  width: _width,
+  minWidth,
+  maxWidth,
   textType,
   textSize,
   textLeading,
@@ -202,13 +210,14 @@ export const Box: FC<PropsWithoutText | PropsWithTextBody | PropsWithTextNote> =
     _textVariables = textStyleVariables({ type: textType, size: textSize, leading: textLeading });
   }
 
+  const width = _width === 'full' ? '100%' : _width;
+
   return (
     <BoxComponent
       className={clsx([
         styles.box,
         backgroundColor && styles[`backgroundColor${capitalize(backgroundColor)}`],
         border && styles[`border${capitalize(border)}`],
-        width && styles.widthFull,
         textBold && styles.textBold,
         textBold === false && styles.textNormal,
         textAlign && styles[`text${capitalize(textAlign)}`],
@@ -236,6 +245,11 @@ export const Box: FC<PropsWithoutText | PropsWithTextBody | PropsWithTextNote> =
         ...radiusVariables(radius),
         ..._textVariables,
         ...colorVariable(textColor),
+        ...widthVariables({
+          width,
+          minWidth,
+          maxWidth,
+        }),
       }}
       {...props}
     >

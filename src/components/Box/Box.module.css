@@ -1,6 +1,9 @@
 .box {
   box-sizing: border-box;
   display: block;
+  width: var(--width);
+  min-width: var(--min-width);
+  max-width: var(--max-width);
   padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
   margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
   font-size: var(--text-size);
@@ -54,10 +57,6 @@
 
 .box.borderPrimaryThick {
   border: 2px solid var(--color-primary);
-}
-
-.box.widthFull {
-  width: 100%;
 }
 
 .box.textBold {
