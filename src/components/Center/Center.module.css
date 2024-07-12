@@ -1,4 +1,6 @@
 .center {
+  width: var(--width);
+  min-width: var(--min-width);
   max-width: var(--max-width);
   padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
   margin-inline: auto;

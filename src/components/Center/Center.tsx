@@ -13,10 +13,10 @@ import {
 } from 'react';
 import styles from './Center.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
-import { marginVariables, paddingVariables } from '../../utils/style';
+import { marginVariables, paddingVariables, widthVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
 import { Box } from '../Box/Box';
-import type { MarginYProps, PaddingProps } from '../../types/style';
+import type { MarginYProps, PaddingProps, WidthProps } from '../../types/style';
 
 type Props = {
   /**
@@ -35,16 +35,12 @@ type Props = {
    */
   childrenCenter?: boolean;
   /**
-   * 横幅の最大値
-   * @default none
-   */
-  maxWidth?: string;
-  /**
    * HTMLのID属性の値
    */
   id?: string;
 } & MarginYProps &
   PaddingProps &
+  WidthProps &
   CustomDataAttributeProps;
 
 export const Center: FC<PropsWithChildren<Props>> = ({
@@ -63,7 +59,9 @@ export const Center: FC<PropsWithChildren<Props>> = ({
   textCenter,
   childrenCenter,
   id,
-  maxWidth = 'none',
+  width,
+  minWidth,
+  maxWidth,
   ...props
 }) => {
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
@@ -94,6 +92,11 @@ export const Center: FC<PropsWithChildren<Props>> = ({
           my,
           mt,
           mb,
+        }),
+        ...widthVariables({
+          width,
+          minWidth,
+          maxWidth,
         }),
       } as CSSProperties,
       ...props,

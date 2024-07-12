@@ -96,3 +96,25 @@ export const CustomDataAttribute: Story = {
     </Center>
   ),
 };
+
+export const Width: Story = {
+  render: () => (
+    <>
+      <Center maxWidth="100%" textCenter>
+        <p>width: 100%</p>
+      </Center>
+
+      <br />
+
+      <Center maxWidth="500px" textCenter>
+        <p>max-width: 500px</p>
+      </Center>
+
+      <br />
+
+      <Center minWidth="500px" textCenter>
+        <p>min-width: 500px</p>
+      </Center>
+    </>
+  ),
+};
