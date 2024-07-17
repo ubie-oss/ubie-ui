@@ -13,6 +13,9 @@ import type {
   HeadingLeading,
   TagLeading,
   TextColor,
+  CSSMinWidth,
+  CSSMaxWidth,
+  CSSWitdh,
 } from '../types/style';
 import type { CSSProperties } from 'react';
 
@@ -237,5 +240,21 @@ export const radiusVariables = (radius?: Radius) => {
 export const gapVariables = (spacing?: Spacing) => {
   return {
     '--gap': spacing ? `var(--size-spacing-${spacing})` : '0',
+  } as CSSProperties;
+};
+
+export const widthVariables = ({
+  width = 'auto',
+  minWidth = 'auto',
+  maxWidth = 'none',
+}: {
+  width?: CSSWitdh;
+  minWidth?: CSSMinWidth;
+  maxWidth?: CSSMaxWidth;
+}) => {
+  return {
+    '--width': width,
+    '--min-width': minWidth,
+    '--max-width': maxWidth,
   } as CSSProperties;
 };
