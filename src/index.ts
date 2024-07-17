@@ -21,6 +21,7 @@ export { Label } from './components/Label/Label';
 export { LinkCard } from './components/LinkCard/LinkCard';
 export { MessageHalfModal } from './components/MessageHalfModal/MessageHalfModal';
 export { MessageModal } from './components/MessageModal/MessageModal';
+export { Pre } from './components/Pre/Pre';
 export { RadioButton } from './components/RadioButton/RadioButton';
 export { RadioCard } from './components/RadioCard/RadioCard';
 export { RadioGroup } from './components/RadioGroup/RadioGroup';
