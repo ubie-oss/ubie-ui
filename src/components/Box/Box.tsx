@@ -69,6 +69,11 @@ type BaseProps = {
    * 領域が狭い場合でも、テキストを折り返えさない
    */
   textNoWrap?: boolean;
+  /**
+   * inline-blockとして扱う
+   * @default false
+   */
+  inline?: boolean;
 } & PaddingProps &
   MarginProps &
   RadiusProp &
@@ -193,6 +198,7 @@ export const Box: FC<PropsWithoutText | PropsWithTextBody | PropsWithTextNote> =
   width: _width,
   minWidth,
   maxWidth,
+  inline = false,
   textType,
   textSize,
   textLeading,
@@ -218,6 +224,8 @@ export const Box: FC<PropsWithoutText | PropsWithTextBody | PropsWithTextNote> =
         styles.box,
         backgroundColor && styles[`backgroundColor${capitalize(backgroundColor)}`],
         border && styles[`border${capitalize(border)}`],
+        width && styles.widthFull,
+        inline && styles.inline,
         textBold && styles.textBold,
         textBold === false && styles.textNormal,
         textAlign && styles[`text${capitalize(textAlign)}`],

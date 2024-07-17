@@ -299,3 +299,23 @@ export const Width: Story = {
     </div>
   ),
 };
+
+export const Inline: Story = {
+  render: () => (
+    <p>
+      文章文章文章文章文章文章
+      <Flex as="span" spacing="md" inline>
+        <Box as="span" inline backgroundColor="primary" p="xs" radius="md">
+          Item
+        </Box>
+        <Box as="span" inline backgroundColor="primary" p="xs" radius="md">
+          Item
+        </Box>
+        <Box as="span" inline backgroundColor="primary" p="xs" radius="md">
+          Item
+        </Box>
+      </Flex>
+      文章
+    </p>
+  ),
+};

@@ -18,3 +18,7 @@
 .flex.widthFull {
   width: 100%;
 }
+
+.flex.inline {
+  display: inline-flex;
+}

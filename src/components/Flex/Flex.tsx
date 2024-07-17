@@ -53,6 +53,11 @@ type Props = {
    * デフォルト<Flex>は横幅いっぱいを専有する。しかし例えば、フレックスコンテナの子要素として配置した場合、横幅が自身の子に合わせて小さくなる。これが不都合の場合に100%とする
    */
   width?: 'full' | Width;
+  /**
+   * inline-flexとして扱う
+   * @default false
+   */
+  inline?: boolean;
 } & MarginProps &
   PaddingProps &
   Omit<WidthProps, 'width'> &
@@ -67,6 +72,8 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   wrap,
   spacing,
   height,
+  width,
+  inline,
   p,
   px,
   py,
@@ -99,7 +106,12 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
 
   return createElement(
     {
-      className: clsx(styles.flex, height === 'full' && styles.heightFull),
+      className: clsx(
+        styles.flex,
+        height === 'full' && styles.heightFull,
+        width === 'full' && styles.widthFull,
+        inline && styles.inline,
+      ),
       style: {
         '--flex-direction': direction,
         '--align-items': alignItems,

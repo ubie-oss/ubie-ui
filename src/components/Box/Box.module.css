@@ -82,3 +82,7 @@
 .box.textNoWrap {
   white-space: nowrap;
 }
+
+.box.inline {
+  display: inline-block;
+}
