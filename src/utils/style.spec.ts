@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { opacityToClassName, colorVariable } from './style';
+import { opacityToClassName, colorVariable, widthVariables } from './style';
 
 describe('opacityToClassName', () => {
   it('shuold return normalOverlay when opacity is normal', () => {
@@ -41,5 +41,21 @@ describe('craeteTextColorVariable', () => {
     expect(colorVariable('linkSub')).toStrictEqual({
       '--text-color': 'var(--color-text-link-sub)',
     });
+  });
+});
+
+describe('widthVariables', () => {
+  it('should return default values', () => {
+    const variables = widthVariables({});
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    expect(variables['--width']).toStrictEqual('auto');
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    expect(variables['--max-width']).toStrictEqual('none');
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    expect(variables['--min-width']).toStrictEqual('auto');
   });
 });

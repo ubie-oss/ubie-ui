@@ -107,4 +107,37 @@ describe('<Center>', () => {
     expect(div).toHaveStyle('--padding-bottom: var(--size-spacing-lg)');
     expect(div).toHaveStyle('--padding-left: var(--size-spacing-xl)');
   });
+
+  it('receives width', () => {
+    render(
+      <Center width="100px" data-testid="flex-item">
+        Test
+      </Center>,
+    );
+    const div = screen.getByTestId('flex-item');
+
+    expect(div).toHaveStyle('--width: 100px');
+  });
+
+  it('receives max-width', () => {
+    render(
+      <Center maxWidth="100px" data-testid="flex-item">
+        Test
+      </Center>,
+    );
+    const div = screen.getByTestId('flex-item');
+
+    expect(div).toHaveStyle('--max-width: 100px');
+  });
+
+  it('receives min-width', () => {
+    render(
+      <Center minWidth="100px" data-testid="flex-item">
+        Test
+      </Center>,
+    );
+    const div = screen.getByTestId('flex-item');
+
+    expect(div).toHaveStyle('--min-width: 100px');
+  });
 });

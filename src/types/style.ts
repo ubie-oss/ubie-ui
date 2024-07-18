@@ -199,17 +199,17 @@ export type CSSMinWidth =
 export type WidthProps = {
   /**
    * 幅を指定
-   * @default 'auto'
+   * @defaultValue auto
    */
   width?: CSSWitdh;
   /**
    * 最小幅
-   * @default 'auto'
+   * @defaultValue auto
    */
   minWidth?: CSSMinWidth;
   /**
    * 最大幅
-   * @default 'none'
+   * @defaultValue none
    */
   maxWidth?: CSSMaxWidth;
 };
