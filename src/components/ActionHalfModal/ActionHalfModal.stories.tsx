@@ -124,6 +124,7 @@ export const NoCloseButton: Story = {
           Open Modal
         </button>
         <ActionHalfModal
+          data-test-id="some-id"
           onPrimaryAction={onClose}
           primaryActionLabel="確認"
           showClose={false}
@@ -136,7 +137,6 @@ export const NoCloseButton: Story = {
   },
   args: {
     ...defaultArgs,
-    [`data-test-id`]: 'some-id',
   },
 };
 
