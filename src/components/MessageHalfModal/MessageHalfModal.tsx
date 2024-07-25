@@ -103,10 +103,9 @@ export const MessageHalfModal = forwardRef<HTMLDivElement, Props>(
           node.removeAttribute('aria-labelledby');
         }
 
-        if (!ref) return;
         if (typeof ref === 'function') {
           ref(node);
-        } else {
+        } else if (ref != null) {
           ref.current = node;
         }
       },
