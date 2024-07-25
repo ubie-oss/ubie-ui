@@ -2,10 +2,16 @@
 
 import { ArrowBRightIcon } from '@ubie/ubie-icons';
 import clsx from 'clsx';
-import { cloneElement, forwardRef, isValidElement } from 'react';
+import {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  type ComponentPropsWithRef,
+  type ComponentType,
+  type ReactElement,
+  type ReactNode,
+} from 'react';
 import styles from './LinkCard.module.css';
-import { CustomDataAttributeProps } from '../../types/attributes';
-import type { ComponentType, ReactElement, ReactNode } from 'react';
 
 type Props = {
   /**
@@ -38,7 +44,7 @@ type Props = {
    * アイコン
    */
   icon?: ComponentType | ReactElement;
-} & CustomDataAttributeProps;
+} & Omit<ComponentPropsWithRef<'a'>, 'children'>;
 
 // ref https://github.com/microsoft/TypeScript/issues/53178
 const _isValidElement = (el: ComponentType | ReactElement): el is ReactElement => {
