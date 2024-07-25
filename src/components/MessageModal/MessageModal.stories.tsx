@@ -110,13 +110,12 @@ export const CustomDataAttribute: Story = {
         <button type="button" onClick={() => setOpen(true)}>
           Open Modal
         </button>
-        <MessageModal {...args} open={open} onClose={() => setOpen(false)} />
+        <MessageModal data-test-id="message-modal-custom" {...args} open={open} onClose={() => setOpen(false)} />
       </>
     );
   },
   args: {
     ...defaultArgs,
-    'data-test-id': 'message-modal-custom',
   },
 };
 

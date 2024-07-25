@@ -2,16 +2,16 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { forwardRef, Fragment, PropsWithChildren, type ReactNode, useCallback, useRef } from 'react';
+import { ComponentPropsWithRef, forwardRef, Fragment, type ReactNode, useCallback, useRef } from 'react';
 import styles from './MessageModal.module.css';
 import { Button } from '../../';
 import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
-import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
 
 type Opacity = 'normal' | 'darker';
 
-type Props = {
+type ModalProps = {
+  children: ReactNode;
   /**
    * プライマリーアクションボタンのラベル
    */
@@ -57,8 +57,9 @@ type Props = {
    * ヒーローエリア（見出しの更に上）に配置するコンテンツ
    */
   hero?: ReactNode;
-} & PropsWithChildren &
-  CustomDataAttributeProps;
+};
+
+type Props = ModalProps & Omit<ComponentPropsWithRef<'div'>, keyof ModalProps>;
 
 export const MessageModal = forwardRef<HTMLDivElement, Props>(
   (
