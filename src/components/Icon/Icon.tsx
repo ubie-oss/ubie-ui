@@ -1,9 +1,8 @@
 import * as Icons from '@ubie/ubie-icons';
+import { type CSSProperties, type ComponentPropsWithRef, forwardRef } from 'react';
 import styles from './Icon.module.css';
-import { CustomDataAttributeProps } from '../../types/attributes';
 import { TextColor } from '../../types/style';
 import { colorVariable } from '../../utils/style';
-import type { FC, CSSProperties } from 'react';
 
 type Icon = keyof typeof Icons;
 
@@ -58,16 +57,17 @@ type Props = {
    * 単に装飾的なアイコンの場合は指定しない
    */
   label?: string;
-} & CustomDataAttributeProps;
+} & Omit<ComponentPropsWithRef<'svg'>, 'children', 'className'>;
 
 /**
  * アイコンコンポーネント。labelを指定しない場合は単に装飾的なアイコンであるとみなされ、aria-hiddenが付与されます
  */
-export const Icon: FC<Props> = ({ icon, color, size = 'md', label, ...otherProps }) => {
+export const Icon = forwardRef<SVGSVGElement, Props>(({ icon, color, size = 'md', label, ...otherProps }, ref) => {
   const IconComponent = Icons[icon];
   const _sizeValue = toIconSizeEmValue(size);
   return (
     <IconComponent
+      ref={ref}
       role="img"
       aria-hidden={label === undefined || label === '' ? true : undefined}
       aria-label={label}
@@ -81,4 +81,6 @@ export const Icon: FC<Props> = ({ icon, color, size = 'md', label, ...otherProps
       {...otherProps}
     />
   );
-};
+});
+
+Icon.displayName = 'Icon';
