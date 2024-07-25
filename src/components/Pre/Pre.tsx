@@ -1,12 +1,11 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { CSSProperties, forwardRef, type HTMLAttributes, type PropsWithChildren } from 'react';
+import { ComponentPropsWithRef, CSSProperties, forwardRef, type PropsWithChildren, ReactNode } from 'react';
 import styles from './Pre.module.css';
 
-type AllowedSpanAttributes = Omit<HTMLAttributes<HTMLSpanElement>, 'className'>;
-
-type Props = {
+type PreProps = {
+  children: ReactNode;
   /**
    * 折り返しや空白、改行の扱い
    * @default 'pre-line'
@@ -17,7 +16,9 @@ type Props = {
    * @default false
    */
   inline?: boolean;
-} & AllowedSpanAttributes;
+};
+
+type Props = PreProps & Omit<ComponentPropsWithRef<'span'>, keyof PreProps | 'className'>;
 
 export const Pre = forwardRef<HTMLSpanElement, PropsWithChildren<Props>>(
   ({ children, whiteSpace = 'pre-line', inline = false, ...rest }, ref) => {
