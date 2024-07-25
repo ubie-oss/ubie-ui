@@ -2,11 +2,10 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { type FC, Fragment, type ReactNode, useCallback, useRef } from 'react';
+import { ComponentPropsWithRef, type FC, Fragment, type ReactNode, useCallback, useRef } from 'react';
 import styles from './ActionModal.module.css';
 import { Button } from '../../';
 import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
-import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
 import { AllOrNone } from '../../utils/types';
 
@@ -92,7 +91,7 @@ type SecondaryActionProps = {
   secondaryActionLabel: string;
 };
 
-type Props = BaseProps & AllOrNone<SecondaryActionProps> & CustomDataAttributeProps;
+type Props = BaseProps & AllOrNone<SecondaryActionProps> & Omit<ComponentPropsWithRef<'div'>, 'className'>;
 
 export const ActionModal: FC<Props> = ({
   children,

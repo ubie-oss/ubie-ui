@@ -136,7 +136,13 @@ export const CustomDataAttribute: Story = {
         <button type="button" onClick={() => setOpen(true)}>
           Open Modal
         </button>
-        <ActionModal {...args} open={open} onPrimaryAction={() => setOpen(false)} onClose={() => setOpen(false)}>
+        <ActionModal
+          data-test-id="some-id"
+          {...args}
+          open={open}
+          onPrimaryAction={() => setOpen(false)}
+          onClose={() => setOpen(false)}
+        >
           <p>Default</p>
         </ActionModal>
       </>
@@ -144,7 +150,6 @@ export const CustomDataAttribute: Story = {
   },
   args: {
     ...defaultArgs,
-    [`data-test-id`]: 'some-id',
   },
 };
 
