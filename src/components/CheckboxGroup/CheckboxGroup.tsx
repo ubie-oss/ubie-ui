@@ -1,9 +1,8 @@
 'use client';
 
-import { forwardRef, useMemo } from 'react';
+import { ComponentPropsWithRef, forwardRef, useMemo } from 'react';
 import styles from './CheckboxGroup.module.css';
 import { RequiredLabel } from '../../sharedComponents/RequiredLabel/RequiredLabel';
-import { CustomDataAttributeProps } from '../../types/attributes';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { CheckboxCard } from '../CheckboxCard/CheckboxCard';
 import { Flex } from '../Flex/Flex';
@@ -29,7 +28,7 @@ export type Props = {
    * 配置方向
    */
   direction?: 'column' | 'row';
-} & CustomDataAttributeProps;
+} & Omit<ComponentPropsWithRef<'fieldset'>, 'className'>;
 
 const includesCheckboxCard = (children: Props['children']): boolean => {
   return children.some((child) => child.type === CheckboxCard);
