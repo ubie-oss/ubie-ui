@@ -10,7 +10,7 @@ import { Button } from '../Button/Button';
 
 type Opacity = 'normal' | 'darker';
 
-type BaseProps = {
+type ModalProps = {
   children: ReactNode;
   /**
    * 閉じるアクションが実行された場合のコールバック
@@ -68,9 +68,9 @@ type BaseProps = {
    * ヒーローエリア（見出しの更に上）に配置するコンテンツ
    */
   hero?: ReactNode;
-} & Omit<ComponentPropsWithRef<'div'>, 'children'>;
+};
 
-type Props = BaseProps;
+type Props = ModalProps & Omit<ComponentPropsWithRef<'div'>, keyof ModalProps | 'className'>;
 
 export const MessageHalfModal = forwardRef<HTMLDivElement, Props>(
   (

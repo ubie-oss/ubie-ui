@@ -59,7 +59,7 @@ type ModalProps = {
   hero?: ReactNode;
 };
 
-type Props = ModalProps & Omit<ComponentPropsWithRef<'div'>, keyof ModalProps>;
+type Props = ModalProps & Omit<ComponentPropsWithRef<'div'>, keyof ModalProps | 'className'>;
 
 export const MessageModal = forwardRef<HTMLDivElement, Props>(
   (
