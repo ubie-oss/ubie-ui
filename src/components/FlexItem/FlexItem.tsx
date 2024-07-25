@@ -1,7 +1,7 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { CSSProperties, forwardRef, type PropsWithChildren, type ComponentPropsWithRef } from 'react';
+import { CSSProperties, forwardRef, type ComponentPropsWithRef } from 'react';
 import styles from './FlexItem.module.css';
 import { CSSWitdh, MarginProps, PaddingProps, WidthProps } from '../../types/style';
 import { marginVariables, paddingVariables } from '../../utils/style';
@@ -28,7 +28,7 @@ type Props = {
 /**
  * FlexやStackの子として配置し、レイアウトを調整
  */
-export const FlexItem = forwardRef<HTMLDivElement, PropsWithChildren<Props>>(
+export const FlexItem = forwardRef<HTMLDivElement, Props>(
   (
     {
       children,
