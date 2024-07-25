@@ -57,7 +57,7 @@ type Props = {
    * 単に装飾的なアイコンの場合は指定しない
    */
   label?: string;
-} & Omit<ComponentPropsWithRef<'svg'>, 'children', 'className'>;
+} & Omit<ComponentPropsWithRef<'svg'>, 'children' | 'className'>;
 
 /**
  * アイコンコンポーネント。labelを指定しない場合は単に装飾的なアイコンであるとみなされ、aria-hiddenが付与されます
