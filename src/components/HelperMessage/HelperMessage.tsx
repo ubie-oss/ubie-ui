@@ -1,15 +1,18 @@
 'use client';
 
+import { type ComponentPropsWithRef, forwardRef, ReactNode } from 'react';
 import styles from './HelperMessage.module.css';
-import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
-import type { FC, ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;
-} & CustomDataAttributeProps;
+} & ComponentPropsWithRef<'p'>;
 
-export const HelperMessage: FC<Props> = ({ children, ...otherProps }) => (
-  <p className={styles.message} {...otherProps}>
-    {children}
-  </p>
-);
+export const HelperMessage = forwardRef<HTMLParagraphElement, Props>(({ children, ...rest }, ref) => {
+  return (
+    <p ref={ref} className={styles.message} {...rest}>
+      {children}
+    </p>
+  );
+});
+
+HelperMessage.displayName = 'HelperMessage';
