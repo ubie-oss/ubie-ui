@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { FC, Fragment, PropsWithChildren, type ReactNode, useCallback, useRef } from 'react';
+import { forwardRef, Fragment, PropsWithChildren, type ReactNode, useCallback, useRef } from 'react';
 import styles from './MessageModal.module.css';
 import { Button } from '../../';
 import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
@@ -60,88 +60,101 @@ type Props = {
 } & PropsWithChildren &
   CustomDataAttributeProps;
 
-export const MessageModal: FC<Props> = ({
-  header,
-  children,
-  onClose,
-  overlayOpacity = 'normal',
-  closeLabel = '閉じる',
-  fixedHeight = false,
-  open = true,
-  isStatic = false,
-  ariaLabelledby,
-  hero,
-  ...otherProps
-}) => {
-  const opacityClassName = opacityToClassName(overlayOpacity);
-
-  const initialFocusRef = useRef(null);
-
-  const dialogRef = useCallback(
-    (node: HTMLDivElement | null) => {
-      if (node !== null && header == null && ariaLabelledby != null) {
-        node.setAttribute('aria-labelledby', ariaLabelledby);
-      } else if (node !== null && header == null && ariaLabelledby == null) {
-        node.removeAttribute('aria-labelledby');
-      }
+export const MessageModal = forwardRef<HTMLDivElement, Props>(
+  (
+    {
+      header,
+      children,
+      onClose,
+      overlayOpacity = 'normal',
+      closeLabel = '閉じる',
+      fixedHeight = false,
+      open = true,
+      isStatic = false,
+      ariaLabelledby,
+      hero,
+      ...otherProps
     },
-    [ariaLabelledby, header],
-  );
+    ref,
+  ) => {
+    const opacityClassName = opacityToClassName(overlayOpacity);
 
-  return (
-    <Transition
-      show={open}
-      as={Fragment}
-      enter={styles.panelEnter}
-      enterFrom={styles.panelEnterFrom}
-      enterTo={styles.panelEnterTo}
-      leave={styles.panelLeave}
-      leaveFrom={styles.panelLeaveFrom}
-      leaveTo={styles.panelLeaveTo}
-    >
-      <Dialog
-        ref={dialogRef}
-        static={isStatic}
-        onClose={onClose}
-        className={styles.modal}
-        initialFocus={initialFocusRef}
-        {...otherProps}
+    const initialFocusRef = useRef(null);
+
+    const dialogRef = useCallback(
+      (node: HTMLDivElement | null) => {
+        if (node !== null && header == null && ariaLabelledby != null) {
+          node.setAttribute('aria-labelledby', ariaLabelledby);
+        } else if (node !== null && header == null && ariaLabelledby == null) {
+          node.removeAttribute('aria-labelledby');
+        }
+
+        if (typeof ref === 'function') {
+          ref(node);
+        } else if (ref != null) {
+          ref.current = node;
+        }
+      },
+      [ariaLabelledby, header],
+    );
+
+    return (
+      <Transition
+        show={open}
+        as={Fragment}
+        enter={styles.panelEnter}
+        enterFrom={styles.panelEnterFrom}
+        enterTo={styles.panelEnterTo}
+        leave={styles.panelLeave}
+        leaveFrom={styles.panelLeaveFrom}
+        leaveTo={styles.panelLeaveTo}
       >
-        <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
-        <div
-          className={clsx(styles.dialog, {
-            [styles.fixedHeight]: fixedHeight,
-          })}
+        <Dialog
+          ref={dialogRef}
+          static={isStatic}
+          onClose={onClose}
+          className={styles.modal}
+          initialFocus={initialFocusRef}
+          {...otherProps}
         >
-          {header === undefined ? (
-            <VisuallyHidden as="p" tabIndex={-1} ref={initialFocusRef}>
-              ダイアログ
-            </VisuallyHidden>
-          ) : null}
-          {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
+          <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
           <div
-            className={clsx(styles.mainContent, {
+            className={clsx(styles.dialog, {
               [styles.fixedHeight]: fixedHeight,
             })}
           >
-            {header !== undefined ? (
-              <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
-                {header}
-              </Dialog.Title>
+            {header === undefined ? (
+              <VisuallyHidden as="p" tabIndex={-1} ref={initialFocusRef}>
+                ダイアログ
+              </VisuallyHidden>
             ) : null}
+            {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
             <div
-              className={clsx(styles.body, {
+              className={clsx(styles.mainContent, {
                 [styles.fixedHeight]: fixedHeight,
               })}
             >
-              {children}
+              {header !== undefined ? (
+                <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
+                  {header}
+                </Dialog.Title>
+              ) : null}
+              <div
+                className={clsx(styles.body, {
+                  [styles.fixedHeight]: fixedHeight,
+                })}
+              >
+                {children}
+              </div>
+              <Button block onClick={onClose} aria-label={closeLabel}>
+                {closeLabel}
+              </Button>
             </div>
-            <Button block onClick={onClose} aria-label={closeLabel}>
-              {closeLabel}
-            </Button>
           </div>
-        </div>
-      </Dialog>
-    </Transition>
-  );
-};
+        </Dialog>
+      </Transition>
+    );
+  },
+);
+
+MessageModal.displayName = 'MessageModal';
