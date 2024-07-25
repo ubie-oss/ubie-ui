@@ -1,9 +1,9 @@
 'use client';
 
-import { forwardRef, type PropsWithChildren, type ButtonHTMLAttributes } from 'react';
+import { forwardRef, type ComponentPropsWithRef } from 'react';
 import styles from './ButtonCard.module.css';
 
-type Props = PropsWithChildren<Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'>>;
+type Props = Omit<ComponentPropsWithRef<'button'>, 'className'>;
 
 export const ButtonCard = forwardRef<HTMLButtonElement, Props>(({ children, type = 'button', ...rest }, ref) => {
   return (
