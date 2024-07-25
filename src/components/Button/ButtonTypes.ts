@@ -1,6 +1,6 @@
 import { CustomDataAttributeProps } from '../../types/attributes';
 import type { MarginProps } from '../../types/style';
-import type { ButtonHTMLAttributes, ReactNode, AnchorHTMLAttributes, ReactElement } from 'react';
+import type { ReactNode, ReactElement, ComponentPropsWithRef } from 'react';
 
 export type BaseProps = {
   /**
@@ -53,11 +53,6 @@ export type OnlyButtonProps = {
    */
   type?: HTMLButtonElement['type'];
   /**
-   * ボタンを無効化するかどうか
-   * @default false
-   */
-  disabled?: boolean;
-  /**
    * ローディング状態を示す
    */
   loading?: boolean;
@@ -75,14 +70,12 @@ export type OnlyLinkButtonProps = {
 };
 
 export type ButtonProps = Omit<
-  ButtonHTMLAttributes<HTMLButtonElement>,
+  ComponentPropsWithRef<'button'>,
   'children' | 'className' | keyof BaseProps | keyof OnlyButtonProps
 > &
   BaseProps &
   OnlyButtonProps;
-export type LinkButtonProps = Omit<
-  AnchorHTMLAttributes<HTMLAnchorElement>,
-  'children' | 'className' | keyof BaseProps
-> &
+
+export type LinkButtonProps = Omit<ComponentPropsWithRef<'a'>, 'children' | 'className' | keyof BaseProps> &
   BaseProps &
   OnlyLinkButtonProps;
