@@ -1,6 +1,8 @@
 import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
+import { createRef } from 'react';
+import { MessageHalfModal } from './MessageHalfModal';
 import Meta, { WithCustomDataAttribute, WithId, CustomHeader, Default } from './MessageHalfModal.stories';
 
 const WithCustomDataAttributeStory = composeStory(WithCustomDataAttribute, Meta);
@@ -61,5 +63,20 @@ describe('MessageHalfModal', () => {
 
     expect(dialogElement).toHaveAttribute('aria-labelledby');
     expect(dialogHeadingElement).toHaveAttribute('id', dialogElement.getAttribute('aria-labelledby'));
+  });
+
+  test('receives ref', async () => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const handleClose = () => {};
+    const ref = createRef<HTMLDivElement>();
+
+    render(
+      <MessageHalfModal header="header" ref={ref} open onClose={handleClose}>
+        content
+      </MessageHalfModal>,
+    );
+
+    expect(ref.current).not.toBeNull();
+    expect(ref.current?.tagName).toBe('DIV');
   });
 });
