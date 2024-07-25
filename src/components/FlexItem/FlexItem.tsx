@@ -1,7 +1,7 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { CSSProperties, forwardRef, type PropsWithChildren, type HTMLAttributes } from 'react';
+import { CSSProperties, forwardRef, type PropsWithChildren, type ComponentPropsWithRef } from 'react';
 import styles from './FlexItem.module.css';
 import { CSSWitdh, MarginProps, PaddingProps, WidthProps } from '../../types/style';
 import { marginVariables, paddingVariables } from '../../utils/style';
@@ -12,7 +12,7 @@ type FlexProperty = {
   basis?: CSSWitdh;
 };
 
-type AllowedDivAttributes = Omit<HTMLAttributes<HTMLDivElement>, 'className'>;
+type AllowedDivAttributes = Omit<ComponentPropsWithRef<'div'>, 'className'>;
 
 type Props = {
   /**
