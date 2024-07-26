@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: var(--size-spacing-md);
+  padding: var(--size-spacing-md) var(--size-spacing-sm);
   font-size: var(--text-button-lg-size);
   font-weight: bold;
   hyphens: auto;
