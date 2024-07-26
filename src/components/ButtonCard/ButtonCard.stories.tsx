@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { Meta, StoryObj } from '@storybook/react';
 import { ButtonCard } from './ButtonCard';
+import { Box } from '../Box/Box';
 import { Flex } from '../Flex/Flex';
 
 export default {
@@ -19,6 +20,18 @@ type Story = StoryObj<typeof ButtonCard>;
 export const Default: Story = {
   render: (args) => <ButtonCard {...args} />,
   args: defaultArgs,
+};
+
+export const WrapText: Story = {
+  render: (args) => (
+    <Box width="200px">
+      <ButtonCard {...args} />
+    </Box>
+  ),
+  args: {
+    ...defaultArgs,
+    children: '自分自分自分自分自分自分自分自分自分自分自分自分自分自分自分自分',
+  },
 };
 
 export const Disabled: Story = {
