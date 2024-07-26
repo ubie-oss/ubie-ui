@@ -11,6 +11,7 @@
 
   /* TODO: Replaced by tokens when @ubie/design-tokens is up-to-date. */
   line-height: 1.5;
+  text-align: left;
   text-decoration: none;
   overflow-wrap: anywhere;
   cursor: pointer;
