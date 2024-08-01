@@ -1,15 +1,15 @@
 'use client';
 
-import { forwardRef, useMemo } from 'react';
+import { ComponentPropsWithRef, forwardRef, useMemo } from 'react';
 import styles from './RadioGroup.module.css';
 import { RequiredLabel } from '../../sharedComponents/RequiredLabel/RequiredLabel';
-import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
+// 追加したインポート
 import { Flex } from '../Flex/Flex';
 import { RadioButton } from '../RadioButton/RadioButton';
 import { RadioCard } from '../RadioCard/RadioCard';
 import type { ReactElement } from 'react';
 
-export type Props = {
+export type RadioGroupProps = {
   children: ReactElement<typeof RadioButton>[] | ReactElement<typeof RadioCard>[];
   /**
    * ラジオグループの見出し（legend要素）
@@ -25,7 +25,9 @@ export type Props = {
    * @default column
    */
   direction?: 'column' | 'row';
-} & CustomDataAttributeProps;
+};
+
+type Props = RadioGroupProps & Omit<ComponentPropsWithRef<'fieldset'>, keyof RadioGroupProps | 'className'>;
 
 export const RadioGroup = forwardRef<HTMLFieldSetElement, Props>(
   ({ children, label, showRequiredLabel = false, direction = 'column', ...otherProps }, ref) => {
