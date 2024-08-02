@@ -23,7 +23,8 @@ type AllowedAs = ElementType | ReactElement<ComponentType<typeof Box>>;
 function CenterInner<TAs extends AllowedAs>(
   props: {
     /**
-     * レンダリングされるHTML要素
+     * レンダリングされる要素の指定、またはビジュアルをBoxに置き換え
+     * Boxを指定した場合はCenter > Boxの構造となる
      * @default div
      */
     as?: TAs;
