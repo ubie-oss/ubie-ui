@@ -20,7 +20,7 @@ import type { MarginYProps, PaddingProps, WidthProps } from '../../types/style';
 
 type AllowedAs = ElementType | ReactElement<ComponentType<typeof Box>>;
 
-function CenterInner<TAs extends AllowedAs>(
+function CenterInner<TAs extends AllowedAs = 'div'>(
   props: {
     /**
      * レンダリングされる要素の指定、またはビジュアルをBoxに置き換え
