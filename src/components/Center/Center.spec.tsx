@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { describe } from 'vitest';
+import { createRef } from 'react';
 import { Center } from './Center';
 import { Box } from '../Box/Box';
 
@@ -141,6 +141,67 @@ describe('<Center>', () => {
     const div = screen.getByTestId('flex-item');
 
     expect(div).toHaveStyle('--min-width: 100px');
+  });
+
+  test('receives data attribute', async () => {
+    render(<Center data-testid="center">test</Center>);
+
+    const center = await screen.findByTestId('center');
+
+    expect(center).toBeInTheDocument();
+  });
+
+  test('receives ref', async () => {
+    const ref = createRef<HTMLDivElement>();
+
+    render(
+      <Center ref={ref} data-testid="center">
+        test
+      </Center>,
+    );
+
+    expect(ref.current).not.toBeNull();
+    expect(ref.current?.tagName).toBe('DIV');
+  });
+
+  test('receives ref', async () => {
+    const ref = createRef<HTMLDivElement>();
+
+    render(
+      <Center ref={ref} data-testid="center">
+        test
+      </Center>,
+    );
+
+    expect(ref.current).not.toBeNull();
+    expect(ref.current?.tagName).toBe('DIV');
+  });
+
+  test('changes element to be rendered by as prop', async () => {
+    const ref = createRef<HTMLDivElement>();
+
+    render(
+      <Center ref={ref} data-testid="center" as="span">
+        test
+      </Center>,
+    );
+
+    expect(ref.current).not.toBeNull();
+    expect(ref.current?.tagName).toBe('SPAN');
+  });
+
+  test('changes element to be rendered by as prop2', async () => {
+    const ref = createRef<HTMLFieldSetElement>();
+
+    render(
+      <Center as="fieldset" ref={ref} form="some-form">
+        test
+      </Center>,
+    );
+
+    expect(ref.current).not.toBeNull();
+    expect(ref.current?.tagName).toBe('FIELDSET');
+    expect(ref.current?.getAttribute('form')).toBe('some-form');
   });
 
   describe('Snapshot Test', () => {
