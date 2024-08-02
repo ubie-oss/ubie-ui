@@ -206,8 +206,10 @@ describe('<Center>', () => {
 
   describe('Snapshot Test', () => {
     it('changes rendered elements', () => {
+      const ref = createRef<HTMLElement>();
+
       render(
-        <Center as="section" p="md" data-testid="center">
+        <Center ref={ref} as="section" p="md" data-testid="center">
           Test
         </Center>,
       );
@@ -216,8 +218,10 @@ describe('<Center>', () => {
     });
 
     it('changes the rendered component', () => {
+      const ref = createRef<HTMLDivElement>();
+
       render(
-        <Center p="md" as={<Box backgroundColor="gray" />} data-testid="center">
+        <Center ref={ref} p="md" as={<Box backgroundColor="gray" />} data-testid="center">
           Test
         </Center>,
       );
