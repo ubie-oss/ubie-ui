@@ -23,8 +23,5 @@ export const Disabled: Story = {
 };
 
 export const CustomDataAttribute: Story = {
-  args: {
-    'data-test-id': 'toggle-custom-attribute',
-  },
-  render: (args) => <Toggle {...args} />,
+  render: (args) => <Toggle {...args} data-testid="toggle-custom-attribute" />,
 };
