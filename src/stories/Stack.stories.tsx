@@ -88,25 +88,27 @@ export const MarginAndPadding: Story = {
 };
 
 export const AsBox: Story = {
-  render: (args) => (
-    <Stack {...args} as={<Box radius="md" backgroundColor="primary" pt="lg" pr="lg" pb="lg" pl="lg" />}>
-      <p style={{ margin: 0 }}>Text</p>
-      <p style={{ margin: 0 }}>Text</p>
-      <p style={{ margin: 0 }}>Text</p>
-      <p style={{ margin: 0 }}>Text</p>
-    </Stack>
-  ),
+  render: (args) => {
+    return (
+      <Stack {...args} as={<Box radius="md" backgroundColor="primary" pt="lg" pr="lg" pb="lg" pl="lg" />}>
+        <p style={{ margin: 0 }}>Text</p>
+        <p style={{ margin: 0 }}>Text</p>
+        <p style={{ margin: 0 }}>Text</p>
+        <p style={{ margin: 0 }}>Text</p>
+      </Stack>
+    );
+  },
   args: defaultArgs,
 };
 
 export const CustomDataAttribute: Story = {
   render: (args) => (
-    <Stack {...args}>
+    <Stack {...args} data-testid="custom-attribute">
       <p>This is a paragraph.</p>
       <p>This is a paragraph.</p>
     </Stack>
   ),
-  args: { ...defaultArgs, 'data-test-id': 'custom-attribute' },
+  args: defaultArgs,
 };
 
 export const Width: Story = {
