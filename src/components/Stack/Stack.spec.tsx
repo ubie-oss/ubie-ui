@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { Stack } from './Stack';
+import { Box } from '../Box/Box';
 
 describe('<Stack>', () => {
   it('has all the margins through m prop', () => {
@@ -173,5 +174,29 @@ describe('<Stack>', () => {
     const div = screen.getByTestId('flex-item');
 
     expect(div).toHaveStyle('--min-width: 100px');
+  });
+
+  describe('Snapshot Test', () => {
+    it('changes rendered elements', () => {
+      render(
+        <Stack as="section" p="md" data-testid="center">
+          <div>test</div>
+          <div>test</div>
+        </Stack>,
+      );
+      const center = screen.getByTestId('center');
+      expect(center).toMatchSnapshot();
+    });
+
+    it('changes the rendered component', () => {
+      render(
+        <Stack p="md" as={<Box backgroundColor="gray" />} data-testid="center">
+          <div>test</div>
+          <div>test</div>
+        </Stack>,
+      );
+      const center = screen.getByTestId('center');
+      expect(center).toMatchSnapshot();
+    });
   });
 });
