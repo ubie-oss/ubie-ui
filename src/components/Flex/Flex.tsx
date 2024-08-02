@@ -3,23 +3,23 @@
 import clsx from 'clsx';
 import { isValidElement, cloneElement, ComponentPropsWithRef, ElementType, ForwardedRef } from 'react';
 import styles from './Flex.module.css';
-// 追加したインポート
 import { Spacing, AlignItems, JustifyContent, FlexDirection, WidthProps } from '../../types/style';
 import { fixedForwardRef } from '../../utils/component';
 import { paddingVariables, marginVariables, gapVariables, widthVariables } from '../../utils/style';
-import { DistributiveOmit, HTMLTagname } from '../../utils/types';
+import { DistributiveOmit } from '../../utils/types';
 import { Box } from '../Box/Box';
 import type { PaddingProps, MarginProps } from '../../types/style';
 import type { ReactElement, ComponentType, ReactNode } from 'react';
 
 type Width = WidthProps['width'];
 
-type AllowedAs = HTMLTagname | ReactElement<ComponentType<typeof Box>>;
+type AllowedAs = ElementType | ReactElement<ComponentType<typeof Box>>;
 
 function FlexBase<TAs extends AllowedAs = 'div'>(
   props: {
     /**
      * レンダリングされる要素の指定、またはビジュアルをBoxに置き換え
+     * タグの名前、もしくはBoxコンポーネントを受け取る
      * Boxを指定した場合はBox > Flexの構造となる
      * @default div
      */
@@ -106,6 +106,12 @@ function FlexBase<TAs extends AllowedAs = 'div'>(
       return cloneElement(FlexCopmonent, FlexCopmonent.props, <div {...props}>{children}</div>);
     } else {
       const Element = FlexCopmonent as ElementType;
+
+      if (typeof (Element as unknown) !== 'string') {
+        // eslint-disable-next-line no-console
+        console.error('as prop only supports native elements or Box.');
+      }
+
       return <Element {...props}>{children}</Element>;
     }
   };

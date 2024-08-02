@@ -191,6 +191,7 @@ describe('<Flex>', () => {
 
   describe('Snapshot Test', () => {
     it('changes rendered elements', () => {
+      // for type debug
       const ref = createRef<HTMLLabelElement>();
 
       render(
@@ -204,6 +205,7 @@ describe('<Flex>', () => {
     });
 
     it('changes the rendered component', () => {
+      // for type debug
       render(
         <Flex maxWidth="100px" as={<Box backgroundColor="gray" />} data-testid="flex">
           <FlexItem flex={{ grow: 1 }}>test</FlexItem>

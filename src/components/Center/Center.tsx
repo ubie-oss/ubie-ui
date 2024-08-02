@@ -24,6 +24,7 @@ function CenterInner<TAs extends AllowedAs = 'div'>(
   props: {
     /**
      * レンダリングされる要素の指定、またはビジュアルをBoxに置き換え
+     * タグの名前、もしくはBoxコンポーネントを受け取る
      * Boxを指定した場合はCenter > Boxの構造となる
      * @default div
      */
@@ -72,6 +73,12 @@ function CenterInner<TAs extends AllowedAs = 'div'>(
       return <div {...props}>{cloneElement(CenterComponent, CenterComponent.props, children)}</div>;
     } else {
       const Element = CenterComponent as ElementType;
+
+      if (typeof (Element as unknown) !== 'string') {
+        // eslint-disable-next-line no-console
+        console.error('as prop only supports native elements or Box.');
+      }
+
       return <Element {...props}>{children}</Element>;
     }
   };

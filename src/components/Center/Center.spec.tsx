@@ -193,10 +193,11 @@ describe('<Center>', () => {
 
   describe('Snapshot Test', () => {
     it('changes rendered elements', () => {
-      const ref = createRef<HTMLElement>();
+      // for type debug
+      const ref = createRef<HTMLLabelElement>();
 
       render(
-        <Center ref={ref} as="section" p="md" data-testid="center">
+        <Center ref={ref} as="label" htmlFor="hoge" p="md" data-testid="center">
           Test
         </Center>,
       );
@@ -205,6 +206,7 @@ describe('<Center>', () => {
     });
 
     it('changes the rendered component', () => {
+      // for type debug
       const ref = createRef<HTMLDivElement>();
 
       render(
