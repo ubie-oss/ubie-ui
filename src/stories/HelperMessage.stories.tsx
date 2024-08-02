@@ -13,8 +13,9 @@ export const Default: Story = {
 };
 
 export const CustomDataAttribute: Story = {
-  args: {
-    'data-test-id': 'helper-message-custom-attribute',
-  },
-  render: (args) => <HelperMessage {...args}>This is a custom data attribute example</HelperMessage>,
+  render: (args) => (
+    <HelperMessage data-testid="helper-message-custom-attribute" {...args}>
+      This is a custom data attribute example
+    </HelperMessage>
+  ),
 };
