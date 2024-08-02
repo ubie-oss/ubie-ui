@@ -178,19 +178,6 @@ describe('<Center>', () => {
   });
 
   test('changes element to be rendered by as prop', async () => {
-    const ref = createRef<HTMLDivElement>();
-
-    render(
-      <Center ref={ref} data-testid="center" as="span">
-        test
-      </Center>,
-    );
-
-    expect(ref.current).not.toBeNull();
-    expect(ref.current?.tagName).toBe('SPAN');
-  });
-
-  test('changes element to be rendered by as prop2', async () => {
     const ref = createRef<HTMLFieldSetElement>();
 
     render(
