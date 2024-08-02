@@ -1,9 +1,10 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<Flex> > Snapshot Test > changes rendered elements 1`] = `
-<section
+<label
   class="_flex_fd9099"
   data-testid="flex"
+  for="some-id"
   style="--flex-direction: row; --align-items: flex-start; --justify-content: flex-start; --flex-wrap: nowrap; --gap: 0; --padding-top: 0; --padding-right: 0; --padding-bottom: 0; --padding-left: 0; --margin-top: 0; --margin-right: 0; --margin-bottom: 0; --margin-left: 0; --width: auto; --min-width: auto; --max-width: 100px;"
 >
   <div
@@ -18,7 +19,7 @@ exports[`<Flex> > Snapshot Test > changes rendered elements 1`] = `
   >
     test
   </div>
-</section>
+</label>
 `;
 
 exports[`<Flex> > Snapshot Test > changes the rendered component 1`] = `

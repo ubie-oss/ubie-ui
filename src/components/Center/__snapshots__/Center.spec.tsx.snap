@@ -1,13 +1,14 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<Center> > Snapshot Test > changes rendered elements 1`] = `
-<section
+<label
   class="_center_4c866a"
   data-testid="center"
+  for="hoge"
   style="--max-width: none; --padding-top: var(--size-spacing-md); --padding-right: var(--size-spacing-md); --padding-bottom: var(--size-spacing-md); --padding-left: var(--size-spacing-md); --margin-top: 0; --margin-right: 0; --margin-bottom: 0; --margin-left: 0; --width: auto; --min-width: auto;"
 >
   Test
-</section>
+</label>
 `;
 
 exports[`<Center> > Snapshot Test > changes the rendered component 1`] = `

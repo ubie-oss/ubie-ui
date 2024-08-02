@@ -1,18 +1,18 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<Stack> > Snapshot Test > changes rendered elements 1`] = `
-<section
+<ul
   class="_stack_ccc237"
   data-testid="center"
   style="align-items: stretch; justify-content: flex-start; --gap: 0; --padding-top: var(--size-spacing-md); --padding-right: var(--size-spacing-md); --padding-bottom: var(--size-spacing-md); --padding-left: var(--size-spacing-md); --margin-top: 0; --margin-right: 0; --margin-bottom: 0; --margin-left: 0; --width: auto; --min-width: auto; --max-width: none;"
 >
-  <div>
+  <li>
     test
-  </div>
-  <div>
+  </li>
+  <li>
     test
-  </div>
-</section>
+  </li>
+</ul>
 `;
 
 exports[`<Stack> > Snapshot Test > changes the rendered component 1`] = `
