@@ -1,0 +1,26 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Center> > Snapshot Test > changes rendered elements 1`] = `
+<section
+  class="_center_4c866a"
+  data-testid="center"
+  style="--max-width: none; --padding-top: var(--size-spacing-md); --padding-right: var(--size-spacing-md); --padding-bottom: var(--size-spacing-md); --padding-left: var(--size-spacing-md); --margin-top: 0; --margin-right: 0; --margin-bottom: 0; --margin-left: 0; --width: auto; --min-width: auto;"
+>
+  Test
+</section>
+`;
+
+exports[`<Center> > Snapshot Test > changes the rendered component 1`] = `
+<div
+  class="_center_4c866a"
+  data-testid="center"
+  style="--max-width: none; --padding-top: var(--size-spacing-md); --padding-right: var(--size-spacing-md); --padding-bottom: var(--size-spacing-md); --padding-left: var(--size-spacing-md); --margin-top: 0; --margin-right: 0; --margin-bottom: 0; --margin-left: 0; --width: auto; --min-width: auto;"
+>
+  <div
+    class="_box_77a981 _backgroundColorGray_77a981"
+    style="--padding-top: 0; --padding-right: 0; --padding-bottom: 0; --padding-left: 0; --margin-top: 0; --margin-right: 0; --margin-bottom: 0; --margin-left: 0; --radius: 0; --text-color: inherit; --width: auto; --min-width: auto; --max-width: none;"
+  >
+    Test
+  </div>
+</div>
+`;

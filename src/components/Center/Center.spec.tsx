@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
+import { describe } from 'vitest';
 import { Center } from './Center';
+import { Box } from '../Box/Box';
 
 describe('<Center>', () => {
   it('has a vertical margins of through my prop', () => {
@@ -139,5 +141,27 @@ describe('<Center>', () => {
     const div = screen.getByTestId('flex-item');
 
     expect(div).toHaveStyle('--min-width: 100px');
+  });
+
+  describe('Snapshot Test', () => {
+    it('changes rendered elements', () => {
+      render(
+        <Center as="section" p="md" data-testid="center">
+          Test
+        </Center>,
+      );
+      const center = screen.getByTestId('center');
+      expect(center).toMatchSnapshot();
+    });
+
+    it('changes the rendered component', () => {
+      render(
+        <Center p="md" as={<Box backgroundColor="gray" />} data-testid="center">
+          Test
+        </Center>,
+      );
+      const center = screen.getByTestId('center');
+      expect(center).toMatchSnapshot();
+    });
   });
 });
