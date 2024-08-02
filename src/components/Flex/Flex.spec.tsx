@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { createRef } from 'react';
 import { Flex } from './Flex';
 import { Box } from '../Box/Box';
 import { FlexItem } from '../FlexItem/FlexItem';
@@ -190,8 +191,10 @@ describe('<Flex>', () => {
 
   describe('Snapshot Test', () => {
     it('changes rendered elements', () => {
+      const ref = createRef<HTMLLabelElement>();
+
       render(
-        <Flex as="section" maxWidth="100px" data-testid="flex">
+        <Flex ref={ref} as="label" htmlFor="some-id" maxWidth="100px" data-testid="flex">
           <FlexItem flex={{ grow: 1 }}>test</FlexItem>
           <FlexItem flex={{ grow: 1 }}>test</FlexItem>
         </Flex>,
