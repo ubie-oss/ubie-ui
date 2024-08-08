@@ -181,9 +181,12 @@ describe('<Center>', () => {
     const ref = createRef<HTMLFieldSetElement>();
 
     render(
-      <Center as="fieldset" ref={ref} form="some-form">
-        test
-      </Center>,
+      <>
+        <Center as="fieldset" ref={ref} form="some-form">
+          test
+        </Center>
+        <form id="some-form"></form>
+      </>,
     );
 
     expect(ref.current).not.toBeNull();
@@ -197,9 +200,12 @@ describe('<Center>', () => {
       const ref = createRef<HTMLLabelElement>();
 
       render(
-        <Center ref={ref} as="label" htmlFor="hoge" p="md" data-testid="center">
-          Test
-        </Center>,
+        <>
+          <Center ref={ref} as="label" htmlFor="some-id" p="md" data-testid="center">
+            Test
+          </Center>
+          <input type="text" id="some-id" />
+        </>,
       );
       const center = screen.getByTestId('center');
       expect(center).toMatchSnapshot();

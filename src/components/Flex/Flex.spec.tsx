@@ -195,10 +195,13 @@ describe('<Flex>', () => {
       const ref = createRef<HTMLLabelElement>();
 
       render(
-        <Flex ref={ref} as="label" htmlFor="some-id" maxWidth="100px" data-testid="flex">
-          <FlexItem flex={{ grow: 1 }}>test</FlexItem>
-          <FlexItem flex={{ grow: 1 }}>test</FlexItem>
-        </Flex>,
+        <>
+          <Flex ref={ref} as="label" htmlFor="some-id" maxWidth="100px" data-testid="flex">
+            <FlexItem flex={{ grow: 1 }}>test</FlexItem>
+            <FlexItem flex={{ grow: 1 }}>test</FlexItem>
+          </Flex>
+          <input type="text" id="some-id" />
+        </>,
       );
       const flex = screen.getByTestId('flex');
       expect(flex).toMatchSnapshot();
