@@ -76,6 +76,9 @@ export type ButtonProps = Omit<
   BaseProps &
   OnlyButtonProps;
 
-export type LinkButtonProps = Omit<ComponentPropsWithRef<'a'>, 'children' | 'className' | keyof BaseProps> &
+export type LinkButtonProps = Omit<
+  ComponentPropsWithRef<'a'>,
+  'children' | 'className' | keyof BaseProps | keyof OnlyLinkButtonProps
+> &
   BaseProps &
   OnlyLinkButtonProps;
