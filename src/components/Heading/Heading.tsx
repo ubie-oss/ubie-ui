@@ -51,7 +51,7 @@ function HeadingBase<TAs extends ElementType>(
      */
     bold?: boolean;
     /**
-     * ｚ
+     * 折り返しを禁止
      */
     noWrap?: boolean;
   } & DistributiveOmit<ComponentPropsWithRef<ElementType extends TAs ? 'p' : TAs>, 'as' | 'className'>,
