@@ -28,7 +28,7 @@ describe('Heading', () => {
 
     render(
       <>
-        <Heading as="label" htmlFor="test" data-testid="heading" id="heading-id" ref={ref}>
+        <Heading as="label" htmlFor="test" data-testid="heading" ref={ref}>
           見出し
         </Heading>
         <input type="text" id="test" />

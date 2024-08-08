@@ -28,7 +28,7 @@ describe('Label', () => {
 
     render(
       <>
-        <Label as="p" data-testid="label" id="label-id" ref={ref}>
+        <Label as="p" data-testid="label" ref={ref}>
           見出し
         </Label>
       </>,
