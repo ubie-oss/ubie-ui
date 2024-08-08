@@ -5,7 +5,7 @@ import styles from './ErrorMessage.module.css';
 
 type Props = {
   children: ReactNode;
-} & Omit<ComponentPropsWithRef<'p'>, 'children'>;
+} & Omit<ComponentPropsWithRef<'p'>, 'children' | 'className'>;
 
 export const ErrorMessage = forwardRef<HTMLParagraphElement, Props>(({ children, ...otherProps }, ref) => (
   <p aria-live="polite" className={styles.error} ref={ref} {...otherProps}>
