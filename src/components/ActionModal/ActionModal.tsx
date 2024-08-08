@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { ComponentPropsWithRef, type FC, Fragment, type ReactNode, useCallback, useRef } from 'react';
+import { ComponentPropsWithRef, forwardRef, Fragment, type ReactNode, useCallback, useRef } from 'react';
 import styles from './ActionModal.module.css';
 import { Button } from '../../';
 import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
@@ -93,110 +93,123 @@ type SecondaryActionProps = {
 
 type Props = BaseProps & AllOrNone<SecondaryActionProps> & Omit<ComponentPropsWithRef<'div'>, 'className'>;
 
-export const ActionModal: FC<Props> = ({
-  children,
-  onClose,
-  onPrimaryAction,
-  onSecondaryAction,
-  header,
-  primaryActionLabel,
-  secondaryActionLabel,
-  primaryActionColor,
-  closeLabel = '閉じる',
-  overlayOpacity = 'normal',
-  fixedHeight = false,
-  showClose = true,
-  open = true,
-  isStatic = false,
-  ariaLabelledby,
-  hero,
-  ...props
-}) => {
-  const opacityClassName = opacityToClassName(overlayOpacity);
-
-  const initialFocusRef = useRef(null);
-
-  const dialogRef = useCallback(
-    (node: HTMLDivElement | null) => {
-      if (node !== null && header == null && ariaLabelledby != null) {
-        node.setAttribute('aria-labelledby', ariaLabelledby);
-      } else if (node !== null && header == null && ariaLabelledby == null) {
-        node.removeAttribute('aria-labelledby');
-      }
+export const ActionModal = forwardRef<HTMLDivElement, Props>(
+  (
+    {
+      children,
+      onClose,
+      onPrimaryAction,
+      onSecondaryAction,
+      header,
+      primaryActionLabel,
+      secondaryActionLabel,
+      primaryActionColor,
+      closeLabel = '閉じる',
+      overlayOpacity = 'normal',
+      fixedHeight = false,
+      showClose = true,
+      open = true,
+      isStatic = false,
+      ariaLabelledby,
+      hero,
+      ...props
     },
-    [ariaLabelledby, header],
-  );
+    ref,
+  ) => {
+    const opacityClassName = opacityToClassName(overlayOpacity);
 
-  return (
-    <Transition
-      show={open}
-      as={Fragment}
-      enter={styles.panelEnter}
-      enterFrom={styles.panelEnterFrom}
-      enterTo={styles.panelEnterTo}
-      leave={styles.panelLeave}
-      leaveFrom={styles.panelLeaveFrom}
-      leaveTo={styles.panelLeaveTo}
-    >
-      <Dialog
-        ref={dialogRef}
-        static={isStatic}
-        onClose={onClose}
-        className={styles.modal}
-        aria-labelledby={ariaLabelledby}
-        initialFocus={initialFocusRef}
-        {...props}
+    const initialFocusRef = useRef(null);
+
+    const dialogRef = useCallback(
+      (node: HTMLDivElement | null) => {
+        if (node !== null && header == null && ariaLabelledby != null) {
+          node.setAttribute('aria-labelledby', ariaLabelledby);
+        } else if (node !== null && header == null && ariaLabelledby == null) {
+          node.removeAttribute('aria-labelledby');
+        }
+
+        if (typeof ref === 'function') {
+          ref(node);
+        } else if (ref != null) {
+          ref.current = node;
+        }
+      },
+      [ariaLabelledby, header, ref],
+    );
+
+    return (
+      <Transition
+        show={open}
+        as={Fragment}
+        enter={styles.panelEnter}
+        enterFrom={styles.panelEnterFrom}
+        enterTo={styles.panelEnterTo}
+        leave={styles.panelLeave}
+        leaveFrom={styles.panelLeaveFrom}
+        leaveTo={styles.panelLeaveTo}
       >
-        <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
-        <div
-          className={clsx(styles.dialog, {
-            [styles.fixedHeight]: fixedHeight,
-          })}
+        <Dialog
+          ref={dialogRef}
+          static={isStatic}
+          onClose={onClose}
+          className={styles.modal}
+          aria-labelledby={ariaLabelledby}
+          initialFocus={initialFocusRef}
+          {...props}
         >
-          {header === undefined ? (
-            <VisuallyHidden as="p" tabIndex={-1} ref={initialFocusRef}>
-              ダイアログ
-            </VisuallyHidden>
-          ) : null}
-          {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
+          <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
           <div
-            className={clsx(styles.mainContent, {
-              [styles.headerLess]: header === undefined && hero === undefined,
+            className={clsx(styles.dialog, {
               [styles.fixedHeight]: fixedHeight,
             })}
           >
-            {header !== undefined ? (
-              <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
-                {header}
-              </Dialog.Title>
+            {header === undefined ? (
+              <VisuallyHidden as="p" tabIndex={-1} ref={initialFocusRef}>
+                ダイアログ
+              </VisuallyHidden>
             ) : null}
+            {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
             <div
-              className={clsx(styles.body, {
+              className={clsx(styles.mainContent, {
+                [styles.headerLess]: header === undefined && hero === undefined,
                 [styles.fixedHeight]: fixedHeight,
               })}
             >
-              {children}
-            </div>
-            <div className={styles.buttonContainer}>
-              {onPrimaryAction && primaryActionLabel && (
-                <Button block onClick={onPrimaryAction} variant={primaryActionColor}>
-                  {primaryActionLabel}
-                </Button>
-              )}
-              {onSecondaryAction && secondaryActionLabel && (
-                <Button block variant="secondary" onClick={onSecondaryAction}>
-                  {secondaryActionLabel}
-                </Button>
-              )}
-              {showClose && (
-                <Button variant="text" onClick={onClose}>
-                  {closeLabel}
-                </Button>
-              )}
+              {header !== undefined ? (
+                <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
+                  {header}
+                </Dialog.Title>
+              ) : null}
+              <div
+                className={clsx(styles.body, {
+                  [styles.fixedHeight]: fixedHeight,
+                })}
+              >
+                {children}
+              </div>
+              <div className={styles.buttonContainer}>
+                {onPrimaryAction && primaryActionLabel && (
+                  <Button block onClick={onPrimaryAction} variant={primaryActionColor}>
+                    {primaryActionLabel}
+                  </Button>
+                )}
+                {onSecondaryAction && secondaryActionLabel && (
+                  <Button block variant="secondary" onClick={onSecondaryAction}>
+                    {secondaryActionLabel}
+                  </Button>
+                )}
+                {showClose && (
+                  <Button variant="text" onClick={onClose}>
+                    {closeLabel}
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </Dialog>
-    </Transition>
-  );
-};
+        </Dialog>
+      </Transition>
+    );
+  },
+);
+
+ActionModal.displayName = 'ActionModal';

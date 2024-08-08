@@ -96,7 +96,7 @@ export const MessageModal = forwardRef<HTMLDivElement, Props>(
           ref.current = node;
         }
       },
-      [ariaLabelledby, header],
+      [ariaLabelledby, header, ref],
     );
 
     return (
