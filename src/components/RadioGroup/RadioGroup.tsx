@@ -3,7 +3,6 @@
 import { ComponentPropsWithRef, forwardRef, useMemo } from 'react';
 import styles from './RadioGroup.module.css';
 import { RequiredLabel } from '../../sharedComponents/RequiredLabel/RequiredLabel';
-// 追加したインポート
 import { Flex } from '../Flex/Flex';
 import { RadioButton } from '../RadioButton/RadioButton';
 import { RadioCard } from '../RadioCard/RadioCard';

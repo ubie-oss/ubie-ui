@@ -3,7 +3,6 @@
 import { clsx } from 'clsx';
 import { isValidElement, cloneElement, ComponentPropsWithRef, ElementType, ForwardedRef } from 'react';
 import styles from './Stack.module.css';
-// 追加したインポート
 import { Spacing, AlignItems, JustifyContent, WidthProps } from '../../types/style';
 import { fixedForwardRef } from '../../utils/component';
 import { paddingVariables, marginVariables, gapVariables, widthVariables } from '../../utils/style';

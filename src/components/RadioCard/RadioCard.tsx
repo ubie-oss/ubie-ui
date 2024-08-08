@@ -3,7 +3,7 @@
 import { clsx } from 'clsx';
 import { FC, forwardRef } from 'react';
 import styles from './RadioCard.module.css';
-import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
+import { CustomDataAttributeProps } from '../../types/attributes';
 
 type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name' | 'value' | 'children'> &
   CustomDataAttributeProps & {
