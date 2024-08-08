@@ -9,7 +9,7 @@ function HeadingBase<TAs extends ElementType>(
   props: {
     /**
      * レンダリングされる要素。ネイティブ要素のみを許可しています。
-     * TypeScript上ではコンポーネントを指定できてしまいますが、実行時にエラーとなります
+     * TypeScript上ではコンポーネントを指定できてしまいますが、コンソールエラーが表示されます
      * @default p
      */
     as?: TAs;
@@ -83,6 +83,11 @@ function HeadingBase<TAs extends ElementType>(
     bold && styles.bold,
     noWrap && styles.noWrap,
   );
+
+  if (typeof (HeadingComponent as unknown) !== 'string') {
+    // eslint-disable-next-line no-console
+    console.error('as prop only supports native elements.');
+  }
 
   return (
     <HeadingComponent className={className} {...otherProps} ref={ref}>

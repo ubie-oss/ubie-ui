@@ -10,7 +10,8 @@ export function LabelBase<TAs extends ElementType>(
   props: {
     children: ReactNode;
     /**
-     * レンダリングされるHTML要素
+     * レンダリングされる要素。ネイティブ要素のみを許可しています。
+     * TypeScript上ではコンポーネントを指定できてしまいますが、コンソールエラーが表示されます
      * @default label
      */
     as?: TAs;
@@ -24,6 +25,11 @@ export function LabelBase<TAs extends ElementType>(
   ref: ForwardedRef<any>,
 ) {
   const { children, as: LabelComponent = 'label', showRequiredLabel, ...otherProps } = props;
+
+  if (typeof (LabelComponent as unknown) !== 'string') {
+    // eslint-disable-next-line no-console
+    console.error('as prop only supports native elements.');
+  }
 
   return (
     <LabelComponent ref={ref} className={styles.label} {...otherProps}>
