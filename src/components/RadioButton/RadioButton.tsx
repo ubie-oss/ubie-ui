@@ -16,8 +16,8 @@ type RadioButtonProps = {
   size?: 'medium' | 'small';
 };
 
-type InputProps = Required<Pick<ComponentPropsWithRef<'input'>, 'onChange' | 'checked' | 'value'>> &
-  Omit<ComponentPropsWithRef<'input'>, keyof RadioButtonProps | 'onChange' | 'checked' | 'value'>;
+type InputProps = Required<Pick<ComponentPropsWithRef<'input'>, 'onChange' | 'checked'>> &
+  Omit<ComponentPropsWithRef<'input'>, keyof RadioButtonProps | 'onChange' | 'checked'>;
 
 type Props = RadioButtonProps & InputProps;
 
