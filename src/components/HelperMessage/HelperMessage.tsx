@@ -5,7 +5,7 @@ import styles from './HelperMessage.module.css';
 
 type Props = {
   children: ReactNode;
-} & ComponentPropsWithRef<'p'>;
+} & Omit<ComponentPropsWithRef<'p'>, 'children' | 'className'>;
 
 export const HelperMessage = forwardRef<HTMLParagraphElement, Props>(({ children, ...rest }, ref) => {
   return (
