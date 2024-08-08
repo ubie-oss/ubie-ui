@@ -1,39 +1,36 @@
 'use client';
 
+import { ComponentPropsWithRef, ElementType, ForwardedRef, ReactNode } from 'react';
 import styles from './Label.module.css';
 import { RequiredLabel } from '../../sharedComponents/RequiredLabel/RequiredLabel';
-import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
-import type { ElementType, FC, ReactNode } from 'react';
+import { fixedForwardRef } from '../../utils/component';
+import type { DistributiveOmit } from '../../utils/types';
 
-type Props = {
-  children: ReactNode;
-  /**
-   * レンダリングされるHTML要素
-   * @default label
-   */
-  as?: ElementType<{ className?: string; children: ReactNode }> | 'label' | 'p';
-  /**
-   * ラベルが紐づくフォーム要素のid属性。asにlabelを指定した場合に必用
-   */
-  htmlFor?: string;
-  /**
-   * 必須マークを表示するか
-   * 注意: trueとしてもinput要素のrequired属性は付与されません
-   */
-  showRequiredLabel?: boolean;
-} & CustomDataAttributeProps;
+export function LabelBase<TAs extends ElementType>(
+  props: {
+    children: ReactNode;
+    /**
+     * レンダリングされるHTML要素
+     * @default label
+     */
+    as?: TAs;
+    /**
+     * 必須マークを表示するか
+     * 注意: trueとしてもinput要素のrequired属性は付与されません
+     */
+    showRequiredLabel?: boolean;
+  } & DistributiveOmit<ComponentPropsWithRef<ElementType extends TAs ? 'label' : TAs>, 'as' | 'className' | 'children'>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ref: ForwardedRef<any>,
+) {
+  const { children, as: LabelComponent = 'label', showRequiredLabel, ...otherProps } = props;
 
-export const Label: FC<Props> = ({
-  children,
-  as: LabelComponent = 'label',
-  htmlFor,
-  showRequiredLabel,
-  ...otherProps
-}) => {
   return (
-    <LabelComponent htmlFor={htmlFor} className={styles.label} {...otherProps}>
+    <LabelComponent ref={ref} className={styles.label} {...otherProps}>
       {children}
       {showRequiredLabel && <RequiredLabel />}
     </LabelComponent>
   );
-};
+}
+
+export const Label = fixedForwardRef(LabelBase);
