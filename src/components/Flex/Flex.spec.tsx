@@ -1,5 +1,8 @@
 import { render, screen } from '@testing-library/react';
+import { createRef } from 'react';
 import { Flex } from './Flex';
+import { Box } from '../Box/Box';
+import { FlexItem } from '../FlexItem/FlexItem';
 
 describe('<Flex>', () => {
   it('has all the margins through m prop', () => {
@@ -184,5 +187,36 @@ describe('<Flex>', () => {
     const div = screen.getByTestId('flex-item');
 
     expect(div).toHaveStyle('--min-width: 100px');
+  });
+
+  describe('Snapshot Test', () => {
+    it('changes rendered elements', () => {
+      // for type debug
+      const ref = createRef<HTMLLabelElement>();
+
+      render(
+        <>
+          <Flex ref={ref} as="label" htmlFor="some-id" maxWidth="100px" data-testid="flex">
+            <FlexItem flex={{ grow: 1 }}>test</FlexItem>
+            <FlexItem flex={{ grow: 1 }}>test</FlexItem>
+          </Flex>
+          <input type="text" id="some-id" />
+        </>,
+      );
+      const flex = screen.getByTestId('flex');
+      expect(flex).toMatchSnapshot();
+    });
+
+    it('changes the rendered component', () => {
+      // for type debug
+      render(
+        <Flex maxWidth="100px" as={<Box backgroundColor="gray" />} data-testid="flex">
+          <FlexItem flex={{ grow: 1 }}>test</FlexItem>
+          <FlexItem flex={{ grow: 1 }}>test</FlexItem>
+        </Flex>,
+      );
+      const flex = screen.getByTestId('flex');
+      expect(flex).toMatchSnapshot();
+    });
   });
 });

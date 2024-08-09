@@ -53,9 +53,10 @@ export const WithId: Story = {
 
 export const WithCustomDataAttribute: Story = {
   render: (args) => {
-    return <Color {...args}>色</Color>;
-  },
-  args: {
-    'data-test-id': 'some-id',
+    return (
+      <Color data-testid="some-id" {...args}>
+        色
+      </Color>
+    );
   },
 };

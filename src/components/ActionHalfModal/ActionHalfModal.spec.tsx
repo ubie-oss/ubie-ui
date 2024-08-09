@@ -1,6 +1,8 @@
 import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
+import { createRef } from 'react';
+import { ActionHalfModal } from './ActionHalfModal';
 import Meta, { WithId, CustomHeader, Default } from './ActionHalfModal.stories';
 
 const WithIdStory = composeStory(WithId, Meta);
@@ -50,5 +52,20 @@ describe('ActionHalfModal', () => {
 
     expect(dialogElement).toHaveAttribute('aria-labelledby');
     expect(dialogHeadingElement).toHaveAttribute('id', dialogElement.getAttribute('aria-labelledby'));
+  });
+
+  test('receives ref', () => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const handleClose = () => {};
+    const ref = createRef<HTMLDivElement>();
+
+    render(
+      <ActionHalfModal header="header" ref={ref} open onClose={handleClose}>
+        content
+      </ActionHalfModal>,
+    );
+
+    expect(ref.current).not.toBeNull();
+    expect(ref.current?.tagName).toBe('DIV');
   });
 });

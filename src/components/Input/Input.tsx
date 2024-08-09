@@ -1,9 +1,8 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { forwardRef, InputHTMLAttributes } from 'react';
+import { type ComponentPropsWithRef, forwardRef } from 'react';
 import styles from './Input.module.css';
-import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 
 type Props = {
   /**
@@ -11,8 +10,7 @@ type Props = {
    * @default false
    */
   isInvalid?: boolean;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'invalid'> &
-  CustomDataAttributeProps;
+} & Omit<ComponentPropsWithRef<'input'>, 'invalid'>;
 
 export const Input = forwardRef<HTMLInputElement, Props>(({ isInvalid, ...props }, ref) => {
   const className = clsx({ [styles.isInvalid]: isInvalid && !props.disabled }, styles.input, props.className);

@@ -291,13 +291,6 @@ export const Bold: Story = {
   ),
 };
 
-export const CustomDataAttribute: Story = {
-  render: (args) => <Heading {...args}>Heading with Custom Data Attribute</Heading>,
-  args: {
-    [`data-test-id`]: 'heading-custom-attribute',
-  },
-};
-
 export const TextWrap: Story = {
   render: () => (
     <div style={{ width: '300px' }}>

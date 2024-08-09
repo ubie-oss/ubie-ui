@@ -4,7 +4,7 @@ import Meta, { Id as IdStory } from './Accordion.stories';
 
 const IdTest = composeStory(IdStory, Meta);
 
-describe('Accorion', () => {
+describe('Accordion', () => {
   test('Add ids', async () => {
     render(<IdTest />);
 

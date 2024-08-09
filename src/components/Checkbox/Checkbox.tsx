@@ -2,9 +2,8 @@
 
 import { CheckAIcon, MinusAIcon } from '@ubie/ubie-icons';
 import clsx from 'clsx';
-import { forwardRef } from 'react';
+import { ComponentPropsWithRef, forwardRef } from 'react';
 import styles from './Checkbox.module.css';
-import type { InputHTMLAttributes } from 'react';
 
 type Props = {
   /**
@@ -16,7 +15,7 @@ type Props = {
    * 中間状態の見た目とする。input要素のindeterminateプロパティの変更は行わないため注意。
    */
   isIndeterminate?: boolean;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+} & Omit<ComponentPropsWithRef<'input'>, 'size'>;
 
 export const Checkbox = forwardRef<HTMLInputElement, Props>(
   ({ size = 'medium', children, disabled, isIndeterminate = false, ...otherProps }, ref) => {

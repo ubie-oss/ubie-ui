@@ -70,18 +70,16 @@ export const CaseOnlyIcon: Story = {
 };
 
 export const WithCustomDataAttribute: Story = {
-  render: (args) => <Icon {...args} />,
+  render: (args) => <Icon data-testid="testid" {...args} />,
   args: {
     ...defaultArgs,
-    'data-testid': 'testid',
   },
 };
 
 export const WithId: Story = {
-  render: (args) => <Icon {...args} />,
+  render: (args) => <Icon data-testid="testid" {...args} />,
   args: {
     ...defaultArgs,
     id: 'icon-id',
-    'data-testid': 'testid',
   },
 };
