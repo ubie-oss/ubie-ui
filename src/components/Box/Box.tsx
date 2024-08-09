@@ -22,8 +22,6 @@ import type {
   TextColor,
   BodyFontSize,
   BodyLeading,
-  NoteFontSize,
-  NoteLeading,
   WidthProps,
 } from '../../types/style';
 import type { CSSProperties, FC, ReactNode } from 'react';
@@ -110,21 +108,6 @@ type PropsWithTextBody = BaseProps & {
   textLeading?: BodyLeading;
 };
 
-type PropsWithTextNote = BaseProps & {
-  /**
-   * 配下に含むテキストの種類
-   */
-  textType: Extract<TextType, 'note'>;
-  /**
-   * 配下に含むテキストのフォントサイズの抽象値。合わせてtextTypeの指定が必須で、typeに応じた値が指定可能
-   */
-  textSize?: NoteFontSize;
-  /**
-   * 配下に含むテキストの行送りの抽象値（`line-height`）。合わせてtextTypeとtextSizeの指定が必須で、typeに応じた値が指定可能
-   */
-  textLeading?: NoteLeading;
-};
-
 /**
  * If type is not specified, an empty object is returned because it is unknown how it is to be styled, i.e. it is not styled.
  * If type is specified but size or leading is not, specify default values (md or default.)
@@ -143,11 +126,6 @@ export const textStyleVariables = ({
       type: Extract<TextType, 'body'>;
       size: BodyFontSize | undefined;
       leading: BodyLeading | undefined;
-    }
-  | {
-      type: Extract<TextType, 'note'>;
-      size: NoteFontSize | undefined;
-      leading: NoteLeading | undefined;
     }): CSSProperties => {
   if (type == null) return {};
 
@@ -156,11 +134,6 @@ export const textStyleVariables = ({
 
   switch (type) {
     case 'body':
-      return {
-        '--text-size': size ? cssFontSizeToken({ type, size }) : 'inherit',
-        '--text-leading': leading ? cssLeadingToken({ type, size: size || 'md', leading }) : 'inherit',
-      } as CSSProperties;
-    case 'note':
       return {
         '--text-size': size ? cssFontSizeToken({ type, size }) : 'inherit',
         '--text-leading': leading ? cssLeadingToken({ type, size: size || 'md', leading }) : 'inherit',
@@ -175,7 +148,7 @@ export const textStyleVariables = ({
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-export const Box: FC<PropsWithoutText | PropsWithTextBody | PropsWithTextNote> = ({
+export const Box: FC<PropsWithoutText | PropsWithTextBody> = ({
   as: BoxComponent = 'div',
   children,
   p,
@@ -211,8 +184,6 @@ export const Box: FC<PropsWithoutText | PropsWithTextBody | PropsWithTextNote> =
   let _textVariables: CSSProperties = {};
 
   if (textType === 'body') {
-    _textVariables = textStyleVariables({ type: textType, size: textSize, leading: textLeading });
-  } else if (textType === 'note') {
     _textVariables = textStyleVariables({ type: textType, size: textSize, leading: textLeading });
   }
 

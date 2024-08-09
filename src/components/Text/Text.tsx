@@ -9,8 +9,6 @@ import {
   BodyLeading,
   HeadingFontSize,
   HeadingLeading,
-  NoteFontSize,
-  NoteLeading,
   ButtonFontSize,
   ButtonLeading,
   TagFontSize,
@@ -88,22 +86,6 @@ type HeadingProps = BaseProps & {
   leading?: HeadingLeading;
 };
 
-type NoteProps = BaseProps & {
-  /**
-   * テキストの種類
-   */
-  type: 'note';
-  /**
-   * フォントサイズの抽象値
-   */
-  size?: NoteFontSize;
-  /**
-   * 行送りの抽象値（`line-height`）
-   * @default default
-   */
-  leading?: NoteLeading;
-};
-
 type ButtonProps = BaseProps & {
   /**
    * テキストの種類
@@ -136,7 +118,7 @@ type TagProps = BaseProps & {
   leading?: TagLeading;
 };
 
-type TextProps = BodyProps | HeadingProps | NoteProps | ButtonProps | TagProps;
+type TextProps = BodyProps | HeadingProps | ButtonProps | TagProps;
 
 function TextInner<T extends ElementType>(
   props: {

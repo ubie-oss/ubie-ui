@@ -9,7 +9,7 @@
   width: 100%;
   min-height: 54px;
   padding: 0 64px 0 16px;
-  font-size: 16px;
+  font-size: var(--text-body-md-size);
   font-weight: bold;
   line-height: 54px;
   color: var(--color-text-main);
