@@ -6,11 +6,10 @@ import type {
   TextType,
   BodyFontSize,
   BodyLeading,
-  NoteFontSize,
-  NoteLeading,
   ButtonFontSize,
   ButtonLeading,
   HeadingLeading,
+  TagFontSize,
   TagLeading,
   TextColor,
   CSSMinWidth,
@@ -46,10 +45,6 @@ export const cssFontSizeToken = ({
       size: BodyFontSize;
     }
   | {
-      type: Extract<TextType, 'note'>;
-      size: NoteFontSize;
-    }
-  | {
       type: Extract<TextType, 'heading'>;
       size: HeadingFontSize;
     }
@@ -59,12 +54,10 @@ export const cssFontSizeToken = ({
     }
   | {
       type: Extract<TextType, 'tag'>;
-      size: NoteFontSize;
+      size: TagFontSize;
     }) => {
   switch (type) {
     case 'body':
-      return `var(--${DesignTokens.text[`${type}-${size}-size`].path.join('-')})`;
-    case 'note':
       return `var(--${DesignTokens.text[`${type}-${size}-size`].path.join('-')})`;
     case 'heading':
       return `var(--${DesignTokens.text[`${type}-${size}-size`].path.join('-')})`;
@@ -91,11 +84,6 @@ export const cssLeadingToken = ({
       leading: BodyLeading;
     }
   | {
-      type: Extract<TextType, 'note'>;
-      size: NoteFontSize;
-      leading: NoteLeading;
-    }
-  | {
       type: Extract<TextType, 'heading'>;
       size: HeadingFontSize;
       leading: HeadingLeading;
@@ -107,7 +95,7 @@ export const cssLeadingToken = ({
     }
   | {
       type: Extract<TextType, 'tag'>;
-      size: NoteFontSize;
+      size: TagFontSize;
       leading: TagLeading;
     }) => {
   switch (type) {
@@ -117,10 +105,6 @@ export const cssLeadingToken = ({
         : `var(--${DesignTokens.text[`${type}-${size}-${leading}-line`].path.join('-')})`;
     case 'heading':
       return `var(--${DesignTokens.text[`${type}-${size}-line`].path.join('-')})`;
-    case 'note':
-      return leading === 'default'
-        ? `var(--${DesignTokens.text[`${type}-${size}-line`].path.join('-')})`
-        : `var(--${DesignTokens.text[`${type}-${size}-${leading}-line`].path.join('-')})`;
     case 'button':
       return `var(--${DesignTokens.text[`${type}-${size}-line`].path.join('-')})`;
     case 'tag':

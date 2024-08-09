@@ -86,6 +86,11 @@ export const Body: Story = {
           <dt>Default Leading</dt>
           <dd>
             <Flex spacing="md" alignItems="center">
+              <Text type="body" size="xs">
+                xs
+                <br />
+                {`${bodyText}`}
+              </Text>
               <Text type="body" size="sm">
                 sm
                 <br />
@@ -109,6 +114,11 @@ export const Body: Story = {
           <dt>Narrow Leading</dt>
           <dd>
             <Flex spacing="md" alignItems="center">
+              <Text leading="narrow" type="body" size="xs">
+                xs
+                <br />
+                {`${bodyText}`}
+              </Text>
               <Text leading="narrow" type="body" size="sm">
                 sm
                 <br />
@@ -123,109 +133,6 @@ export const Body: Story = {
                 lg
                 <br />
                 {`${bodyText}`}
-              </Text>
-            </Flex>
-          </dd>
-        </div>
-
-        <div>
-          <dt>Tight Leading</dt>
-          <dd>
-            <Flex spacing="md" alignItems="center">
-              <Text leading="tight" type="body" size="sm">
-                sm
-                <br />
-                {`${bodyText}`}
-              </Text>
-              <Text leading="tight" type="body" size="md">
-                md
-                <br />
-                {`${bodyText}`}
-              </Text>
-              <Text leading="tight" type="body" size="lg">
-                lg
-                <br />
-                {`${bodyText}`}
-              </Text>
-            </Flex>
-          </dd>
-        </div>
-      </Stack>
-    );
-  },
-  args: defaultArgs,
-};
-
-export const Note: Story = {
-  render: () => {
-    const noteText =
-      '症状検索エンジン「ユビー」は「適切なタイミングでの適切な医療との出会い」の橋渡しによって、みなさんの健康・安全をサポートし、医療についての不安・悩み・苦痛を和らげます。';
-
-    return (
-      <Stack as="dl" spacing="md">
-        <div>
-          <dt>Default Leading</dt>
-          <dd>
-            <Flex spacing="md" alignItems="center">
-              <Text type="note" size="sm">
-                sm
-                <br />
-                {`${noteText}`}
-              </Text>
-              <Text type="note" size="md">
-                md
-                <br />
-                {`${noteText}`}
-              </Text>
-              <Text type="note" size="lg">
-                lg
-                <br />
-                {`${noteText}`}
-              </Text>
-            </Flex>
-          </dd>
-        </div>
-
-        <div>
-          <dt>Narrow Leading</dt>
-          <dd>
-            <Flex spacing="md" alignItems="center">
-              <Text leading="narrow" type="note" size="sm">
-                sm
-                <br />
-                {`${noteText}`}
-              </Text>
-              <Text leading="narrow" type="note" size="md">
-                md
-                <br />
-                {`${noteText}`}
-              </Text>
-              <Text leading="narrow" type="note" size="lg">
-                lg
-                <br />
-                {`${noteText}`}
-              </Text>
-            </Flex>
-          </dd>
-        </div>
-        <div>
-          <dt>Tight Leading</dt>
-          <dd>
-            <Flex spacing="md" alignItems="center">
-              <Text leading="tight" type="note" size="sm">
-                sm
-                <br />
-                {`${noteText}`}
-              </Text>
-              <Text leading="tight" type="note" size="md">
-                md
-                <br />
-                {`${noteText}`}
-              </Text>
-              <Text leading="tight" type="note" size="lg">
-                lg
-                <br />
-                {`${noteText}`}
               </Text>
             </Flex>
           </dd>
@@ -269,11 +176,6 @@ export const Tag: Story = {
 
     return (
       <Flex spacing="md" alignItems="center">
-        <Text type="tag" size="sm">
-          sm
-          <br />
-          {`${tagText}`}
-        </Text>
         <Text type="tag" size="md">
           md
           <br />
@@ -300,8 +202,8 @@ export const WithId: Story = {
 
 export const TextInText: Story = {
   render: () => (
-    <Text type="note" size="lg">
-      <Text as="span" type="note" size="lg" color="alert" bold>
+    <Text type="body" size="lg">
+      <Text as="span" type="body" size="lg" color="alert" bold>
         Alert:
       </Text>{' '}
       Please fill in all fields

@@ -14,10 +14,10 @@
   box-sizing: border-box;
   display: inline-block;
   padding: 16px 12px 16px 44px;
-  font-size: 16px;
+  font-size: var(--text-body-md-size);
   font-weight: bold;
   hyphens: auto;
-  line-height: 23px;
+  line-height: var(--text-body-md-narrow-line);
   color: var(--color-text-main);
   overflow-wrap: anywhere;
   vertical-align: text-top;

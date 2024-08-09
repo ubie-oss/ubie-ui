@@ -60,13 +60,13 @@
 .medium {
   --icon-size: 2rem;
   --title-font-size: var(--text-heading-xs-line);
-  --description-font-size: var(--text-note-lg-size);
-  --description-line-height: var(--text-note-lg-line);
+  --description-font-size: var(--text-body-sm-size);
+  --description-line-height: var(--text-body-sm-line);
 }
 
 .small {
   --icon-size: 1.25rem;
   --title-font-size: var(--text-button-md-size);
-  --description-font-size: var(--text-note-md-size);
-  --description-line-height: var(--text-note-md-line);
+  --description-font-size: var(--text-body-xs-size);
+  --description-line-height: var(--text-body-xs-line);
 }
