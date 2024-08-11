@@ -141,10 +141,6 @@ export const Border: Story = {
       <Box {...args} backgroundColor="white" border="gray">
         Border Gray
       </Box>
-
-      <Box {...args} backgroundColor="white" border="gray">
-        Border Gray
-      </Box>
       <Box mt="md" {...args} backgroundColor="white" border="grayThick">
         Border Gray Thick
       </Box>
