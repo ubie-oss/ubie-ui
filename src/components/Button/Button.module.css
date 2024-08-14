@@ -253,7 +253,7 @@
 
 .fixedIcon > * {
   width: var(--icon-size);
-  height: var(--sicon-size);
+  height: var(--icon-size);
 }
 
 .suffixIcon {
@@ -264,5 +264,5 @@
 
 .suffixIcon > * {
   width: var(--icon-size);
-  height: var(--sicon-size);
+  height: var(--icon-size);
 }

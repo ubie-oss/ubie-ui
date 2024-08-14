@@ -1,8 +1,8 @@
 .message {
   margin: 0;
-  font-size: var(--text-note-lg-size);
+  font-size: var(--text-body-sm-size);
   hyphens: auto;
-  line-height: var(--text-note-lg-tight-line);
+  line-height: var(--text-body-sm-line);
   color: var(--color-text-sub);
   overflow-wrap: anywhere;
 }

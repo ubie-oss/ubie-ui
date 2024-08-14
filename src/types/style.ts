@@ -1,28 +1,24 @@
 export type FontSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-export type TextType = 'body' | 'heading' | 'note' | 'button' | 'tag';
+export type TextType = 'body' | 'heading' | 'button' | 'tag';
 
-export type Leading = 'default' | 'narrow' | 'tight';
+export type Leading = 'default' | 'narrow';
 
 export type TextColor = 'main' | 'sub' | 'link' | 'linkSub' | 'disabled' | 'primary' | 'accent' | 'alert' | 'white';
 
-export type BodyFontSize = Extract<FontSize, 'sm' | 'md' | 'lg'>;
+export type BodyFontSize = Extract<FontSize, 'xs' | 'sm' | 'md' | 'lg'>;
 
-export type BodyLeading = Extract<Leading, 'default' | 'narrow' | 'tight'>;
+export type BodyLeading = Extract<Leading, 'default' | 'narrow'>;
 
 export type HeadingFontSize = Extract<FontSize, 'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
 
 export type HeadingLeading = Extract<Leading, 'default'>;
 
-export type NoteFontSize = Extract<FontSize, 'sm' | 'md' | 'lg'>;
-
-export type NoteLeading = Extract<Leading, 'default' | 'narrow' | 'tight'>;
-
 export type ButtonFontSize = Extract<FontSize, 'sm' | 'md' | 'lg'>;
 
 export type ButtonLeading = Extract<Leading, 'default'>;
 
-export type TagFontSize = Extract<FontSize, 'sm' | 'md' | 'lg'>;
+export type TagFontSize = Extract<FontSize, 'md' | 'lg'>;
 
 export type TagLeading = Extract<Leading, 'default'>;
 

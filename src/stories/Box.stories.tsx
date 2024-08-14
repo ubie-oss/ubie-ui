@@ -141,10 +141,6 @@ export const Border: Story = {
       <Box {...args} backgroundColor="white" border="gray">
         Border Gray
       </Box>
-
-      <Box {...args} backgroundColor="white" border="gray">
-        Border Gray
-      </Box>
       <Box mt="md" {...args} backgroundColor="white" border="grayThick">
         Border Gray Thick
       </Box>
@@ -218,9 +214,9 @@ export const TextVariations: Story = {
           {...args}
           mt="md"
           backgroundColor="gray"
-          textType="note"
-          textSize="lg"
-          textLeading="tight"
+          textType="body"
+          textSize="sm"
+          textLeading="narrow"
           textBold={false}
         >
           <p>nested. reset styles</p>
@@ -255,14 +251,18 @@ export const TextVariations: Story = {
         <p>Body size & leading default value</p>
       </Box>
 
+      <Box {...args} mt="xl" textType="body" textSize="xs" textLeading="default">
+        <p>Body Extra Small Default</p>
+      </Box>
+      <Box {...args} mt="md" textType="body" textSize="xs" textLeading="narrow">
+        <p>Body Extra Small Narrow</p>
+      </Box>
+
       <Box {...args} mt="xl" textType="body" textSize="sm" textLeading="default">
         <p>Body Small Default</p>
       </Box>
       <Box {...args} mt="md" textType="body" textSize="sm" textLeading="narrow">
         <p>Body Small Narrow</p>
-      </Box>
-      <Box {...args} mt="md" textType="body" textSize="sm" textLeading="tight">
-        <p>Body Small Tight</p>
       </Box>
 
       <Box {...args} mt="xl" textType="body" textSize="md" textLeading="default">
@@ -271,52 +271,12 @@ export const TextVariations: Story = {
       <Box {...args} mt="md" textType="body" textSize="md" textLeading="narrow">
         <p>Body Medium Narrow</p>
       </Box>
-      <Box {...args} mt="md" textType="body" textSize="md" textLeading="tight">
-        <p>Body Medium Tight</p>
-      </Box>
 
       <Box {...args} mt="xl" textType="body" textSize="lg" textLeading="default">
         <p>Body Large Default</p>
       </Box>
       <Box {...args} mt="md" textType="body" textSize="lg" textLeading="narrow">
         <p>Body Large Narrow</p>
-      </Box>
-      <Box {...args} mt="md" textType="body" textSize="lg" textLeading="tight">
-        <p>Body Large Tight</p>
-      </Box>
-
-      <Box {...args} mt="xl" textType="note">
-        <p>Note size & leading default value</p>
-      </Box>
-
-      <Box {...args} mt="xl" textType="note" textSize="sm" textLeading="default">
-        <p>Note Small Default</p>
-      </Box>
-      <Box {...args} mt="md" textType="note" textSize="sm" textLeading="narrow">
-        <p>Note Small Narrow</p>
-      </Box>
-      <Box {...args} mt="md" textType="note" textSize="sm" textLeading="tight">
-        <p>Note Small Tight</p>
-      </Box>
-
-      <Box {...args} mt="xl" textType="note" textSize="md" textLeading="default">
-        <p>Note Medium Default</p>
-      </Box>
-      <Box {...args} mt="md" textType="note" textSize="md" textLeading="narrow">
-        <p>Note Medium Narrow</p>
-      </Box>
-      <Box {...args} mt="md" textType="note" textSize="md" textLeading="tight">
-        <p>Note Medium Tight</p>
-      </Box>
-
-      <Box {...args} mt="xl" textType="note" textSize="lg" textLeading="default">
-        <p>Note Large Default</p>
-      </Box>
-      <Box {...args} mt="md" textType="note" textSize="lg" textLeading="narrow">
-        <p>Note Large Narrow</p>
-      </Box>
-      <Box {...args} mt="md" textType="note" textSize="lg" textLeading="tight">
-        <p>Note Large Tight</p>
       </Box>
 
       <Box {...defaultArgs} mt="xl" textAlign="left">

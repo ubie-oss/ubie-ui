@@ -55,6 +55,10 @@ button.text.link:focus-visible {
 }
 
 /* font-size */
+.body.xs {
+  --font-size: var(--text-body-xs-size);
+}
+
 .body.sm {
   --font-size: var(--text-body-sm-size);
 }
@@ -87,18 +91,6 @@ button.text.link:focus-visible {
   --font-size: var(--text-heading-xl-size);
 }
 
-.note.sm {
-  --font-size: var(--text-note-sm-size);
-}
-
-.note.md {
-  --font-size: var(--text-note-md-size);
-}
-
-.note.lg {
-  --font-size: var(--text-note-lg-size);
-}
-
 .button.sm {
   --font-size: var(--text-button-sm-size);
 }
@@ -109,10 +101,6 @@ button.text.link:focus-visible {
 
 .button.lg {
   --font-size: var(--text-button-lg-size);
-}
-
-.tag.sm {
-  --font-size: var(--text-tag-sm-size);
 }
 
 .tag.md {
@@ -149,10 +137,6 @@ button.text.link:focus-visible {
 
 .narrow {
   --leading: var(--text-body-md-narrow-line);
-}
-
-.tight {
-  --leading: var(--text-body-md-tight-line);
 }
 
 /* color */
