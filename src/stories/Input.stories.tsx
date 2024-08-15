@@ -133,8 +133,5 @@ export const Placeholder: Story = {
 };
 
 export const CustomDataAttribute: Story = {
-  args: {
-    'data-test-id': 'input-custom-attribute',
-  },
-  render: (args) => <Input {...args} />,
+  render: (args) => <Input {...args} data-testid="input-custom-attribute" />,
 };

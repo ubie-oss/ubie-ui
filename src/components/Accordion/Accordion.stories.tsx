@@ -28,10 +28,9 @@ export const Small: Story = {
 };
 
 export const CustomDataAttribute: Story = {
-  render: (args) => <Accordion {...args}></Accordion>,
+  render: (args) => <Accordion data-test-id="some-id" {...args}></Accordion>,
   args: {
     ...defaultArgs,
-    ['data-test-id']: 'some-id',
   },
 };
 

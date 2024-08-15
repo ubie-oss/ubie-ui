@@ -1,12 +1,12 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { forwardRef, type HTMLAttributes } from 'react';
+import { forwardRef, type ComponentPropsWithRef } from 'react';
 import styles from './Divider.module.css';
 import { MarginProps, WidthProps } from '../../types/style';
 import { marginVariables, widthVariables } from '../../utils/style';
 
-type AllowedHRAttributes = Omit<HTMLAttributes<HTMLHRElement>, 'className'>;
+type AllowedHRAttributes = Omit<ComponentPropsWithRef<'hr'>, 'className'>;
 
 type Props = {
   /**

@@ -81,17 +81,14 @@ export const CustomDataAttribute: StoryObj<typeof Select> = {
     const options = ['option1', 'option2', 'option3'];
 
     return (
-      <Select {...args} value={options[0]}>
+      <Select {...args} value={options[0]} data-testid="select-custom-data-attribute">
         {options.map((o) => (
-          <option key={o} data-test-id={args['data-test-id']}>
-            {o}
-          </option>
+          <option key={o}>{o}</option>
         ))}
       </Select>
     );
   },
   args: {
     ...defaultArgs,
-    'data-test-id': 'select-custom-data-attribute',
   },
 };

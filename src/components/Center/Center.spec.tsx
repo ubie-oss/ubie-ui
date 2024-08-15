@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
+import { createRef } from 'react';
 import { Center } from './Center';
+import { Box } from '../Box/Box';
 
 describe('<Center>', () => {
   it('has a vertical margins of through my prop', () => {
@@ -139,5 +141,87 @@ describe('<Center>', () => {
     const div = screen.getByTestId('flex-item');
 
     expect(div).toHaveStyle('--min-width: 100px');
+  });
+
+  test('receives data attribute', async () => {
+    render(<Center data-testid="center">test</Center>);
+
+    const center = await screen.findByTestId('center');
+
+    expect(center).toBeInTheDocument();
+  });
+
+  test('receives ref', async () => {
+    const ref = createRef<HTMLDivElement>();
+
+    render(
+      <Center ref={ref} data-testid="center">
+        test
+      </Center>,
+    );
+
+    expect(ref.current).not.toBeNull();
+    expect(ref.current?.tagName).toBe('DIV');
+  });
+
+  test('receives ref', async () => {
+    const ref = createRef<HTMLDivElement>();
+
+    render(
+      <Center ref={ref} data-testid="center">
+        test
+      </Center>,
+    );
+
+    expect(ref.current).not.toBeNull();
+    expect(ref.current?.tagName).toBe('DIV');
+  });
+
+  test('changes element to be rendered by as prop', async () => {
+    const ref = createRef<HTMLFieldSetElement>();
+
+    render(
+      <>
+        <Center as="fieldset" ref={ref} form="some-form">
+          test
+        </Center>
+        <form id="some-form"></form>
+      </>,
+    );
+
+    expect(ref.current).not.toBeNull();
+    expect(ref.current?.tagName).toBe('FIELDSET');
+    expect(ref.current?.getAttribute('form')).toBe('some-form');
+  });
+
+  describe('Snapshot Test', () => {
+    it('changes rendered elements', () => {
+      // for type debug
+      const ref = createRef<HTMLLabelElement>();
+
+      render(
+        <>
+          <Center ref={ref} as="label" htmlFor="some-id" p="md" data-testid="center">
+            Test
+          </Center>
+          <input type="text" id="some-id" />
+        </>,
+      );
+      const center = screen.getByTestId('center');
+      expect(center).toMatchSnapshot();
+    });
+
+    it('changes the rendered component', () => {
+      // for type debug
+      const ref = createRef<HTMLDivElement>();
+
+      render(
+        <Center ref={ref} p="md" as={<Box backgroundColor="gray" />} data-testid="center">
+          Test
+        </Center>,
+      );
+      const center = screen.getByTestId('center');
+      expect(center).toMatchSnapshot();
+    });
   });
 });

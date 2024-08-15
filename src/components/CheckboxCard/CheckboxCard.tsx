@@ -1,17 +1,17 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { forwardRef, type InputHTMLAttributes } from 'react';
+import { type ComponentPropsWithRef, forwardRef } from 'react';
 import styles from './CheckboxCard.module.css';
 import { Icon } from '../Icon/Icon';
 
-type Props = InputHTMLAttributes<HTMLInputElement> & {
+type Props = {
   /**
    * 横幅を100%占有するかどうか
    * @default false
    */
   block?: boolean;
-};
+} & ComponentPropsWithRef<'input'>;
 
 /**
  * カード状のチェックボックス

@@ -17,4 +17,10 @@ describe('Toggle', () => {
     const element = getByTestId('switch');
     expect(element.getAttribute('role')).toBe('switch');
   });
+
+  it('receives id', async () => {
+    const ref = createRef<HTMLInputElement>();
+    render(<Toggle ref={ref} name="test" value="test" id="toggle" />);
+    expect(ref.current?.getAttribute('id')).toBe('toggle');
+  });
 });

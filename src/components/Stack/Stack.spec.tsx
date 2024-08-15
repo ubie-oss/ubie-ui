@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
+import { createRef } from 'react';
 import { Stack } from './Stack';
+import { Box } from '../Box/Box';
 
 describe('<Stack>', () => {
   it('has all the margins through m prop', () => {
@@ -173,5 +175,59 @@ describe('<Stack>', () => {
     const div = screen.getByTestId('flex-item');
 
     expect(div).toHaveStyle('--min-width: 100px');
+  });
+
+  it('receives ref', () => {
+    const ref = createRef<HTMLDivElement>();
+
+    render(
+      <Stack ref={ref}>
+        <div>test</div>
+      </Stack>,
+    );
+
+    expect(ref.current).not.toBeNull();
+    expect(ref.current?.tagName).toBe('DIV');
+  });
+
+  it('receives id', async () => {
+    render(
+      <Stack data-testid="stack" id="stack-id">
+        <div>test</div>
+      </Stack>,
+    );
+
+    const stack = await screen.getByTestId('stack');
+    expect(stack.getAttribute('id')).toBe('stack-id');
+  });
+
+  describe('Snapshot Test', () => {
+    it('changes rendered elements', () => {
+      // for type debug
+      const ref = createRef<HTMLUListElement>();
+
+      render(
+        <Stack ref={ref} as="ul" p="md" data-testid="center">
+          <li>test</li>
+          <li>test</li>
+        </Stack>,
+      );
+      const center = screen.getByTestId('center');
+      expect(center).toMatchSnapshot();
+    });
+
+    it('changes the rendered component', () => {
+      // for type debug
+      const ref = createRef<HTMLDivElement>();
+
+      render(
+        <Stack ref={ref} p="md" as={<Box backgroundColor="gray" />} data-testid="center">
+          <div>test</div>
+          <div>test</div>
+        </Stack>,
+      );
+      const center = screen.getByTestId('center');
+      expect(center).toMatchSnapshot();
+    });
   });
 });

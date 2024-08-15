@@ -40,8 +40,11 @@ export const Placeholder: Story = {
 };
 
 export const CustomDataAttribute: Story = {
-  args: {
-    'data-test-id': 'textarea-custom-attribute',
-  },
-  render: (args) => <TextArea {...args} value="This is a text area with a custom data attribute." />,
+  render: (args) => (
+    <TextArea
+      data-testid="textarea-custom-attribute"
+      {...args}
+      value="This is a text area with a custom data attribute."
+    />
+  ),
 };

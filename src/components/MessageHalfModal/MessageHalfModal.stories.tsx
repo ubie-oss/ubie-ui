@@ -109,13 +109,12 @@ export const WithCustomDataAttribute: Story = {
         <button type="button" onClick={() => setOpen(true)}>
           Open Modal
         </button>
-        <MessageHalfModal {...args} open={open} onClose={onClose} />
+        <MessageHalfModal data-test-id="message-half-modal-custom" {...args} open={open} onClose={onClose} />
       </>
     );
   },
   args: {
     ...defaultArgs,
-    'data-test-id': 'message-half-modal-custom',
   },
 };
 

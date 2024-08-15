@@ -3,9 +3,8 @@
 import clsx from 'clsx';
 import { InputHTMLAttributes, forwardRef, useRef, useState } from 'react';
 import styles from './Toggle.module.css';
-import { CustomDataAttributeProps } from '../../types/attributes';
 
-type Props = {
+type InputProps = {
   /**
    * 現在の状態が選択中かどうか
    */
@@ -24,8 +23,9 @@ type Props = {
    * @default false
    */
   disabled?: boolean;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'children' | 'onChange'> &
-  CustomDataAttributeProps;
+};
+
+type Props = InputProps & Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputProps | 'children' | 'className'>;
 
 export const Toggle = forwardRef<HTMLInputElement, Props>(
   ({ checked: checkedProps, defaultChecked, onChange, ...otherProps }, ref) => {

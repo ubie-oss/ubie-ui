@@ -19,6 +19,6 @@ describe('Color', () => {
 
     const colorElement = screen.queryByText('色');
 
-    expect(colorElement).toHaveAttribute('data-test-id', 'some-id');
+    expect(colorElement).toHaveAttribute('data-testid', 'some-id');
   });
 });

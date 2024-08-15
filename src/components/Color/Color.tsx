@@ -1,6 +1,5 @@
-import { type FC, PropsWithChildren } from 'react';
+import { ComponentPropsWithRef, forwardRef } from 'react';
 import styles from './Color.module.css';
-import { CustomDataAttributeProps } from '../../types/attributes';
 import { TextColor } from '../../types/style';
 import { colorVariable } from '../../utils/style';
 
@@ -10,14 +9,12 @@ type Props = {
    * @default main
    */
   color?: TextColor;
-  /**
-   * ネイティブ要素の`id`属性。ページで固有のIDを指定
-   */
-  id?: string;
-} & CustomDataAttributeProps;
+} & Omit<ComponentPropsWithRef<'span'>, 'className'>;
 
-export const Color: FC<PropsWithChildren<Props>> = ({ color = 'main', children, id, ...otherProps }) => (
-  <span id={id} className={styles.color} style={{ ...colorVariable(color) }} {...otherProps}>
+export const Color = forwardRef<HTMLSpanElement, Props>(({ color = 'main', children, ...otherProps }, ref) => (
+  <span className={styles.color} style={{ ...colorVariable(color) }} {...otherProps} ref={ref}>
     {children}
   </span>
-);
+));
+
+Color.displayName = 'Color';

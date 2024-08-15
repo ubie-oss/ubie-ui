@@ -2,9 +2,9 @@
 
 import { ArrowBDownIcon } from '@ubie/ubie-icons';
 import clsx from 'clsx';
+import { ComponentPropsWithRef, forwardRef } from 'react';
 import styles from './Accordion.module.css';
-import { CustomDataAttributeProps } from '../../types/attributes';
-import type { FC, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export type Size = 'small' | 'medium';
 
@@ -23,10 +23,6 @@ type Props = {
    */
   size?: Size;
   /**
-   * ラッパーであるdetails要素に付与するネイティブ要素の`id`属性。ページで固有のIDを指定
-   */
-  id?: string;
-  /**
    * 開閉をトリガーするsummary要素に付与するネイティブ要素の`id`属性。ページで固有のIDを指定
    */
   buttonId?: string;
@@ -34,16 +30,20 @@ type Props = {
    * 初期状態で開く
    */
   initialOpen?: boolean;
-} & CustomDataAttributeProps;
+} & Omit<ComponentPropsWithRef<'details'>, 'className'>;
 
-export const Accordion: FC<Props> = ({ header, children, size = 'medium', id, buttonId, initialOpen, ...props }) => {
-  return (
-    <details className={clsx(styles.container, styles[size])} id={id} {...props} open={initialOpen}>
-      <summary id={buttonId} className={styles.button}>
-        <span>{header}</span>
-        <ArrowBDownIcon aria-hidden className={styles.arrow} />
-      </summary>
-      <div className={styles.panel}>{children}</div>
-    </details>
-  );
-};
+export const Accordion = forwardRef<HTMLDetailsElement, Props>(
+  ({ header, children, size = 'medium', id, buttonId, initialOpen, ...props }, ref) => {
+    return (
+      <details className={clsx(styles.container, styles[size])} id={id} {...props} open={initialOpen} ref={ref}>
+        <summary id={buttonId} className={styles.button}>
+          <span>{header}</span>
+          <ArrowBDownIcon aria-hidden className={styles.arrow} />
+        </summary>
+        <div className={styles.panel}>{children}</div>
+      </details>
+    );
+  },
+);
+
+Accordion.displayName = 'Accordion';
