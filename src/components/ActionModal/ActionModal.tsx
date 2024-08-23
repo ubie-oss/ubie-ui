@@ -167,7 +167,7 @@ export const ActionModal: FC<Props> = ({
             })}
           >
             {header !== undefined ? (
-              <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
+              <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={clsx(styles.header, !hero && styles.sticky)}>
                 {header}
               </Dialog.Title>
             ) : null}

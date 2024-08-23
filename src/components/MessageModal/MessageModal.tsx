@@ -118,14 +118,15 @@ export const MessageModal: FC<Props> = ({
               ダイアログ
             </VisuallyHidden>
           ) : null}
-          {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
           <div
             className={clsx(styles.mainContent, {
+              [styles.headerLess]: header === undefined && hero === undefined,
               [styles.fixedHeight]: fixedHeight,
             })}
           >
+            {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
             {header !== undefined ? (
-              <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
+              <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={clsx(styles.header, !hero && styles.stikcy)}>
                 {header}
               </Dialog.Title>
             ) : null}
@@ -136,9 +137,11 @@ export const MessageModal: FC<Props> = ({
             >
               {children}
             </div>
-            <Button block onClick={onClose} aria-label={closeLabel}>
-              {closeLabel}
-            </Button>
+            <footer className={styles.footer}>
+              <Button block onClick={onClose} aria-label={closeLabel}>
+                {closeLabel}
+              </Button>
+            </footer>
           </div>
         </div>
       </Dialog>

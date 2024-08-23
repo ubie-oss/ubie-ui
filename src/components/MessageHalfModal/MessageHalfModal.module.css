@@ -32,15 +32,12 @@
   max-width: 600px;
   max-height: calc(100% - 24px);
   margin: 0 auto;
+  overflow-y: scroll;
   background: #fff;
   border-radius: 12px;
   border-end-start-radius: 0;
   border-end-end-radius: 0;
   transform: translate3d(-50%, 0, 0);
-}
-
-.dialog.bodyScroll {
-  overflow-y: auto;
 }
 
 .dialog.fullscreen {
@@ -50,8 +47,6 @@
 .mainContent {
   display: flex;
   flex-direction: column;
-  gap: var(--size-spacing-lg);
-  padding: var(--size-spacing-lg) var(--size-spacing-md);
 }
 
 .mainContent.fullscreen {
@@ -63,14 +58,26 @@
 }
 
 .header {
+  padding: var(--size-spacing-lg) var(--size-spacing-md);
   font-size: var(--text-heading-xs-size);
   font-weight: bold;
   line-height: var(--text-heading-xs-line);
   text-align: center;
   white-space: pre-wrap;
+  background-color: var(--color-ubie-white);
 
   /* May receive focus in the initial display. */
   outline: none;
+}
+
+.header.sticky {
+  position: sticky;
+  top: 0;
+}
+
+.body {
+  padding-right: var(--size-spacing-md);
+  padding-left: var(--size-spacing-md);
 }
 
 .body.fullscreen {
@@ -79,9 +86,14 @@
   overflow: hidden;
 }
 
+
 .buttonContainer {
+  position: sticky;
+  bottom: 0;
   display: grid;
   gap: var(--size-spacing-md);
+  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
+  background-color: var(--color-ubie-white);
 }
 
 .overlayEnter {

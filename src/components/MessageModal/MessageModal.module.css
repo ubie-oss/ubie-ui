@@ -29,7 +29,7 @@
   max-width: 600px;
   max-height: calc(100% - 48px);
   margin: 0 auto;
-  overflow-y: auto;
+  overflow: hidden;
   background: #fff;
   border-radius: var(--radius-lg);
 }
@@ -41,15 +41,20 @@
 .mainContent {
   display: flex;
   flex-direction: column;
-  gap: var(--size-spacing-lg);
-  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
+  overflow-y: auto;
 }
 
 .mainContent.fixedHeight {
   flex-grow: 1;
 }
 
+.mainContent.headerLess {
+  padding-top: var(--size-spacing-xl);
+}
+
 .body {
+  padding-right: var(--size-spacing-md);
+  padding-left: var(--size-spacing-md);
   text-align: center;
 }
 
@@ -59,15 +64,27 @@
   overflow: hidden;
 }
 
+.hero {
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
 .header {
+  padding: var(--size-spacing-lg) var(--size-spacing-md);
   font-size: var(--text-heading-xs-size);
   font-weight: bold;
   line-height: var(--text-heading-xs-line);
   text-align: center;
   white-space: pre-wrap;
+  background: var(--color-ubie-white);
 
   /* May receive focus in the initial display. */
   outline: none;
+}
+
+.header.stikcy {
+  position: sticky;
+  top: 0;
 }
 
 .panelEnter {
@@ -95,4 +112,11 @@
 
 .panelLeaveTo {
   opacity: 0;
+}
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
+  background-color: var(--color-ubie-white);
 }

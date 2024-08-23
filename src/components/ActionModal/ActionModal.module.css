@@ -30,7 +30,7 @@
   max-width: 600px;
   max-height: calc(100% - 48px);
   margin: 0 auto;
-  overflow-y: auto;
+  overflow-y: hidden;
   background: #fff;
   border-radius: var(--radius-lg);
 }
@@ -43,8 +43,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: var(--size-spacing-lg);
-  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
+  overflow-y: auto;
 }
 
 .mainContent.fixedHeight {
@@ -56,14 +55,26 @@
 }
 
 .header {
+  padding: var(--size-spacing-lg) var(--size-spacing-md);
   font-size: var(--text-heading-xs-size);
   font-weight: bold;
   line-height: var(--text-heading-xs-line);
   text-align: center;
   white-space: pre-wrap;
+  background-color: var(--color-ubie-white);
 
   /* May receive focus in the initial display. */
   outline: none;
+}
+
+.header.sticky {
+  position: sticky;
+  top: 0;
+}
+
+.body {
+  padding-right: var(--size-spacing-md);
+  padding-left: var(--size-spacing-md);
 }
 
 .body.fixedHeight {
@@ -73,8 +84,12 @@
 }
 
 .buttonContainer {
+  position: sticky;
+  bottom: 0;
   display: grid;
   gap: var(--size-spacing-md);
+  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
+  background-color: var(--color-ubie-white);
 }
 
 .panelEnter {

@@ -60,11 +60,6 @@ type BaseProps = {
    */
   fullscreen?: boolean;
   /**
-   * モーダルボディ部分のスクロールを許可するかどうか
-   * @default true
-   */
-  bodyScroll?: boolean;
-  /**
    * ネイティブ要素のid属性。ページで固有のIDを指定
    */
   id?: string;
@@ -117,7 +112,6 @@ export const ActionHalfModal: FC<Props> = ({
   open = true,
   isStatic = false,
   fullscreen = false,
-  bodyScroll = true,
   ariaLabelledby,
   hero,
   ...props
@@ -170,7 +164,6 @@ export const ActionHalfModal: FC<Props> = ({
           <div
             className={clsx(styles.dialog, {
               [styles.fullscreen]: fullscreen,
-              [styles.bodyScroll]: bodyScroll,
             })}
           >
             {header === undefined ? (
@@ -178,15 +171,19 @@ export const ActionHalfModal: FC<Props> = ({
                 ダイアログ
               </VisuallyHidden>
             ) : null}
-            {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
             <div
               className={clsx(styles.mainContent, {
                 [styles.headerLess]: header === undefined && hero === undefined,
                 [styles.fullscreen]: fullscreen,
               })}
             >
+              {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
               {header !== undefined ? (
-                <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
+                <Dialog.Title
+                  tabIndex={-1}
+                  ref={initialFocusRef}
+                  className={clsx(styles.header, !hero && styles.sticky)}
+                >
                   {header}
                 </Dialog.Title>
               ) : null}
