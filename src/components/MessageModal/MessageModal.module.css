@@ -38,10 +38,13 @@
   height: calc(100% - 48px);
 }
 
+.scrollContainer {
+  overflow-y: auto;
+}
+
 .mainContent {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
 }
 
 .mainContent.fixedHeight {
@@ -87,6 +90,10 @@
   top: 0;
 }
 
+.header.stikcy.canScroll {
+  border-bottom: 1px solid var(--color-border);
+}
+
 .panelEnter {
   transition-timing-function: ease-out;
   transition-duration: 250ms;
@@ -119,4 +126,8 @@
   bottom: 0;
   padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
   background-color: var(--color-ubie-white);
+}
+
+.footer.canScroll {
+  border-top: 1px solid var(--color-border);
 }
