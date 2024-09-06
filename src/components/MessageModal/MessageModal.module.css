@@ -70,12 +70,12 @@
   outline: none;
 }
 
-.header.stikcy {
+.header.sticky {
   position: sticky;
   top: 0;
 }
 
-.header.stikcy.canScroll {
+.header.sticky.canScroll {
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -97,13 +97,16 @@
 }
 
 .footer {
-  position: sticky;
-  bottom: 0;
   padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
   background-color: var(--color-ubie-white);
 }
 
-.footer.canScroll {
+.footer.sticky {
+  position: sticky;
+  bottom: 0;
+}
+
+.footer.sticky.canScroll {
   border-top: 1px solid var(--color-border);
 }
 

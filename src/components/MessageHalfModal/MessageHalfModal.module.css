@@ -107,7 +107,7 @@
   bottom: 0;
 }
 
-.buttonContainer.canScroll {
+.buttonContainer.sticky.canScroll {
   border-top: 1px solid var(--color-border);
 }
 

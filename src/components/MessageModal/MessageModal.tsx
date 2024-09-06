@@ -58,6 +58,14 @@ type Props = {
    * ヒーローエリア（見出しの更に上）に配置するコンテンツ
    */
   hero?: ReactNode;
+  /**
+   * ヘッダーを固定表示
+   */
+  stickyHeader?: boolean;
+  /**
+   * フッターを固定表示
+   */
+  stickyFooter?: boolean;
 } & PropsWithChildren &
   CustomDataAttributeProps;
 
@@ -72,6 +80,8 @@ export const MessageModal: FC<Props> = ({
   isStatic = false,
   ariaLabelledby,
   hero,
+  stickyHeader = false,
+  stickyFooter = false,
   ...otherProps
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
@@ -133,7 +143,11 @@ export const MessageModal: FC<Props> = ({
                 <Dialog.Title
                   tabIndex={-1}
                   ref={initialFocusRef}
-                  className={clsx(styles.header, !hero && styles.stikcy, canScrollUp && styles.canScroll)}
+                  className={clsx(
+                    styles.header,
+                    !hero && stickyHeader && styles.sticky,
+                    canScrollUp && styles.canScroll,
+                  )}
                 >
                   {header}
                 </Dialog.Title>
@@ -145,7 +159,7 @@ export const MessageModal: FC<Props> = ({
               >
                 {children}
               </div>
-              <footer className={clsx(styles.footer, canScrollDown && styles.canScroll)}>
+              <footer className={clsx(styles.footer, stickyFooter && styles.sticky, canScrollDown && styles.canScroll)}>
                 <Button block onClick={onClose} aria-label={closeLabel}>
                   {closeLabel}
                 </Button>

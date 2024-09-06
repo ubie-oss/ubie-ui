@@ -1,5 +1,5 @@
-import { StoryObj, Meta } from '@storybook/react';
-import { useState, ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
+import { ComponentProps, useState } from 'react';
 import { MessageModal } from './MessageModal';
 
 const meta: Meta<typeof MessageModal> = {
@@ -45,7 +45,9 @@ const defaultArgs: Partial<ComponentProps<typeof MessageModal>> = {
   isStatic: false,
   fixedHeight: false,
   children: <LongBody />,
-};
+  stickyHeader: false,
+  stickyFooter: false,
+} as const satisfies Partial<ComponentProps<typeof MessageModal>>;
 
 export const Default: Story = {
   render: (args) => {

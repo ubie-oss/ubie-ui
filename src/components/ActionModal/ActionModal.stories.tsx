@@ -15,7 +15,9 @@ const defaultArgs: Partial<ComponentProps<typeof ActionModal>> = {
   primaryActionLabel: '回答結果を見る',
   fixedHeight: false,
   isStatic: false,
-};
+  stickyHeader: false,
+  stickyFooter: false,
+} as const satisfies Partial<ComponentProps<typeof ActionModal>>;
 
 const LongBody = () => (
   <>

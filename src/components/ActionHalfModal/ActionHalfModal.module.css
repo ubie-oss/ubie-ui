@@ -96,15 +96,18 @@
 }
 
 .buttonContainer {
-  position: sticky;
-  bottom: 0;
   display: grid;
   gap: var(--size-spacing-md);
   padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
   background-color: var(--color-ubie-white);
 }
 
-.buttonContainer.canScroll {
+.buttonContainer.sticky {
+  position: sticky;
+  bottom: 0;
+}
+
+.buttonContainer.sticky.canScroll {
   border-top: 1px solid var(--color-border);
 }
 

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { useCallback, useState } from 'react';
+import { ComponentProps, useCallback, useState } from 'react';
 import { MessageHalfModal } from './MessageHalfModal';
 
 export default {
@@ -34,7 +34,9 @@ const LongBody = () => (
 const defaultArgs = {
   header: 'モーダル',
   children: <LongBody />,
-};
+  stickyHeader: false,
+  stickyFooter: false,
+} as const satisfies Partial<ComponentProps<typeof MessageHalfModal>>;
 
 export const Default: Story = {
   render: (args) => {
