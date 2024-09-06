@@ -304,3 +304,33 @@ export const WithHeroAndFullScreen: Story = {
     ),
   },
 };
+
+export const StickyHeaderAndFooter: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(true);
+
+    const onClose = useCallback(() => {
+      setOpen(false);
+    }, []);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionHalfModal
+          primaryActionLabel="アクション"
+          onPrimaryAction={onClose}
+          {...args}
+          open={open}
+          onClose={onClose}
+        />
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    stickyHeader: true,
+    stickyFooter: true,
+  },
+};

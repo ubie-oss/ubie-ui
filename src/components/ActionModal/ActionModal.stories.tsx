@@ -245,3 +245,25 @@ export const WithHero: Story = {
     ...defaultArgs,
   },
 };
+
+export const StickyHeaderAndFooter: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(true);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionModal {...args} open={open} onPrimaryAction={() => setOpen(false)} onClose={() => setOpen(false)}>
+          <LongBody />
+        </ActionModal>
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    stickyHeader: true,
+    stickyFooter: true,
+  },
+};
