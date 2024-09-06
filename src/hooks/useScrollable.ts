@@ -33,6 +33,7 @@ export const useScrollable = () => {
       passive: true,
     });
 
+    // In some cases, the DOM may not be ready when the callback ref is triggered in modal components. It is shifted appropriately.
     setTimeout(() => {
       checkScrollable(element);
     }, 10);
