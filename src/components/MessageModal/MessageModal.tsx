@@ -89,13 +89,7 @@ export const MessageModal: FC<Props> = ({
     [ariaLabelledby, header],
   );
 
-  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
-  const scrollContainerInnerRef = useRef<HTMLDivElement | null>(null);
-
-  const { up, down } = useScrollable({
-    containerRef: scrollContainerRef,
-    contentRef: scrollContainerInnerRef,
-  });
+  const { scrollContainerRef, canScrollUp, canScrollDown } = useScrollable();
 
   return (
     <Transition
@@ -133,14 +127,13 @@ export const MessageModal: FC<Props> = ({
                 [styles.headerLess]: header === undefined && hero === undefined,
                 [styles.fixedHeight]: fixedHeight,
               })}
-              ref={scrollContainerInnerRef}
             >
               {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
               {header !== undefined ? (
                 <Dialog.Title
                   tabIndex={-1}
                   ref={initialFocusRef}
-                  className={clsx(styles.header, !hero && styles.stikcy, up && styles.canScroll)}
+                  className={clsx(styles.header, !hero && styles.stikcy, canScrollUp && styles.canScroll)}
                 >
                   {header}
                 </Dialog.Title>
@@ -152,7 +145,7 @@ export const MessageModal: FC<Props> = ({
               >
                 {children}
               </div>
-              <footer className={clsx(styles.footer, down && styles.canScroll)}>
+              <footer className={clsx(styles.footer, canScrollDown && styles.canScroll)}>
                 <Button block onClick={onClose} aria-label={closeLabel}>
                   {closeLabel}
                 </Button>

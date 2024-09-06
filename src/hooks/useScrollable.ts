@@ -1,48 +1,56 @@
-import { MutableRefObject, useEffect, useState } from 'react';
+import debounce from 'debounce';
+import { useCallback, useState } from 'react';
 
-export const useScrollable = ({
-  containerRef,
-  contentRef,
-}: {
-  containerRef: MutableRefObject<HTMLElement | null>;
-  contentRef: MutableRefObject<HTMLElement | null>;
-}) => {
-  const [up, setUp] = useState(false);
-  const [down, setDown] = useState(false);
+export const useScrollable = () => {
+  const [canScrollUp, setCanScrollUp] = useState(false);
+  const [canScrollDown, setCanScrollDown] = useState(false);
 
-  useEffect(() => {
-    const ob: IntersectionObserver[] = [];
-    if (containerRef.current && contentRef.current) {
-      const createObserver = (rootMargin: string, cb: (value: boolean) => void) => {
-        return new IntersectionObserver(
-          (entities) => {
-            const [entry] = entities;
-            const scrollabable = entry.isIntersecting && entry.intersectionRatio !== 0;
+  let abrotController: AbortController | null = null;
 
-            cb(scrollabable);
-          },
-          {
-            root: containerRef.current,
-            rootMargin: rootMargin,
-            threshold: [0, 1e-12],
-          },
-        );
-      };
+  const checkScrollable = (element: HTMLDivElement) => {
+    const { top, bottom } = element.getBoundingClientRect();
+    const { top: contentTop, bottom: contentBottom } = element.children[0].getBoundingClientRect();
 
-      ob.push(createObserver('100% 0px -100% 0px', setUp));
-      ob.push(createObserver('-100% 0px 100% 0px', setDown));
+    setCanScrollUp(contentTop < top);
+    setCanScrollDown(contentBottom > bottom);
+  };
 
-      ob.forEach((o) => {
-        o.observe(contentRef.current!);
-      });
+  const handleEvent = (element: HTMLDivElement) => () => {
+    checkScrollable(element);
+  };
+
+  const setContainer = (element: HTMLDivElement) => {
+    if (!abrotController) return;
+
+    element.addEventListener('scroll', debounce(handleEvent(element), 25), {
+      signal: abrotController.signal,
+      passive: true,
+    });
+
+    window.addEventListener('resize', debounce(handleEvent(element), 50), {
+      signal: abrotController.signal,
+      passive: true,
+    });
+
+    setTimeout(() => {
+      checkScrollable(element);
+    }, 10);
+  };
+
+  const unSetContainer = () => {
+    abrotController?.abort();
+    abrotController = null;
+  };
+
+  const scrollContainerRef = useCallback((node: HTMLDivElement | null) => {
+    if (node === null) {
+      unSetContainer();
+      return;
     }
 
-    return () => {
-      ob.forEach((o) => {
-        o.disconnect();
-      });
-    };
-  }, [containerRef, contentRef]);
+    abrotController = new AbortController();
+    setContainer(node);
+  }, []);
 
-  return { up, down };
+  return { scrollContainerRef, canScrollUp, canScrollDown };
 };
