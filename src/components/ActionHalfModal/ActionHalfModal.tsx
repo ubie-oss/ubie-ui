@@ -4,6 +4,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { clsx } from 'clsx';
 import { type FC, Fragment, type ReactNode, useCallback, useRef } from 'react';
 import styles from './ActionHalfModal.module.css';
+import { useScrollable } from '../../hooks/useScrollable';
 import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
 import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
@@ -131,6 +132,8 @@ export const ActionHalfModal: FC<Props> = ({
     [ariaLabelledby, header],
   );
 
+  const { scrollContainerRef, canScrollUp, canScrollDown } = useScrollable();
+
   return (
     <Transition show={open}>
       <Dialog
@@ -171,45 +174,52 @@ export const ActionHalfModal: FC<Props> = ({
                 ダイアログ
               </VisuallyHidden>
             ) : null}
-            <div
-              className={clsx(styles.mainContent, {
-                [styles.headerLess]: header === undefined && hero === undefined,
-                [styles.fullscreen]: fullscreen,
-              })}
-            >
-              {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
-              {header !== undefined ? (
-                <Dialog.Title
-                  tabIndex={-1}
-                  ref={initialFocusRef}
-                  className={clsx(styles.header, !hero && styles.sticky)}
-                >
-                  {header}
-                </Dialog.Title>
-              ) : null}
+            <div className={styles.scrollContainer} ref={scrollContainerRef}>
               <div
-                className={clsx(styles.body, {
+                className={clsx(styles.mainContent, {
+                  [styles.headerLess]: header === undefined && hero === undefined,
                   [styles.fullscreen]: fullscreen,
                 })}
               >
-                {children}
-              </div>
-              <div className={styles.buttonContainer}>
-                {onPrimaryAction && primaryActionLabel && (
-                  <Button block onClick={onPrimaryAction} aria-label={primaryActionLabel} variant={primaryActionColor}>
-                    {primaryActionLabel}
-                  </Button>
-                )}
-                {onSecondaryAction && secondaryActionLabel && (
-                  <Button block variant="secondary" onClick={onSecondaryAction} aria-label={secondaryActionLabel}>
-                    {secondaryActionLabel}
-                  </Button>
-                )}
-                {showClose && (
-                  <Button variant="text" onClick={onClose} aria-label={closeLabel}>
-                    {closeLabel}
-                  </Button>
-                )}
+                {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
+                {header !== undefined ? (
+                  <Dialog.Title
+                    tabIndex={-1}
+                    ref={initialFocusRef}
+                    className={clsx(styles.header, !hero && styles.sticky, canScrollUp && styles.canScroll)}
+                  >
+                    {header}
+                  </Dialog.Title>
+                ) : null}
+                <div
+                  className={clsx(styles.body, {
+                    [styles.fullscreen]: fullscreen,
+                  })}
+                >
+                  {children}
+                </div>
+                <div className={clsx(styles.buttonContainer, canScrollDown && styles.canScroll)}>
+                  {onPrimaryAction && primaryActionLabel && (
+                    <Button
+                      block
+                      onClick={onPrimaryAction}
+                      aria-label={primaryActionLabel}
+                      variant={primaryActionColor}
+                    >
+                      {primaryActionLabel}
+                    </Button>
+                  )}
+                  {onSecondaryAction && secondaryActionLabel && (
+                    <Button block variant="secondary" onClick={onSecondaryAction} aria-label={secondaryActionLabel}>
+                      {secondaryActionLabel}
+                    </Button>
+                  )}
+                  {showClose && (
+                    <Button variant="text" onClick={onClose} aria-label={closeLabel}>
+                      {closeLabel}
+                    </Button>
+                  )}
+                </div>
               </div>
             </div>
           </div>

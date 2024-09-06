@@ -44,6 +44,10 @@
   height: calc(100% - 24px);
 }
 
+.scrollContainer {
+  overflow-y: auto;
+}
+
 .mainContent {
   display: flex;
   flex-direction: column;
@@ -75,6 +79,10 @@
   top: 0;
 }
 
+.header.sticky.canScroll {
+  border-bottom: 1px solid var(--color-border);
+}
+
 .body {
   padding-right: var(--size-spacing-md);
   padding-left: var(--size-spacing-md);
@@ -94,6 +102,10 @@
   gap: var(--size-spacing-md);
   padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
   background-color: var(--color-ubie-white);
+}
+
+.buttonContainer.canScroll {
+  border-top: 1px solid var(--color-border);
 }
 
 .overlayEnter {
