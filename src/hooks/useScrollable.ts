@@ -11,8 +11,9 @@ export const useScrollable = () => {
     const { top, bottom } = element.getBoundingClientRect();
     const { top: contentTop, bottom: contentBottom } = element.children[0].getBoundingClientRect();
 
-    setCanScrollUp(contentTop < top);
-    setCanScrollDown(contentBottom > bottom);
+    // On some Android devices, the decimal point in the number causes the judgment to be incorrect.
+    setCanScrollUp(Math.floor(contentTop) < Math.floor(top));
+    setCanScrollDown(Math.floor(contentBottom) > Math.floor(bottom));
   };
 
   const handleEvent = (element: HTMLDivElement) => () => {
