@@ -1,5 +1,5 @@
-import { StoryObj, Meta } from '@storybook/react';
-import { useState, ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
+import { ComponentProps, useState } from 'react';
 import { ActionModal } from './ActionModal';
 
 export default {
@@ -74,7 +74,7 @@ export const Secondary: Story = {
           onSecondaryAction={() => setOpen(false)}
           onClose={() => setOpen(false)}
         >
-          Default
+          <LongBody />
         </ActionModal>
       </>
     );
@@ -92,7 +92,13 @@ export const FixedHeight: Story = {
           Open Modal
         </button>
         <ActionModal {...args} open={open} onPrimaryAction={() => setOpen(false)} onClose={() => setOpen(false)}>
-          <p style={{ margin: 0 }}>Content</p>
+          <p>contents</p>
+          <p>contents</p>
+          <p>contents</p>
+          <p>contents</p>
+          <p>contents</p>
+          <p>contents</p>
+          <p>contents</p>
         </ActionModal>
       </>
     );
@@ -158,7 +164,7 @@ export const WithId: Story = {
           Open Modal
         </button>
         <ActionModal {...args} open={open} onPrimaryAction={() => setOpen(false)} onClose={() => setOpen(false)}>
-          <p>Default</p>
+          <LongBody />
         </ActionModal>
       </>
     );

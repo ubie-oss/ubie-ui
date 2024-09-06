@@ -157,7 +157,13 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
                   </Dialog.Title>
                 ) : null}
                 <div className={clsx(styles.body, { [styles.fullscreen]: fullscreen })}>{children}</div>
-                <div className={clsx(styles.buttonContainer, canScrollDown && styles.canScroll)}>
+                <div
+                  className={clsx(
+                    styles.buttonContainer,
+                    showClose && styles.sticky,
+                    showClose && canScrollDown && styles.canScroll,
+                  )}
+                >
                   {showClose && (
                     <Button variant="primary" onClick={onClose} aria-label={closeLabel}>
                       {closeLabel}

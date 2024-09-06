@@ -5,7 +5,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-y: auto;
 }
 
 .overlay {
@@ -30,7 +29,7 @@
   max-width: 600px;
   max-height: calc(100% - 48px);
   margin: 0 auto;
-  overflow-y: hidden;
+  overflow: hidden;
   background: #fff;
   border-radius: var(--radius-lg);
 }
@@ -40,7 +39,8 @@
 }
 
 .scrollContainer {
-  overflow-y: auto;
+  height: 100%;
+  overflow-y: auto
 }
 
 .mainContent {
@@ -50,7 +50,7 @@
 }
 
 .mainContent.fixedHeight {
-  flex-grow: 1;
+  min-height: 100%;
 }
 
 .mainContent.headerLess {

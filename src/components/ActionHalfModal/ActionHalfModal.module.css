@@ -45,6 +45,7 @@
 }
 
 .scrollContainer {
+  height: 100%;
   overflow-y: auto;
 }
 
@@ -58,7 +59,7 @@
 }
 
 .mainContent.fullscreen {
-  flex-grow: 1;
+  min-height: 100%;
 }
 
 .header {
@@ -89,7 +90,7 @@
 }
 
 .body.fullscreen {
-  height: 100%;
+  flex: 1;
   min-height: 400px;
   overflow: hidden;
 }

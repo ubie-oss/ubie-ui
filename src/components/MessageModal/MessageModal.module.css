@@ -39,37 +39,22 @@
 }
 
 .scrollContainer {
+  height: 100%;
   overflow-y: auto;
 }
 
 .mainContent {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
 
 .mainContent.fixedHeight {
-  flex-grow: 1;
+  min-height: 100%;
 }
 
 .mainContent.headerLess {
   padding-top: var(--size-spacing-xl);
-}
-
-.body {
-  padding-right: var(--size-spacing-md);
-  padding-left: var(--size-spacing-md);
-  text-align: center;
-}
-
-.body.fixedHeight {
-  height: 100%;
-  min-height: 400px;
-  overflow: hidden;
-}
-
-.hero {
-  flex: 0 0 auto;
-  overflow: hidden;
 }
 
 .header {
@@ -92,6 +77,34 @@
 
 .header.stikcy.canScroll {
   border-bottom: 1px solid var(--color-border);
+}
+
+.body {
+  padding-right: var(--size-spacing-md);
+  padding-left: var(--size-spacing-md);
+  text-align: center;
+}
+
+.body.fixedHeight {
+  flex-grow: 1;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.hero {
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
+  background-color: var(--color-ubie-white);
+}
+
+.footer.canScroll {
+  border-top: 1px solid var(--color-border);
 }
 
 .panelEnter {
@@ -119,15 +132,4 @@
 
 .panelLeaveTo {
   opacity: 0;
-}
-
-.footer {
-  position: sticky;
-  bottom: 0;
-  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
-  background-color: var(--color-ubie-white);
-}
-
-.footer.canScroll {
-  border-top: 1px solid var(--color-border);
 }

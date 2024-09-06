@@ -162,7 +162,6 @@ export const ActionModal: FC<Props> = ({
               ダイアログ
             </VisuallyHidden>
           ) : null}
-          {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
           <div className={styles.scrollContainer} ref={scrollContainerRef}>
             <div
               className={clsx(styles.mainContent, {
@@ -170,6 +169,7 @@ export const ActionModal: FC<Props> = ({
                 [styles.fixedHeight]: fixedHeight,
               })}
             >
+              {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
               {header !== undefined ? (
                 <Dialog.Title
                   tabIndex={-1}
