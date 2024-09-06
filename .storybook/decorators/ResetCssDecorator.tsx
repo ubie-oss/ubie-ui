@@ -1,7 +1,7 @@
 import { type FC, type PropsWithChildren, useEffect } from 'react';
 
 export const resetCss = {
-  nothing: 'nothing',
+  none: 'none',
   modernCss: 'modern css reset',
 } as const;
 

@@ -17,16 +17,17 @@ const preview: Preview = {
   globalTypes: {
     resetCss: {
       description: 'Global theme for components',
+      defaultValue: resetCss.modernCss,
       toolbar: {
         title: 'Reset CSS',
         icon: 'markup',
-        items: [resetCss.nothing, resetCss.modernCss],
+        items: [resetCss.none, resetCss.modernCss],
       },
     },
   },
   decorators: [
     (story, context) => {
-      const applyResetCss = context.globals.resetCss || resetCss.nothing;
+      const applyResetCss = context.globals.resetCss || resetCss.none;
 
       return <ResetCssDecorator applyResetCss={applyResetCss}>{story()}</ResetCssDecorator>;
     },
