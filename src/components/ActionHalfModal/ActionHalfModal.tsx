@@ -74,6 +74,7 @@ type BaseProps = {
   hero?: ReactNode;
   /**
    * ヘッダーを固定表示
+   * heroが指定されている場合は無効
    */
   stickyHeader?: boolean;
   /**
