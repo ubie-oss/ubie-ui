@@ -32,7 +32,7 @@
   max-width: 600px;
   max-height: calc(100% - 24px);
   margin: 0 auto;
-  overflow-y: scroll;
+  overflow-y: hidden;
   background: #fff;
   border-radius: 12px;
   border-end-start-radius: 0;
