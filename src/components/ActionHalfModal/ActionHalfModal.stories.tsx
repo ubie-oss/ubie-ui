@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { useCallback, useState } from 'react';
+import { ComponentProps, useCallback, useState } from 'react';
 import { ActionHalfModal } from './ActionHalfModal';
 
 export default {
@@ -34,7 +34,9 @@ const LongBody = () => (
 const defaultArgs = {
   header: 'モーダル',
   children: <LongBody />,
-};
+  stickyHeader: false,
+  stickyFooter: false,
+} as const satisfies Partial<ComponentProps<typeof ActionHalfModal>>;
 
 export const Default: Story = {
   render: (args) => {
@@ -300,5 +302,35 @@ export const WithHeroAndFullScreen: Story = {
         height={315}
       />
     ),
+  },
+};
+
+export const StickyHeaderAndFooter: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(true);
+
+    const onClose = useCallback(() => {
+      setOpen(false);
+    }, []);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionHalfModal
+          primaryActionLabel="アクション"
+          onPrimaryAction={onClose}
+          {...args}
+          open={open}
+          onClose={onClose}
+        />
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    stickyHeader: true,
+    stickyFooter: true,
   },
 };

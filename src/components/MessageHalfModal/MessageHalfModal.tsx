@@ -4,6 +4,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { clsx } from 'clsx';
 import { FC, Fragment, PropsWithChildren, ReactNode, useCallback, useRef } from 'react';
 import styles from './MessageHalfModal.module.css';
+import { useScrollable } from '../../hooks/useScrollable';
 import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
 import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
@@ -52,11 +53,6 @@ type BaseProps = {
    */
   fullscreen?: boolean;
   /**
-   * モーダルボディ部分のスクロールを許可するかどうか
-   * @default true
-   */
-  bodyScroll?: boolean;
-  /**
    * ネイティブ要素のid属性。ページで固有のIDを指定
    */
   id?: string;
@@ -68,6 +64,15 @@ type BaseProps = {
    * ヒーローエリア（見出しの更に上）に配置するコンテンツ
    */
   hero?: ReactNode;
+  /**
+   * ヘッダーを固定表示
+   * heroが指定されている場合は無効
+   */
+  stickyHeader?: boolean;
+  /**
+   * フッターを固定表示
+   */
+  stickyFooter?: boolean;
 } & CustomDataAttributeProps;
 
 type Props = BaseProps;
@@ -82,9 +87,10 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
   open = true,
   isStatic = false,
   fullscreen = false,
-  bodyScroll = true,
   ariaLabelledby,
   hero,
+  stickyHeader = false,
+  stickyFooter = false,
   ...otherProps
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
@@ -101,6 +107,8 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
     },
     [ariaLabelledby, header],
   );
+
+  const { scrollContainerRef, canScrollUp, canScrollDown } = useScrollable();
 
   return (
     <Transition show={open}>
@@ -135,7 +143,6 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
           <div
             className={clsx(styles.dialog, {
               [styles.fullscreen]: fullscreen,
-              [styles.bodyScroll]: bodyScroll,
             })}
           >
             {header === undefined ? (
@@ -143,25 +150,41 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
                 ダイアログ
               </VisuallyHidden>
             ) : null}
-            {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
-            <div
-              className={clsx(styles.mainContent, {
-                [styles.headerLess]: header === undefined && hero === undefined,
-                [styles.fullscreen]: fullscreen,
-              })}
-            >
-              {header !== undefined ? (
-                <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
-                  {header}
-                </Dialog.Title>
-              ) : null}
-              <div className={clsx(styles.body, { [styles.fullscreen]: fullscreen })}>{children}</div>
-              <div className={styles.buttonContainer}>
-                {showClose && (
-                  <Button variant="primary" onClick={onClose} aria-label={closeLabel}>
-                    {closeLabel}
-                  </Button>
-                )}
+            <div className={styles.scrollContainer} ref={scrollContainerRef}>
+              <div
+                className={clsx(styles.mainContent, {
+                  [styles.headerLess]: header === undefined && hero === undefined,
+                  [styles.fullscreen]: fullscreen,
+                })}
+              >
+                {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
+                {header !== undefined ? (
+                  <Dialog.Title
+                    tabIndex={-1}
+                    ref={initialFocusRef}
+                    className={clsx(
+                      styles.header,
+                      !hero && stickyHeader && styles.sticky,
+                      canScrollUp && styles.canScroll,
+                    )}
+                  >
+                    {header}
+                  </Dialog.Title>
+                ) : null}
+                <div className={clsx(styles.body, { [styles.fullscreen]: fullscreen })}>{children}</div>
+                <div
+                  className={clsx(
+                    styles.buttonContainer,
+                    showClose && stickyFooter && styles.sticky,
+                    showClose && canScrollDown && styles.canScroll,
+                  )}
+                >
+                  {showClose && (
+                    <Button variant="primary" onClick={onClose} aria-label={closeLabel}>
+                      {closeLabel}
+                    </Button>
+                  )}
+                </div>
               </div>
             </div>
           </div>

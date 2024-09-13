@@ -4,6 +4,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { clsx } from 'clsx';
 import { type FC, Fragment, type ReactNode, useCallback, useRef } from 'react';
 import styles from './ActionHalfModal.module.css';
+import { useScrollable } from '../../hooks/useScrollable';
 import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
 import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
@@ -60,11 +61,6 @@ type BaseProps = {
    */
   fullscreen?: boolean;
   /**
-   * モーダルボディ部分のスクロールを許可するかどうか
-   * @default true
-   */
-  bodyScroll?: boolean;
-  /**
    * ネイティブ要素のid属性。ページで固有のIDを指定
    */
   id?: string;
@@ -76,6 +72,15 @@ type BaseProps = {
    * ヒーローエリア（見出しの更に上）に配置するコンテンツ
    */
   hero?: ReactNode;
+  /**
+   * ヘッダーを固定表示
+   * heroが指定されている場合は無効
+   */
+  stickyHeader?: boolean;
+  /**
+   * フッターを固定表示
+   */
+  stickyFooter?: boolean;
 };
 
 type PrimaryActionProps = {
@@ -117,9 +122,10 @@ export const ActionHalfModal: FC<Props> = ({
   open = true,
   isStatic = false,
   fullscreen = false,
-  bodyScroll = true,
   ariaLabelledby,
   hero,
+  stickyHeader = false,
+  stickyFooter = false,
   ...props
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
@@ -136,6 +142,8 @@ export const ActionHalfModal: FC<Props> = ({
     },
     [ariaLabelledby, header],
   );
+
+  const { scrollContainerRef, canScrollUp, canScrollDown } = useScrollable();
 
   return (
     <Transition show={open}>
@@ -170,7 +178,6 @@ export const ActionHalfModal: FC<Props> = ({
           <div
             className={clsx(styles.dialog, {
               [styles.fullscreen]: fullscreen,
-              [styles.bodyScroll]: bodyScroll,
             })}
           >
             {header === undefined ? (
@@ -178,41 +185,62 @@ export const ActionHalfModal: FC<Props> = ({
                 ダイアログ
               </VisuallyHidden>
             ) : null}
-            {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
-            <div
-              className={clsx(styles.mainContent, {
-                [styles.headerLess]: header === undefined && hero === undefined,
-                [styles.fullscreen]: fullscreen,
-              })}
-            >
-              {header !== undefined ? (
-                <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
-                  {header}
-                </Dialog.Title>
-              ) : null}
+            <div className={styles.scrollContainer} ref={scrollContainerRef}>
               <div
-                className={clsx(styles.body, {
+                className={clsx(styles.mainContent, {
+                  [styles.headerLess]: header === undefined && hero === undefined,
                   [styles.fullscreen]: fullscreen,
                 })}
               >
-                {children}
-              </div>
-              <div className={styles.buttonContainer}>
-                {onPrimaryAction && primaryActionLabel && (
-                  <Button block onClick={onPrimaryAction} aria-label={primaryActionLabel} variant={primaryActionColor}>
-                    {primaryActionLabel}
-                  </Button>
-                )}
-                {onSecondaryAction && secondaryActionLabel && (
-                  <Button block variant="secondary" onClick={onSecondaryAction} aria-label={secondaryActionLabel}>
-                    {secondaryActionLabel}
-                  </Button>
-                )}
-                {showClose && (
-                  <Button variant="text" onClick={onClose} aria-label={closeLabel}>
-                    {closeLabel}
-                  </Button>
-                )}
+                {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
+                {header !== undefined ? (
+                  <Dialog.Title
+                    tabIndex={-1}
+                    ref={initialFocusRef}
+                    className={clsx(
+                      styles.header,
+                      !hero && stickyHeader && styles.sticky,
+                      canScrollUp && styles.canScroll,
+                    )}
+                  >
+                    {header}
+                  </Dialog.Title>
+                ) : null}
+                <div
+                  className={clsx(styles.body, {
+                    [styles.fullscreen]: fullscreen,
+                  })}
+                >
+                  {children}
+                </div>
+                <div
+                  className={clsx(
+                    styles.buttonContainer,
+                    stickyFooter && styles.sticky,
+                    canScrollDown && styles.canScroll,
+                  )}
+                >
+                  {onPrimaryAction && primaryActionLabel && (
+                    <Button
+                      block
+                      onClick={onPrimaryAction}
+                      aria-label={primaryActionLabel}
+                      variant={primaryActionColor}
+                    >
+                      {primaryActionLabel}
+                    </Button>
+                  )}
+                  {onSecondaryAction && secondaryActionLabel && (
+                    <Button block variant="secondary" onClick={onSecondaryAction} aria-label={secondaryActionLabel}>
+                      {secondaryActionLabel}
+                    </Button>
+                  )}
+                  {showClose && (
+                    <Button variant="text" onClick={onClose} aria-label={closeLabel}>
+                      {closeLabel}
+                    </Button>
+                  )}
+                </div>
               </div>
             </div>
           </div>

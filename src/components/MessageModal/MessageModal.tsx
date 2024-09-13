@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { FC, Fragment, PropsWithChildren, type ReactNode, useCallback, useRef } from 'react';
 import styles from './MessageModal.module.css';
 import { Button } from '../../';
+import { useScrollable } from '../../hooks/useScrollable';
 import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
 import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
@@ -57,6 +58,15 @@ type Props = {
    * ヒーローエリア（見出しの更に上）に配置するコンテンツ
    */
   hero?: ReactNode;
+  /**
+   * ヘッダーを固定表示
+   * heroが指定されている場合は無効
+   */
+  stickyHeader?: boolean;
+  /**
+   * フッターを固定表示
+   */
+  stickyFooter?: boolean;
 } & PropsWithChildren &
   CustomDataAttributeProps;
 
@@ -71,6 +81,8 @@ export const MessageModal: FC<Props> = ({
   isStatic = false,
   ariaLabelledby,
   hero,
+  stickyHeader = false,
+  stickyFooter = false,
   ...otherProps
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
@@ -87,6 +99,8 @@ export const MessageModal: FC<Props> = ({
     },
     [ariaLabelledby, header],
   );
+
+  const { scrollContainerRef, canScrollUp, canScrollDown } = useScrollable();
 
   return (
     <Transition
@@ -118,27 +132,40 @@ export const MessageModal: FC<Props> = ({
               ダイアログ
             </VisuallyHidden>
           ) : null}
-          {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
-          <div
-            className={clsx(styles.mainContent, {
-              [styles.fixedHeight]: fixedHeight,
-            })}
-          >
-            {header !== undefined ? (
-              <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
-                {header}
-              </Dialog.Title>
-            ) : null}
+          <div className={styles.scrollContainer} ref={scrollContainerRef}>
             <div
-              className={clsx(styles.body, {
+              className={clsx(styles.mainContent, {
+                [styles.headerLess]: header === undefined && hero === undefined,
                 [styles.fixedHeight]: fixedHeight,
               })}
             >
-              {children}
+              {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
+              {header !== undefined ? (
+                <Dialog.Title
+                  tabIndex={-1}
+                  ref={initialFocusRef}
+                  className={clsx(
+                    styles.header,
+                    !hero && stickyHeader && styles.sticky,
+                    canScrollUp && styles.canScroll,
+                  )}
+                >
+                  {header}
+                </Dialog.Title>
+              ) : null}
+              <div
+                className={clsx(styles.body, {
+                  [styles.fixedHeight]: fixedHeight,
+                })}
+              >
+                {children}
+              </div>
+              <footer className={clsx(styles.footer, stickyFooter && styles.sticky, canScrollDown && styles.canScroll)}>
+                <Button block onClick={onClose} aria-label={closeLabel}>
+                  {closeLabel}
+                </Button>
+              </footer>
             </div>
-            <Button block onClick={onClose} aria-label={closeLabel}>
-              {closeLabel}
-            </Button>
           </div>
         </div>
       </Dialog>

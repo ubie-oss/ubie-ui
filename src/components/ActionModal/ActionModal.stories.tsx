@@ -1,5 +1,5 @@
-import { StoryObj, Meta } from '@storybook/react';
-import { useState, ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
+import { ComponentProps, useState } from 'react';
 import { ActionModal } from './ActionModal';
 
 export default {
@@ -15,7 +15,9 @@ const defaultArgs: Partial<ComponentProps<typeof ActionModal>> = {
   primaryActionLabel: '回答結果を見る',
   fixedHeight: false,
   isStatic: false,
-};
+  stickyHeader: false,
+  stickyFooter: false,
+} as const satisfies Partial<ComponentProps<typeof ActionModal>>;
 
 const LongBody = () => (
   <>
@@ -74,7 +76,7 @@ export const Secondary: Story = {
           onSecondaryAction={() => setOpen(false)}
           onClose={() => setOpen(false)}
         >
-          Default
+          <LongBody />
         </ActionModal>
       </>
     );
@@ -92,7 +94,13 @@ export const FixedHeight: Story = {
           Open Modal
         </button>
         <ActionModal {...args} open={open} onPrimaryAction={() => setOpen(false)} onClose={() => setOpen(false)}>
-          <p style={{ margin: 0 }}>Content</p>
+          <p>contents</p>
+          <p>contents</p>
+          <p>contents</p>
+          <p>contents</p>
+          <p>contents</p>
+          <p>contents</p>
+          <p>contents</p>
         </ActionModal>
       </>
     );
@@ -158,7 +166,7 @@ export const WithId: Story = {
           Open Modal
         </button>
         <ActionModal {...args} open={open} onPrimaryAction={() => setOpen(false)} onClose={() => setOpen(false)}>
-          <p>Default</p>
+          <LongBody />
         </ActionModal>
       </>
     );
@@ -235,5 +243,27 @@ export const WithHero: Story = {
   },
   args: {
     ...defaultArgs,
+  },
+};
+
+export const StickyHeaderAndFooter: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(true);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionModal {...args} open={open} onPrimaryAction={() => setOpen(false)} onClose={() => setOpen(false)}>
+          <LongBody />
+        </ActionModal>
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    stickyHeader: true,
+    stickyFooter: true,
   },
 };

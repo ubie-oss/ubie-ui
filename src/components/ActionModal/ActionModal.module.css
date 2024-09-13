@@ -5,7 +5,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-y: auto;
 }
 
 .overlay {
@@ -30,7 +29,7 @@
   max-width: 600px;
   max-height: calc(100% - 48px);
   margin: 0 auto;
-  overflow-y: auto;
+  overflow: hidden;
   background: #fff;
   border-radius: var(--radius-lg);
 }
@@ -39,16 +38,19 @@
   height: calc(100% - 48px);
 }
 
+.scrollContainer {
+  height: 100%;
+  overflow-y: auto;
+}
+
 .mainContent {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: var(--size-spacing-lg);
-  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
 }
 
 .mainContent.fixedHeight {
-  flex-grow: 1;
+  min-height: 100%;
 }
 
 .mainContent.headerLess {
@@ -56,14 +58,30 @@
 }
 
 .header {
+  padding: var(--size-spacing-lg) var(--size-spacing-md);
   font-size: var(--text-heading-xs-size);
   font-weight: bold;
   line-height: var(--text-heading-xs-line);
   text-align: center;
   white-space: pre-wrap;
+  background-color: var(--color-ubie-white);
 
   /* May receive focus in the initial display. */
   outline: none;
+}
+
+.header.sticky {
+  position: sticky;
+  top: 0;
+}
+
+.header.sticky.canScroll {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.body {
+  padding-right: var(--size-spacing-md);
+  padding-left: var(--size-spacing-md);
 }
 
 .body.fixedHeight {
@@ -75,6 +93,17 @@
 .buttonContainer {
   display: grid;
   gap: var(--size-spacing-md);
+  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
+  background-color: var(--color-ubie-white);
+}
+
+.buttonContainer.sticky {
+  position: sticky;
+  bottom: 0;
+}
+
+.buttonContainer.sticky.canScroll {
+  border-top: 1px solid var(--color-border);
 }
 
 .panelEnter {

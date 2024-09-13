@@ -32,6 +32,7 @@
   max-width: 600px;
   max-height: calc(100% - 24px);
   margin: 0 auto;
+  overflow-y: hidden;
   background: #fff;
   border-radius: 12px;
   border-end-start-radius: 0;
@@ -39,19 +40,18 @@
   transform: translate3d(-50%, 0, 0);
 }
 
-.dialog.bodyScroll {
-  overflow-y: auto;
-}
-
 .dialog.fullscreen {
   height: calc(100% - 24px);
+}
+
+.scrollContainer {
+  height: 100%;
+  overflow-y: auto;
 }
 
 .mainContent {
   display: flex;
   flex-direction: column;
-  gap: var(--size-spacing-lg);
-  padding: var(--size-spacing-lg) var(--size-spacing-md);
 }
 
 .mainContent.headerLess {
@@ -59,22 +59,38 @@
 }
 
 .mainContent.fullscreen {
-  flex-grow: 1;
+  min-height: 100%;
 }
 
 .header {
+  padding: var(--size-spacing-lg) var(--size-spacing-md);
   font-size: var(--text-heading-xs-size);
   font-weight: bold;
   line-height: var(--text-heading-xs-line);
   text-align: center;
   white-space: pre-wrap;
+  background-color: var(--color-ubie-white);
 
   /* May receive focus in the initial display. */
   outline: none;
 }
 
+.header.sticky {
+  position: sticky;
+  top: 0;
+}
+
+.header.sticky.canScroll {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.body {
+  padding-right: var(--size-spacing-md);
+  padding-left: var(--size-spacing-md);
+}
+
 .body.fullscreen {
-  height: 100%;
+  flex: 1;
   min-height: 400px;
   overflow: hidden;
 }
@@ -82,6 +98,17 @@
 .buttonContainer {
   display: grid;
   gap: var(--size-spacing-md);
+  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
+  background-color: var(--color-ubie-white);
+}
+
+.buttonContainer.sticky {
+  position: sticky;
+  bottom: 0;
+}
+
+.buttonContainer.sticky.canScroll {
+  border-top: 1px solid var(--color-border);
 }
 
 .overlayEnter {

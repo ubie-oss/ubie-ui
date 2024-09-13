@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { type FC, Fragment, type ReactNode, useCallback, useRef } from 'react';
 import styles from './ActionModal.module.css';
 import { Button } from '../../';
+import { useScrollable } from '../../hooks/useScrollable';
 import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
 import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
@@ -79,6 +80,15 @@ type BaseProps = {
    * ヒーローエリア（見出しの更に上）に配置するコンテンツ
    */
   hero?: ReactNode;
+  /**
+   * ヘッダーを固定表示
+   * heroが指定されている場合は無効
+   */
+  stickyHeader?: boolean;
+  /**
+   * フッターを固定表示
+   */
+  stickyFooter?: boolean;
 };
 
 type SecondaryActionProps = {
@@ -111,6 +121,8 @@ export const ActionModal: FC<Props> = ({
   isStatic = false,
   ariaLabelledby,
   hero,
+  stickyHeader = false,
+  stickyFooter = false,
   ...props
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
@@ -127,6 +139,8 @@ export const ActionModal: FC<Props> = ({
     },
     [ariaLabelledby, header],
   );
+
+  const { scrollContainerRef, canScrollUp, canScrollDown } = useScrollable();
 
   return (
     <Transition
@@ -159,41 +173,57 @@ export const ActionModal: FC<Props> = ({
               ダイアログ
             </VisuallyHidden>
           ) : null}
-          {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
-          <div
-            className={clsx(styles.mainContent, {
-              [styles.headerLess]: header === undefined && hero === undefined,
-              [styles.fixedHeight]: fixedHeight,
-            })}
-          >
-            {header !== undefined ? (
-              <Dialog.Title tabIndex={-1} ref={initialFocusRef} className={styles.header}>
-                {header}
-              </Dialog.Title>
-            ) : null}
+          <div className={styles.scrollContainer} ref={scrollContainerRef}>
             <div
-              className={clsx(styles.body, {
+              className={clsx(styles.mainContent, {
+                [styles.headerLess]: header === undefined && hero === undefined,
                 [styles.fixedHeight]: fixedHeight,
               })}
             >
-              {children}
-            </div>
-            <div className={styles.buttonContainer}>
-              {onPrimaryAction && primaryActionLabel && (
-                <Button block onClick={onPrimaryAction} variant={primaryActionColor}>
-                  {primaryActionLabel}
-                </Button>
-              )}
-              {onSecondaryAction && secondaryActionLabel && (
-                <Button block variant="secondary" onClick={onSecondaryAction}>
-                  {secondaryActionLabel}
-                </Button>
-              )}
-              {showClose && (
-                <Button variant="text" onClick={onClose}>
-                  {closeLabel}
-                </Button>
-              )}
+              {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
+              {header !== undefined ? (
+                <Dialog.Title
+                  tabIndex={-1}
+                  ref={initialFocusRef}
+                  className={clsx(
+                    styles.header,
+                    !hero && stickyHeader && styles.sticky,
+                    canScrollUp && styles.canScroll,
+                  )}
+                >
+                  {header}
+                </Dialog.Title>
+              ) : null}
+              <div
+                className={clsx(styles.body, {
+                  [styles.fixedHeight]: fixedHeight,
+                })}
+              >
+                {children}
+              </div>
+              <div
+                className={clsx(
+                  styles.buttonContainer,
+                  stickyFooter && styles.sticky,
+                  canScrollDown && styles.canScroll,
+                )}
+              >
+                {onPrimaryAction && primaryActionLabel && (
+                  <Button block onClick={onPrimaryAction} variant={primaryActionColor}>
+                    {primaryActionLabel}
+                  </Button>
+                )}
+                {onSecondaryAction && secondaryActionLabel && (
+                  <Button block variant="secondary" onClick={onSecondaryAction}>
+                    {secondaryActionLabel}
+                  </Button>
+                )}
+                {showClose && (
+                  <Button variant="text" onClick={onClose}>
+                    {closeLabel}
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         </div>
