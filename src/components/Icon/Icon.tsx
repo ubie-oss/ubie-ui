@@ -3,7 +3,7 @@ import styles from './Icon.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
 import { TextColor } from '../../types/style';
 import { colorVariable } from '../../utils/style';
-import type { FC, CSSProperties } from 'react';
+import type { CSSProperties, FC } from 'react';
 
 type Icon = keyof typeof Icons;
 
@@ -12,21 +12,21 @@ type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
 const toIconSizeEmValue = (size: IconSize): string => {
   switch (size) {
     case 'xs':
-      return '1em';
+      return '1rem';
     case 'sm':
-      return '1.25em';
+      return '1.25rem';
     case 'md':
-      return '1.5em';
+      return '1.5rem';
     case 'lg':
-      return '1.75em';
+      return '1.75rem';
     case 'xl':
-      return '2em';
+      return '2rem';
     case '2xl':
-      return '4em';
+      return '4rem';
     case '3xl':
-      return '5em';
+      return '5rem';
     case '4xl':
-      return '6.5em';
+      return '6.5rem';
     default:
       // eslint-disable-next-line no-case-declarations
       const _: never = size;
