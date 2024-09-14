@@ -6,11 +6,7 @@ describe('TextArea', () => {
   it('access to DOM through ref prop', () => {
     const ref = createRef<HTMLTextAreaElement>();
 
-    render(
-      <TextArea name="test" value="test" ref={ref}>
-        Test
-      </TextArea>,
-    );
+    render(<TextArea name="test" defaultValue="test" ref={ref} />);
     expect(ref.current).not.toBeNull();
     expect(ref.current?.tagName).toBe('TEXTAREA');
   });
