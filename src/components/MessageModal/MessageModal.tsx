@@ -1,6 +1,6 @@
 'use client';
 
-import { Dialog, Transition } from '@headlessui/react';
+import { Dialog, DialogTitle, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import { FC, Fragment, PropsWithChildren, type ReactNode, useCallback, useRef } from 'react';
 import styles from './MessageModal.module.css';
@@ -121,7 +121,7 @@ export const MessageModal: FC<Props> = ({
         initialFocus={initialFocusRef}
         {...otherProps}
       >
-        <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
+        <div className={clsx(styles.overlay, styles[opacityClassName])} />
         <div
           className={clsx(styles.dialog, {
             [styles.fixedHeight]: fixedHeight,
@@ -141,7 +141,7 @@ export const MessageModal: FC<Props> = ({
             >
               {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
               {header !== undefined ? (
-                <Dialog.Title
+                <DialogTitle
                   tabIndex={-1}
                   ref={initialFocusRef}
                   className={clsx(
@@ -151,7 +151,7 @@ export const MessageModal: FC<Props> = ({
                   )}
                 >
                   {header}
-                </Dialog.Title>
+                </DialogTitle>
               ) : null}
               <div
                 className={clsx(styles.body, {

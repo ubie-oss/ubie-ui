@@ -1,6 +1,6 @@
 'use client';
 
-import { Dialog, Transition } from '@headlessui/react';
+import { Dialog, DialogTitle, Transition, TransitionChild } from '@headlessui/react';
 import { clsx } from 'clsx';
 import { FC, Fragment, PropsWithChildren, ReactNode, useCallback, useRef } from 'react';
 import styles from './MessageHalfModal.module.css';
@@ -120,7 +120,7 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
         initialFocus={initialFocusRef}
         {...otherProps}
       >
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter={styles.overlayEnter}
           enterFrom={styles.overlayEnterFrom}
@@ -129,9 +129,9 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
           leaveFrom={styles.overlayLeaveFrom}
           leaveTo={styles.overlayLeaveTo}
         >
-          <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
-        </Transition.Child>
-        <Transition.Child
+          <div className={clsx(styles.overlay, styles[opacityClassName])} />
+        </TransitionChild>
+        <TransitionChild
           as={Fragment}
           enter={styles.panelEnter}
           enterFrom={styles.panelEnterFrom}
@@ -159,7 +159,7 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
               >
                 {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
                 {header !== undefined ? (
-                  <Dialog.Title
+                  <DialogTitle
                     tabIndex={-1}
                     ref={initialFocusRef}
                     className={clsx(
@@ -169,7 +169,7 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
                     )}
                   >
                     {header}
-                  </Dialog.Title>
+                  </DialogTitle>
                 ) : null}
                 <div className={clsx(styles.body, { [styles.fullscreen]: fullscreen })}>{children}</div>
                 <div
@@ -188,7 +188,7 @@ export const MessageHalfModal: FC<PropsWithChildren<Props>> = ({
               </div>
             </div>
           </div>
-        </Transition.Child>
+        </TransitionChild>
       </Dialog>
     </Transition>
   );
