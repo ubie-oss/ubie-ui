@@ -1,1 +1,0 @@
-import{j as r}from"./jsx-runtime-69eee039.js";const o="_message_1cq3a_1",p={message:o},s=({children:e,...a})=>r.jsx("p",{className:p.message,...a,children:e});try{s.displayName="HelperMessage",s.__docgenInfo={description:"",displayName:"HelperMessage",props:{}}}catch{}export{s as H};
