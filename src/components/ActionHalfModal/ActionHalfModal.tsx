@@ -1,6 +1,6 @@
 'use client';
 
-import { Dialog, Transition } from '@headlessui/react';
+import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react';
 import { clsx } from 'clsx';
 import { type FC, Fragment, type ReactNode, useCallback, useRef } from 'react';
 import styles from './ActionHalfModal.module.css';
@@ -155,7 +155,7 @@ export const ActionHalfModal: FC<Props> = ({
         initialFocus={initialFocusRef}
         {...props}
       >
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter={styles.overlayEnter}
           enterFrom={styles.overlayEnterFrom}
@@ -164,9 +164,9 @@ export const ActionHalfModal: FC<Props> = ({
           leaveFrom={styles.overlayLeaveFrom}
           leaveTo={styles.overlayLeaveTo}
         >
-          <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
-        </Transition.Child>
-        <Transition.Child
+          <div className={clsx(styles.overlay, styles[opacityClassName])} />
+        </TransitionChild>
+        <TransitionChild
           as={Fragment}
           enter={styles.panelEnter}
           enterFrom={styles.panelEnterFrom}
@@ -175,7 +175,7 @@ export const ActionHalfModal: FC<Props> = ({
           leaveFrom={styles.panelLeaveFrom}
           leaveTo={styles.panelLeaveTo}
         >
-          <div
+          <DialogPanel
             className={clsx(styles.dialog, {
               [styles.fullscreen]: fullscreen,
             })}
@@ -243,8 +243,8 @@ export const ActionHalfModal: FC<Props> = ({
                 </div>
               </div>
             </div>
-          </div>
-        </Transition.Child>
+          </DialogPanel>
+        </TransitionChild>
       </Dialog>
     </Transition>
   );
