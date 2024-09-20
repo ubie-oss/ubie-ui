@@ -48,7 +48,8 @@
     "prestorybook": "npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "chromatic": "npx chromatic --exit-zero-on-changes --project-token=chpt_37d0a81ccfe372f"
   },
   "repository": {
     "type": "git",
@@ -113,7 +114,9 @@
     "react": "^17 || ^18",
     "react-dom": "^18"
   },
-  "author": "Ubie, Inc.",
+  "author": {
+    "name": "Ubie, Inc."
+  },
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/ubie-oss/ubie-ui/issues"

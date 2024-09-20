@@ -31,3 +31,6 @@ jobs:
         run: npx playwright install --with-deps
       - name: Test
         run: npm run test
+
+      - name: Chromatic
+        run: npm run chromatic
