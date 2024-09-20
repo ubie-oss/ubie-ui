@@ -49,7 +49,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepublishOnly": "npm run build",
-    "chromatic": "npx chromatic --exit-zero-on-changes --project-token=chpt_37d0a81ccfe372f"
+    "chromatic": "npx chromatic --project-token=chpt_37d0a81ccfe372f"
   },
   "repository": {
     "type": "git",
