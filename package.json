@@ -113,7 +113,9 @@
     "react": "^17 || ^18",
     "react-dom": "^18"
   },
-  "author": "Ubie, Inc.",
+  "author": {
+    "name": "Ubie, Inc."
+  },
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/ubie-oss/ubie-ui/issues"
