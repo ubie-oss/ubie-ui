@@ -1,7 +1,7 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { forwardRef } from 'react';
+import { type CSSProperties, forwardRef } from 'react';
 import styles from './Button.module.css';
 import { VariantIcon } from './VariantIcon';
 import { marginVariables } from '../../utils/style';
@@ -22,6 +22,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       loading = false,
       loadingLabel = '通信中',
       onClick,
+      whiteSpace = 'normal',
       m,
       mx,
       my,
@@ -58,17 +59,20 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         type={type}
         className={cls}
-        style={{
-          ...marginVariables({
-            m,
-            mx,
-            my,
-            mt,
-            mr,
-            mb,
-            ml,
-          }),
-        }}
+        style={
+          {
+            ...marginVariables({
+              m,
+              mx,
+              my,
+              mt,
+              mr,
+              mb,
+              ml,
+            }),
+            '--white-space': whiteSpace,
+          } as CSSProperties
+        }
         ref={ref}
         disabled={disabled}
         aria-disabled={loading}

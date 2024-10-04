@@ -1,6 +1,6 @@
 import { CustomDataAttributeProps } from '../../types/attributes';
 import type { MarginProps } from '../../types/style';
-import type { ButtonHTMLAttributes, ReactNode, AnchorHTMLAttributes, ReactElement } from 'react';
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
 
 export type BaseProps = {
   /**
@@ -43,6 +43,10 @@ export type BaseProps = {
    * 後方配置のアイコン
    */
   suffixIcon?: 'default' | ReactNode;
+  /**
+   * ラベルの折り返しを指定
+   */
+  whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line' | 'break-spaces';
 } & MarginProps &
   CustomDataAttributeProps;
 
