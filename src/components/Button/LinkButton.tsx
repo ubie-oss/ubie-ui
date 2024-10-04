@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { cloneElement, forwardRef } from 'react';
+import { cloneElement, CSSProperties, forwardRef } from 'react';
 import styles from './Button.module.css';
 import { VariantIcon } from './VariantIcon';
 import { marginVariables } from '../../utils/style';
@@ -19,6 +19,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
       icon: _icon,
       fixedIcon: _fixedIcon,
       suffixIcon: _suffixIcon,
+      whiteSpace = 'normal',
       m,
       mx,
       my,
@@ -58,7 +59,8 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
             mb,
             ml,
           }),
-        },
+          '--white-space': whiteSpace,
+        } as CSSProperties,
         ...props,
         ref: forwardedRef,
       },

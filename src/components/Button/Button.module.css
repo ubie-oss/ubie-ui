@@ -20,7 +20,7 @@
   text-align: center;
   text-decoration: none;
   overflow-wrap: anywhere;
-  white-space: normal;
+  white-space: var(--white-space, 'normal');
   appearance: none;
   cursor: pointer;
   background-color: var(--bg);

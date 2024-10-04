@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { BlankLinkIcon, TrashIcon } from '@ubie/ubie-icons';
-import { Button, Stack, Icon } from '../';
-import type { ComponentProps } from 'react';
+import { ComponentProps } from 'react';
+import { Button, Icon, Stack } from '../';
 
 export default {
   title: 'Button/Button',
@@ -189,5 +189,17 @@ export const CustomDataAttribute: Story = {
   args: {
     ['data-test-id']: 'some-test',
     ...defaultArgs,
+  },
+};
+
+export const TextWrap: Story = {
+  render: (args) => {
+    return <Button {...args} />;
+  },
+  args: {
+    ...defaultArgs,
+    children: '[抽選で謝礼あり]\nアンケートにご協力ください',
+    whiteSpace: 'pre-wrap',
+    block: true,
   },
 };

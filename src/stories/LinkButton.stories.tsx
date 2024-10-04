@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { BlankLinkIcon, UbieIcon, TrashIcon } from '@ubie/ubie-icons';
+import { BlankLinkIcon, TrashIcon, UbieIcon } from '@ubie/ubie-icons';
 import { LinkButton, Stack } from '../';
 import type { ComponentProps } from 'react';
 
@@ -130,4 +130,16 @@ export const CustomDataAttribute: Story = {
     'data-test-id': 'link-button-custom-attribute',
   },
   render: (args) => <LinkButton {...args}>Please enter in English</LinkButton>,
+};
+
+export const TextWrap: Story = {
+  render: (args) => {
+    return <LinkButton {...args} />;
+  },
+  args: {
+    ...defaultArgs,
+    children: '[抽選で謝礼あり]\nアンケートにご協力ください',
+    whiteSpace: 'pre-wrap',
+    block: true,
+  },
 };
