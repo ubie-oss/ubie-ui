@@ -1,15 +1,15 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { isValidElement, cloneElement } from 'react';
+import { cloneElement, isValidElement, useMemo } from 'react';
 import styles from './Stack.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
-import { Spacing, AlignItems, JustifyContent, WidthProps } from '../../types/style';
-import { paddingVariables, marginVariables, gapVariables, widthVariables } from '../../utils/style';
+import { AlignItems, JustifyContent, Spacing, WidthProps } from '../../types/style';
+import { gapVariables, marginVariables, paddingVariables, widthVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
 import { Box } from '../Box/Box';
-import type { PaddingProps, MarginProps } from '../../types/style';
-import type { FC, ReactNode, ComponentType, ReactElement } from 'react';
+import type { MarginProps, PaddingProps } from '../../types/style';
+import type { ComponentType, FC, ReactElement, ReactNode } from 'react';
 
 type Props = {
   /**
@@ -17,11 +17,6 @@ type Props = {
    * @default div
    */
   as?: HTMLTagname | ReactElement<ComponentType<typeof Box>>;
-  /**
-   * 子要素の間隔。指定しない場合は0
-   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
-   */
-  spacing?: Spacing;
   /**
    * 水平方向における子要素のレイアウトを定める。
    * @default stretch
@@ -41,7 +36,29 @@ type Props = {
    * 子要素
    */
   children: ReactNode;
-} & MarginProps &
+} & (
+  | {
+      /**
+       * 子要素の間隔。指定しない場合は0
+       * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+       */
+      spacing: Spacing;
+      gap?: never;
+    }
+  | {
+      /**
+       * spacingのエイリアス（どちらかしか指定できません）
+       * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+       */
+      gap: Spacing;
+      spacing?: never;
+    }
+  | {
+      gap?: never;
+      spacing?: never;
+    }
+) &
+  MarginProps &
   PaddingProps &
   WidthProps &
   CustomDataAttributeProps;
@@ -55,6 +72,7 @@ export const Stack: FC<Props> = ({
   children,
   className,
   spacing,
+  gap,
   alignItems = 'stretch',
   justifyContent = 'flex-start',
   p,
@@ -85,13 +103,23 @@ export const Stack: FC<Props> = ({
     }
   };
 
+  const _spacing = useMemo(() => {
+    if (gap != null) {
+      return gap;
+    } else if (spacing != null) {
+      return spacing;
+    } else {
+      return undefined;
+    }
+  }, [gap, spacing]);
+
   return createElement(
     {
       className: clsx(className, styles.stack),
       style: {
         alignItems: `${alignItems}`,
         justifyContent: `${justifyContent}`,
-        ...gapVariables(spacing),
+        ...gapVariables(_spacing),
         ...paddingVariables({
           p,
           px,

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Stack, Box } from '..';
+import { Box, Stack } from '..';
 import { Spacing } from '../types/style';
 
 export default {
@@ -139,4 +139,26 @@ export const Width: Story = {
     </>
   ),
   args: defaultArgs,
+};
+
+export const Gap: Story = {
+  render: () => (
+    <Stack spacing="md">
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+    </Stack>
+  ),
+};
+
+export const NoSpacing: Story = {
+  render: () => (
+    <Stack>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+    </Stack>
+  ),
 };
