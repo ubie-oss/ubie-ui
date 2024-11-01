@@ -96,6 +96,40 @@ export const WithIcon: Story = {
           </div>
         </dd>
       </Stack>
+
+      <Stack spacing="lg" as="dl">
+        <dt style={{ fontWeight: 'bold' }}>Key specification</dt>
+        <dd style={{ margin: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+            <LinkButton icon="BlankLinkIcon" {...defaultArgs}>
+              Icon
+            </LinkButton>
+            <LinkButton suffixIcon="BlankLinkIcon" {...defaultArgs}>
+              Suffix Icon
+            </LinkButton>
+            <LinkButton fixedIcon="BlankLinkIcon" {...defaultArgs}>
+              Fixed Icon
+            </LinkButton>
+          </div>
+        </dd>
+      </Stack>
+
+      <Stack spacing="lg" as="dl">
+        <dt style={{ fontWeight: 'bold' }}>Auth Icon</dt>
+        <dd style={{ margin: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+            <LinkButton variant="authGoogle" icon="default" {...defaultArgs}>
+              Icon
+            </LinkButton>
+            <LinkButton variant="authGoogle" suffixIcon="default" {...defaultArgs}>
+              Suffix Icon
+            </LinkButton>
+            <LinkButton variant="authGoogle" fixedIcon="default" {...defaultArgs}>
+              Fixed Icon
+            </LinkButton>
+          </div>
+        </dd>
+      </Stack>
     </Stack>
   ),
 };
