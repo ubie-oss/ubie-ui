@@ -26,6 +26,19 @@ export const Size: Story = {
         <Icon {...args} size="md" />
         <Icon {...args} size="lg" />
         <Icon {...args} size="xl" />
+        <Icon {...args} size="xxl" />
+        <Icon {...args} size="xxxl" />
+        <Icon {...args} size="xxxxl" />
+      </Flex>
+    </>
+  ),
+  args: defaultArgs,
+};
+
+export const SizeAlias: Story = {
+  render: (args) => (
+    <>
+      <Flex alignItems="center" spacing="sm">
         <Icon {...args} size="2xl" />
         <Icon {...args} size="3xl" />
         <Icon {...args} size="4xl" />
