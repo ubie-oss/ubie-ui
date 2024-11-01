@@ -1,7 +1,7 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { CSSProperties, forwardRef, type PropsWithChildren, type HTMLAttributes } from 'react';
+import { CSSProperties, forwardRef, type HTMLAttributes, type PropsWithChildren } from 'react';
 import styles from './FlexItem.module.css';
 import { CSSWitdh, MarginProps, PaddingProps, WidthProps } from '../../types/style';
 import { marginVariables, paddingVariables } from '../../utils/style';
@@ -17,7 +17,7 @@ type AllowedDivAttributes = Omit<HTMLAttributes<HTMLDivElement>, 'className'>;
 type Props = {
   /**
    * flexの値を指定。 growなどを指定したい場合はオブジェクトで指定
-   * @defaultValue none
+   * @default none
    */
   flex?: 'none' | FlexProperty;
 } & Omit<WidthProps, 'width'> &
