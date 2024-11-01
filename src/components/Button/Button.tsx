@@ -14,7 +14,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       variant = 'primary',
       size = 'large',
       block = false,
-      icon: _icon,
+      icon,
+      prefixIcon: _prefixIcon,
       fixedIcon: _fixedIcon,
       suffixIcon: _suffixIcon,
       type = 'button',
@@ -34,7 +35,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    const icon = useIcon(_icon, variant);
+    const prefixIcon = useIcon(icon || _prefixIcon, variant);
     const fixedIcon = useIcon(_fixedIcon, variant);
     const suffixIcon = useIcon(_suffixIcon, variant);
     const cls = clsx({
@@ -82,7 +83,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {loading && <span className={styles.loadingLabel}>{loadingLabel}</span>}
         {fixedIcon && <span className={styles.fixedIcon}>{fixedIcon}</span>}
         <span className={styles.label}>
-          {icon && <span className={clsx(styles.icon, loading && styles.loading)}>{icon}</span>}
+          {prefixIcon && <span className={clsx(styles.icon, loading && styles.loading)}>{prefixIcon}</span>}
           <span className={clsx(styles.children, loading && styles.loading)}>{children}</span>
           {suffixIcon && <span className={styles.suffixIcon}>{suffixIcon}</span>}
         </span>

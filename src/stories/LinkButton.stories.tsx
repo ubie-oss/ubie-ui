@@ -53,16 +53,16 @@ export const WithIcon: Story = {
   render: () => (
     <Stack spacing="lg">
       <Stack spacing="lg" as="dl">
-        <dt style={{ fontWeight: 'bold' }}>Default Position</dt>
+        <dt style={{ fontWeight: 'bold' }}>Position Prefix</dt>
 
         <dd style={{ margin: 0 }}>
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-            <LinkButton icon={<UbieIcon />} {...defaultArgs} />
-            <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="secondary" />
-            <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="accent" />
-            <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="alert" />
-            <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="text" />
-            <LinkButton icon={<TrashIcon />} {...defaultArgs} variant="textAlert" />
+            <LinkButton prefixIcon={<UbieIcon />} {...defaultArgs} />
+            <LinkButton prefixIcon={<UbieIcon />} {...defaultArgs} variant="secondary" />
+            <LinkButton prefixIcon={<UbieIcon />} {...defaultArgs} variant="accent" />
+            <LinkButton prefixIcon={<UbieIcon />} {...defaultArgs} variant="alert" />
+            <LinkButton prefixIcon={<UbieIcon />} {...defaultArgs} variant="text" />
+            <LinkButton prefixIcon={<TrashIcon />} {...defaultArgs} variant="textAlert" />
           </div>
         </dd>
       </Stack>
@@ -127,6 +127,21 @@ export const WithIcon: Story = {
             <LinkButton variant="authGoogle" fixedIcon="default" {...defaultArgs}>
               Fixed Icon
             </LinkButton>
+          </div>
+        </dd>
+      </Stack>
+
+      <Stack spacing="lg" as="dl">
+        <dt style={{ fontWeight: 'bold' }}>icon prop(deprecated)</dt>
+
+        <dd style={{ margin: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+            <LinkButton icon={<UbieIcon />} {...defaultArgs} />
+            <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="secondary" />
+            <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="accent" />
+            <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="alert" />
+            <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="text" />
+            <LinkButton icon={<TrashIcon />} {...defaultArgs} variant="textAlert" />
           </div>
         </dd>
       </Stack>
