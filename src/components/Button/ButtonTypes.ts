@@ -1,4 +1,5 @@
 import { CustomDataAttributeProps } from '../../types/attributes';
+import { IconName } from '../../types/icon';
 import type { MarginProps } from '../../types/style';
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
 
@@ -32,22 +33,38 @@ export type BaseProps = {
    */
   block?: boolean;
   /**
-   * アイコン
+   * Fixedアイコンa
    */
-  icon?: 'default' | ReactNode;
-  /**
-   * Fixedアイコン
-   */
-  fixedIcon?: 'default' | ReactNode;
+  fixedIcon?: 'default' | ReactElement | IconName;
   /**
    * 後方配置のアイコン
    */
-  suffixIcon?: 'default' | ReactNode;
+  suffixIcon?: 'default' | ReactElement | IconName;
   /**
    * ラベルの折り返しを指定
    */
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line' | 'break-spaces';
-} & MarginProps &
+} & (
+  | {
+      /**
+       * アイコン
+       */
+      icon?: 'default' | ReactElement | IconName;
+      prefixIcon?: never;
+    }
+  | {
+      /**
+       * アイコン
+       */
+      prefixIcon?: 'default' | ReactElement | IconName;
+      icon?: never;
+    }
+  | {
+      icon?: never;
+      prefixIcon?: never;
+    }
+) &
+  MarginProps &
   CustomDataAttributeProps;
 
 export type OnlyButtonProps = {

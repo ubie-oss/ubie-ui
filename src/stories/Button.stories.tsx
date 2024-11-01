@@ -52,15 +52,15 @@ export const WithIcon: Story = {
   render: () => (
     <Stack spacing="lg">
       <Stack spacing="lg" as="dl">
-        <dt style={{ fontWeight: 'bold' }}>Default Position</dt>
+        <dt style={{ fontWeight: 'bold' }}>Position Prefix</dt>
         <dd style={{ margin: 0 }}>
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} />
-            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="secondary" />
-            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="accent" />
-            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="alert" />
-            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="text" />
-            <Button icon={<Icon icon="TrashIcon" />} {...defaultArgs} variant="textAlert" />
+            <Button prefixIcon={<Icon icon="UbieIcon" />} {...defaultArgs} />
+            <Button prefixIcon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="secondary" />
+            <Button prefixIcon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="accent" />
+            <Button prefixIcon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="alert" />
+            <Button prefixIcon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="text" />
+            <Button prefixIcon={<Icon icon="TrashIcon" />} {...defaultArgs} variant="textAlert" />
           </div>
         </dd>
       </Stack>
@@ -92,6 +92,54 @@ export const WithIcon: Story = {
           </div>
         </dd>
       </Stack>
+
+      <Stack spacing="lg" as="dl">
+        <dt style={{ fontWeight: 'bold' }}>Name specification</dt>
+        <dd style={{ margin: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+            <Button icon="BlankLinkIcon" {...defaultArgs}>
+              Icon
+            </Button>
+            <Button suffixIcon="BlankLinkIcon" {...defaultArgs}>
+              Suffix Icon
+            </Button>
+            <Button fixedIcon="BlankLinkIcon" {...defaultArgs}>
+              Fixed Icon
+            </Button>
+          </div>
+        </dd>
+      </Stack>
+
+      <Stack spacing="lg" as="dl">
+        <dt style={{ fontWeight: 'bold' }}>Auth Icon</dt>
+        <dd style={{ margin: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+            <Button variant="authGoogle" icon="default" {...defaultArgs}>
+              Icon
+            </Button>
+            <Button variant="authGoogle" suffixIcon="default" {...defaultArgs}>
+              Suffix Icon
+            </Button>
+            <Button variant="authGoogle" fixedIcon="default" {...defaultArgs}>
+              Fixed Icon
+            </Button>
+          </div>
+        </dd>
+      </Stack>
+
+      <Stack spacing="lg" as="dl">
+        <dt style={{ fontWeight: 'bold' }}>icon prop(deprecated)</dt>
+        <dd style={{ margin: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} />
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="secondary" />
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="accent" />
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="alert" />
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="text" />
+            <Button icon={<Icon icon="TrashIcon" />} {...defaultArgs} variant="textAlert" />
+          </div>
+        </dd>
+      </Stack>
     </Stack>
   ),
   args: defaultArgs,
@@ -120,7 +168,7 @@ export const Block: Story = {
 export const Disabled: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-      <Button {...defaultArgs} disabled />
+      <Button {...defaultArgs} prefixIcon="UbieIcon" disabled />
       <Button {...defaultArgs} variant="secondary" disabled />
       <Button {...defaultArgs} variant="accent" disabled />
       <Button {...defaultArgs} variant="alert" disabled />
@@ -167,7 +215,7 @@ export const Loading: Story = {
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
-        <Button {...args} icon={<Icon icon="UbieIcon" />} size="medium" loadingLabel="ラベル変更">
+        <Button icon={<Icon icon="UbieIcon" />} size="medium" loading loadingLabel="ラベル変更">
           次のページへ
         </Button>
         <Button {...args} variant="secondary" size="medium" disabled />
