@@ -6,7 +6,11 @@ import { TextColor } from '../../types/style';
 import { colorVariable } from '../../utils/style';
 import type { CSSProperties, FC } from 'react';
 
-type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
+type Icon = keyof typeof Icons;
+
+type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl' | 'xxxxl';
+type IconSizeAlias = '2xl' | '3xl' | '4xl';
+type SizeProp = IconSize | IconSizeAlias;
 
 const toIconSizeEmValue = (size: IconSize): string => {
   switch (size) {
@@ -20,16 +24,29 @@ const toIconSizeEmValue = (size: IconSize): string => {
       return '1.75rem';
     case 'xl':
       return '2rem';
-    case '2xl':
+    case 'xxl':
       return '4rem';
-    case '3xl':
+    case 'xxxl':
       return '5rem';
-    case '4xl':
+    case 'xxxxl':
       return '6.5rem';
     default:
       // eslint-disable-next-line no-case-declarations
       const _: never = size;
       throw new Error(`Unknown size: ${_}`);
+  }
+};
+
+const normalizeSize = (icon: IconSize | IconSizeAlias): IconSize => {
+  switch (icon) {
+    case '2xl':
+      return 'xxl';
+    case '3xl':
+      return 'xxxl';
+    case '4xl':
+      return 'xxxxl';
+    default:
+      return icon;
   }
 };
 
@@ -44,10 +61,11 @@ type Props = {
   color?: TextColor;
   /**
    * サイズ
-   * xs=16px, sm=20px, md=24px, lg=28px, xl=32px, 2xl=64px, 3xl=80px, 4xl=104px
+   * xs=16px, sm=20px, md=24px, lg=28px, xl=32px, xxl=64px, xxxl=80px, xxxxl=104px
+   * 2xl、3xl、4xlはdeprecatedな指定となります
    * @default md
    */
-  size?: IconSize;
+  size?: SizeProp;
   /**
    * ネイティブの`id`属性。ページで固有のIDを指定
    */
@@ -64,7 +82,7 @@ type Props = {
  */
 export const Icon: FC<Props> = ({ icon, color, size = 'md', label, ...otherProps }) => {
   const IconComponent = Icons[icon];
-  const _sizeValue = toIconSizeEmValue(size);
+  const _sizeValue = toIconSizeEmValue(normalizeSize(size));
   return (
     <IconComponent
       role="img"
