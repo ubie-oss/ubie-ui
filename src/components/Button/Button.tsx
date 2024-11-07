@@ -3,7 +3,7 @@
 import { clsx } from 'clsx';
 import { type CSSProperties, forwardRef } from 'react';
 import styles from './Button.module.css';
-import { VariantIcon } from './VariantIcon';
+import { useIcon } from './useIcon';
 import { marginVariables } from '../../utils/style';
 import type { ButtonProps } from './ButtonTypes';
 
@@ -34,9 +34,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    const icon = _icon === 'default' ? <VariantIcon variant={variant} /> : _icon;
-    const fixedIcon = _fixedIcon === 'default' ? <VariantIcon variant={variant} /> : _fixedIcon;
-    const suffixIcon = _suffixIcon === 'default' ? <VariantIcon variant={variant} /> : _suffixIcon;
+    const icon = useIcon(_icon, variant);
+    const fixedIcon = useIcon(_fixedIcon, variant);
+    const suffixIcon = useIcon(_suffixIcon, variant);
     const cls = clsx({
       [styles.button]: true,
       [styles[variant]]: true,

@@ -5,7 +5,11 @@ import clsx from 'clsx';
 import { cloneElement, forwardRef, isValidElement } from 'react';
 import styles from './LinkCard.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
+import { IconName } from '../../types/icon';
+import { Icon } from '../Icon/Icon';
 import type { ComponentType, ReactElement, ReactNode } from 'react';
+
+type IconProp = ComponentType | ReactElement | IconName;
 
 type Props = {
   /**
@@ -37,7 +41,7 @@ type Props = {
   /**
    * アイコン
    */
-  icon?: ComponentType | ReactElement;
+  icon?: IconProp;
 } & CustomDataAttributeProps;
 
 // ref https://github.com/microsoft/TypeScript/issues/53178
@@ -45,9 +49,13 @@ const _isValidElement = (el: ComponentType | ReactElement): el is ReactElement =
   return isValidElement(el);
 };
 
-const renderPropIcon = (icon: ComponentType | ReactElement) => {
+const renderPropIcon = (icon: IconProp) => {
   if (icon == null) {
     return null;
+  }
+
+  if (typeof icon === 'string') {
+    return <Icon icon={icon} />;
   }
 
   if (_isValidElement(icon)) {
