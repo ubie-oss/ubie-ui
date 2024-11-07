@@ -33,11 +33,7 @@ export type BaseProps = {
    */
   block?: boolean;
   /**
-   * アイコン
-   */
-  icon?: 'default' | ReactElement | IconName;
-  /**
-   * Fixedアイコン
+   * Fixedアイコンa
    */
   fixedIcon?: 'default' | ReactElement | IconName;
   /**
@@ -48,7 +44,27 @@ export type BaseProps = {
    * ラベルの折り返しを指定
    */
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line' | 'break-spaces';
-} & MarginProps &
+} & (
+  | {
+      /**
+       * アイコン
+       */
+      icon?: 'default' | ReactElement | IconName;
+      prefixIcon?: never;
+    }
+  | {
+      /**
+       * アイコン
+       */
+      prefixIcon?: 'default' | ReactElement | IconName;
+      icon?: never;
+    }
+  | {
+      icon?: never;
+      prefixIcon?: never;
+    }
+) &
+  MarginProps &
   CustomDataAttributeProps;
 
 export type OnlyButtonProps = {

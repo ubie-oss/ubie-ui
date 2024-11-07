@@ -16,7 +16,8 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
       variant = 'primary',
       size = 'large',
       block = false,
-      icon: _icon,
+      icon,
+      prefixIcon: _prefixIcon,
       fixedIcon: _fixedIcon,
       suffixIcon: _suffixIcon,
       whiteSpace = 'normal',
@@ -31,7 +32,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
     },
     forwardedRef,
   ) => {
-    const icon = useIcon(_icon, variant);
+    const prefixIcon = useIcon(icon || _prefixIcon, variant);
     const fixedIcon = useIcon(_fixedIcon, variant);
     const suffixIcon = useIcon(_suffixIcon, variant);
     const cls = clsx({
@@ -67,7 +68,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
       <>
         {fixedIcon && <span className={styles.fixedIcon}>{fixedIcon}</span>}
         <span className={styles.label}>
-          {icon && <span className={styles.icon}>{icon}</span>}
+          {prefixIcon && <span className={styles.icon}>{prefixIcon}</span>}
           {children}
           {suffixIcon && <span className={styles.suffixIcon}>{suffixIcon}</span>}
         </span>
