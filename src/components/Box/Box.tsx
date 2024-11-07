@@ -3,25 +3,25 @@
 import clsx from 'clsx';
 import styles from './Box.module.css';
 import {
-  paddingVariables,
-  marginVariables,
-  radiusVariables,
+  colorVariable,
   cssFontSizeToken,
   cssLeadingToken,
-  colorVariable,
+  marginVariables,
+  paddingVariables,
+  radiusVariables,
   widthVariables,
 } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
 import type { CustomDataAttributeProps } from '../../types/attributes';
 import type {
-  PaddingProps,
-  MarginProps,
-  RadiusProp,
   BackgroundColor,
-  TextType,
-  TextColor,
   BodyFontSize,
   BodyLeading,
+  MarginProps,
+  PaddingProps,
+  RadiusProp,
+  TextColor,
+  TextType,
   WidthProps,
 } from '../../types/style';
 import type { CSSProperties, FC, ReactNode } from 'react';
@@ -48,7 +48,7 @@ type BaseProps = {
   border?: 'gray' | 'grayThick' | 'primary' | 'primaryThick';
   /**
    * 幅を指定。fullは後方互換のため残している
-   * @defaultValue 'autp'
+   * @default 'auto'
    */
   width?: 'full' | Width;
   /**

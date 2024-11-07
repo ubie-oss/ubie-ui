@@ -1,6 +1,7 @@
 import * as Icons from '@ubie/ubie-icons';
 import styles from './Icon.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
+import { IconName } from '../../types/icon';
 import { TextColor } from '../../types/style';
 import { colorVariable } from '../../utils/style';
 import type { CSSProperties, FC } from 'react';
@@ -53,7 +54,7 @@ type Props = {
   /**
    * アイコンの種類
    */
-  icon: Icon;
+  icon: IconName;
   /**
    * 色。指定しない場合はinheritとなり、親要素のcolorプロパティを継承します
    */
