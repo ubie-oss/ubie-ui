@@ -5,6 +5,7 @@
   "types": "dist/index.d.ts",
   "files": [
     "README.md",
+    "props.json",
     "dist"
   ],
   "exports": {
@@ -30,6 +31,7 @@
   },
   "scripts": {
     "build": "tsup",
+    "postbuild": "npm run extract-component-props",
     "test": "run-p test:*",
     "test:unit": "vitest run",
     "test:unit:watch": "vitest watch",
@@ -48,7 +50,8 @@
     "prestorybook": "npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "extract-component-props": "react-docgen 'src/components/**/*.tsx' --ignore 'src/components/**/*spec.tsx' --ignore 'src/components/**/*stories.tsx' -o ./dist/props.json"
   },
   "repository": {
     "type": "git",
@@ -122,6 +125,7 @@
   },
   "homepage": "https://github.com/ubie-oss/ubie-ui#readme",
   "dependencies": {
+    "@react-docgen/cli": "^2.0.4",
     "debounce": "^2.1.1"
   }
 }
