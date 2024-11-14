@@ -33,7 +33,7 @@ export type BaseProps = {
    */
   block?: boolean;
   /**
-   * Fixedアイコンa
+   * Fixedアイコン
    */
   fixedIcon?: 'default' | ReactElement | IconName;
   /**
