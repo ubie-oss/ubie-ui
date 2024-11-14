@@ -165,13 +165,12 @@ export type CSSPercentage = `${string}%`;
 export type CSSLengthPercentage = CSSLength | CSSPercentage;
 
 export type CSSWitdh =
-  | CSSLength
-  | CSSPercentage
   | 'auto'
-  | 'fit-content'
-  | `fit-content(${CSSLengthPercentage})`
+  | CSSLengthPercentage
   | 'min-content'
   | 'max-content'
+  | 'fit-content'
+  | `fit-content(${CSSLengthPercentage})`
   | CSSVariable;
 
 export type CSSMaxWidth =
@@ -183,14 +182,7 @@ export type CSSMaxWidth =
   | `fit-content(${CSSLengthPercentage})`
   | CSSVariable;
 
-export type CSSMinWidth =
-  | 'auto'
-  | CSSLengthPercentage
-  | 'min-content'
-  | 'max-content'
-  | 'fit-content'
-  | `fit-content(${CSSLengthPercentage})`
-  | CSSVariable;
+export type CSSMinWidth = CSSWitdh;
 
 export type WidthProps = {
   /**
