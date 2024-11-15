@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { isValidElement, cloneElement } from 'react';
+import { isValidElement, cloneElement, useMemo } from 'react';
 import styles from './Flex.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import { Spacing, AlignItems, JustifyContent, FlexDirection, WidthProps } from '../../types/style';
@@ -19,11 +19,6 @@ type Props = {
    * @default div
    */
   as?: HTMLTagname | ReactElement<ComponentType<typeof Box>>;
-  /**
-   * 子要素同士の間隔。指定しない場合は0
-   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
-   */
-  spacing?: Spacing;
   /**
    * direction 重ねる向き
    * @default row
@@ -58,7 +53,29 @@ type Props = {
    * @default false
    */
   inline?: boolean;
-} & MarginProps &
+} & (
+  | {
+      /**
+       * 子要素の間隔。指定しない場合は0
+       * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+       */
+      spacing: Spacing;
+      gap?: never;
+    }
+  | {
+      /**
+       * spacingのエイリアス（どちらかしか指定できません）
+       * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+       */
+      gap: Spacing;
+      spacing?: never;
+    }
+  | {
+      gap?: never;
+      spacing?: never;
+    }
+) &
+  MarginProps &
   PaddingProps &
   Omit<WidthProps, 'width'> &
   CustomDataAttributeProps;
@@ -71,6 +88,7 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   justifyContent = 'flex-start',
   wrap,
   spacing,
+  gap,
   height,
   inline,
   p,
@@ -102,6 +120,15 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   };
 
   const width = _width === 'full' ? '100%' : _width;
+  const _spacing = useMemo(() => {
+    if (gap != null) {
+      return gap;
+    } else if (spacing != null) {
+      return spacing;
+    } else {
+      return undefined;
+    }
+  }, [gap, spacing]);
 
   return createElement(
     {
@@ -111,7 +138,7 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
         '--align-items': alignItems,
         '--justify-content': justifyContent,
         '--flex-wrap': wrap ? 'wrap' : 'nowrap',
-        ...gapVariables(spacing),
+        ...gapVariables(_spacing),
         ...paddingVariables({
           p,
           px,

@@ -61,6 +61,16 @@ export const Spacing: Story = {
   ),
 };
 
+export const Gap: Story = {
+  render: () => (
+    <Flex gap="xl">
+      <div>xxl</div>
+      <div>xxl</div>
+      <div>xxl</div>
+    </Flex>
+  ),
+};
+
 export const Vertical: Story = {
   render: () => (
     <div>
