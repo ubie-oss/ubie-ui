@@ -32,8 +32,7 @@ type Props = {
    */
   overlayOpacity?: Opacity;
   /**
-   * 画面を占有する高さで固定するかどうか
-   * @default false
+   * 画面を占有する高さで固定する
    */
   fixedHeight?: boolean;
   /**
@@ -42,8 +41,7 @@ type Props = {
    */
   open?: boolean;
   /**
-   * openを無視してモーダルを開いたままにするかどうか。アニメーションライブラリとの連携で、ActionHalfModal自身が開閉に関与しない場合に使用
-   * @default false
+   * openを無視してモーダルを開いたままにする。アニメーションライブラリとの連携で、ActionHalfModal自身が開閉に関与しない場合に使用
    */
   isStatic?: boolean;
   /**

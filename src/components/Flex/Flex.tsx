@@ -38,8 +38,7 @@ type Props = {
    */
   justifyContent?: JustifyContent;
   /**
-   * 折り返しの有無
-   * @default false
+   * 子要素の折り返しを許可
    */
   wrap?: boolean;
   /**
@@ -53,7 +52,6 @@ type Props = {
   width?: 'full' | CSSWitdh;
   /**
    * inline-flexとして扱う
-   * @default false
    */
   inline?: boolean;
 } & MarginProps &

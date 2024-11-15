@@ -11,8 +11,7 @@ type Props = {
    */
   checked?: boolean;
   /**
-   * 初期状態が選択状態かどうか
-   * @default false
+   * 初期状態で選択状態とする
    */
   defaultChecked?: boolean;
   /**

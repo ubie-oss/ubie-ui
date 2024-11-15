@@ -65,7 +65,6 @@ type BaseProps = {
   open?: boolean;
   /**
    * openを無視してモーダルを開いたままにするかどうか。アニメーションライブラリとの連携で、ActionHalfModal自身が開閉に関与しない場合に使用
-   * @default false
    */
   isStatic?: boolean;
   /**

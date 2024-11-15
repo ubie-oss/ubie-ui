@@ -21,7 +21,6 @@ type BaseProps = {
    * ヘッダーに表示する見出しテキスト
    */
   header?: string;
-
   /**
    * 閉じるボタンのラベル
    * @default 閉じる
@@ -43,13 +42,11 @@ type BaseProps = {
    */
   open?: boolean;
   /**
-   * openを無視してモーダルを開いたままにするかどうか。アニメーションライブラリとの連携で、ActionHalfModal自身が開閉に関与しない場合に使用
-   * @default false
+   * openを無視してモーダルを開いたままにするか。アニメーションライブラリとの連携で、ActionHalfModal自身が開閉に関与しない場合に使用
    */
   isStatic?: boolean;
   /**
-   * モーダルをフルスクリーンで表示するかどうか
-   * @default false
+   * モーダルをフルスクリーンで表示する
    */
   fullscreen?: boolean;
   /**

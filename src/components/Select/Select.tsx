@@ -17,8 +17,7 @@ type Props = CustomDataAttributeProps & {
    */
   isInvalid?: boolean;
   /**
-   * フィールドを無効化するかどうか
-   * @default false
+   * フィールドを無効化する
    */
   disabled?: boolean;
   /**

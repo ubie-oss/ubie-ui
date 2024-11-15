@@ -7,8 +7,7 @@ import { Icon } from '../Icon/Icon';
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {
   /**
-   * 横幅を100%占有するかどうか
-   * @default false
+   * 横幅を100%占有する
    */
   block?: boolean;
 };
