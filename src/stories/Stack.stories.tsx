@@ -143,7 +143,7 @@ export const Width: Story = {
 
 export const Gap: Story = {
   render: () => (
-    <Stack spacing="md">
+    <Stack gap="md">
       <p style={{ margin: 0 }}>Text</p>
       <p style={{ margin: 0 }}>Text</p>
       <p style={{ margin: 0 }}>Text</p>
