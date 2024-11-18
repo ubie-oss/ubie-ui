@@ -11,6 +11,7 @@ type AllowedHRAttributes = Omit<HTMLAttributes<HTMLHRElement>, 'className'>;
 type Props = {
   /**
    * ボーダーの種類
+   * @default gray
    */
   border?: 'gray' | 'primary';
 } & WidthProps &

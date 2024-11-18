@@ -14,7 +14,6 @@ type Props = {
   whiteSpace?: 'pre' | 'pre-wrap' | 'pre-line' | 'break-spaces';
   /**
    * inline-blockとして扱う
-   * @default false
    */
   inline?: boolean;
 } & AllowedSpanAttributes;

@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { InputHTMLAttributes, forwardRef, useRef, useState } from 'react';
+import { forwardRef, InputHTMLAttributes, useRef, useState } from 'react';
 import styles from './Toggle.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
 
@@ -11,20 +11,15 @@ type Props = {
    */
   checked?: boolean;
   /**
-   * 初期状態が選択状態かどうか
-   * @default false
+   * 初期状態で選択状態とする
    */
   defaultChecked?: boolean;
-  /**
-   * 値が変化した場合のコールバック
-   */
-  onChange?: InputHTMLAttributes<HTMLInputElement>['onChange'];
   /**
    * 無効状態かどうか
    * @default false
    */
   disabled?: boolean;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'children' | 'onChange'> &
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'children'> &
   CustomDataAttributeProps;
 
 export const Toggle = forwardRef<HTMLInputElement, Props>(
