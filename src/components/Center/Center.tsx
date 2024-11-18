@@ -26,12 +26,10 @@ type Props = {
   as?: HTMLTagname | ReactElement<ComponentType<typeof Box>>;
   /**
    * 内包するテキストを中央に配置。設定は継承され、子孫要素にも影響します
-   * @default false
    */
   textCenter?: boolean;
   /**
    * 子要素を中央に配置。孫要素には影響しません
-   * @default false
    */
   childrenCenter?: boolean;
   /**

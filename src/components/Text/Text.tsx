@@ -30,8 +30,7 @@ type BaseProps = {
    */
   children: ReactNode;
   /**
-   * 太字とするかどうか
-   * @default false
+   * 太字とする
    */
   bold?: boolean;
   /**

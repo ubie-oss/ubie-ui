@@ -8,13 +8,11 @@ import type { TextareaHTMLAttributes } from 'react';
 
 type Props = {
   /**
-   * 有効でない入力を保持しているかどうか
-   * @default false
+   * 値が不正であることを示す
    */
   isInvalid?: boolean;
   /**
-   * フィールドを無効化するかどうか
-   * @default false
+   * フィールドを無効化する
    */
   disabled?: boolean;
 } & TextareaHTMLAttributes<HTMLTextAreaElement> &

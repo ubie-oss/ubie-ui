@@ -28,12 +28,11 @@ export type BaseProps = {
    */
   size?: 'large' | 'medium' | 'small';
   /**
-   * 横幅を100%占有するかどうか
-   * @default false
+   * 横幅を100%占有する
    */
   block?: boolean;
   /**
-   * Fixedアイコンa
+   * Fixedアイコン
    */
   fixedIcon?: 'default' | ReactElement | IconName;
   /**

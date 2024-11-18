@@ -11,7 +11,7 @@ type Props = {
    */
   color?: TextColor;
   /**
-   * ネイティブ要素の`id`属性。ページで固有のIDを指定
+   * ネイティブ要素のid属性。ページで固有のIDを指定
    */
   id?: string;
 } & CustomDataAttributeProps;

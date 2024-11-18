@@ -1,17 +1,15 @@
 'use client';
 
 import clsx from 'clsx';
-import { isValidElement, cloneElement } from 'react';
+import { cloneElement, isValidElement } from 'react';
 import styles from './Flex.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
-import { Spacing, AlignItems, JustifyContent, FlexDirection, WidthProps } from '../../types/style';
-import { paddingVariables, marginVariables, gapVariables, widthVariables } from '../../utils/style';
+import { AlignItems, CSSWitdh, FlexDirection, JustifyContent, Spacing, WidthProps } from '../../types/style';
+import { gapVariables, marginVariables, paddingVariables, widthVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
 import { Box } from '../Box/Box';
-import type { PaddingProps, MarginProps } from '../../types/style';
-import type { FC, PropsWithChildren, ReactElement, ComponentType, ReactNode } from 'react';
-
-type Width = WidthProps['width'];
+import type { MarginProps, PaddingProps } from '../../types/style';
+import type { ComponentType, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
 
 type Props = {
   /**
@@ -40,8 +38,7 @@ type Props = {
    */
   justifyContent?: JustifyContent;
   /**
-   * 折り返しの有無
-   * @default false
+   * 子要素の折り返しを許可
    */
   wrap?: boolean;
   /**
@@ -52,10 +49,9 @@ type Props = {
    * 幅を指定。fullは後方互換のために残している
    * デフォルト<Flex>は横幅いっぱいを専有する。しかし例えば、フレックスコンテナの子要素として配置した場合、横幅が自身の子に合わせて小さくなる。これが不都合の場合に100%とする
    */
-  width?: 'full' | Width;
+  width?: 'full' | CSSWitdh;
   /**
    * inline-flexとして扱う
-   * @default false
    */
   inline?: boolean;
 } & MarginProps &
