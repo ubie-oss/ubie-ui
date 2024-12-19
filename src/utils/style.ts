@@ -1,5 +1,5 @@
 import DesignTokens from '@ubie/design-tokens';
-import type {
+import {
   Spacing,
   Radius,
   HeadingFontSize,
@@ -11,10 +11,16 @@ import type {
   HeadingLeading,
   TagFontSize,
   TagLeading,
-  TextColor,
   CSSMinWidth,
   CSSMaxWidth,
   CSSWitdh,
+  TextColorVariant,
+  TextColorTokenKey,
+  BackgroundColorVariant,
+  BackgroundColorTokenKey,
+  BorderVariant,
+  BorderColorTokenKey,
+  IconColorVariant,
 } from '../types/style';
 import type { CSSProperties } from 'react';
 
@@ -117,29 +123,61 @@ export const cssLeadingToken = ({
   return '';
 };
 
-export const colorVariable = (color: TextColor | undefined): CSSProperties => {
+const PascalToKebab = (str: string) => {
+  return str.replace(/([A-Z])/g, '-$1').toLowerCase();
+};
+
+const textColorVariantToTokenKey = (color: TextColorVariant) => {
+  return `text-${PascalToKebab(color)}` as TextColorTokenKey;
+};
+
+/**
+ * Returns css variants based on the foreground color key
+ */
+export const colorVariable = (color: TextColorVariant | undefined): CSSProperties => {
   if (color == null) {
     return {
       '--text-color': 'inherit',
     } as CSSProperties;
   }
 
-  let _color = '';
+  return {
+    '--text-color': `var(--${DesignTokens.color[textColorVariantToTokenKey(color)].path.join('-')})`,
+  } as CSSProperties;
+};
 
-  if (color === 'linkSub') {
-    _color = `var(--${DesignTokens.color[`text-link-sub`].path.join('-')})`;
-  } else if (color === 'primary') {
-    _color = `var(--${DesignTokens.color['primary'].path.join('-')})`;
-  } else if (color === 'accent') {
-    _color = `var(--${DesignTokens.color['accent'].path.join('-')})`;
-  } else if (color === 'alert') {
-    _color = `var(--${DesignTokens.color['alert'].path.join('-')})`;
-  } else {
-    _color = `var(--${DesignTokens.color[`text-${color}`].path.join('-')})`;
+const backgroundColorVariantToTokenKey = (color: BackgroundColorVariant) => {
+  return `background-${PascalToKebab(color)}` as BackgroundColorTokenKey;
+};
+
+export const backgroundColorVariable = (color: BackgroundColorVariant | undefined): CSSProperties => {
+  if (color == null) {
+    return {
+      '--background-color': 'transparent',
+    } as CSSProperties;
   }
 
   return {
-    '--text-color': _color,
+    '--background-color': `var(--${DesignTokens.color[backgroundColorVariantToTokenKey(color)].path.join('-')})`,
+  } as CSSProperties;
+};
+
+export const iconColorVariable = (color?: IconColorVariant): CSSProperties => {
+  if (color == null) {
+    return {
+      '--icon-color': 'inherit',
+    } as CSSProperties;
+  }
+
+  if (color === 'white') {
+    return {
+      '--icon-color': 'var(--color-ubie-white)',
+    } as CSSProperties;
+  }
+
+  // FIXME icon用のトークンが定義されたら差し替え
+  return {
+    '--icon-color': `var(--color-ubie-${color}-600)`,
   } as CSSProperties;
 };
 
@@ -241,4 +279,25 @@ export const widthVariables = ({
     '--min-width': minWidth,
     '--max-width': maxWidth,
   } as CSSProperties;
+};
+
+const borderVariantToColorTokenKey = (border: BorderVariant) => {
+  const color = border.replace('Thick', '');
+  return `border-${PascalToKebab(color)}` as BorderColorTokenKey;
+};
+
+export const borderVariables = (border?: BorderVariant) => {
+  if (border == null) {
+    return {
+      '--border-width': '0px',
+    };
+  }
+
+  const isThick = border.endsWith('Thick');
+  const colorKey = borderVariantToColorTokenKey(border);
+
+  return {
+    '--border-width': isThick ? '2px' : '1px',
+    '--border-color': `var(--${DesignTokens.color[colorKey].path.join('-')})`,
+  };
 };

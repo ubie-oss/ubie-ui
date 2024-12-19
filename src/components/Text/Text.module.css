@@ -3,7 +3,7 @@
   font-weight: normal;
   hyphens: auto;
   line-height: var(--leading);
-  color: var(--color);
+  color: var(--text-color);
   overflow-wrap: anywhere;
 }
 
@@ -37,12 +37,12 @@ button.text {
 }
 
 button.text.link:focus-visible {
-  color: var(--color-primary-darken);
+  color: var(--color-blue-900);
 }
 
 @media (hover: hover) {
   button.text.link:hover {
-    color: var(--color-primary-darken);
+    color: var(--color-blue-900);
   }
 
   button.text.link:active {
@@ -69,6 +69,10 @@ button.text.link:focus-visible {
 
 .body.lg {
   --font-size: var(--text-body-lg-size);
+}
+
+.heading.xxs {
+  --font-size: var(--text-heading-xxs-size);
 }
 
 .heading.xs {
@@ -137,43 +141,6 @@ button.text.link:focus-visible {
 
 .narrow {
   --leading: var(--text-body-md-narrow-line);
-}
-
-/* color */
-.main {
-  --color: var(--color-text-main);
-}
-
-.sub {
-  --color: var(--color-text-sub);
-}
-
-.link {
-  --color: var(--color-text-link);
-}
-
-.linkSub {
-  --color: var(--color-text-link-sub);
-}
-
-.disabled {
-  --color: var(--color-text-disabled);
-}
-
-.primary {
-  --color: var(--color-primary);
-}
-
-.accent {
-  --color: var(--color-accent);
-}
-
-.alert {
-  --color: var(--color-alert);
-}
-
-.white {
-  --color: var(--color-text-white);
 }
 
 .left {

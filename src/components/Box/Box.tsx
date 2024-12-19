@@ -3,6 +3,8 @@
 import clsx from 'clsx';
 import styles from './Box.module.css';
 import {
+  backgroundColorVariable,
+  borderVariables,
   colorVariable,
   cssFontSizeToken,
   cssLeadingToken,
@@ -14,13 +16,14 @@ import {
 import { HTMLTagname } from '../../utils/types';
 import type { CustomDataAttributeProps } from '../../types/attributes';
 import type {
-  BackgroundColor,
+  BackgroundColorVariant,
   BodyFontSize,
   BodyLeading,
+  BorderVariant,
   MarginProps,
   PaddingProps,
   RadiusProp,
-  TextColor,
+  TextColorVariant,
   TextType,
   WidthProps,
 } from '../../types/style';
@@ -41,11 +44,11 @@ type BaseProps = {
   /**
    * 背景色
    */
-  backgroundColor?: BackgroundColor;
+  backgroundColor?: BackgroundColorVariant;
   /**
    * ボーダーの種類
    */
-  border?: 'gray' | 'grayThick' | 'primary' | 'primaryThick';
+  border?: BorderVariant;
   /**
    * 幅を指定。fullは後方互換のため残している
    * @default 'auto'
@@ -58,7 +61,7 @@ type BaseProps = {
   /**
    * 文字色の抽象値
    */
-  textColor?: TextColor;
+  textColor?: TextColorVariant;
   /**
    * テキストの配置。指定しない場合、親要素の配置を継承
    */
@@ -192,8 +195,6 @@ export const Box: FC<PropsWithoutText | PropsWithTextBody> = ({
     <BoxComponent
       className={clsx([
         styles.box,
-        backgroundColor && styles[`backgroundColor${capitalize(backgroundColor)}`],
-        border && styles[`border${capitalize(border)}`],
         width && styles.widthFull,
         inline && styles.inline,
         textBold && styles.textBold,
@@ -223,6 +224,8 @@ export const Box: FC<PropsWithoutText | PropsWithTextBody> = ({
         ...radiusVariables(radius),
         ..._textVariables,
         ...colorVariable(textColor),
+        ...borderVariables(border),
+        ...backgroundColorVariable(backgroundColor),
         ...widthVariables({
           width,
           minWidth,

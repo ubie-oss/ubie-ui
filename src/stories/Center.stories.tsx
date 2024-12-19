@@ -10,7 +10,7 @@ type Story = StoryObj<typeof Center>;
 export const Default: Story = {
   render: () => (
     <Center maxWidth="400px">
-      <Box border="gray" pt="md" pr="md" pb="md" pl="md">
+      <Box border="black" pt="md" pr="md" pb="md" pl="md">
         Rendered as a centered container.
       </Box>
     </Center>
@@ -20,7 +20,7 @@ export const Default: Story = {
 export const PaddingOutside: Story = {
   render: () => (
     <Center maxWidth="400px" pt="md" pl="xl" pb="md" pr="xl">
-      <Box border="gray" pt="md" pr="md" pb="md" pl="md">
+      <Box border="black" pt="md" pr="md" pb="md" pl="md">
         Narrow the screen.
         <br />
         There will be a gap on both sides of the box.
@@ -32,7 +32,7 @@ export const PaddingOutside: Story = {
 export const TextCenter: Story = {
   render: () => (
     <Center maxWidth="400px" textCenter>
-      <Box border="gray" pt="md" pr="md" pb="md" pl="md">
+      <Box border="black" pt="md" pr="md" pb="md" pl="md">
         Center
       </Box>
     </Center>
@@ -42,7 +42,7 @@ export const TextCenter: Story = {
 export const ChildrenCenter: Story = {
   render: () => (
     <Center maxWidth="400px" childrenCenter>
-      <Box border="gray" pt="md" pr="md" pb="md" pl="md">
+      <Box border="black" pt="md" pr="md" pb="md" pl="md">
         Centered Child
       </Box>
     </Center>
@@ -61,11 +61,11 @@ export const AsSection: Story = {
 
 export const MarginAndPadding: Story = {
   render: () => (
-    <div style={{ backgroundColor: 'var(--color-background-primary)', overflow: 'hidden' }}>
+    <div style={{ backgroundColor: 'var(--color-background-blue)', overflow: 'hidden' }}>
       <div>prev element</div>
 
       <Center mt="lg" mb="lg" pt="xxl" pr="xxl" pb="xxl" pl="xxl" maxWidth="400px">
-        <div style={{ width: '100%', backgroundColor: 'var(--color-background-accent-darken)', overflow: 'hidden' }}>
+        <div style={{ width: '100%', backgroundColor: 'var(--color-background-pink-darken)', overflow: 'hidden' }}>
           <h2>Heading</h2>
           <p>body</p>
         </div>
@@ -82,7 +82,7 @@ export const AsBox: Story = {
       maxWidth="320px"
       pr="sm"
       pl="sm"
-      as={<Box radius="md" backgroundColor="primary" pt="lg" pr="lg" pb="lg" pl="lg" />}
+      as={<Box radius="md" backgroundColor="blue" pt="lg" pr="lg" pb="lg" pl="lg" />}
     >
       <div>Center</div>
     </Center>

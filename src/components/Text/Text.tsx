@@ -4,7 +4,6 @@ import { clsx } from 'clsx';
 import { cloneElement } from 'react';
 import styles from './Text.module.css';
 import {
-  TextColor,
   BodyFontSize,
   BodyLeading,
   HeadingFontSize,
@@ -13,8 +12,10 @@ import {
   ButtonLeading,
   TagFontSize,
   TagLeading,
+  TextColorVariant,
 } from '../../types/style';
 import { fixedForwardRef } from '../../utils/component';
+import { colorVariable } from '../../utils/style';
 import { DistributiveOmit } from '../../utils/types';
 import type { ReactNode, ElementType, ForwardedRef, ComponentPropsWithRef, ReactElement } from 'react';
 
@@ -37,7 +38,7 @@ type BaseProps = {
    * 文字色の抽象値
    * @default main
    */
-  color?: TextColor;
+  color?: TextColorVariant;
   /**
    * HTMLのid属性
    */
@@ -163,11 +164,11 @@ function TextInner<T extends ElementType>(
         styles[size],
         styles[type],
         styles[leading],
-        styles[color],
         textAlign && styles[textAlign],
         bold && styles.bold,
         noWrap && styles.nowrap,
       ),
+      style: colorVariable(color),
       ...rest,
     },
     <>{children}</>,

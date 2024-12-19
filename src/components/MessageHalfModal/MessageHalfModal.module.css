@@ -81,7 +81,7 @@
 }
 
 .header.sticky.canScroll {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border-black);
 }
 
 .body {
@@ -108,7 +108,7 @@
 }
 
 .buttonContainer.sticky.canScroll {
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border-black);
 }
 
 .overlayEnter {

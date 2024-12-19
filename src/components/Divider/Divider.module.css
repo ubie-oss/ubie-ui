@@ -4,13 +4,6 @@
   max-width: var(--max-width);
   height: 1px;
   margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
-  border: none;
-}
-
-.divider.gray {
-  background-color: var(--color-border);
-}
-
-.divider.primary {
-  background-color: var(--color-primary);
+  border: 0;
+  border-top: var(--border-width) solid var(--border-color);
 }
