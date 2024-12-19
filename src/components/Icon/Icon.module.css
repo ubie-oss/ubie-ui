@@ -1,6 +1,6 @@
 .icon {
   width: var(--size);
   height: var(--size);
-  color: var(--text-color);
+  color: var(--icon-color);
   vertical-align: bottom;
 }

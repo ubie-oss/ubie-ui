@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { UbieIcon, ThumbUpOutlineIcon, SetupIcon } from '@ubie/ubie-icons';
 import { Box, Heading, Stack } from '../';
 
 export default {
@@ -12,6 +11,12 @@ type Story = StoryObj<typeof Heading>;
 export const Default: Story = {
   render: () => (
     <Stack spacing="md">
+      <Heading size="xxs">xxs: スマートフォン問診</Heading>
+      <Heading size="xxs">
+        xxs: スマートフォン問診を利用できる
+        <br />
+        近くの医療機関から調べる
+      </Heading>
       <Heading size="xs">xs: スマートフォン問診</Heading>
       <Heading size="xs">
         xs: スマートフォン問診を利用できる
@@ -85,15 +90,7 @@ export const Colors: Story = {
         スマートフォン問診（main）
       </Heading>
 
-      <Heading as="p" color="primary" size="md">
-        スマートフォン問診（primary）
-      </Heading>
-
-      <Heading as="p" color="accent" size="md">
-        スマートフォン問診（accent）
-      </Heading>
-
-      <div style={{ backgroundColor: 'var(--color-primary)', padding: 'var(--size-spacing-xs)' }}>
+      <div style={{ backgroundColor: 'var(--color-blue-600)', padding: 'var(--size-spacing-xs)' }}>
         <Heading as="p" color="white" size="md">
           スマートフォン問診（white）
         </Heading>
@@ -109,15 +106,7 @@ export const HasLink: Story = {
         <a href="https://vitals.ubie.life/">Vitals</a> スマートフォン問診（main）
       </Heading>
 
-      <Heading as="p" color="primary" size="md">
-        <a href="https://vitals.ubie.life/">Vitals</a> スマートフォン問診（primary）
-      </Heading>
-
-      <Heading as="p" color="accent" size="md">
-        <a href="https://vitals.ubie.life/">Vitals</a> スマートフォン問診（accent）
-      </Heading>
-
-      <div style={{ backgroundColor: 'var(--color-primary)', padding: 'var(--size-spacing-xs)' }}>
+      <div style={{ backgroundColor: 'var(--color-blue-600)', padding: 'var(--size-spacing-xs)' }}>
         <Heading as="p" color="white" size="md">
           <a href="https://vitals.ubie.life/">Vitals</a> スマートフォン問診（white）
         </Heading>
@@ -129,6 +118,14 @@ export const HasLink: Story = {
 export const LeadingBorder: Story = {
   render: () => (
     <Stack spacing="md">
+      <Heading as="p" leadingBorder size="xxs">
+        スマートフォン問診
+      </Heading>
+      <Heading as="p" leadingBorder size="xxs">
+        スマートフォン問診を利用できる
+        <br />
+        近くの医療機関から調べる
+      </Heading>
       <Heading as="p" leadingBorder size="xs">
         スマートフォン問診
       </Heading>
@@ -195,89 +192,6 @@ export const TextAlign: Story = {
   ),
 };
 
-export const Icon: Story = {
-  render: () => (
-    <Stack spacing="md">
-      <Heading as="p" primaryIcon={<UbieIcon />} size="xs">
-        スマートフォン問診
-      </Heading>
-      <Heading as="p" primaryIcon={<UbieIcon />} size="xs">
-        スマートフォン問診を利用できる
-        <br />
-        近くの医療機関から調べる
-      </Heading>
-      <Heading as="p" primaryIcon={<UbieIcon />} size="sm">
-        スマートフォン問診
-      </Heading>
-      <Heading as="p" primaryIcon={<UbieIcon />} size="sm">
-        スマートフォン問診を利用できる
-        <br />
-        近くの医療機関から調べる
-      </Heading>
-      <Heading as="p" primaryIcon={<UbieIcon />} size="md">
-        スマートフォン問診
-      </Heading>
-      <Heading as="p" primaryIcon={<UbieIcon />} size="md">
-        スマートフォン問診を利用できる
-        <br />
-        近くの医療機関から調べる
-      </Heading>
-      <Heading as="p" primaryIcon={<UbieIcon />} size="lg">
-        スマートフォン問診
-      </Heading>
-      <Heading as="p" primaryIcon={<UbieIcon />} size="lg">
-        スマートフォン問診を利用できる
-        <br />
-        近くの医療機関から調べる
-      </Heading>
-      <Heading as="p" primaryIcon={<UbieIcon />} size="xl">
-        スマートフォン問診
-      </Heading>
-      <Heading as="p" primaryIcon={<UbieIcon />} size="xl">
-        スマートフォン問診を利用できる
-        <br />
-        近くの医療機関から調べる
-      </Heading>
-
-      <Heading as="p" accentIcon={<ThumbUpOutlineIcon />} size="xs">
-        スマートフォン問診
-      </Heading>
-      <Heading as="p" accentIcon={<ThumbUpOutlineIcon />} size="sm">
-        スマートフォン問診
-      </Heading>
-      <Heading as="p" accentIcon={<ThumbUpOutlineIcon />} size="md">
-        スマートフォン問診
-      </Heading>
-      <Heading as="p" accentIcon={<ThumbUpOutlineIcon />} size="lg">
-        スマートフォン問診
-      </Heading>
-      <Heading as="p" accentIcon={<ThumbUpOutlineIcon />} size="xl">
-        スマートフォン問診
-      </Heading>
-
-      <div style={{ backgroundColor: 'var(--color-primary)', padding: 'var(--size-spacing-xs)' }}>
-        <Stack spacing="md">
-          <Heading as="p" color="white" whiteIcon={<SetupIcon />} size="xs">
-            スマートフォン問診
-          </Heading>
-          <Heading as="p" color="white" whiteIcon={<SetupIcon />} size="sm">
-            スマートフォン問診
-          </Heading>
-          <Heading as="p" color="white" whiteIcon={<SetupIcon />} size="md">
-            スマートフォン問診
-          </Heading>
-          <Heading as="p" color="white" whiteIcon={<SetupIcon />} size="lg">
-            スマートフォン問診
-          </Heading>
-          <Heading as="p" color="white" whiteIcon={<SetupIcon />} size="xl">
-            スマートフォン問診
-          </Heading>
-        </Stack>
-      </div>
-    </Stack>
-  ),
-};
-
 export const Bold: Story = {
   render: () => (
     <Stack spacing="md">
@@ -302,14 +216,14 @@ export const TextWrap: Story = {
   render: () => (
     <div style={{ width: '300px' }}>
       <Stack spacing="md">
-        <Box border="gray">
+        <Box border="black">
           <Heading>
             私はすべてぼんやりその批評痛というのの中を押しだなけれ。現に十月の仕事方ももしこのお尋ねましたまでをふりまいとならませには刺戟待ったたて、とてもにはなろべきませたです。https://vitals.ubie.life/?hoge=1111111111111111111111111111111111111111111111111111
           </Heading>
         </Box>
 
         <div lang="en">
-          <Box border="gray">
+          <Box border="black">
             <Heading>
               industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an
               unknown printer took a galley of type and scrambled it to make a type specimen
@@ -323,7 +237,7 @@ export const TextWrap: Story = {
             <code>noWrap</code>
           </p>
 
-          <Box border="gray">
+          <Box border="black">
             <Heading noWrap>
               私はすべてぼんやりその批評痛というのの中を押しだなけれ。現に十月の仕事方ももしこのお尋ねましたまでをふりまいとならませには刺戟待ったたて、とてもにはなろべきませたです。https://vitals.ubie.life/?hoge=1111111111111111111111111111111111111111111111111111
             </Heading>
@@ -335,7 +249,7 @@ export const TextWrap: Story = {
             <code>noWrap</code>
           </p>
 
-          <Box border="gray">
+          <Box border="black">
             <Heading noWrap>
               industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an
               unknown printer took a galley of type and scrambled it to make a type specimen book.

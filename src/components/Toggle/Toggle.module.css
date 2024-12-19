@@ -15,22 +15,26 @@
   box-sizing: border-box;
 }
 
+.root:has(input:focus-visible) {
+  outline: 2px solid var(--color-border-pink-darken);
+}
+
 .root:has(input:disabled) {
   cursor: default;
   background-color: var(--color-text-disabled);
 }
 
 .on {
-  background-color: var(--color-primary);
+  background-color: var(--color-ubie-blue-600);
 }
 
 .off {
-  background-color: var(--color-ubie-black-400);
+  background-color: var(--color-ubie-black-500);
 }
 
 @media (hover: hover) {
   .on:hover {
-    background-color: var(--color-primary-darken);
+    background-color: var(--color-ubie-blue-700);
   }
 
   .off:hover {
@@ -56,7 +60,12 @@
 
 .input {
   position: absolute;
+  width: 1px;
+  height: 1px;
   padding: 0;
-  visibility: hidden;
-  border: none;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

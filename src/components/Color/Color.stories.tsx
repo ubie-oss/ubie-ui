@@ -15,16 +15,26 @@ export const Colors: Story = {
   render: () => {
     return (
       <Stack spacing="md">
-        <Color>default(main)</Color>
         <Color color="main">main</Color>
         <Color color="sub">sub</Color>
-        <Color color="primary">primary</Color>
-        <Color color="accent">accent</Color>
-        <Color color="alert">alert</Color>
-        <Color color="disabled">disabled</Color>
         <Color color="link">link</Color>
         <Color color="linkSub">linkSub</Color>
-        <Box pt="sm" pr="sm" pb="sm" pl="sm" backgroundColor="primaryDarken">
+        <Color color="disabled">disabled</Color>
+        <Color color="blue">blue</Color>
+        <Color color="blueDarken">blueDarken</Color>
+        <Color color="pink">pink</Color>
+        <Color color="pinkDarken">pinkDarken</Color>
+        <Color color="orange">orange</Color>
+        <Color color="orangeDarken">orangeDarken</Color>
+        <Color color="purple">purple</Color>
+        <Color color="purpleDarken">purpleDarken</Color>
+        <Color color="green">green</Color>
+        <Color color="greenDarken">greenDarken</Color>
+        <Color color="red">red</Color>
+        <Color color="redDarken">redDarken</Color>
+        <Color color="black">black</Color>
+        <Color color="blackDarken">blackDarken</Color>
+        <Box pt="sm" pr="sm" pb="sm" pl="sm" backgroundColor="blackInverseDarken">
           <Color color="white">white</Color>
         </Box>
       </Stack>
@@ -36,7 +46,7 @@ export const WithText: Story = {
   render: () => {
     return (
       <Text type="body" size="lg" color="main">
-        一部だけ<Color color="accent">色</Color>を変えたい
+        一部だけ<Color color="pink">色</Color>を変えたい
       </Text>
     );
   },

@@ -10,7 +10,7 @@ export default {
 type Props = ComponentPropsWithoutRef<typeof Divider>;
 
 const defaultArgs: Props = {
-  border: 'gray',
+  border: 'black',
 };
 
 type Story = StoryObj<typeof Divider>;
@@ -24,8 +24,34 @@ export const BorderVariants: Story = {
   render: () => {
     return (
       <Stack spacing="md">
-        <Divider border="gray" />
-        <Divider border="primary" />
+        <Divider border="blue" />
+        <Divider border="blueThick" />
+        <Divider border="blueDarken" />
+        <Divider border="blueDarkenThick" />
+        <Divider border="pink" />
+        <Divider border="pinkThick" />
+        <Divider border="pinkDarken" />
+        <Divider border="pinkDarkenThick" />
+        <Divider border="orange" />
+        <Divider border="orangeThick" />
+        <Divider border="orangeDarken" />
+        <Divider border="orangeDarkenThick" />
+        <Divider border="purple" />
+        <Divider border="purpleThick" />
+        <Divider border="purpleDarken" />
+        <Divider border="purpleDarkenThick" />
+        <Divider border="green" />
+        <Divider border="greenThick" />
+        <Divider border="greenDarken" />
+        <Divider border="greenDarkenThick" />
+        <Divider border="red" />
+        <Divider border="redThick" />
+        <Divider border="redDarken" />
+        <Divider border="redDarkenThick" />
+        <Divider border="black" />
+        <Divider border="blackThick" />
+        <Divider border="blackDarken" />
+        <Divider border="blackDarkenThick" />
       </Stack>
     );
   },

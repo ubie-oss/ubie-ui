@@ -1,7 +1,7 @@
 import { type FC, PropsWithChildren } from 'react';
 import styles from './Color.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
-import { TextColor } from '../../types/style';
+import { TextColorVariant } from '../../types/style';
 import { colorVariable } from '../../utils/style';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
    * 文字色
    * @default main
    */
-  color?: TextColor;
+  color?: TextColorVariant;
   /**
    * ネイティブ要素のid属性。ページで固有のIDを指定
    */

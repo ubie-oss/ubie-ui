@@ -1,16 +1,28 @@
-export type FontSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type FontSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type TextType = 'body' | 'heading' | 'button' | 'tag';
 
 export type Leading = 'default' | 'narrow';
 
-export type TextColor = 'main' | 'sub' | 'link' | 'linkSub' | 'disabled' | 'primary' | 'accent' | 'alert' | 'white';
+export type Hue = 'black' | 'blue' | 'pink' | 'orange' | 'purple' | 'green' | 'red';
+
+export type TextColorVariant = 'main' | 'sub' | 'link' | 'linkSub' | 'disabled' | 'white' | Hue | `${Hue}Darken`;
+
+export type TextColorTokenKey =
+  | 'text-main'
+  | 'text-sub'
+  | 'text-link'
+  | 'text-link-sub'
+  | 'text-disabled'
+  | 'text-white'
+  | `text-${Hue}`
+  | `text-${Hue}-darken`;
 
 export type BodyFontSize = Extract<FontSize, 'xs' | 'sm' | 'md' | 'lg'>;
 
 export type BodyLeading = Extract<Leading, 'default' | 'narrow'>;
 
-export type HeadingFontSize = Extract<FontSize, 'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
+export type HeadingFontSize = Extract<FontSize, 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
 
 export type HeadingLeading = Extract<Leading, 'default'>;
 
@@ -123,7 +135,20 @@ export type RadiusProp = {
   radius?: Radius;
 };
 
-export type BackgroundColor = 'primary' | 'primaryDarken' | 'accent' | 'accentDarken' | 'alert' | 'gray' | 'white';
+export type BackgroundColorVariant = 'white' | Hue | `${Hue}Darken` | `${Hue}Inverse` | `${Hue}InverseDarken`;
+
+export type BackgroundColorTokenKey =
+  | 'background-white'
+  | `background-${Hue}`
+  | `background-${Hue}-darken`
+  | `background-${Hue}-inverse`
+  | `background-${Hue}-inverse-darken`;
+
+export type BorderColorTokenKey = `border-${Hue}` | `border-${Hue}-darken`;
+
+export type BorderVariant = Hue | `${Hue}Darken` | `${Hue}Thick` | `${Hue}DarkenThick`;
+
+export type IconColorVariant = 'white' | Hue;
 
 export type CSSVariable = `var(--${string})`;
 

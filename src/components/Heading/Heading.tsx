@@ -1,9 +1,9 @@
 import { clsx } from 'clsx';
 import styles from './Heading.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
-import { TextColor } from '../../types/style';
+import { HeadingFontSize, TextColorVariant } from '../../types/style';
 import { HTMLTagname } from '../../utils/types';
-import type { FC, PropsWithChildren, ReactNode } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
   /**
@@ -11,23 +11,11 @@ type Props = {
    */
   textAlign?: 'left' | 'center' | 'right';
   /**
-   * アイコン。プライマラーカラーで表示。icon propはどれかひとつのみを指定してください
-   */
-  primaryIcon?: ReactNode;
-  /**
-   * アイコン。アクセントカラーで表示。icon propはどれかひとつのみを指定してください
-   */
-  accentIcon?: ReactNode;
-  /**
-   * アイコン。ホワイトカラーで表示。icon propはどれかひとつのみを指定してください
-   */
-  whiteIcon?: ReactNode;
-  /**
    * サイズ。Typographyトークンの値を指定
    * xs=16px, sm=18px, md=20px, lg=24px, xl=28px
    * @default md
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: HeadingFontSize;
   /**
    * 行の先頭にボーダーを表示
    * @default false
@@ -42,7 +30,7 @@ type Props = {
    * テキストのカラーバリエーション
    * @default secondary
    */
-  color?: Extract<TextColor, 'main' | 'primary' | 'accent' | 'white'>;
+  color?: Extract<TextColorVariant, 'main' | 'white'>;
   /**
    * HTMLのID属性
    */
@@ -65,9 +53,6 @@ type Props = {
 const Heading: FC<PropsWithChildren<Props>> = ({
   textAlign,
   children,
-  primaryIcon,
-  accentIcon,
-  whiteIcon,
   size = 'md',
   color = 'main',
   leadingBorder,
@@ -80,7 +65,6 @@ const Heading: FC<PropsWithChildren<Props>> = ({
 }) => {
   const className = clsx(
     styles.heading,
-    primaryIcon || accentIcon || whiteIcon ? styles.hasIcon : null,
     textAlign ? styles[textAlign] : null,
     styles[size],
     // For leadingBorder, only the main text colour is supported.
@@ -92,21 +76,6 @@ const Heading: FC<PropsWithChildren<Props>> = ({
 
   return (
     <HeadingComponent className={className} id={id} htmlFor={htmlFor} {...otherProps}>
-      {primaryIcon && (
-        <span aria-hidden className={clsx(styles.icon, styles.primary)}>
-          {primaryIcon}
-        </span>
-      )}
-      {accentIcon && (
-        <span aria-hidden className={clsx(styles.icon, styles.accent)}>
-          {accentIcon}
-        </span>
-      )}
-      {whiteIcon && (
-        <span aria-hidden className={clsx(styles.icon, styles.white)}>
-          {whiteIcon}
-        </span>
-      )}
       {children}
     </HeadingComponent>
   );

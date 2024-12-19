@@ -32,7 +32,7 @@
 }
 
 .button:focus-visible {
-  outline: solid var(--color-accent) 2px;
+  outline: solid var(--focus-ring, var(--color-border-blue-darken)) 2px;
 }
 
 .button.loading {
@@ -83,12 +83,13 @@
   --text: var(--color-text-white);
   --text-hover: var(--color-text-white);
   --text-disabled: var(--color-text-disabled);
-  --bg: var(--color-primary);
-  --bg-hover: var(--color-primary-darken);
-  --bg-disabled: var(--color-background-gray);
-  --border-color: var(--color-primary);
-  --border-color-hover: var(--color-primary-darken);
-  --border-color-disabled: var(--color-background-gray);
+  --bg: var(--color-background-blue-inverse);
+  --bg-hover: var(--color-background-blue-inverse-darken);
+  --bg-disabled: var(--color-background-black-darken);
+  --border-color: var(--color-background-blue-inverse);
+  --border-color-hover: var(--color-background-blue-inverse-darken);
+  --border-color-disabled: var(--color-background-black-darken);
+  --focus-ring: var(--color-border-pink-darken);
 }
 
 .secondary {
@@ -96,59 +97,47 @@
   --text-hover: var(--color-text-main);
   --text-disabled: var(--color-text-disabled);
   --bg: var(--color-background-white);
-  --bg-hover: var(--color-background-gray);
-  --bg-disabled: var(--color-background-gray);
-  --border-color: var(--color-border);
-  --border-color-hover: var(--color-border);
-  --border-color-disabled: var(--color-background-gray);
-}
-
-.accent {
-  --text: var(--color-text-white);
-  --text-hover: var(--color-text-white);
-  --text-disabled: var(--color-text-disabled);
-  --bg: var(--color-accent);
-  --bg-hover: var(--color-accent-darken);
-  --bg-disabled: var(--color-background-gray);
-  --border-color: var(--color-accent);
-  --border-color-hover: var(--color-accent-darken);
-  --border-color-disabled: var(--color-background-gray);
+  --bg-hover: var(--color-background-black-darken);
+  --bg-disabled: var(--color-background-black-darken);
+  --border-color: var(--color-border-black);
+  --border-color-hover: var(--color-border-black);
+  --border-color-disabled: var(--color-background-black-darken);
 }
 
 .alert {
   --text: var(--color-text-white);
   --text-hover: var(--color-text-white);
   --text-disabled: var(--color-text-disabled);
-  --bg: var(--color-alert);
-  --bg-hover: var(--color-alert-darken);
-  --bg-disabled: var(--color-background-gray);
-  --border-color: var(--color-alert);
-  --border-color-hover: var(--color-alert-darken);
-  --border-color-disabled: var(--color-background-gray);
+  --bg: var(--color-background-red-inverse);
+  --bg-hover: var(--color-background-red-inverse-darken);
+  --bg-disabled: var(--color-background-black-darken);
+  --border-color: var(--color-background-red-inverse);
+  --border-color-hover: var(--color-background-red-inverse-darken);
+  --border-color-disabled: var(--color-background-black-darken);
 }
 
 .text {
-  --text: var(--color-primary);
-  --text-hover: var(--color-primary-darken);
+  --text: var(--color-ubie-blue-600);
+  --text-hover: var(--color-ubie-blue-700);
   --text-disabled: var(--color-text-disabled);
   --bg: transparent;
-  --bg-hover: var(--color-background-primary);
+  --bg-hover: var(--color-background-blue);
   --bg-disabled: transparent;
   --border-color: transparent;
-  --border-color-hover: var(--color-background-primary);
-  --border-color-disabled: var(--color-background-gray);
+  --border-color-hover: var(--color-background-blue);
+  --border-color-disabled: var(--color-background-black-darken);
 }
 
 .textAlert {
-  --text: var(--color-alert);
-  --text-hover: var(--color-alert-darken);
+  --text: var(--color-text-red);
+  --text-hover: var(--color-ubie-red-700);
   --text-disabled: var(--color-text-disabled);
   --bg: transparent;
-  --bg-hover: var(--color-background-alert);
+  --bg-hover: var(--color-background-red);
   --bg-disabled: transparent;
   --border-color: transparent;
-  --border-color-hover: var(--color-background-alert);
-  --border-color-disabled: var(--color-background-gray);
+  --border-color-hover: var(--color-background-red);
+  --border-color-disabled: var(--color-background-black-darken);
 }
 
 .authGoogle {

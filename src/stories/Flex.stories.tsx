@@ -194,7 +194,7 @@ export const MarginAndPadding: Story = {
 
 export const AsBox: Story = {
   render: () => (
-    <Flex spacing="md" as={<Box radius="md" backgroundColor="primary" pt="lg" pr="lg" pb="lg" pl="lg" />}>
+    <Flex spacing="md" as={<Box radius="md" backgroundColor="blue" pt="lg" pr="lg" pb="lg" pl="lg" />}>
       <div>item</div>
       <div>item</div>
       <div>item</div>
@@ -315,13 +315,13 @@ export const Inline: Story = {
     <p>
       文章文章文章文章文章文章
       <Flex as="span" spacing="md" inline>
-        <Box as="span" inline backgroundColor="primary" p="xs" radius="md">
+        <Box as="span" inline backgroundColor="blue" p="xs" radius="md">
           Item
         </Box>
-        <Box as="span" inline backgroundColor="primary" p="xs" radius="md">
+        <Box as="span" inline backgroundColor="blue" p="xs" radius="md">
           Item
         </Box>
-        <Box as="span" inline backgroundColor="primary" p="xs" radius="md">
+        <Box as="span" inline backgroundColor="blue" p="xs" radius="md">
           Item
         </Box>
       </Flex>

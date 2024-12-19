@@ -13,7 +13,7 @@ const defaultArgs = {
   pb: 'md',
   pl: 'md',
   radius: 'md',
-  backgroundColor: 'primary',
+  backgroundColor: 'blue',
 } satisfies Partial<ComponentProps<typeof Box>>;
 
 type Story = StoryObj<typeof Box>;
@@ -24,29 +24,95 @@ export const Default: Story = {
 
 export const BackgroundColor: Story = {
   render: (args) => (
-    <div>
-      <Box {...args} backgroundColor="primary">
-        Primary
+    <Stack gap="xs">
+      <Box {...args} backgroundColor="blue">
+        Blue
       </Box>
-      <Box {...args} mt="md" backgroundColor="primaryDarken">
-        Primary Darken
+      <Box {...args} backgroundColor="blueDarken">
+        Blue Darken
       </Box>
-      <Box {...args} mt="md" backgroundColor="accent">
-        Accent
+      <Box {...args} backgroundColor="blueInverse" textColor="white">
+        Blue Inverse
       </Box>
-      <Box {...args} mt="md" backgroundColor="accentDarken">
-        Accent Darken
+      <Box {...args} backgroundColor="blueInverseDarken" textColor="white">
+        Blue Inverse Darken
       </Box>
-      <Box {...args} mt="md" backgroundColor="alert">
-        Alert
+      <Box {...args} backgroundColor="pink">
+        Pink
       </Box>
-      <Box {...args} mt="md" backgroundColor="gray">
-        Gray
+      <Box {...args} backgroundColor="pinkDarken">
+        Pink Darken
       </Box>
-      <Box {...args} mt="md" backgroundColor="white">
+      <Box {...args} backgroundColor="pinkInverse" textColor="white">
+        Pink Inverse
+      </Box>
+      <Box {...args} backgroundColor="pinkInverseDarken" textColor="white">
+        Pink Inverse Darken
+      </Box>
+      <Box {...args} backgroundColor="orange">
+        Orange
+      </Box>
+      <Box {...args} backgroundColor="orangeDarken">
+        Orange Darken
+      </Box>
+      <Box {...args} backgroundColor="orangeInverse" textColor="white">
+        Orange Inverse
+      </Box>
+      <Box {...args} backgroundColor="orangeInverseDarken" textColor="white">
+        Orange Inverse Darken
+      </Box>
+      <Box {...args} backgroundColor="purple">
+        Purple
+      </Box>
+      <Box {...args} backgroundColor="purpleDarken">
+        Purple Darken
+      </Box>
+      <Box {...args} backgroundColor="purpleInverse" textColor="white">
+        Purple Inverse
+      </Box>
+      <Box {...args} backgroundColor="purpleInverseDarken" textColor="white">
+        Purple Inverse Darken
+      </Box>
+      <Box {...args} backgroundColor="green">
+        Green
+      </Box>
+      <Box {...args} backgroundColor="greenDarken">
+        Green Darken
+      </Box>
+      <Box {...args} backgroundColor="greenInverse" textColor="white">
+        Green Inverse
+      </Box>
+      <Box {...args} backgroundColor="greenInverseDarken" textColor="white">
+        Green Inverse Darken
+      </Box>
+      <Box {...args} backgroundColor="red">
+        Red
+      </Box>
+      <Box {...args} backgroundColor="redDarken">
+        Red Darken
+      </Box>
+      <Box {...args} backgroundColor="redInverse" textColor="white">
+        Red Inverse
+      </Box>
+      <Box {...args} backgroundColor="redInverseDarken" textColor="white">
+        Red Inverse Darken
+      </Box>
+      <Box {...args} backgroundColor="black">
+        Black
+      </Box>
+      <Box {...args} backgroundColor="blackDarken">
+        Black Darken
+      </Box>
+      <Box {...args} backgroundColor="blackInverse" textColor="white">
+        Black Inverse
+      </Box>
+      <Box {...args} backgroundColor="blackInverseDarken" textColor="white">
+        Black Inverse Darken
+      </Box>
+      <Box {...args} backgroundColor="white" textColor="main">
         White
       </Box>
-    </div>
+    </Stack>
   ),
   args: defaultArgs,
 };
@@ -137,20 +203,50 @@ export const Radius: Story = {
 
 export const Border: Story = {
   render: (args) => (
-    <div>
-      <Box {...args} backgroundColor="white" border="gray">
-        Border Gray
+    <Stack gap="xs">
+      <Box {...args} backgroundColor="blue" border="blue">
+        Blue Border
       </Box>
-      <Box mt="md" {...args} backgroundColor="white" border="grayThick">
-        Border Gray Thick
+      <Box {...args} backgroundColor="blue" border="blueThick">
+        Blue Border Thick
       </Box>
-      <Box {...args} mt="md" backgroundColor="white" border="primary">
-        Primary Border
+      <Box {...args} backgroundColor="pink" border="pink">
+        Pink Border
       </Box>
-      <Box {...args} mt="md" backgroundColor="white" border="primaryThick">
-        Primary Border Thick
+      <Box {...args} backgroundColor="pink" border="pinkThick">
+        Pink Border Thick
       </Box>
-    </div>
+      <Box {...args} backgroundColor="orange" border="orange">
+        Orange Border
+      </Box>
+      <Box {...args} backgroundColor="orange" border="orangeThick">
+        Orange Border Thick
+      </Box>
+      <Box {...args} backgroundColor="purple" border="purple">
+        Purple Border
+      </Box>
+      <Box {...args} backgroundColor="purple" border="purpleThick">
+        Purple Border Thick
+      </Box>
+      <Box {...args} backgroundColor="green" border="green">
+        Green Border
+      </Box>
+      <Box {...args} backgroundColor="green" border="greenThick">
+        Green Border Thick
+      </Box>
+      <Box {...args} backgroundColor="red" border="red">
+        Red Border
+      </Box>
+      <Box {...args} backgroundColor="red" border="redThick">
+        Red Border Thick
+      </Box>
+      <Box {...args} backgroundColor="black" border="black">
+        Border Black
+      </Box>
+      <Box {...args} backgroundColor="black" border="blackThick">
+        Border Black Thick
+      </Box>
+    </Stack>
   ),
   args: defaultArgs,
 };
@@ -184,7 +280,7 @@ export const Width: Story = {
 
 export const AsSection: Story = {
   render: () => (
-    <Box as="section" pt="md" pr="md" pb="md" pl="md" radius="md" backgroundColor="primary">
+    <Box as="section" pt="md" pr="md" pb="md" pl="md" radius="md" backgroundColor="blue">
       <h2>Heading</h2>
 
       <p>body</p>
@@ -197,8 +293,8 @@ export const TextVariations: Story = {
     <div>
       <Box
         {...args}
-        backgroundColor="gray"
-        textColor="primary"
+        backgroundColor="blue"
+        textColor="blue"
         textBold
         textType="body"
         textSize="lg"
@@ -206,14 +302,15 @@ export const TextVariations: Story = {
       >
         <p>Text Bold</p>
 
-        <Box {...args} backgroundColor="gray">
+        <Box {...args} backgroundColor="black">
           <p>nested</p>
         </Box>
 
         <Box
           {...args}
           mt="md"
-          backgroundColor="gray"
+          backgroundColor="black"
+          textColor="black"
           textType="body"
           textSize="sm"
           textLeading="narrow"
@@ -223,29 +320,41 @@ export const TextVariations: Story = {
         </Box>
       </Box>
 
-      <Box {...args} backgroundColor="gray" mt="xl" textColor="main">
+      <Box {...args} backgroundColor="black" mt="xl" textColor="main">
         <p>Color Main</p>
       </Box>
-      <Box {...args} backgroundColor="gray" mt="md" textColor="sub">
+      <Box {...args} backgroundColor="black" mt="md" textColor="sub">
         <p>Color Sub</p>
       </Box>
-      <Box {...args} backgroundColor="gray" mt="md" textColor="link">
+      <Box {...args} backgroundColor="black" mt="md" textColor="link">
         <p>Color Main</p>
       </Box>
-      <Box {...args} backgroundColor="gray" mt="md" textColor="linkSub">
+      <Box {...args} backgroundColor="black" mt="md" textColor="linkSub">
         <p>Color Link Sub</p>
       </Box>
-      <Box {...args} backgroundColor="gray" mt="md" textColor="disabled">
+      <Box {...args} backgroundColor="black" mt="md" textColor="disabled">
         <p>Color Disabled</p>
       </Box>
-      <Box {...args} backgroundColor="gray" mt="md" textColor="primary">
-        <p>Color Primary</p>
+      <Box {...args} backgroundColor="blue" mt="md" textColor="blue">
+        <p>Color Blue</p>
       </Box>
-      <Box {...args} backgroundColor="gray" mt="md" textColor="accent">
-        <p>Color Accent</p>
+      <Box {...args} backgroundColor="pink" mt="md" textColor="pink">
+        <p>Color Pink</p>
       </Box>
-      <Box {...args} backgroundColor="gray" mt="md" textColor="alert">
-        <p>Color Alert</p>
+      <Box {...args} backgroundColor="orange" mt="md" textColor="orange">
+        <p>Color Orange</p>
+      </Box>
+      <Box {...args} backgroundColor="purple" mt="md" textColor="purple">
+        <p>Color Purple</p>
+      </Box>
+      <Box {...args} backgroundColor="green" mt="md" textColor="green">
+        <p>Color Green</p>
+      </Box>
+      <Box {...args} backgroundColor="red" mt="md" textColor="red">
+        <p>Color Red</p>
+      </Box>
+      <Box {...args} backgroundColor="black" mt="md" textColor="black">
+        <p>Color Black</p>
       </Box>
       <Box {...args} mt="xl" textType="body">
         <p>Body size & leading default value</p>
@@ -353,7 +462,8 @@ export const Inline: Story = {
   args: {
     ...defaultArgs,
     as: 'span',
-    backgroundColor: 'primary',
+    backgroundColor: 'blueInverse',
+    textColor: 'white',
     inline: true,
     p: 'xs',
     m: 'sm',

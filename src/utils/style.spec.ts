@@ -2,16 +2,17 @@ import { describe, it, expect } from 'vitest';
 import { opacityToClassName, colorVariable, widthVariables } from './style';
 
 describe('opacityToClassName', () => {
-  it('shuold return normalOverlay when opacity is normal', () => {
+  it('should return normalOverlay when opacity is normal', () => {
     expect(opacityToClassName('normal')).toBe('normalOverlay');
   });
 
-  it('shuold return darkerOverlay when opacity is darker', () => {
+  it('should return darkerOverlay when opacity is darker', () => {
     expect(opacityToClassName('darker')).toBe('darkerOverlay');
   });
 });
 
-describe('craeteTextColorVariable', () => {
+describe('colorVariable', () => {
+  // 名前も正確性を保つ形に修正
   it('should return main text color variable', () => {
     expect(colorVariable('main')).toStrictEqual({
       '--text-color': 'var(--color-text-main)',
@@ -22,19 +23,14 @@ describe('craeteTextColorVariable', () => {
       '--text-color': 'var(--color-text-sub)',
     });
   });
-  it('should return primary color variable', () => {
-    expect(colorVariable('primary')).toStrictEqual({
-      '--text-color': 'var(--color-primary)',
+  it('should return blue color variable', () => {
+    expect(colorVariable('blue')).toStrictEqual({
+      '--text-color': 'var(--color-text-blue)',
     });
   });
-  it('should return accent color variable', () => {
-    expect(colorVariable('accent')).toStrictEqual({
-      '--text-color': 'var(--color-accent)',
-    });
-  });
-  it('should return alert color variable', () => {
-    expect(colorVariable('alert')).toStrictEqual({
-      '--text-color': 'var(--color-alert)',
+  it('should return accent pink darken color variable', () => {
+    expect(colorVariable('pinkDarken')).toStrictEqual({
+      '--text-color': 'var(--color-text-pink-darken)',
     });
   });
   it('should return link sub text color variable', () => {
@@ -45,7 +41,7 @@ describe('craeteTextColorVariable', () => {
 });
 
 describe('widthVariables', () => {
-  it('should return default values', () => {
+  it('should return default width values', () => {
     const variables = widthVariables({});
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

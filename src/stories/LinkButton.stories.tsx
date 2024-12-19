@@ -24,7 +24,6 @@ export const Default: Story = {
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
         <LinkButton {...defaultArgs} />
         <LinkButton {...defaultArgs} variant="secondary" />
-        <LinkButton {...defaultArgs} variant="accent" />
         <LinkButton {...defaultArgs} variant="alert" />
         <LinkButton {...defaultArgs} variant="text" />
         <LinkButton {...defaultArgs} variant="textAlert" />
@@ -59,7 +58,6 @@ export const WithIcon: Story = {
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
             <LinkButton prefixIcon={<UbieIcon />} {...defaultArgs} />
             <LinkButton prefixIcon={<UbieIcon />} {...defaultArgs} variant="secondary" />
-            <LinkButton prefixIcon={<UbieIcon />} {...defaultArgs} variant="accent" />
             <LinkButton prefixIcon={<UbieIcon />} {...defaultArgs} variant="alert" />
             <LinkButton prefixIcon={<UbieIcon />} {...defaultArgs} variant="text" />
             <LinkButton prefixIcon={<TrashIcon />} {...defaultArgs} variant="textAlert" />
@@ -73,7 +71,6 @@ export const WithIcon: Story = {
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
             <LinkButton suffixIcon={<BlankLinkIcon />} {...defaultArgs} />
             <LinkButton suffixIcon={<BlankLinkIcon />} {...defaultArgs} variant="secondary" />
-            <LinkButton suffixIcon={<BlankLinkIcon />} {...defaultArgs} variant="accent" />
             <LinkButton suffixIcon={<BlankLinkIcon />} {...defaultArgs} variant="alert" />
             <LinkButton suffixIcon={<BlankLinkIcon />} {...defaultArgs} variant="text" />
             <LinkButton suffixIcon={<BlankLinkIcon />} {...defaultArgs} variant="textAlert" />
@@ -89,7 +86,6 @@ export const WithIcon: Story = {
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
             <LinkButton fixedIcon={<BlankLinkIcon />} {...defaultArgs} />
             <LinkButton fixedIcon={<BlankLinkIcon />} {...defaultArgs} variant="secondary" />
-            <LinkButton fixedIcon={<BlankLinkIcon />} {...defaultArgs} variant="accent" />
             <LinkButton fixedIcon={<BlankLinkIcon />} {...defaultArgs} variant="alert" />
             <LinkButton fixedIcon={<BlankLinkIcon />} {...defaultArgs} variant="text" />
             <LinkButton fixedIcon={<TrashIcon />} {...defaultArgs} variant="textAlert" />
@@ -138,7 +134,6 @@ export const WithIcon: Story = {
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '32px' }}>
             <LinkButton icon={<UbieIcon />} {...defaultArgs} />
             <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="secondary" />
-            <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="accent" />
             <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="alert" />
             <LinkButton icon={<UbieIcon />} {...defaultArgs} variant="text" />
             <LinkButton icon={<TrashIcon />} {...defaultArgs} variant="textAlert" />
@@ -167,7 +162,7 @@ export const Block: Story = {
 
 export const Margin: Story = {
   render: () => (
-    <div style={{ backgroundColor: 'var(--color-background-gray)', width: 'fit-content', overflow: 'hidden' }}>
+    <div style={{ backgroundColor: 'var(--color-background-black-darken)', width: 'fit-content', overflow: 'hidden' }}>
       <LinkButton {...defaultArgs} mt="lg" mr="lg" mb="lg" ml="lg" />
     </div>
   ),

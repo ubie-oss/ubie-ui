@@ -50,16 +50,15 @@ export const SizeAlias: Story = {
 
 export const Color: Story = {
   render: (args) => (
-    <Flex alignItems="center" spacing="sm">
-      <Icon {...args} color="primary" />
-      <Icon {...args} color="accent" />
-      <Icon {...args} color="main" />
-      <Icon {...args} color="sub" />
-      <Icon {...args} color="alert" />
-      <Icon {...args} color="link" />
-      <Icon {...args} color="linkSub" />
-      <Icon {...args} color="disabled" />
-      <Box pt="xxs" pr="xxs" pb="xxs" pl="xxs" backgroundColor="primaryDarken">
+    <Flex alignItems="center" spacing="sm" wrap>
+      <Icon {...args} color="blue" />
+      <Icon {...args} color="pink" />
+      <Icon {...args} color="orange" />
+      <Icon {...args} color="purple" />
+      <Icon {...args} color="green" />
+      <Icon {...args} color="red" />
+      <Icon {...args} color="black" />
+      <Box pt="xxs" pr="xxs" pb="xxs" pl="xxs" backgroundColor="blackInverseDarken">
         <Icon {...args} color="white" />
       </Box>
     </Flex>

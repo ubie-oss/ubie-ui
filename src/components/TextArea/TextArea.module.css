@@ -7,16 +7,16 @@
   color: var(--color-text-main);
   text-align: inherit;
   appearance: none;
-  caret-color: var(--color-primary);
+  caret-color: var(--color-ubie-blue-600);
   background-color: var(--color-ubie-white);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-black);
   border-bottom-width: 2px;
   border-radius: 8px 8px 0 0;
 }
 
 .textArea:disabled {
   color: var(--color-text-disabled);
-  background-color: var(--color-background-gray);
+  background-color: var(--color-background-black-darken);
 }
 
 .textArea::placeholder {
@@ -29,18 +29,18 @@
 
 .textArea.isInvalid,
 .textArea:user-invalid {
-  background: var(--color-background-alert);
-  border-bottom-color: var(--color-alert-darken);
+  background: var(--color-background-red);
+  border-bottom-color: var(--color-ubie-red-700);
 }
 
 @supports not (selector(:user-invalid)) {
   .textArea:invalid {
-    background: var(--color-background-alert);
-    border-bottom-color: var(--color-alert-darken);
+    background: var(--color-background-red);
+    border-bottom-color: var(--color-ubie-red-700);
   }
 }
 
 .textArea:focus {
-  border-bottom-color: var(--color-primary);
+  border-bottom-color: var(--color-ubie-blue-600);
   outline: none;
 }
