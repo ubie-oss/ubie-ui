@@ -24,7 +24,7 @@
   cursor: pointer;
   background: #fff;
   border-radius: 8px;
-  outline: 1px solid var(--color-border);
+  outline: 1px solid var(--color-border-black);
   outline-offset: -1px;
   transition:
     outline-color 0.3s var(--ease-out-quint),
@@ -41,7 +41,7 @@
   width: 24px;
   height: 24px;
   content: '';
-  border: 2px solid var(--color-border);
+  border: 2px solid var(--color-border-black);
   border-radius: var(--radius-sm);
   transform: translateY(-50%);
 }
@@ -49,12 +49,12 @@
 @media (hover: hover) {
   .label:hover:not(.disabled, .checked)::before {
     background-color: var(--color-ubie-white);
-    border-color: var(--color-primary);
+    border-color: var(--color-border-blue-darken);
   }
 }
 
 .label.checked::before {
-  background-color: var(--color-primary);
+  background-color: var(--color-ubie-blue-600);
   border: none;
 }
 
@@ -65,27 +65,27 @@
 
 .label:not(.checked):has(.checkbox:focus-visible),
 .label.checked:has(.checkbox:focus-visible) {
-  box-shadow: 0 0 0 2px var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-border-pink-darken);
 }
 
 @media (hover: hover) {
   .label:hover {
-    background-color: var(--color-background-primary);
+    background-color: var(--color-background-blue);
   }
 
   .label.checked:not(.disabled):hover {
-    outline-color: var(--color-primary-darken);
+    outline-color: var(--color-ubie-blue-700);
   }
 
   .label.checked:not(.disabled):hover::before {
-    background-color: var(--color-primary-darken);
+    background-color: var(--color-ubie-blue-700);
   }
 }
 
 .label.disabled {
   color: var(--color-text-disabled);
-  background-color: var(--color-background-gray);
-  outline-color: var(--color-border);
+  background-color: var(--color-background-black-darken);
+  outline-color: var(--color-border-black);
 }
 
 .label.disabled::before {

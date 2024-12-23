@@ -19,7 +19,7 @@ It was popularised in the 1960s with the release of Letraset sheets containing L
 export const Default: Story = {
   render: (args) => (
     <div style={{ width: 500 }}>
-      <Box border="gray" p="md">
+      <Box border="black" p="md">
         <Pre {...args} />
       </Box>
     </div>
@@ -30,7 +30,7 @@ export const Default: Story = {
 export const WhiteSpacePre: Story = {
   render: (args) => (
     <div style={{ width: 500 }}>
-      <Box border="gray" p="md">
+      <Box border="black" p="md">
         <Pre {...args} />
       </Box>
     </div>
@@ -44,7 +44,7 @@ export const WhiteSpacePre: Story = {
 export const PreWrap: Story = {
   render: (args) => (
     <div style={{ width: 500 }}>
-      <Box border="gray" p="md">
+      <Box border="black" p="md">
         <Pre {...args} />
       </Box>
     </div>

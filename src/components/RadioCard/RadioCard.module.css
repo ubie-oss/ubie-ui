@@ -24,15 +24,15 @@
   cursor: pointer;
   background: #fff;
   border-radius: 8px;
-  outline: 1px solid var(--color-border);
+  outline: 1px solid var(--color-border-black);
   transition:
     outline-color 0.3s var(--ease-out-quint),
     background-color 0.3s var(--ease-out-quint);
 }
 
 .label.checked {
-  background: var(--color-background-primary);
-  outline: 2px solid var(--color-primary);
+  background: var(--color-background-blue);
+  outline: 2px solid var(--color-border-blue-darken);
 }
 
 .label::before {
@@ -45,18 +45,18 @@
   height: 20px;
   content: '';
   border-radius: 50%;
-  outline: 2px solid var(--color-border);
+  outline: 2px solid var(--color-border-black);
   transform: translateY(-50%);
 }
 
 @media (hover: hover) {
-  .label:hover:not(.disabled)::before {
-    outline: 2px solid var(--color-primary);
+  .label:hover:not(.disabled, .checked)::before {
+    outline: 2px solid var(--color-border-blue-darken);
   }
 }
 
 .label.checked::before {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-ubie-blue-600);
 }
 
 .label.checked::after {
@@ -68,7 +68,7 @@
   width: 16px;
   height: 16px;
   content: '';
-  background: var(--color-primary);
+  background: var(--color-ubie-blue-600);
   border-radius: 50%;
   transform: translateY(-50%);
 }
@@ -85,7 +85,7 @@
 }
 
 .label.checked.disabled::before {
-  outline-color: 2px solid var(--color-border);
+  outline-color: 2px solid var(--color-border-black);
 }
 
 .label.checked.disabled::after {
@@ -93,17 +93,17 @@
 }
 
 .label:has(.radio:focus-visible) {
-  box-shadow: 0 0 0 4px var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-border-pink-darken);
 }
 
 @media (hover: hover) {
   .label:hover {
-    background-color: var(--color-background-primary);
+    background-color: var(--color-background-blue);
   }
 }
 
 .label.disabled {
   color: var(--color-text-disabled);
-  background-color: var(--color-background-gray);
+  background-color: var(--color-background-black-darken);
   outline-color: var(--color-text-disabled);
 }

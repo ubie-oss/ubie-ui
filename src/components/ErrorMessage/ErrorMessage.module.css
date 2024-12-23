@@ -3,6 +3,6 @@
   font-size: var(--text-body-sm-size);
   hyphens: auto;
   line-height: var(--text-body-sm-narrow-line);
-  color: var(--color-alert);
+  color: var(--color-ubie-red-600);
   overflow-wrap: anywhere;
 }

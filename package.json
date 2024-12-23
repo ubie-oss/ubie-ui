@@ -111,7 +111,7 @@
   },
   "peerDependencies": {
     "@headlessui/react": "^2.0.0",
-    "@ubie/design-tokens": ">=0.2.0",
+    "@ubie/design-tokens": ">=0.3.2",
     "@ubie/ubie-icons": ">=0.5.0 <0.6.2 || >=0.8.0",
     "react": "^17 || ^18",
     "react-dom": "^18"
@@ -127,5 +127,8 @@
   "dependencies": {
     "@react-docgen/cli": "^2.0.4",
     "debounce": "^2.1.1"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.28.1"
   }
 }

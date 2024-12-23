@@ -2,11 +2,9 @@ import * as Icons from '@ubie/ubie-icons';
 import styles from './Icon.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
 import { IconName } from '../../types/icon';
-import { TextColor } from '../../types/style';
-import { colorVariable } from '../../utils/style';
+import { IconColorVariant } from '../../types/style';
+import { iconColorVariable } from '../../utils/style';
 import type { CSSProperties, FC } from 'react';
-
-type Icon = keyof typeof Icons;
 
 type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl' | 'xxxxl';
 type IconSizeAlias = '2xl' | '3xl' | '4xl';
@@ -58,7 +56,7 @@ type Props = {
   /**
    * 色。指定しない場合はinheritとなり、親要素のcolorプロパティを継承します
    */
-  color?: TextColor;
+  color?: IconColorVariant;
   /**
    * サイズ
    * xs=16px, sm=20px, md=24px, lg=28px, xl=32px, xxl=64px, xxxl=80px, xxxxl=104px
@@ -83,6 +81,7 @@ type Props = {
 export const Icon: FC<Props> = ({ icon, color, size = 'md', label, ...otherProps }) => {
   const IconComponent = Icons[icon];
   const _sizeValue = toIconSizeEmValue(normalizeSize(size));
+  const colorVariant = iconColorVariable(color);
   return (
     <IconComponent
       role="img"
@@ -91,7 +90,7 @@ export const Icon: FC<Props> = ({ icon, color, size = 'md', label, ...otherProps
       className={styles.icon}
       style={
         {
-          ...colorVariable(color),
+          ...colorVariant,
           '--size': _sizeValue,
         } as CSSProperties
       }

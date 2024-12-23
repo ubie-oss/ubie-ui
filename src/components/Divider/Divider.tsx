@@ -1,10 +1,9 @@
 'use client';
 
-import { clsx } from 'clsx';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './Divider.module.css';
-import { MarginProps, WidthProps } from '../../types/style';
-import { marginVariables, widthVariables } from '../../utils/style';
+import { BorderVariant, MarginProps, WidthProps } from '../../types/style';
+import { borderVariables, marginVariables, widthVariables } from '../../utils/style';
 
 type AllowedHRAttributes = Omit<HTMLAttributes<HTMLHRElement>, 'className'>;
 
@@ -13,16 +12,16 @@ type Props = {
    * ボーダーの種類
    * @default gray
    */
-  border?: 'gray' | 'primary';
+  border?: BorderVariant;
 } & WidthProps &
   MarginProps &
   AllowedHRAttributes;
 
 export const Divider = forwardRef<HTMLHRElement, Props>(
-  ({ border = 'gray', m, mx, my, mt, mr, mb, ml, width, minWidth, maxWidth, ...rest }, ref) => {
+  ({ border = 'black', m, mx, my, mt, mr, mb, ml, width, minWidth, maxWidth, ...rest }, ref) => {
     return (
       <hr
-        className={clsx(styles.divider, styles[border])}
+        className={styles.divider}
         style={{
           ...marginVariables({
             m,
@@ -38,6 +37,7 @@ export const Divider = forwardRef<HTMLHRElement, Props>(
             minWidth,
             maxWidth,
           }),
+          ...borderVariables(border),
         }}
         ref={ref}
         {...rest}

@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Text>;
 const defaultArgs = {};
 export const Default: Story = {
   render: () => (
-    <Text as="h1" type="heading" size="xl" color="primary">
+    <Text as="h1" type="heading" size="xl" color="blue">
       Dummy Text
     </Text>
   ),
@@ -21,19 +21,30 @@ export const Default: Story = {
 
 export const Color: Story = {
   render: () => (
-    <Flex spacing="md">
+    <Stack gap="xs">
       <Text color="main">main</Text>
       <Text color="sub">sub</Text>
       <Text color="link">link</Text>
       <Text color="linkSub">linkSub</Text>
       <Text color="disabled">disabled</Text>
-      <Text color="primary">primary</Text>
-      <Text color="accent">accent</Text>
-      <Text color="alert">alert</Text>
+      <Text color="blue">blue</Text>
+      <Text color="blueDarken">blueDarken</Text>
+      <Text color="pink">pink</Text>
+      <Text color="pinkDarken">pinkDarken</Text>
+      <Text color="orange">orange</Text>
+      <Text color="orangeDarken">orangeDarken</Text>
+      <Text color="purple">purple</Text>
+      <Text color="purpleDarken">purpleDarken</Text>
+      <Text color="green">green</Text>
+      <Text color="greenDarken">greenDarken</Text>
+      <Text color="red">red</Text>
+      <Text color="redDarken">redDarken</Text>
+      <Text color="black">black</Text>
+      <Text color="blackDarken">blackDarken</Text>
       <span style={{ background: 'black', padding: '0 0.5em' }}>
         <Text color="white">white</Text>
       </span>
-    </Flex>
+    </Stack>
   ),
   args: defaultArgs,
 };
@@ -44,6 +55,11 @@ export const Heading: Story = {
 
     return (
       <Flex spacing="md" alignItems="center">
+        <Text bold type="heading" size="xxs">
+          xxs
+          <br />
+          {`${headingText}`}
+        </Text>
         <Text bold type="heading" size="xs">
           xs
           <br />
@@ -194,7 +210,7 @@ export const Tag: Story = {
 
 export const WithId: Story = {
   render: () => (
-    <Text id="text-id" type="heading" size="xl" as="h2" color="primary" bold>
+    <Text id="text-id" type="heading" size="xl" as="h2" color="blue" bold>
       Dummy Text
     </Text>
   ),
@@ -203,7 +219,7 @@ export const WithId: Story = {
 export const TextInText: Story = {
   render: () => (
     <Text type="body" size="lg">
-      <Text as="span" type="body" size="lg" color="alert" bold>
+      <Text as="span" type="body" size="lg" color="red" bold>
         Alert:
       </Text>{' '}
       Please fill in all fields
@@ -236,14 +252,14 @@ export const Wrap: Story = {
   render: () => (
     <div style={{ width: '300px' }}>
       <Stack spacing="md">
-        <Box border="gray">
+        <Box border="black">
           <Text>
             私はすべてぼんやりその批評痛というのの中を押しだなけれ。現に十月の仕事方ももしこのお尋ねましたまでをふりまいとならませには刺戟待ったたて、とてもにはなろべきませたです。https://vitals.ubie.life/?hoge=1111111111111111111111111111111111111111111111111111
           </Text>
         </Box>
 
         <div lang="en">
-          <Box border="gray">
+          <Box border="black">
             <Text>
               industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an
               unknown printer took a galley of type and scrambled it to make a type specimen
@@ -257,7 +273,7 @@ export const Wrap: Story = {
             <code>noWrap</code>
           </p>
 
-          <Box border="gray">
+          <Box border="black">
             <Text noWrap>
               私はすべてぼんやりその批評痛というのの中を押しだなけれ。現に十月の仕事方ももしこのお尋ねましたまでをふりまいとならませには刺戟待ったたて、とてもにはなろべきませたです。https://vitals.ubie.life/?hoge=1111111111111111111111111111111111111111111111111111
             </Text>
@@ -269,7 +285,7 @@ export const Wrap: Story = {
             <code>noWrap</code>
           </p>
 
-          <Box border="gray">
+          <Box border="black">
             <Text noWrap>
               industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an
               unknown printer took a galley of type and scrambled it to make a type specimen book.
