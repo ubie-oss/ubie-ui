@@ -1,0 +1,48 @@
+.item {
+    position: relative;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+
+    --icon-size: 24px;
+    --icon-size-half: calc(var(--icon-size) / 2);
+}
+
+.item:not(:last-child)::after {
+    position: absolute;
+    inset-inline-start: calc(50% + var(--icon-size-half));
+    top: 12px;
+    display: block;
+    width: calc(100% - var(--icon-size));
+    height: 2px;
+    content: '';
+    background-color: var(--color-border-black);
+}
+
+.itemInner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-spacing-xs);
+    align-items: center;
+    width: fit-content;
+}
+
+.icon {
+    color: var(--color-ubie-blue-600);
+}
+
+.icon.undone {
+    color: var(--color-border-black)
+}
+
+.name {
+    font-size: var(--text-body-xs-size);
+    line-height: var(--text-body-xs-narrow-line);
+    color: var(--color-text-main);
+    text-align: center;
+}
+
+.name.current {
+    font-weight: bold;
+}
