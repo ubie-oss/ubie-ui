@@ -113,8 +113,8 @@
     "@headlessui/react": "^2.0.0",
     "@ubie/design-tokens": ">=0.3.2",
     "@ubie/ubie-icons": ">=0.5.0 <0.6.2 || >=0.8.0",
-    "react": "^17 || ^18",
-    "react-dom": "^18"
+    "react": "^17 || ^18 || ^19",
+    "react-dom": "^18 || ^19"
   },
   "author": {
     "name": "Ubie, Inc."
