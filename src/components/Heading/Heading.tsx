@@ -45,7 +45,7 @@ type Props = {
    */
   bold?: boolean;
   /**
-   * ｚ
+   * 領域が狭い場合でも折り返えさない
    */
   noWrap?: boolean;
 } & CustomDataAttributeProps;
