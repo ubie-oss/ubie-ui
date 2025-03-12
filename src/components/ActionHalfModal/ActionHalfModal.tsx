@@ -1,9 +1,12 @@
 'use client';
 
-import { Dialog, Transition } from '@headlessui/react';
+import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react';
 import { clsx } from 'clsx';
-import { FC, Fragment, PropsWithChildren } from 'react';
+import { type FC, Fragment, type ReactNode, useCallback, useRef } from 'react';
 import styles from './ActionHalfModal.module.css';
+import { useScrollable } from '../../hooks/useScrollable';
+import { VisuallyHidden } from '../../sharedComponents/VisuallyHidden/VisuallyHidden';
+import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
 import { AllOrNone } from '../../utils/types';
 import { Button } from '../Button/Button';
@@ -11,6 +14,10 @@ import { Button } from '../Button/Button';
 type Opacity = 'normal' | 'darker';
 
 type BaseProps = {
+  /**
+   * コンテンツとして表示する内容
+   */
+  children: ReactNode;
   /**
    * 閉じるアクションが実行された場合のコールバック
    */
@@ -45,14 +52,33 @@ type BaseProps = {
   open?: boolean;
   /**
    * openを無視してモーダルを開いたままにするかどうか。アニメーションライブラリとの連携で、ActionHalfModal自身が開閉に関与しない場合に使用
-   * @default false
    */
   isStatic?: boolean;
   /**
    * モーダルをフルスクリーンで表示するかどうか
-   * @default false
    */
   fullscreen?: boolean;
+  /**
+   * ネイティブ要素のid属性。ページで固有のIDを指定
+   */
+  id?: string;
+  /**
+   * ネイティブのaria-labelledby属性。独自の見出しを実装する場合にダイアログとの紐づけに使用。ページで固有のIDを指定
+   */
+  ariaLabelledby?: string;
+  /**
+   * ヒーローエリア（見出しの更に上）に配置するコンテンツ
+   */
+  hero?: ReactNode;
+  /**
+   * ヘッダーを固定表示
+   * heroが指定されている場合は無効
+   */
+  stickyHeader?: boolean;
+  /**
+   * フッターを固定表示
+   */
+  stickyFooter?: boolean;
 };
 
 type PrimaryActionProps = {
@@ -77,9 +103,9 @@ type SecondaryActionProps = {
   secondaryActionLabel: string;
 };
 
-type Props = BaseProps & AllOrNone<PrimaryActionProps> & AllOrNone<SecondaryActionProps>;
+type Props = BaseProps & AllOrNone<PrimaryActionProps> & AllOrNone<SecondaryActionProps> & CustomDataAttributeProps;
 
-export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
+export const ActionHalfModal: FC<Props> = ({
   children,
   onClose,
   onPrimaryAction,
@@ -94,13 +120,40 @@ export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
   open = true,
   isStatic = false,
   fullscreen = false,
+  ariaLabelledby,
+  hero,
+  stickyHeader = false,
+  stickyFooter = false,
+  ...props
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
 
+  const initialFocusRef = useRef(null);
+
+  const dialogRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (node !== null && header == null && ariaLabelledby != null) {
+        node.setAttribute('aria-labelledby', ariaLabelledby);
+      } else if (node !== null && header == null && ariaLabelledby == null) {
+        node.removeAttribute('aria-labelledby');
+      }
+    },
+    [ariaLabelledby, header],
+  );
+
+  const { scrollContainerRef, canScrollUp, canScrollDown } = useScrollable();
+
   return (
     <Transition show={open}>
-      <Dialog static={isStatic} onClose={onClose} className={clsx(styles.modal, fullscreen && styles.fullscreen)}>
-        <Transition.Child
+      <Dialog
+        ref={dialogRef}
+        static={isStatic}
+        onClose={onClose}
+        className={clsx(styles.modal, fullscreen && styles.fullscreen)}
+        initialFocus={initialFocusRef}
+        {...props}
+      >
+        <TransitionChild
           as={Fragment}
           enter={styles.overlayEnter}
           enterFrom={styles.overlayEnterFrom}
@@ -109,9 +162,9 @@ export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
           leaveFrom={styles.overlayLeaveFrom}
           leaveTo={styles.overlayLeaveTo}
         >
-          <Dialog.Overlay className={clsx(styles.overlay, styles[opacityClassName])} />
-        </Transition.Child>
-        <Transition.Child
+          <div className={clsx(styles.overlay, styles[opacityClassName])} />
+        </TransitionChild>
+        <TransitionChild
           as={Fragment}
           enter={styles.panelEnter}
           enterFrom={styles.panelEnterFrom}
@@ -120,28 +173,76 @@ export const ActionHalfModal: FC<PropsWithChildren<Props>> = ({
           leaveFrom={styles.panelLeaveFrom}
           leaveTo={styles.panelLeaveTo}
         >
-          <div className={clsx(styles.modalBody, !header && styles.headerLess, fullscreen && styles.fullscreen)}>
-            {header && <Dialog.Title className={styles.header}>{header}</Dialog.Title>}
-            <div className={styles.contents}>{children}</div>
-            <div className={styles.buttonContainer}>
-              {onPrimaryAction && primaryActionLabel && (
-                <Button block onClick={onPrimaryAction} aria-label={primaryActionLabel} variant={primaryActionColor}>
-                  {primaryActionLabel}
-                </Button>
-              )}
-              {onSecondaryAction && secondaryActionLabel && (
-                <Button block variant="secondary" onClick={onSecondaryAction} aria-label={secondaryActionLabel}>
-                  {secondaryActionLabel}
-                </Button>
-              )}
-              {showClose && (
-                <Button variant="text" onClick={onClose} aria-label={closeLabel}>
-                  {closeLabel}
-                </Button>
-              )}
+          <DialogPanel
+            className={clsx(styles.dialog, {
+              [styles.fullscreen]: fullscreen,
+            })}
+          >
+            {header === undefined ? (
+              <VisuallyHidden as="p" tabIndex={-1} ref={initialFocusRef}>
+                ダイアログ
+              </VisuallyHidden>
+            ) : null}
+            <div className={styles.scrollContainer} ref={scrollContainerRef}>
+              <div
+                className={clsx(styles.mainContent, {
+                  [styles.headerLess]: header === undefined && hero === undefined,
+                  [styles.fullscreen]: fullscreen,
+                })}
+              >
+                {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
+                {header !== undefined ? (
+                  <Dialog.Title
+                    tabIndex={-1}
+                    ref={initialFocusRef}
+                    className={clsx(
+                      styles.header,
+                      !hero && stickyHeader && styles.sticky,
+                      canScrollUp && styles.canScroll,
+                    )}
+                  >
+                    {header}
+                  </Dialog.Title>
+                ) : null}
+                <div
+                  className={clsx(styles.body, {
+                    [styles.fullscreen]: fullscreen,
+                  })}
+                >
+                  {children}
+                </div>
+                <div
+                  className={clsx(
+                    styles.buttonContainer,
+                    stickyFooter && styles.sticky,
+                    canScrollDown && styles.canScroll,
+                  )}
+                >
+                  {onPrimaryAction && primaryActionLabel && (
+                    <Button
+                      block
+                      onClick={onPrimaryAction}
+                      aria-label={primaryActionLabel}
+                      variant={primaryActionColor}
+                    >
+                      {primaryActionLabel}
+                    </Button>
+                  )}
+                  {onSecondaryAction && secondaryActionLabel && (
+                    <Button block variant="secondary" onClick={onSecondaryAction} aria-label={secondaryActionLabel}>
+                      {secondaryActionLabel}
+                    </Button>
+                  )}
+                  {showClose && (
+                    <Button variant="text" onClick={onClose} aria-label={closeLabel}>
+                      {closeLabel}
+                    </Button>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        </Transition.Child>
+          </DialogPanel>
+        </TransitionChild>
       </Dialog>
     </Transition>
   );

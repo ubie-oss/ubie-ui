@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { HospitalIcon } from '@ubie/ubie-icons';
-import { LinkCard, Stack } from '..';
+import { LinkCard, Stack, Icon } from '..';
 
 export default {
   component: LinkCard,
@@ -23,7 +23,12 @@ export const Default: Story = {
 };
 
 export const WithIcon: Story = {
-  render: (args) => <LinkCard {...args} href="https://vitals.ubie.life/" icon={HospitalIcon} />,
+  render: (args) => (
+    <Stack spacing="md">
+      <LinkCard {...args} href="https://vitals.ubie.life/" icon={HospitalIcon} />
+      <LinkCard {...args} href="https://vitals.ubie.life/" icon={<Icon icon="HospitalIcon" />} />
+    </Stack>
+  ),
   args: defaultArgs,
 };
 
@@ -52,5 +57,24 @@ export const SizeSmall: Story = {
       </Stack>
     );
   },
+  args: defaultArgs,
+};
+
+export const CustomDataAttribute: Story = {
+  render: (args) => <LinkCard {...args} href="https://vitals.ubie.life/" />,
+  args: {
+    ...defaultArgs,
+    'data-test-id': 'link-card-custom-attribute',
+  },
+};
+
+export const VariousWaysToSpecifyIcon: Story = {
+  render: (args) => (
+    <Stack spacing="md">
+      <LinkCard {...args} href="https://vitals.ubie.life/" icon="HospitalIcon" title="Icon Name" />
+      <LinkCard {...args} href="https://vitals.ubie.life/" icon={<HospitalIcon />} title="RectElement" />
+      <LinkCard {...args} href="https://vitals.ubie.life/" icon={HospitalIcon} title="ComponentType" />
+    </Stack>
+  ),
   args: defaultArgs,
 };

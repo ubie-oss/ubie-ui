@@ -1,0 +1,102 @@
+.block {
+  width: 100%;
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+}
+
+.label {
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 16px 12px 16px 48px;
+  font-size: var(--text-body-md-size);
+  font-weight: bold;
+  hyphens: auto;
+  line-height: var(--text-body-md-narrow-line);
+  color: var(--color-text-main);
+  overflow-wrap: anywhere;
+  vertical-align: text-top;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 8px;
+  outline: 1px solid var(--color-border-black);
+  outline-offset: -1px;
+  transition:
+    outline-color 0.3s var(--ease-out-quint),
+    background-color 0.3s var(--ease-out-quint),
+    border-color 0.3s var(--ease-out-quint);
+}
+
+.label::before {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  box-sizing: border-box;
+  display: block;
+  width: 24px;
+  height: 24px;
+  content: '';
+  border: 2px solid var(--color-border-black);
+  border-radius: var(--radius-sm);
+  transform: translateY(-50%);
+}
+
+@media (hover: hover) {
+  .label:hover:not(.disabled, .checked)::before {
+    background-color: var(--color-ubie-white);
+    border-color: var(--color-border-blue-darken);
+  }
+}
+
+.label.checked::before {
+  background-color: var(--color-ubie-blue-600);
+  border: none;
+}
+
+.label.checked.disabled::before {
+  background-color: var(--color-text-disabled);
+  border-color: transparent;
+}
+
+.label:not(.checked):has(.checkbox:focus-visible),
+.label.checked:has(.checkbox:focus-visible) {
+  box-shadow: 0 0 0 2px var(--color-border-pink-darken);
+}
+
+@media (hover: hover) {
+  .label:hover {
+    background-color: var(--color-background-blue);
+  }
+
+  .label.checked:not(.disabled):hover {
+    outline-color: var(--color-ubie-blue-700);
+  }
+
+  .label.checked:not(.disabled):hover::before {
+    background-color: var(--color-ubie-blue-700);
+  }
+}
+
+.label.disabled {
+  color: var(--color-text-disabled);
+  background-color: var(--color-background-black-darken);
+  outline-color: var(--color-border-black);
+}
+
+.label.disabled::before {
+  border-color: var(--color-text-disabled);
+}
+
+.checkIcon {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  line-height: 1;
+  color: var(--color-ubie-white);
+  translate: 0 -50%;
+}

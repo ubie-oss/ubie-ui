@@ -1,61 +1,20 @@
 .box {
   box-sizing: border-box;
   display: block;
+  width: var(--width);
+  min-width: var(--min-width);
+  max-width: var(--max-width);
   padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
   margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
-  border-radius: var(--radius);
   font-size: var(--text-size);
-  color: var(--text-color);
-  line-height: var(--text-leading);
   font-weight: var(--text-bold);
-}
-
-.box.backgroundColorPrimary {
-  background-color: var(--color-background-primary);
-}
-
-.box.backgroundColorPrimaryDarken {
-  background-color: var(--color-background-primary-darken);
-}
-
-.box.backgroundColorAccent {
-  background-color: var(--color-background-accent);
-}
-
-.box.backgroundColorAccentDarken {
-  background-color: var(--color-background-accent-darken);
-}
-
-.box.backgroundColorAlert {
-  background-color: var(--color-background-alert);
-}
-
-.box.backgroundColorGray {
-  background-color: var(--color-background-gray);
-}
-
-.box.backgroundColorWhite {
-  background-color: var(--color-background-white);
-}
-
-.box.borderGray {
-  border: 1px solid var(--color-border);
-}
-
-.box.borderGrayThick {
-  border: 2px solid var(--color-border);
-}
-
-.box.borderPrimary {
-  border: 1px solid var(--color-primary);
-}
-
-.box.borderPrimaryThick {
-  border: 2px solid var(--color-primary);
-}
-
-.box.widthFull {
-  width: 100%;
+  hyphens: auto;
+  line-height: var(--text-leading);
+  color: var(--text-color);
+  overflow-wrap: anywhere;
+  background-color: var(--background-color);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--radius);
 }
 
 .box.textBold {
@@ -64,4 +23,24 @@
 
 .box.textNormal {
   font-weight: normal;
+}
+
+.box.textCenter {
+  text-align: center;
+}
+
+.box.textLeft {
+  text-align: left;
+}
+
+.box.textRight {
+  text-align: right;
+}
+
+.box.textNoWrap {
+  white-space: nowrap;
+}
+
+.box.inline {
+  display: inline-block;
 }

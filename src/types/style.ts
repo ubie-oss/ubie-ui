@@ -1,28 +1,36 @@
-export type FontSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type FontSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-export type TextType = 'body' | 'heading' | 'note' | 'button' | 'tag';
+export type TextType = 'body' | 'heading' | 'button' | 'tag';
 
-export type Leading = 'default' | 'narrow' | 'tight';
+export type Leading = 'default' | 'narrow';
 
-export type TextColor = 'main' | 'sub' | 'link' | 'linkSub' | 'disabled' | 'primary' | 'accent' | 'alert' | 'white';
+export type Hue = 'black' | 'blue' | 'pink' | 'orange' | 'purple' | 'green' | 'red';
 
-export type BodyFontSize = Extract<FontSize, 'sm' | 'md' | 'lg'>;
+export type TextColorVariant = 'main' | 'sub' | 'link' | 'linkSub' | 'disabled' | 'white' | Hue | `${Hue}Darken`;
 
-export type BodyLeading = Extract<Leading, 'default' | 'narrow' | 'tight'>;
+export type TextColorTokenKey =
+  | 'text-main'
+  | 'text-sub'
+  | 'text-link'
+  | 'text-link-sub'
+  | 'text-disabled'
+  | 'text-white'
+  | `text-${Hue}`
+  | `text-${Hue}-darken`;
 
-export type HeadingFontSize = Extract<FontSize, 'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
+export type BodyFontSize = Extract<FontSize, 'xs' | 'sm' | 'md' | 'lg'>;
+
+export type BodyLeading = Extract<Leading, 'default' | 'narrow'>;
+
+export type HeadingFontSize = Extract<FontSize, 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
 
 export type HeadingLeading = Extract<Leading, 'default'>;
-
-export type NoteFontSize = Extract<FontSize, 'sm' | 'md' | 'lg'>;
-
-export type NoteLeading = Extract<Leading, 'default' | 'narrow' | 'tight'>;
 
 export type ButtonFontSize = Extract<FontSize, 'sm' | 'md' | 'lg'>;
 
 export type ButtonLeading = Extract<Leading, 'default'>;
 
-export type TagFontSize = Extract<FontSize, 'sm' | 'md' | 'lg'>;
+export type TagFontSize = Extract<FontSize, 'md' | 'lg'>;
 
 export type TagLeading = Extract<Leading, 'default'>;
 
@@ -30,41 +38,79 @@ export type Spacing = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 export type PaddingProps = {
   /**
-   * padding-topの値。Spacing Tokenのキーを指定
+   * 四方のパディングを一括で設定。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+   */
+  p?: Spacing;
+  /**
+   * 水平方向のパディングを一括で設定。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+   */
+  px?: Spacing;
+  /**
+   * 垂直方向のパディングを一括で設定。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+   */
+  py?: Spacing;
+  /**
+   * 上方向のパディング。Spacing Tokenのキーを指定
    */
   pt?: Spacing;
   /**
-   * padding-rightの値。Spacing Tokenのキーを指定
+   * 右方向のパディング。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   pr?: Spacing;
   /**
-   * padding-bottomの値。Spacing Tokenのキーを指定
+   * 下方向のパディング。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   pb?: Spacing;
   /**
-   * padding-leftの値。Spacing Tokenのキーを指定
+   * 左方向のパディング。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   pl?: Spacing;
 };
 
 export type MarginProps = {
   /**
-   * margin-topの値。Spacing Tokenのキーを指定
+   * 四方のマージンを一括で設定。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+   */
+  m?: Spacing;
+  /**
+   * 水平方向のマージンを一括で設定。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+   */
+  mx?: Spacing;
+  /**
+   * 垂直方向のマージンを一括で設定。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+   */
+  my?: Spacing;
+  /**
+   * 上方向のマージン。Spacing Tokenのキーを指定
    */
   mt?: Spacing;
   /**
-   * margin-rightの値。Spacing Tokenのキーを指定
+   * 右方向のマージン。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   mr?: Spacing;
   /**
-   * margin-bottomの値。Spacing Tokenのキーを指定
+   * 下方向のマージン。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   mb?: Spacing;
   /**
-   * margin-leftの値。Spacing Tokenのキーを指定
+   * 左方向のマージン。Spacing Tokenのキーを指定
+   * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
    */
   ml?: Spacing;
 };
+
+export type MarginYProps = Pick<MarginProps, 'my' | 'mt' | 'mb'>;
 
 export type FlexDirection = 'row' | 'column';
 
@@ -84,8 +130,99 @@ export type Radius = 'xs' | 'sm' | 'md' | 'lg';
 export type RadiusProp = {
   /**
    * 角丸を指定。Radius Tokenのキーを指定
+   * xs=2px,sm=4px,md=8px,lg=12px
    */
   radius?: Radius;
 };
 
-export type BackgroundColor = 'primary' | 'primaryDarken' | 'accent' | 'accentDarken' | 'alert' | 'gray' | 'white';
+export type BackgroundColorVariant = 'white' | Hue | `${Hue}Darken` | `${Hue}Inverse` | `${Hue}InverseDarken`;
+
+export type BackgroundColorTokenKey =
+  | 'background-white'
+  | `background-${Hue}`
+  | `background-${Hue}-darken`
+  | `background-${Hue}-inverse`
+  | `background-${Hue}-inverse-darken`;
+
+export type BorderColorTokenKey = `border-${Hue}` | `border-${Hue}-darken`;
+
+export type BorderVariant = Hue | `${Hue}Darken` | `${Hue}Thick` | `${Hue}DarkenThick`;
+
+export type IconColorVariant = 'white' | Hue;
+
+export type CSSVariable = `var(--${string})`;
+
+// ref: https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis
+export type CSSLength =
+  | `${string}cap`
+  | `${string}ch`
+  | `${string}em`
+  | `${string}ex`
+  | `${string}ic`
+  | `${string}lh`
+  | `${string}rcap`
+  | `${string}rem`
+  | `${string}rex`
+  | `${string}ric`
+  | `${string}rlh`
+  | `${string}vh`
+  | `${string}vmax`
+  | `${string}vmin`
+  | `${string}vw`
+  | `${string}vb`
+  | `${string}vi`
+  | `${string}cqw`
+  | `${string}cqh`
+  | `${string}cqi`
+  | `${string}cqb`
+  | `${string}cqmin`
+  | `${string}cqmax`
+  | `${string}px`
+  | `${string}cm`
+  | `${string}mm`
+  | `${string}q`
+  | `${string}in`
+  | `${string}pc`
+  | `${string}pt`;
+
+export type CSSPercentage = `${string}%`;
+
+export type CSSLengthPercentage = CSSLength | CSSPercentage;
+
+export type CSSWitdh =
+  | 'auto'
+  | CSSLengthPercentage
+  | 'min-content'
+  | 'max-content'
+  | 'fit-content'
+  | `fit-content(${CSSLengthPercentage})`
+  | CSSVariable;
+
+export type CSSMaxWidth =
+  | 'none'
+  | CSSLengthPercentage
+  | 'min-content'
+  | 'max-content'
+  | 'fit-content'
+  | `fit-content(${CSSLengthPercentage})`
+  | CSSVariable;
+
+export type CSSMinWidth = CSSWitdh;
+
+export type WidthProps = {
+  /**
+   * 幅を指定
+   * @default auto
+   */
+  width?: CSSWitdh;
+  /**
+   * 最小幅
+   * @default auto
+   */
+  minWidth?: CSSMinWidth;
+  /**
+   * 最大幅
+   * @default none
+   */
+  maxWidth?: CSSMaxWidth;
+};

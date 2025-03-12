@@ -1,12 +1,17 @@
 .icon {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-background-white);
-  border: 2px solid var(--color-ubie-black-400);
-  border-radius: 24px;
   box-sizing: border-box;
+  display: inline-flex;
   flex: none;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-background-white);
+  border: 2px solid var(--color-border-black);
+  border-radius: 24px;
+}
+
+.text {
+  hyphens: auto;
+  overflow-wrap: anywhere;
 }
 
 .medium .icon {
@@ -21,7 +26,7 @@
 
 @media (hover: hover) {
   .label:hover .icon {
-    border-color: var(--color-primary);
+    border-color: var(--color-border-blue-darken);
   }
 }
 
@@ -46,11 +51,11 @@
 }
 
 .radio:checked + .icon {
-  border-color: var(--color-primary);
+  border-color: var(--color-ubie-blue-600);
 }
 
 .radio:checked + .icon::before {
-  background: var(--color-primary);
+  background: var(--color-ubie-blue-600);
 }
 
 .radio:disabled + .icon + .text {
@@ -66,7 +71,7 @@
 }
 
 .radio:focus-visible + .icon {
-  border-color: var(--color-accent);
+  border-color: var(--color-border-pink-darken);
 }
 
 .label {
@@ -77,11 +82,11 @@
 }
 
 .medium .label {
-  font-size: var(--text-body-md-tight-size);
-  line-height: var(--text-body-md-tight-line);
+  font-size: var(--text-body-md-size);
+  line-height: var(--text-body-md-narrow-line);
 }
 
 .small .label {
-  font-size: var(--text-body-sm-tight-size);
-  line-height: var(--text-body-sm-tight-line);
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-narrow-line);
 }

@@ -1,22 +1,15 @@
 .modal {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   z-index: var(--z-index-modal);
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-y: auto;
 }
 
 .overlay {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
 }
 
 .normalOverlay {
@@ -27,42 +20,94 @@
   background: rgb(0 0 0 / 80%);
 }
 
-.modalBody {
+.dialog {
   position: relative;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: var(--size-spacing-lg);
   width: calc(100% - 32px);
   max-width: 600px;
   max-height: calc(100% - 48px);
-  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
   margin: 0 auto;
-  overflow-y: auto;
+  overflow: hidden;
   background: #fff;
   border-radius: var(--radius-lg);
-  box-sizing: border-box;
 }
 
-.modalBody.fixedHeight {
+.dialog.fixedHeight {
   height: calc(100% - 48px);
 }
 
-.contents {
-  text-align: center;
+.scrollContainer {
+  height: 100%;
+  overflow-y: auto;
 }
 
-.modalBody.fixedHeight .contents {
-  height: 100%;
-  min-height: 400px;
-  overflow: hidden;
+.mainContent {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent.fixedHeight {
+  min-height: 100%;
+}
+
+.mainContent.headerLess {
+  padding-top: var(--size-spacing-xl);
 }
 
 .header {
+  padding: var(--size-spacing-lg) var(--size-spacing-md);
   font-size: var(--text-heading-xs-size);
   font-weight: bold;
   line-height: var(--text-heading-xs-line);
   text-align: center;
   white-space: pre-wrap;
+  background: var(--color-ubie-white);
+
+  /* May receive focus in the initial display. */
+  outline: none;
+}
+
+.header.sticky {
+  position: sticky;
+  top: 0;
+}
+
+.header.sticky.canScroll {
+  border-bottom: 1px solid var(--color-border-black);
+}
+
+.body {
+  padding-right: var(--size-spacing-md);
+  padding-left: var(--size-spacing-md);
+  text-align: center;
+}
+
+.body.fixedHeight {
+  flex-grow: 1;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.hero {
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
+.footer {
+  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
+  background-color: var(--color-ubie-white);
+}
+
+.footer.sticky {
+  position: sticky;
+  bottom: 0;
+}
+
+.footer.sticky.canScroll {
+  border-top: 1px solid var(--color-border-black);
 }
 
 .panelEnter {

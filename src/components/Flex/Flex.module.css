@@ -1,9 +1,14 @@
 .flex {
   display: flex;
+  flex-flow: var(--flex-direction) var(--flex-wrap);
   gap: var(--gap);
   align-items: var(--align-items);
   justify-content: var(--justify-content);
-  flex-flow: var(--flex-direction) var(--flex-wrap);
+  width: var(--width);
+  min-width: var(--min-width);
+  max-width: var(--max-width);
+  padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+  margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
 }
 
 .flex.heightFull {
@@ -12,4 +17,8 @@
 
 .flex.widthFull {
   width: 100%;
+}
+
+.flex.inline {
+  display: inline-flex;
 }

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Stack } from '..';
+import { Box, Stack } from '..';
 import { Spacing } from '../types/style';
 
 export default {
@@ -41,6 +41,11 @@ export const Nested: Story = {
           <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
           <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
         </Stack>
+        <Stack>
+          <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
+          <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
+          <p style={{ margin: 0, background: '#DDD' }}>テスト</p>
+        </Stack>
       </Stack>
     </Stack>
   ),
@@ -70,28 +75,90 @@ export const PutOnTheEnd: Story = {
   args: defaultArgs,
 };
 
-export const BlockLevelElementsToFullWidth: Story = {
+export const MarginAndPadding: Story = {
   render: (args) => (
-    <Stack spacing="lg" alignItems="normal">
-      <Stack {...args} alignItems="normal">
-        <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-        <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-        <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-        <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-      </Stack>
-
-      <Stack spacing="xs">
-        <p style={{ margin: 0 }}>
-          If you do not use <code>alignItems=&quot;normal&quot;</code>:
-        </p>
-        <Stack {...args}>
-          <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-          <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-          <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-          <p style={{ margin: 0, backgroundColor: '#ccc' }}>Block Level Element</p>
-        </Stack>
-      </Stack>
+    <Stack {...args} mt="lg" mr="lg" mb="lg" ml="lg" pt="xxl" pr="xxl" pb="xxl" pl="xxl">
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
     </Stack>
   ),
   args: defaultArgs,
+};
+
+export const AsBox: Story = {
+  render: (args) => (
+    <Stack {...args} as={<Box radius="md" backgroundColor="blue" pt="lg" pr="lg" pb="lg" pl="lg" />}>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+    </Stack>
+  ),
+  args: defaultArgs,
+};
+
+export const CustomDataAttribute: Story = {
+  render: (args) => (
+    <Stack {...args}>
+      <p>This is a paragraph.</p>
+      <p>This is a paragraph.</p>
+    </Stack>
+  ),
+  args: { ...defaultArgs, 'data-test-id': 'custom-attribute' },
+};
+
+export const Width: Story = {
+  render: (args) => (
+    <>
+      <Stack {...args} width="100%">
+        <p style={{ margin: 0 }}>width: 100%</p>
+        <p style={{ margin: 0 }}>Text</p>
+        <p style={{ margin: 0 }}>Text</p>
+        <p style={{ margin: 0 }}>Text</p>
+      </Stack>
+
+      <br />
+
+      <Stack {...args} minWidth="500px">
+        <p style={{ margin: 0 }}>min-width: 500px</p>
+        <p style={{ margin: 0 }}>Text</p>
+        <p style={{ margin: 0 }}>Text</p>
+        <p style={{ margin: 0 }}>Text</p>
+      </Stack>
+
+      <br />
+
+      <Stack {...args} maxWidth="500px">
+        <p style={{ margin: 0 }}>max-width: 500px</p>
+        <p style={{ margin: 0 }}>Text</p>
+        <p style={{ margin: 0 }}>Text</p>
+        <p style={{ margin: 0 }}>Text</p>
+      </Stack>
+    </>
+  ),
+  args: defaultArgs,
+};
+
+export const Gap: Story = {
+  render: () => (
+    <Stack gap="md">
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+    </Stack>
+  ),
+};
+
+export const NoSpacing: Story = {
+  render: () => (
+    <Stack>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+      <p style={{ margin: 0 }}>Text</p>
+    </Stack>
+  ),
 };

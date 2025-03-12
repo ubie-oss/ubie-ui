@@ -1,43 +1,61 @@
-import type { ButtonHTMLAttributes, ReactNode, AnchorHTMLAttributes, ReactElement } from 'react';
+import { CustomDataAttributeProps } from '../../types/attributes';
+import { IconName } from '../../types/icon';
+import type { MarginProps } from '../../types/style';
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
 
 export type BaseProps = {
+  /**
+   * ボタンのラベルとして表示する内容
+   */
+  children: ReactNode;
   /**
    * ボタンの種類
    * @default primary
    */
-  variant?:
-    | 'primary'
-    | 'secondary'
-    | 'accent'
-    | 'alert'
-    | 'text'
-    | 'textAlert'
-    | 'authGoogle'
-    | 'authLINE'
-    | 'authApple';
+  variant?: 'primary' | 'secondary' | 'alert' | 'text' | 'textAlert' | 'authGoogle' | 'authLINE' | 'authApple';
   /**
    * 種類
    * @default large
    */
   size?: 'large' | 'medium' | 'small';
   /**
-   * 横幅を100%占有するかどうか
-   * @default false
+   * 横幅を100%占有する
    */
   block?: boolean;
   /**
-   * アイコン
-   */
-  icon?: 'default' | ReactNode;
-  /**
    * Fixedアイコン
    */
-  fixedIcon?: 'default' | ReactNode;
+  fixedIcon?: 'default' | ReactElement | IconName;
   /**
    * 後方配置のアイコン
    */
-  suffixIcon?: 'default' | ReactNode;
-};
+  suffixIcon?: 'default' | ReactElement | IconName;
+  /**
+   * ラベルの折り返しを指定
+   */
+  whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line' | 'break-spaces';
+} & (
+  | {
+      /**
+       * アイコン
+       */
+      icon?: 'default' | ReactElement | IconName;
+      prefixIcon?: never;
+    }
+  | {
+      /**
+       * アイコン
+       */
+      prefixIcon?: 'default' | ReactElement | IconName;
+      icon?: never;
+    }
+  | {
+      icon?: never;
+      prefixIcon?: never;
+    }
+) &
+  MarginProps &
+  CustomDataAttributeProps;
 
 export type OnlyButtonProps = {
   /**
@@ -54,6 +72,10 @@ export type OnlyButtonProps = {
    * ローディング状態を示す
    */
   loading?: boolean;
+  /**
+   * ローディング中に表示する文言
+   */
+  loadingLabel?: string;
 };
 
 export type OnlyLinkButtonProps = {
@@ -65,10 +87,13 @@ export type OnlyLinkButtonProps = {
 
 export type ButtonProps = Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
-  'className' | keyof BaseProps | keyof OnlyButtonProps
+  'children' | 'className' | keyof BaseProps | keyof OnlyButtonProps
 > &
   BaseProps &
   OnlyButtonProps;
-export type LinkButtonProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'className' | keyof BaseProps> &
+export type LinkButtonProps = Omit<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  'children' | 'className' | keyof BaseProps
+> &
   BaseProps &
   OnlyLinkButtonProps;

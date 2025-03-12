@@ -1,8 +1,9 @@
 'use client';
 
 import clsx from 'clsx';
-import { FC, InputHTMLAttributes, forwardRef, useRef, useState } from 'react';
+import { forwardRef, InputHTMLAttributes, useRef, useState } from 'react';
 import styles from './Toggle.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes';
 
 type Props = {
   /**
@@ -10,22 +11,18 @@ type Props = {
    */
   checked?: boolean;
   /**
-   * 初期状態が選択状態かどうか
-   * @default false
+   * 初期状態で選択状態とする
    */
   defaultChecked?: boolean;
-  /**
-   * 値が変化した場合のコールバック
-   */
-  onChange?: InputHTMLAttributes<HTMLInputElement>['onChange'];
   /**
    * 無効状態かどうか
    * @default false
    */
   disabled?: boolean;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'children' | 'onChange'>;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'children'> &
+  CustomDataAttributeProps;
 
-export const Toggle: FC<Props> = forwardRef<HTMLLabelElement, Props>(
+export const Toggle = forwardRef<HTMLInputElement, Props>(
   ({ checked: checkedProps, defaultChecked, onChange, ...otherProps }, ref) => {
     const { current: isUnControlled } = useRef(checkedProps === undefined);
     const [isUnControlledChecked, setIsUnControlledChecked] = useState(defaultChecked);
@@ -40,8 +37,9 @@ export const Toggle: FC<Props> = forwardRef<HTMLLabelElement, Props>(
     };
 
     return (
-      <label ref={ref} className={clsx(styles.root, isChecked ? styles.on : styles.off)}>
+      <label className={clsx(styles.root, isChecked ? styles.on : styles.off)}>
         <input
+          ref={ref}
           type="checkbox"
           role="switch"
           checked={isChecked}

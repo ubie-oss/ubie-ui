@@ -27,8 +27,21 @@ export const Disabled: Story = {
   },
 };
 
-export const IdInvalid: Story = {
+export const IsInvalid: Story = {
   render: () => {
     return <TextArea value={'wrong\nvalue'} isInvalid />;
   },
+};
+
+export const Placeholder: Story = {
+  render: () => {
+    return <TextArea placeholder={'place\nholder'} />;
+  },
+};
+
+export const CustomDataAttribute: Story = {
+  args: {
+    'data-test-id': 'textarea-custom-attribute',
+  },
+  render: (args) => <TextArea {...args} value="This is a text area with a custom data attribute." />,
 };
