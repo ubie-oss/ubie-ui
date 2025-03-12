@@ -46,6 +46,7 @@
   align-items: center;
   justify-content: center;
   grid-column: 2;
+  line-height: 1;
 }
 
 .disabled {
@@ -224,7 +225,7 @@
 
 .icon > * {
   width: var(--icon-size);
-  height: var(--sicon-size);
+  height: var(--icon-size);
 }
 
 .fixedIcon {
@@ -235,7 +236,7 @@
 
 .fixedIcon > * {
   width: var(--icon-size);
-  height: var(--sicon-size);
+  height: var(--icon-size);
 }
 
 .suffixIcon {
@@ -246,5 +247,5 @@
 
 .suffixIcon > * {
   width: var(--icon-size);
-  height: var(--sicon-size);
+  height: var(--icon-size);
 }
