@@ -12,6 +12,7 @@ const defaultArgs = {
   header: '夏目漱石「私の個人主義」',
   children:
     '何は時分どうもどんな観念顔というののところを云ったいまし。とうてい今日に説明院は現にこういう反対たますくらいから思わて来るないにも撲殺なるたたて、始終にも願うただですん。',
+  description: '出版日：1978年8月8日',
 } satisfies Partial<ComponentProps<typeof Accordion>>;
 
 export const Default: Story = {

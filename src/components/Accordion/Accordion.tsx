@@ -18,6 +18,10 @@ type Props = {
    */
   header: string;
   /**
+   * 見出しの下に表示する説明
+   */
+  description?: string;
+  /**
    * サイズ
    * @default medium
    */
@@ -36,11 +40,23 @@ type Props = {
   initialOpen?: boolean;
 } & CustomDataAttributeProps;
 
-export const Accordion: FC<Props> = ({ header, children, size = 'medium', id, buttonId, initialOpen, ...props }) => {
+export const Accordion: FC<Props> = ({
+  header,
+  description,
+  children,
+  size = 'medium',
+  id,
+  buttonId,
+  initialOpen,
+  ...props
+}) => {
   return (
     <details className={clsx(styles.container, styles[size])} id={id} {...props} open={initialOpen}>
       <summary id={buttonId} className={styles.button}>
-        <span>{header}</span>
+        <span className={styles.text}>
+          <span className={styles.header}>{header}</span>
+          {description && <span className={styles.description}>{description}</span>}
+        </span>
         <ArrowBDownIcon aria-hidden className={styles.arrow} />
       </summary>
       <div className={styles.panel}>{children}</div>
