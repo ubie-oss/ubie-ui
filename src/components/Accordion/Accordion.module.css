@@ -29,6 +29,7 @@
   width: 100%;
   min-height: 2rem;
   padding: var(--size-spacing-md);
+  font-weight: bold;
   border-radius: var(--radius-md);
 }
 
@@ -36,28 +37,9 @@
   width: 100%;
   min-height: 1.5rem;
   padding: var(--size-spacing-xs);
+  font-size: var(--text-button-md-size);
   border-right: none;
   border-left: none;
-}
-
-.text {
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-spacing-xxs);
-}
-
-.medium .header {
-  font-weight: bold;
-}
-
-.small .header {
-  font-size: var(--text-button-md-size);
-}
-
-.description {
-  font-size: var(--text-body-xs-size);
-  line-height: var(--text-body-xs-line);
-  color: var(--color-text-sub);
 }
 
 details[open] .button {
