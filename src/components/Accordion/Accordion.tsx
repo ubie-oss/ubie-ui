@@ -4,6 +4,8 @@ import { ArrowBDownIcon } from '@ubie/ubie-icons';
 import clsx from 'clsx';
 import styles from './Accordion.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes';
+import { Stack } from '../Stack/Stack';
+import { Text } from '../Text/Text';
 import type { FC, ReactNode } from 'react';
 
 export type Size = 'small' | 'medium';
@@ -17,6 +19,10 @@ type Props = {
    * 見出しに表示するテキスト
    */
   header: string;
+  /**
+   * 見出しの下に表示する説明
+   */
+  description?: string;
   /**
    * サイズ
    * @default medium
@@ -36,11 +42,29 @@ type Props = {
   initialOpen?: boolean;
 } & CustomDataAttributeProps;
 
-export const Accordion: FC<Props> = ({ header, children, size = 'medium', id, buttonId, initialOpen, ...props }) => {
+export const Accordion: FC<Props> = ({
+  header,
+  description,
+  children,
+  size = 'medium',
+  id,
+  buttonId,
+  initialOpen,
+  ...props
+}) => {
   return (
     <details className={clsx(styles.container, styles[size])} id={id} {...props} open={initialOpen}>
       <summary id={buttonId} className={styles.button}>
-        <span>{header}</span>
+        <Stack spacing="xxs" as="span">
+          <Text bold={size === 'medium'} leading="narrow" as="span" size={size === 'medium' ? 'md' : 'sm'}>
+            {header}
+          </Text>
+          {description && (
+            <Text color="sub" size="xs" as="span">
+              {description}
+            </Text>
+          )}
+        </Stack>
         <ArrowBDownIcon aria-hidden className={styles.arrow} />
       </summary>
       <div className={styles.panel}>{children}</div>
