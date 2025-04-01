@@ -47,7 +47,6 @@
     "fix:prettier": "prettier -w src",
     "fix:stylelint": "npm run lint:stylelint -- --fix",
     "generate": "scaffdog generate component",
-    "prestorybook": "npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepublishOnly": "npm run build",
