@@ -54,38 +54,75 @@ export const Heading: Story = {
     const headingText = '近くの医療機関から調べる';
 
     return (
-      <Flex spacing="md" alignItems="center">
-        <Text bold type="heading" size="xxs">
-          xxs
-          <br />
-          {`${headingText}`}
-        </Text>
-        <Text bold type="heading" size="xs">
-          xs
-          <br />
-          {`${headingText}`}
-        </Text>
-        <Text bold type="heading" size="sm">
-          sm
-          <br />
-          {`${headingText}`}
-        </Text>
-        <Text bold type="heading" size="md">
-          md
-          <br />
-          {`${headingText}`}
-        </Text>
-        <Text bold type="heading" size="lg">
-          lg
-          <br />
-          {`${headingText}`}
-        </Text>
-        <Text bold type="heading" size="xl">
-          xl
-          <br />
-          {`${headingText}`}
-        </Text>
-      </Flex>
+      <>
+        <p>Default Leading</p>
+        <Flex spacing="md" alignItems="center">
+          <Text bold type="heading" size="xxs">
+            xxs
+            <br />
+            {`${headingText}`}
+          </Text>
+          <Text bold type="heading" size="xs">
+            xs
+            <br />
+            {`${headingText}`}
+          </Text>
+          <Text bold type="heading" size="sm">
+            sm
+            <br />
+            {`${headingText}`}
+          </Text>
+          <Text bold type="heading" size="md">
+            md
+            <br />
+            {`${headingText}`}
+          </Text>
+          <Text bold type="heading" size="lg">
+            lg
+            <br />
+            {`${headingText}`}
+          </Text>
+          <Text bold type="heading" size="xl">
+            xl
+            <br />
+            {`${headingText}`}
+          </Text>
+        </Flex>
+
+        <p style={{ marginTop: '16px' }}>Wide Leading</p>
+        <Flex spacing="md" alignItems="center">
+          <Text bold leading="wide" type="heading" size="xxs">
+            xxs
+            <br />
+            {`${headingText}`}
+          </Text>
+          <Text bold leading="wide" type="heading" size="xs">
+            xs
+            <br />
+            {`${headingText}`}
+          </Text>
+          <Text bold leading="wide" type="heading" size="sm">
+            sm
+            <br />
+            {`${headingText}`}
+          </Text>
+          <Text bold leading="wide" type="heading" size="md">
+            md
+            <br />
+            {`${headingText}`}
+          </Text>
+          <Text bold leading="wide" type="heading" size="lg">
+            lg
+            <br />
+            {`${headingText}`}
+          </Text>
+          <Text bold leading="wide" type="heading" size="xl">
+            xl
+            <br />
+            {`${headingText}`}
+          </Text>
+        </Flex>
+      </>
     );
   },
   args: defaultArgs,
@@ -146,6 +183,34 @@ export const Body: Story = {
                 {`${bodyText}`}
               </Text>
               <Text leading="narrow" type="body" size="lg">
+                lg
+                <br />
+                {`${bodyText}`}
+              </Text>
+            </Flex>
+          </dd>
+        </div>
+
+        <div>
+          <dt>Wide Leading</dt>
+          <dd>
+            <Flex spacing="md" alignItems="center">
+              <Text leading="wide" type="body" size="xs">
+                xs
+                <br />
+                {`${bodyText}`}
+              </Text>
+              <Text leading="wide" type="body" size="sm">
+                sm
+                <br />
+                {`${bodyText}`}
+              </Text>
+              <Text leading="wide" type="body" size="md">
+                md
+                <br />
+                {`${bodyText}`}
+              </Text>
+              <Text leading="wide" type="body" size="lg">
                 lg
                 <br />
                 {`${bodyText}`}

@@ -2,7 +2,7 @@ export type FontSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type TextType = 'body' | 'heading' | 'button' | 'tag';
 
-export type Leading = 'default' | 'narrow';
+export type Leading = 'default' | 'narrow' | 'wide';
 
 export type Hue = 'black' | 'blue' | 'pink' | 'orange' | 'purple' | 'green' | 'red';
 
@@ -20,11 +20,11 @@ export type TextColorTokenKey =
 
 export type BodyFontSize = Extract<FontSize, 'xs' | 'sm' | 'md' | 'lg'>;
 
-export type BodyLeading = Extract<Leading, 'default' | 'narrow'>;
+export type BodyLeading = Extract<Leading, 'default' | 'narrow' | 'wide'>;
 
 export type HeadingFontSize = Extract<FontSize, 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
 
-export type HeadingLeading = Extract<Leading, 'default'>;
+export type HeadingLeading = Extract<Leading, 'default' | 'wide'>;
 
 export type ButtonFontSize = Extract<FontSize, 'sm' | 'md' | 'lg'>;
 
