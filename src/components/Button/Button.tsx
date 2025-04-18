@@ -85,7 +85,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         <span className={styles.label}>
           {prefixIcon && <span className={clsx(styles.icon, loading && styles.loading)}>{prefixIcon}</span>}
           <span className={clsx(styles.children, loading && styles.loading)}>{children}</span>
-          {suffixIcon && <span className={styles.suffixIcon}>{suffixIcon}</span>}
+          {suffixIcon && <span className={clsx(styles.suffixIcon, loading && styles.loading)}>{suffixIcon}</span>}
         </span>
       </button>
     );
