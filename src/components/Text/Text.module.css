@@ -143,6 +143,14 @@ button.text.link:focus-visible {
   --leading: var(--text-body-md-narrow-line);
 }
 
+.wide {
+  --leading: var(--text-body-md-wide-line);
+}
+
+.wide.heading {
+  --leading: var(--text-heading-md-wide-line);
+}
+
 .left {
   text-align: left;
 }
