@@ -26,24 +26,32 @@ export const StepperItem = ({
   isLast = false,
   ...props
 }: StepperItemProps) => {
-  const getIcon = (): IconName => {
+  const renderIcon = () => {
+    // カスタムアイコンが指定されている場合はそれを使用
     if (status === 'done' && doneIcon) {
-      return doneIcon;
+      return <Icon icon={doneIcon} />;
     }
+    if ((status === 'current' || status === 'undone') && icon) {
+      return <Icon icon={icon} />;
+    }
+
+    // デフォルトの状態に応じた描画
     if (status === 'done') {
-      return 'CheckAIcon';
+      // 白い丸で囲まれたチェックアイコン
+      return (
+        <div className={styles.doneCircle}>
+          <Icon icon="CheckAIcon" />
+        </div>
+      );
     }
-    if (status === 'current' && icon) {
-      return icon;
-    }
+
     if (status === 'current') {
-      return 'UbieIcon'; // Use a valid icon name
+      // 塗りつぶされた青い丸
+      return <div className={styles.currentCircle} />;
     }
-    // undone
-    if (icon) {
-      return icon;
-    }
-    return 'UbieIcon'; // Use a valid icon name
+
+    // undone: グレーの枠の塗りつぶされていない丸
+    return <div className={styles.undoneCircle} />;
   };
 
   const itemClass = clsx({
@@ -81,7 +89,7 @@ export const StepperItem = ({
           <div className={styles.border} />
         </div>
         <div className={styles.iconWrapper}>
-          <Icon icon={getIcon()} />
+          {renderIcon()}
         </div>
         <div className={rightBorderClass}>
           <div className={styles.border} />

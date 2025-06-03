@@ -51,7 +51,36 @@
   height: 24px;
 }
 
-/* Icon colors based on status */
+/* Circle styles for different statuses */
+.doneCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  color: #3959cc;
+  background-color: #fff;
+  border: 2px solid #3959cc;
+  border-radius: 50%;
+}
+
+.currentCircle {
+  width: 24px;
+  height: 24px;
+  background-color: #3959cc;
+  border-radius: 50%;
+}
+
+.undoneCircle {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: 2px solid #f6f6f6;
+  border-radius: 50%;
+}
+
+/* Icon colors for custom icons */
 .current .iconWrapper {
   color: #3959cc;
 }
