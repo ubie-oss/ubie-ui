@@ -25,7 +25,19 @@ export interface StepperProps extends CustomDataAttributeProps {
 
 export { StepperItem, type StepperItemProps } from './StepperItem';
 
-export const Stepper = ({ children, currentStep = 0, borderColor = 'gray', m, mx, my, mt, mr, mb, ml, ...props }: StepperProps) => {
+export const Stepper = ({
+  children,
+  currentStep = 0,
+  borderColor = 'gray',
+  m,
+  mx,
+  my,
+  mt,
+  mr,
+  mb,
+  ml,
+  ...props
+}: StepperProps) => {
   const marginStyles = marginVariables({ m, mx, my, mt, mr, mb, ml });
 
   const enhancedChildren = Children.map(children, (child, index) => {
