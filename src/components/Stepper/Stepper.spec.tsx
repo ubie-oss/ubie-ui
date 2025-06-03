@@ -52,23 +52,23 @@ describe('<Stepper>', () => {
     const middle = screen.getByTestId('middle');
     const last = screen.getByTestId('last');
 
-    // First item should hide left border
-    const firstLeftBorder = first.querySelector('[class*="leftBorder"]');
-    const firstRightBorder = first.querySelector('[class*="rightBorder"]');
-    expect(firstLeftBorder?.className).toMatch(/hidden/);
-    expect(firstRightBorder?.className).not.toMatch(/hidden/);
+    // First item should hide left border line
+    const firstLeftBorderLine = first.querySelector('[class*="leftBorder"] [class*="border"]');
+    const firstRightBorderLine = first.querySelector('[class*="rightBorder"] [class*="border"]');
+    expect(firstLeftBorderLine?.className).toMatch(/hidden/);
+    expect(firstRightBorderLine?.className).not.toMatch(/hidden/);
 
-    // Middle item should show both borders
-    const middleLeftBorder = middle.querySelector('[class*="leftBorder"]');
-    const middleRightBorder = middle.querySelector('[class*="rightBorder"]');
-    expect(middleLeftBorder?.className).not.toMatch(/hidden/);
-    expect(middleRightBorder?.className).not.toMatch(/hidden/);
+    // Middle item should show both border lines
+    const middleLeftBorderLine = middle.querySelector('[class*="leftBorder"] [class*="border"]');
+    const middleRightBorderLine = middle.querySelector('[class*="rightBorder"] [class*="border"]');
+    expect(middleLeftBorderLine?.className).not.toMatch(/hidden/);
+    expect(middleRightBorderLine?.className).not.toMatch(/hidden/);
 
-    // Last item should hide right border
-    const lastLeftBorder = last.querySelector('[class*="leftBorder"]');
-    const lastRightBorder = last.querySelector('[class*="rightBorder"]');
-    expect(lastLeftBorder?.className).not.toMatch(/hidden/);
-    expect(lastRightBorder?.className).toMatch(/hidden/);
+    // Last item should hide right border line
+    const lastLeftBorderLine = last.querySelector('[class*="leftBorder"] [class*="border"]');
+    const lastRightBorderLine = last.querySelector('[class*="rightBorder"] [class*="border"]');
+    expect(lastLeftBorderLine?.className).not.toMatch(/hidden/);
+    expect(lastRightBorderLine?.className).toMatch(/hidden/);
   });
 
   it('has all margins through m prop', () => {
@@ -138,15 +138,15 @@ describe('<StepperItem>', () => {
   it('hides borders correctly for first and last items', () => {
     const { rerender } = render(<StepperItem label="Test" isFirst={true} data-testid="item" />);
 
-    const leftBorder = screen.getByTestId('item').querySelector('[class*="leftBorder"]');
-    const rightBorder = screen.getByTestId('item').querySelector('[class*="rightBorder"]');
-    expect(leftBorder?.className).toMatch(/hidden/);
-    expect(rightBorder?.className).not.toMatch(/hidden/);
+    const leftBorderLine = screen.getByTestId('item').querySelector('[class*="leftBorder"] [class*="border"]');
+    const rightBorderLine = screen.getByTestId('item').querySelector('[class*="rightBorder"] [class*="border"]');
+    expect(leftBorderLine?.className).toMatch(/hidden/);
+    expect(rightBorderLine?.className).not.toMatch(/hidden/);
 
     rerender(<StepperItem label="Test" isLast={true} data-testid="item" />);
-    const leftBorder2 = screen.getByTestId('item').querySelector('[class*="leftBorder"]');
-    const rightBorder2 = screen.getByTestId('item').querySelector('[class*="rightBorder"]');
-    expect(leftBorder2?.className).not.toMatch(/hidden/);
-    expect(rightBorder2?.className).toMatch(/hidden/);
+    const leftBorderLine2 = screen.getByTestId('item').querySelector('[class*="leftBorder"] [class*="border"]');
+    const rightBorderLine2 = screen.getByTestId('item').querySelector('[class*="rightBorder"] [class*="border"]');
+    expect(leftBorderLine2?.className).not.toMatch(/hidden/);
+    expect(rightBorderLine2?.className).toMatch(/hidden/);
   });
 });

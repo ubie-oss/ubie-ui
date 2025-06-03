@@ -61,17 +61,21 @@ export const StepperItem = ({
     [styles.undone]: status === 'undone',
   });
 
-  const iconAreaClass = clsx({
-    [styles.iconArea]: true,
-  });
-
   const leftBorderClass = clsx({
     [styles.leftBorder]: true,
-    [styles.hidden]: isFirst,
   });
 
   const rightBorderClass = clsx({
     [styles.rightBorder]: true,
+  });
+
+  const leftBorderLineClass = clsx({
+    [styles.border]: true,
+    [styles.hidden]: isFirst,
+  });
+
+  const rightBorderLineClass = clsx({
+    [styles.border]: true,
     [styles.hidden]: isLast,
   });
 
@@ -84,17 +88,16 @@ export const StepperItem = ({
 
   return (
     <div className={itemClass} {...props}>
-      <div className={iconAreaClass}>
+      <div className={styles.borderLine}>
         <div className={leftBorderClass}>
-          <div className={styles.border} />
+          <div className={leftBorderLineClass} />
         </div>
-        <div className={styles.iconWrapper}>
-          {renderIcon()}
-        </div>
+        <div className={styles.iconSpacer} />
         <div className={rightBorderClass}>
-          <div className={styles.border} />
+          <div className={rightBorderLineClass} />
         </div>
       </div>
+      <div className={styles.iconWrapper}>{renderIcon()}</div>
       <div className={labelClass}>{label}</div>
     </div>
   );
