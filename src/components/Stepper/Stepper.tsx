@@ -1,8 +1,9 @@
 'use client';
 
-import { type CSSProperties, type ReactNode, Children, cloneElement, isValidElement } from 'react';
+import { type CSSProperties, Children, cloneElement, isValidElement, ReactElement } from 'react';
 import styles from './Stepper.module.css';
 import { marginVariables } from '../../utils/style';
+import type { StepperItemProps, StepperItem } from './StepperItem';
 import type { CustomDataAttributeProps } from '../../types/attributes';
 import type { Spacing } from '../../types/style';
 
@@ -10,7 +11,7 @@ export type StepStatus = 'current' | 'undone' | 'done';
 export type BorderColor = 'blue' | 'gray';
 
 export interface StepperProps extends CustomDataAttributeProps {
-  children: ReactNode[];
+  children: ReactElement<StepperItemProps, typeof StepperItem>[];
   currentStep?: number;
   borderColor?: BorderColor;
   // Margin props
@@ -22,8 +23,6 @@ export interface StepperProps extends CustomDataAttributeProps {
   mb?: Spacing;
   ml?: Spacing;
 }
-
-export { StepperItem, type StepperItemProps } from './StepperItem';
 
 export const Stepper = ({
   children,
@@ -60,3 +59,5 @@ export const Stepper = ({
     </div>
   );
 };
+
+export { StepperItem, StepperItemProps };
