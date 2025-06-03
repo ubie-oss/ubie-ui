@@ -1,0 +1,90 @@
+.stepper {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
+}
+
+.stepperItem {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.iconArea {
+  display: flex;
+  flex-direction: row;
+  align-self: stretch;
+  justify-content: center;
+  width: 100%;
+}
+
+.leftBorder,
+.rightBorder {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  align-self: stretch;
+  justify-content: center;
+}
+
+.leftBorder.hidden,
+.rightBorder.hidden {
+  display: none;
+}
+
+.border {
+  flex: 1;
+  height: 2px;
+  background-color: #f6f6f6;
+}
+
+.iconWrapper {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+/* Icon colors based on status */
+.current .iconWrapper {
+  color: #3959cc;
+}
+
+.done .iconWrapper {
+  color: #3959cc;
+}
+
+.undone .iconWrapper {
+  color: #f6f6f6;
+}
+
+.label {
+  width: 100%;
+  font-family: 'OT-UD Shin Go Pr6N', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.currentLabel {
+  font-weight: 600;
+  color: #000;
+}
+
+.doneLabel {
+  font-weight: 400;
+  color: #000;
+}
+
+.undoneLabel {
+  font-weight: 400;
+  color: #000;
+}
