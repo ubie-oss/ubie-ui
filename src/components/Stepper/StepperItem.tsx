@@ -3,8 +3,19 @@
 import { clsx } from 'clsx';
 import styles from './Stepper.module.css';
 import { Icon } from '../Icon/Icon';
-import type { StepperItemProps } from './Stepper';
+import type { StepStatus } from './Stepper';
+import type { CustomDataAttributeProps } from '../../types/attributes';
 import type { IconName } from '../../types/icon';
+
+export interface StepperItemProps extends CustomDataAttributeProps {
+  label: string;
+  icon?: IconName;
+  doneIcon?: IconName;
+  // Internal props (automatically set by Stepper)
+  status?: StepStatus;
+  isFirst?: boolean;
+  isLast?: boolean;
+}
 
 export const StepperItem = ({
   label,

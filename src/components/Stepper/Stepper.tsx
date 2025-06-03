@@ -4,7 +4,6 @@ import { type CSSProperties, type ReactNode, Children, cloneElement, isValidElem
 import styles from './Stepper.module.css';
 import { marginVariables } from '../../utils/style';
 import type { CustomDataAttributeProps } from '../../types/attributes';
-import type { IconName } from '../../types/icon';
 import type { Spacing } from '../../types/style';
 
 export type StepStatus = 'current' | 'undone' | 'done';
@@ -22,17 +21,7 @@ export interface StepperProps extends CustomDataAttributeProps {
   ml?: Spacing;
 }
 
-export interface StepperItemProps extends CustomDataAttributeProps {
-  label: string;
-  icon?: IconName;
-  doneIcon?: IconName;
-  // Internal props (automatically set by Stepper)
-  status?: StepStatus;
-  isFirst?: boolean;
-  isLast?: boolean;
-}
-
-export { StepperItem } from './StepperItem';
+export { StepperItem, type StepperItemProps } from './StepperItem';
 
 export const Stepper = ({ children, currentStep = 0, m, mx, my, mt, mr, mb, ml, ...props }: StepperProps) => {
   const marginStyles = marginVariables({ m, mx, my, mt, mr, mb, ml });
