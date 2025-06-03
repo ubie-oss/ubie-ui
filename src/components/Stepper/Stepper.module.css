@@ -45,7 +45,7 @@
 .border {
   width: 100%;
   height: 2px;
-  background-color: var(--stepper-border-color, #f6f6f6);
+  background-color: var(--stepper-border-color, var(--color-ubie-black-300));
 }
 
 .iconWrapper {
@@ -61,11 +61,11 @@
 
 /* Border color variants */
 .borderColorBlue {
-  --stepper-border-color: #3959cc;
+  --stepper-border-color: var(--color-ubie-blue-600);
 }
 
 .borderColorGray {
-  --stepper-border-color: #f6f6f6;
+  --stepper-border-color: var(--color-ubie-black-300);
 }
 
 /* Circle styles for different statuses */
@@ -76,9 +76,9 @@
   width: 24px;
   height: 24px;
   padding: 2px;
-  color: #3959cc;
+  color: var(--color-ubie-blue-600);
   background-color: #fff;
-  border: 2px solid #3959cc;
+  border: 2px solid var(--color-ubie-blue-600);
   border-radius: 50%;
 }
 
@@ -86,7 +86,7 @@
   position: relative;
   width: 24px;
   height: 24px;
-  background-color: #3959cc;
+  background-color: var(--color-ubie-blue-600);
   border-radius: 50%;
 }
 
@@ -94,21 +94,21 @@
   width: 24px;
   height: 24px;
   background-color: #fff;
-  border: 2px solid var(--stepper-border-color, #f6f6f6);
+  border: 2px solid var(--stepper-border-color, var(--color-ubie-black-300));
   border-radius: 50%;
 }
 
 /* Icon colors for custom icons */
 .current .iconWrapper {
-  color: #3959cc;
+  color: var(--color-ubie-blue-600);
 }
 
 .done .iconWrapper {
-  color: #3959cc;
+  color: var(--color-ubie-blue-600);
 }
 
 .undone .iconWrapper {
-  color: #f6f6f6;
+  color: var(--color-ubie-black-300);
 }
 
 .label {
