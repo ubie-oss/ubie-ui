@@ -100,6 +100,33 @@ describe('<Stepper>', () => {
     expect(step0.className).toMatch(/current/);
     expect(step1.className).toMatch(/undone/);
   });
+
+  it('applies border color class correctly', () => {
+    render(
+      <Stepper borderColor="blue" currentStep={1}>
+        <StepperItem label="Step 1" data-testid="step-0" />
+        <StepperItem label="Step 2" data-testid="step-1" />
+      </Stepper>,
+    );
+
+    const step0 = screen.getByTestId('step-0');
+    const step1 = screen.getByTestId('step-1');
+
+    expect(step0.className).toMatch(/borderColorBlue/);
+    expect(step1.className).toMatch(/borderColorBlue/);
+  });
+
+  it('defaults to gray border color when borderColor prop is not specified', () => {
+    render(
+      <Stepper currentStep={0}>
+        <StepperItem label="Step 1" data-testid="step-0" />
+        <StepperItem label="Step 2" data-testid="step-1" />
+      </Stepper>,
+    );
+
+    const step0 = screen.getByTestId('step-0');
+    expect(step0.className).toMatch(/borderColorGray/);
+  });
 });
 
 describe('<StepperItem>', () => {

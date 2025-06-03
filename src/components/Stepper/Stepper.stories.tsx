@@ -108,6 +108,30 @@ export const CustomIcons: Story = {
   ),
 };
 
+export const BorderColors: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+      <div>
+        <h3>Gray Border (デフォルト)</h3>
+        <Stepper currentStep={1}>
+          <StepperItem label="ステップ1" />
+          <StepperItem label="ステップ2" />
+          <StepperItem label="ステップ3" />
+        </Stepper>
+      </div>
+
+      <div>
+        <h3>Blue Border</h3>
+        <Stepper currentStep={1} borderColor="blue">
+          <StepperItem label="ステップ1" />
+          <StepperItem label="ステップ2" />
+          <StepperItem label="ステップ3" />
+        </Stepper>
+      </div>
+    </div>
+  ),
+};
+
 export const WithMargins: Story = {
   render: () => (
     <div style={{ border: '1px dashed #ccc', padding: '16px' }}>

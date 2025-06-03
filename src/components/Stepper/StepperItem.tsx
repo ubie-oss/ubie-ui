@@ -3,7 +3,7 @@
 import { clsx } from 'clsx';
 import styles from './Stepper.module.css';
 import { Icon } from '../Icon/Icon';
-import type { StepStatus } from './Stepper';
+import type { StepStatus, BorderColor } from './Stepper';
 import type { CustomDataAttributeProps } from '../../types/attributes';
 import type { IconName } from '../../types/icon';
 
@@ -15,6 +15,7 @@ export interface StepperItemProps extends CustomDataAttributeProps {
   status?: StepStatus;
   isFirst?: boolean;
   isLast?: boolean;
+  borderColor?: BorderColor;
 }
 
 export const StepperItem = ({
@@ -24,6 +25,7 @@ export const StepperItem = ({
   status = 'undone',
   isFirst = false,
   isLast = false,
+  borderColor = 'gray',
   ...props
 }: StepperItemProps) => {
   const renderIcon = () => {
@@ -59,6 +61,7 @@ export const StepperItem = ({
     [styles.current]: status === 'current',
     [styles.done]: status === 'done',
     [styles.undone]: status === 'undone',
+    [styles[`borderColor${borderColor.charAt(0).toUpperCase() + borderColor.slice(1)}`]]: true,
   });
 
   const leftBorderClass = clsx({
