@@ -60,4 +60,4 @@ export const Stepper = ({
   );
 };
 
-export { StepperItem, StepperItemProps };
+export { StepperItem, type StepperItemProps } from './StepperItem';
