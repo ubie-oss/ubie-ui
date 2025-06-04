@@ -108,11 +108,20 @@ export const CustomIcons: Story = {
   ),
 };
 
-export const BorderColors: Story = {
+export const ProgressStates: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
       <div>
-        <h3>Gray Border (デフォルト)</h3>
+        <h3>Step 0 (開始)</h3>
+        <Stepper currentStep={0}>
+          <StepperItem label="ステップ1" />
+          <StepperItem label="ステップ2" />
+          <StepperItem label="ステップ3" />
+        </Stepper>
+      </div>
+
+      <div>
+        <h3>Step 1 (進行中)</h3>
         <Stepper currentStep={1}>
           <StepperItem label="ステップ1" />
           <StepperItem label="ステップ2" />
@@ -121,8 +130,8 @@ export const BorderColors: Story = {
       </div>
 
       <div>
-        <h3>Blue Border</h3>
-        <Stepper currentStep={1} borderColor="blue">
+        <h3>Step 2 (完了間近)</h3>
+        <Stepper currentStep={2}>
           <StepperItem label="ステップ1" />
           <StepperItem label="ステップ2" />
           <StepperItem label="ステップ3" />

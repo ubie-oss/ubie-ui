@@ -101,22 +101,35 @@ describe('<Stepper>', () => {
     expect(step1.className).toMatch(/undone/);
   });
 
-  it('applies border color class correctly', () => {
+  it('applies correct border line colors based on step position', () => {
     render(
-      <Stepper borderColor="blue" currentStep={1}>
+      <Stepper currentStep={1}>
         <StepperItem label="Step 1" data-testid="step-0" />
         <StepperItem label="Step 2" data-testid="step-1" />
+        <StepperItem label="Step 3" data-testid="step-2" />
       </Stepper>,
     );
 
     const step0 = screen.getByTestId('step-0');
     const step1 = screen.getByTestId('step-1');
+    const step2 = screen.getByTestId('step-2');
 
-    expect(step0.className).toMatch(/borderColorBlue/);
-    expect(step1.className).toMatch(/borderColorBlue/);
+    // Step 0 (done): both borders should be blue (left and right of current step)
+    const step0RightBorder = step0.querySelector('[class*="rightBorder"] [class*="border"]');
+    expect(step0RightBorder?.className).toMatch(/borderColorBlue/);
+
+    // Step 1 (current): left border blue, right border gray
+    const step1LeftBorder = step1.querySelector('[class*="leftBorder"] [class*="border"]');
+    const step1RightBorder = step1.querySelector('[class*="rightBorder"] [class*="border"]');
+    expect(step1LeftBorder?.className).toMatch(/borderColorBlue/);
+    expect(step1RightBorder?.className).toMatch(/borderColorGray/);
+
+    // Step 2 (undone): left border gray
+    const step2LeftBorder = step2.querySelector('[class*="leftBorder"] [class*="border"]');
+    expect(step2LeftBorder?.className).toMatch(/borderColorGray/);
   });
 
-  it('defaults to gray border color when borderColor prop is not specified', () => {
+  it('applies gray border color for lines to the right of current step', () => {
     render(
       <Stepper currentStep={0}>
         <StepperItem label="Step 1" data-testid="step-0" />
@@ -125,7 +138,15 @@ describe('<Stepper>', () => {
     );
 
     const step0 = screen.getByTestId('step-0');
-    expect(step0.className).toMatch(/borderColorGray/);
+    const step1 = screen.getByTestId('step-1');
+
+    // Step 0 (current): right border should be gray
+    const step0RightBorder = step0.querySelector('[class*="rightBorder"] [class*="border"]');
+    expect(step0RightBorder?.className).toMatch(/borderColorGray/);
+
+    // Step 1 (undone): left border should be gray
+    const step1LeftBorder = step1.querySelector('[class*="leftBorder"] [class*="border"]');
+    expect(step1LeftBorder?.className).toMatch(/borderColorGray/);
   });
 });
 

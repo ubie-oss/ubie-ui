@@ -3,7 +3,7 @@
 import { clsx } from 'clsx';
 import styles from './Stepper.module.css';
 import { Icon } from '../Icon/Icon';
-import type { StepStatus, BorderColor } from './Stepper';
+import type { StepStatus } from './Stepper';
 import type { CustomDataAttributeProps } from '../../types/attributes';
 import type { IconName } from '../../types/icon';
 
@@ -15,7 +15,8 @@ export interface StepperItemProps extends CustomDataAttributeProps {
   status?: StepStatus;
   isFirst?: boolean;
   isLast?: boolean;
-  borderColor?: BorderColor;
+  stepIndex?: number;
+  currentStep?: number;
 }
 
 export const StepperItem = ({
@@ -25,7 +26,8 @@ export const StepperItem = ({
   status = 'undone',
   isFirst = false,
   isLast = false,
-  borderColor = 'gray',
+  stepIndex = 0,
+  currentStep = 0,
   ...props
 }: StepperItemProps) => {
   const renderIcon = () => {
@@ -61,7 +63,6 @@ export const StepperItem = ({
     [styles.current]: status === 'current',
     [styles.done]: status === 'done',
     [styles.undone]: status === 'undone',
-    [styles[`borderColor${borderColor.charAt(0).toUpperCase() + borderColor.slice(1)}`]]: true,
   });
 
   const leftBorderClass = clsx({
@@ -72,14 +73,20 @@ export const StepperItem = ({
     [styles.rightBorder]: true,
   });
 
+  // 左の線: 現在のステップより左（つまり stepIndex <= currentStep）の場合は青
   const leftBorderLineClass = clsx({
     [styles.border]: true,
     [styles.hidden]: isFirst,
+    [styles.borderColorBlue]: !isFirst && stepIndex <= currentStep,
+    [styles.borderColorGray]: !isFirst && stepIndex > currentStep,
   });
 
+  // 右の線: 現在のステップより左（つまり stepIndex < currentStep）の場合は青
   const rightBorderLineClass = clsx({
     [styles.border]: true,
     [styles.hidden]: isLast,
+    [styles.borderColorBlue]: !isLast && stepIndex < currentStep,
+    [styles.borderColorGray]: !isLast && stepIndex >= currentStep,
   });
 
   const labelClass = clsx({

@@ -8,12 +8,10 @@ import type { CustomDataAttributeProps } from '../../types/attributes';
 import type { Spacing } from '../../types/style';
 
 export type StepStatus = 'current' | 'undone' | 'done';
-export type BorderColor = 'blue' | 'gray';
 
 export interface StepperProps extends CustomDataAttributeProps {
   children: ReactElement<StepperItemProps, typeof StepperItem>[];
   currentStep?: number;
-  borderColor?: BorderColor;
   // Margin props
   m?: Spacing;
   mx?: Spacing;
@@ -27,7 +25,6 @@ export interface StepperProps extends CustomDataAttributeProps {
 export const Stepper = ({
   children,
   currentStep = 0,
-  borderColor = 'gray',
   m,
   mx,
   my,
@@ -49,7 +46,8 @@ export const Stepper = ({
       status,
       isFirst: index === 0,
       isLast: index === children.length - 1,
-      borderColor,
+      stepIndex: index,
+      currentStep,
     });
   });
 
