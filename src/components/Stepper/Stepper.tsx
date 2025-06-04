@@ -22,18 +22,7 @@ export interface StepperProps extends CustomDataAttributeProps {
   ml?: Spacing;
 }
 
-export const Stepper = ({
-  children,
-  currentStep = 0,
-  m,
-  mx,
-  my,
-  mt,
-  mr,
-  mb,
-  ml,
-  ...props
-}: StepperProps) => {
+export const Stepper = ({ children, currentStep = 0, m, mx, my, mt, mr, mb, ml, ...props }: StepperProps) => {
   const marginStyles = marginVariables({ m, mx, my, mt, mr, mb, ml });
 
   const enhancedChildren = Children.map(children, (child, index) => {
@@ -43,11 +32,11 @@ export const Stepper = ({
 
     return cloneElement(child, {
       ...child.props,
-      status,
-      isFirst: index === 0,
-      isLast: index === children.length - 1,
-      stepIndex: index,
-      currentStep,
+      __internal_status: status,
+      __internal_isFirst: index === 0,
+      __internal_isLast: index === children.length - 1,
+      __internal_stepIndex: index,
+      __internal_currentStep: currentStep,
     });
   });
 

@@ -157,19 +157,19 @@ describe('<StepperItem>', () => {
   });
 
   it('applies correct CSS classes based on status', () => {
-    const { rerender } = render(<StepperItem label="Test" status="current" data-testid="item" />);
+    const { rerender } = render(<StepperItem label="Test" __internal_status="current" data-testid="item" />);
 
     expect(screen.getByTestId('item').className).toMatch(/current/);
 
-    rerender(<StepperItem label="Test" status="done" data-testid="item" />);
+    rerender(<StepperItem label="Test" __internal_status="done" data-testid="item" />);
     expect(screen.getByTestId('item').className).toMatch(/done/);
 
-    rerender(<StepperItem label="Test" status="undone" data-testid="item" />);
+    rerender(<StepperItem label="Test" __internal_status="undone" data-testid="item" />);
     expect(screen.getByTestId('item').className).toMatch(/undone/);
   });
 
   it('uses custom icon when provided', () => {
-    render(<StepperItem label="Test" icon="HomeOutlineIcon" status="current" data-testid="item" />);
+    render(<StepperItem label="Test" icon="HomeOutlineIcon" __internal_status="current" data-testid="item" />);
 
     // Icon component should be rendered (we can't easily test the actual icon)
     const iconWrapper = screen.getByTestId('item').querySelector('[class*="iconWrapper"]');
@@ -177,21 +177,21 @@ describe('<StepperItem>', () => {
   });
 
   it('uses custom done icon when status is done', () => {
-    render(<StepperItem label="Test" doneIcon="CheckAIcon" status="done" data-testid="item" />);
+    render(<StepperItem label="Test" doneIcon="CheckAIcon" __internal_status="done" data-testid="item" />);
 
     const iconWrapper = screen.getByTestId('item').querySelector('[class*="iconWrapper"]');
     expect(iconWrapper).toBeInTheDocument();
   });
 
   it('hides borders correctly for first and last items', () => {
-    const { rerender } = render(<StepperItem label="Test" isFirst={true} data-testid="item" />);
+    const { rerender } = render(<StepperItem label="Test" __internal_isFirst={true} data-testid="item" />);
 
     const leftBorderLine = screen.getByTestId('item').querySelector('[class*="leftBorder"] [class*="border"]');
     const rightBorderLine = screen.getByTestId('item').querySelector('[class*="rightBorder"] [class*="border"]');
     expect(leftBorderLine?.className).toMatch(/hidden/);
     expect(rightBorderLine?.className).not.toMatch(/hidden/);
 
-    rerender(<StepperItem label="Test" isLast={true} data-testid="item" />);
+    rerender(<StepperItem label="Test" __internal_isLast={true} data-testid="item" />);
     const leftBorderLine2 = screen.getByTestId('item').querySelector('[class*="leftBorder"] [class*="border"]');
     const rightBorderLine2 = screen.getByTestId('item').querySelector('[class*="rightBorder"] [class*="border"]');
     expect(leftBorderLine2?.className).not.toMatch(/hidden/);
