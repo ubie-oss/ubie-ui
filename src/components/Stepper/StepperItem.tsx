@@ -11,7 +11,6 @@ export interface StepperItemProps extends CustomDataAttributeProps {
   label: string;
   icon?: IconName;
   doneIcon?: IconName;
-  // Internal props (automatically set by Stepper)
   status?: StepStatus;
   isFirst?: boolean;
   isLast?: boolean;
