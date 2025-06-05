@@ -12,35 +12,35 @@ export interface StepperItemProps extends CustomDataAttributeProps {
   icon?: IconName;
   doneIcon?: IconName;
   // Internal props (automatically set by Stepper)
-  __internal_status?: StepStatus;
-  __internal_isFirst?: boolean;
-  __internal_isLast?: boolean;
-  __internal_stepIndex?: number;
-  __internal_currentStep?: number;
+  status?: StepStatus;
+  isFirst?: boolean;
+  isLast?: boolean;
+  stepIndex?: number;
+  currentStep?: number;
 }
 
 export const StepperItem = ({
   label,
   icon,
   doneIcon,
-  __internal_status = 'undone',
-  __internal_isFirst = false,
-  __internal_isLast = false,
-  __internal_stepIndex = 0,
-  __internal_currentStep = 0,
+  status = 'undone',
+  isFirst = false,
+  isLast = false,
+  stepIndex = 0,
+  currentStep = 0,
   ...props
 }: StepperItemProps) => {
   const renderIcon = () => {
     // カスタムアイコンが指定されている場合はそれを使用
-    if (__internal_status === 'done' && doneIcon) {
+    if (status === 'done' && doneIcon) {
       return <Icon icon={doneIcon} />;
     }
-    if ((__internal_status === 'current' || __internal_status === 'undone') && icon) {
+    if ((status === 'current' || status === 'undone') && icon) {
       return <Icon icon={icon} />;
     }
 
     // デフォルトの状態に応じた描画
-    if (__internal_status === 'done') {
+    if (status === 'done') {
       // 白い丸で囲まれたチェックアイコン
       return (
         <div className={styles.doneCircle}>
@@ -49,7 +49,7 @@ export const StepperItem = ({
       );
     }
 
-    if (__internal_status === 'current') {
+    if (status === 'current') {
       // 塗りつぶされた青い丸
       return <div className={styles.currentCircle} />;
     }
@@ -60,9 +60,9 @@ export const StepperItem = ({
 
   const itemClass = clsx({
     [styles.stepperItem]: true,
-    [styles.current]: __internal_status === 'current',
-    [styles.done]: __internal_status === 'done',
-    [styles.undone]: __internal_status === 'undone',
+    [styles.current]: status === 'current',
+    [styles.done]: status === 'done',
+    [styles.undone]: status === 'undone',
   });
 
   const leftBorderClass = clsx({
@@ -76,24 +76,24 @@ export const StepperItem = ({
   // 左の線: 現在のステップより左（つまり stepIndex <= currentStep）の場合は青
   const leftBorderLineClass = clsx({
     [styles.border]: true,
-    [styles.hidden]: __internal_isFirst,
-    [styles.borderColorBlue]: !__internal_isFirst && __internal_stepIndex <= __internal_currentStep,
-    [styles.borderColorGray]: !__internal_isFirst && __internal_stepIndex > __internal_currentStep,
+    [styles.hidden]: isFirst,
+    [styles.borderColorBlue]: !isFirst && stepIndex <= currentStep,
+    [styles.borderColorGray]: !isFirst && stepIndex > currentStep,
   });
 
   // 右の線: 現在のステップより左（つまり stepIndex < currentStep）の場合は青
   const rightBorderLineClass = clsx({
     [styles.border]: true,
-    [styles.hidden]: __internal_isLast,
-    [styles.borderColorBlue]: !__internal_isLast && __internal_stepIndex < __internal_currentStep,
-    [styles.borderColorGray]: !__internal_isLast && __internal_stepIndex >= __internal_currentStep,
+    [styles.hidden]: isLast,
+    [styles.borderColorBlue]: !isLast && stepIndex < currentStep,
+    [styles.borderColorGray]: !isLast && stepIndex >= currentStep,
   });
 
   const labelClass = clsx({
     [styles.label]: true,
-    [styles.currentLabel]: __internal_status === 'current',
-    [styles.doneLabel]: __internal_status === 'done',
-    [styles.undoneLabel]: __internal_status === 'undone',
+    [styles.currentLabel]: status === 'current',
+    [styles.doneLabel]: status === 'done',
+    [styles.undoneLabel]: status === 'undone',
   });
 
   return (

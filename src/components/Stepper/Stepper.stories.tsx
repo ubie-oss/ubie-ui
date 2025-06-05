@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
 import { Stepper } from './Stepper';
-import { StepperItem } from './StepperItem';
 
 export default {
   title: 'Navigation/Stepper',
@@ -23,132 +22,124 @@ const defaultArgs = {
 
 export const Default: Story = {
   render: (args) => (
-    <Stepper {...args}>
-      <StepperItem label="ステップ1" />
-      <StepperItem label="ステップ2" />
-      <StepperItem label="ステップ3" />
-    </Stepper>
+    <Stepper {...args} steps={[{ label: 'ステップ1' }, { label: 'ステップ2' }, { label: 'ステップ3' }]} />
   ),
   args: defaultArgs,
 };
 
 export const ThreeSteps: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-      <div>
-        <h2>Current Step: 0</h2>
-        <Stepper currentStep={0}>
-          <StepperItem label="ステップ1" />
-          <StepperItem label="ステップ2" />
-          <StepperItem label="ステップ3" />
-        </Stepper>
-      </div>
+  render: () => {
+    const steps = [{ label: 'ステップ1' }, { label: 'ステップ2' }, { label: 'ステップ3' }];
 
-      <div>
-        <h2>Current Step: 1</h2>
-        <Stepper currentStep={1}>
-          <StepperItem label="ステップ1" />
-          <StepperItem label="ステップ2" />
-          <StepperItem label="ステップ3" />
-        </Stepper>
-      </div>
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+        <div>
+          <h2>Current Step: 0</h2>
+          <Stepper currentStep={0} steps={steps} />
+        </div>
 
-      <div>
-        <h2>Current Step: 2</h2>
-        <Stepper currentStep={2}>
-          <StepperItem label="ステップ1" />
-          <StepperItem label="ステップ2" />
-          <StepperItem label="ステップ3" />
-        </Stepper>
+        <div>
+          <h2>Current Step: 1</h2>
+          <Stepper currentStep={1} steps={steps} />
+        </div>
+
+        <div>
+          <h2>Current Step: 2</h2>
+          <Stepper currentStep={2} steps={steps} />
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 export const FourSteps: Story = {
   render: () => (
-    <Stepper currentStep={1}>
-      <StepperItem label="知りたいこと" />
-      <StepperItem label="受診について" />
-      <StepperItem label="他に知りたいこと" />
-      <StepperItem label="確認と入力" />
-    </Stepper>
+    <Stepper
+      currentStep={1}
+      steps={[
+        { label: '知りたいこと' },
+        { label: '受診について' },
+        { label: '他に知りたいこと' },
+        { label: '確認と入力' },
+      ]}
+    />
   ),
 };
 
 export const FiveSteps: Story = {
   render: () => (
-    <Stepper currentStep={2}>
-      <StepperItem label="ステップ1" />
-      <StepperItem label="ステップ2" />
-      <StepperItem label="ステップ3" />
-      <StepperItem label="ステップ4" />
-      <StepperItem label="ステップ5" />
-    </Stepper>
+    <Stepper
+      currentStep={2}
+      steps={[
+        { label: 'ステップ1' },
+        { label: 'ステップ2' },
+        { label: 'ステップ3' },
+        { label: 'ステップ4' },
+        { label: 'ステップ5' },
+      ]}
+    />
   ),
 };
 
 export const LongLabels: Story = {
   render: () => (
-    <Stepper currentStep={1}>
-      <StepperItem label="ステップステップステップステップステップステップ" />
-      <StepperItem label="改行\nも\nできます" />
-      <StepperItem label="ステップステップステップステップステップステップステップステップステップステップ" />
-    </Stepper>
+    <Stepper
+      currentStep={1}
+      steps={[
+        { label: 'ステップステップステップステップステップステップ' },
+        { label: '改行\nも\nできます' },
+        { label: 'ステップステップステップステップステップステップステップステップステップステップ' },
+      ]}
+    />
   ),
 };
 
 export const CustomIcons: Story = {
   render: () => (
-    <Stepper currentStep={1}>
-      <StepperItem label="ホーム" icon="HomeOutlineIcon" />
-      <StepperItem label="設定" icon="SetupIcon" />
-      <StepperItem label="完了" icon="CheckAIcon" doneIcon="CheckAIcon" />
-    </Stepper>
+    <Stepper
+      currentStep={1}
+      steps={[
+        { label: 'ホーム', icon: 'HomeOutlineIcon' },
+        { label: '設定', icon: 'SetupIcon' },
+        { label: '完了', icon: 'CheckAIcon', doneIcon: 'CheckAIcon' },
+      ]}
+    />
   ),
 };
 
 export const ProgressStates: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-      <div>
-        <h3>Step 0 (開始)</h3>
-        <Stepper currentStep={0}>
-          <StepperItem label="ステップ1" />
-          <StepperItem label="ステップ2" />
-          <StepperItem label="ステップ3" />
-        </Stepper>
-      </div>
+  render: () => {
+    const steps = [{ label: 'ステップ1' }, { label: 'ステップ2' }, { label: 'ステップ3' }];
 
-      <div>
-        <h3>Step 1 (進行中)</h3>
-        <Stepper currentStep={1}>
-          <StepperItem label="ステップ1" />
-          <StepperItem label="ステップ2" />
-          <StepperItem label="ステップ3" />
-        </Stepper>
-      </div>
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+        <div>
+          <h3>Step 0 (開始)</h3>
+          <Stepper currentStep={0} steps={steps} />
+        </div>
 
-      <div>
-        <h3>Step 2 (完了間近)</h3>
-        <Stepper currentStep={2}>
-          <StepperItem label="ステップ1" />
-          <StepperItem label="ステップ2" />
-          <StepperItem label="ステップ3" />
-        </Stepper>
+        <div>
+          <h3>Step 1 (進行中)</h3>
+          <Stepper currentStep={1} steps={steps} />
+        </div>
+
+        <div>
+          <h3>Step 2 (完了間近)</h3>
+          <Stepper currentStep={2} steps={steps} />
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 export const WithMargins: Story = {
   render: () => (
     <div style={{ border: '1px dashed #ccc', padding: '16px' }}>
-      <Stepper m="lg" currentStep={1}>
-        <StepperItem label="ステップ1" />
-        <StepperItem label="ステップ2" />
-        <StepperItem label="ステップ3" />
-      </Stepper>
+      <Stepper
+        m="lg"
+        currentStep={1}
+        steps={[{ label: 'ステップ1' }, { label: 'ステップ2' }, { label: 'ステップ3' }]}
+      />
     </div>
   ),
 };
@@ -158,30 +149,32 @@ export const DifferentWidths: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
       <div style={{ width: '280px', border: '1px solid #eee', padding: '16px' }}>
         <h4>幅280px</h4>
-        <Stepper currentStep={1}>
-          <StepperItem label="ステップ" />
-          <StepperItem label="ステップ" />
-          <StepperItem label="ステップ" />
-        </Stepper>
+        <Stepper currentStep={1} steps={[{ label: 'ステップ' }, { label: 'ステップ' }, { label: 'ステップ' }]} />
       </div>
 
       <div style={{ width: '440px', border: '1px solid #eee', padding: '16px' }}>
         <h4>幅440px</h4>
-        <Stepper currentStep={1}>
-          <StepperItem label="知りたいこと" />
-          <StepperItem label="受診について" />
-          <StepperItem label="他に知りたいこと" />
-          <StepperItem label="確認と入力" />
-        </Stepper>
+        <Stepper
+          currentStep={1}
+          steps={[
+            { label: '知りたいこと' },
+            { label: '受診について' },
+            { label: '他に知りたいこと' },
+            { label: '確認と入力' },
+          ]}
+        />
       </div>
 
       <div style={{ width: '640px', border: '1px solid #eee', padding: '16px' }}>
         <h4>幅640px</h4>
-        <Stepper currentStep={1}>
-          <StepperItem label="ステップステップステップステップステップステップ" />
-          <StepperItem label="改行\nも\nできます" />
-          <StepperItem label="ステップステップステップステップステップステップステップステップステップステップ" />
-        </Stepper>
+        <Stepper
+          currentStep={1}
+          steps={[
+            { label: 'ステップステップステップステップステップステップ' },
+            { label: '改行\nも\nできます' },
+            { label: 'ステップステップステップステップステップステップステップステップステップステップ' },
+          ]}
+        />
       </div>
     </div>
   ),

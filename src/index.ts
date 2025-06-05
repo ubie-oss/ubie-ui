@@ -29,8 +29,8 @@ export { Select } from './components/Select/Select';
 export { Text } from './components/Text/Text';
 export { TextArea } from './components/TextArea/TextArea';
 export { Stack } from './components/Stack/Stack';
-export { Stepper, StepperItem } from './components/Stepper/Stepper';
+export { Stepper } from './components/Stepper/Stepper';
 export { Toggle } from './components/Toggle/Toggle';
 
 export type { IconName } from './types/icon';
-export type { StepperProps, StepperItemProps, StepStatus } from './components/Stepper/Stepper';
+export type { StepperProps, StepperItemProps, StepStatus, StepData } from './components/Stepper/Stepper';

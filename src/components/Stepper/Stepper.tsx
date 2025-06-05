@@ -1,16 +1,23 @@
 'use client';
 
-import { type CSSProperties, Children, cloneElement, isValidElement, ReactElement } from 'react';
+import { type CSSProperties } from 'react';
 import styles from './Stepper.module.css';
+import { StepperItem } from './StepperItem';
 import { marginVariables } from '../../utils/style';
-import type { StepperItemProps, StepperItem } from './StepperItem';
 import type { CustomDataAttributeProps } from '../../types/attributes';
+import type { IconName } from '../../types/icon';
 import type { Spacing } from '../../types/style';
 
 export type StepStatus = 'current' | 'undone' | 'done';
 
+export interface StepData {
+  label: string;
+  icon?: IconName;
+  doneIcon?: IconName;
+}
+
 export interface StepperProps extends CustomDataAttributeProps {
-  children: ReactElement<StepperItemProps, typeof StepperItem>[];
+  steps: StepData[];
   currentStep?: number;
   // Margin props
   m?: Spacing;
@@ -22,29 +29,30 @@ export interface StepperProps extends CustomDataAttributeProps {
   ml?: Spacing;
 }
 
-export const Stepper = ({ children, currentStep = 0, m, mx, my, mt, mr, mb, ml, ...props }: StepperProps) => {
+export const Stepper = ({ steps, currentStep = 0, m, mx, my, mt, mr, mb, ml, ...props }: StepperProps) => {
   const marginStyles = marginVariables({ m, mx, my, mt, mr, mb, ml });
-
-  const enhancedChildren = Children.map(children, (child, index) => {
-    if (!isValidElement(child)) return child;
-
-    const status: StepStatus = index < currentStep ? 'done' : index === currentStep ? 'current' : 'undone';
-
-    return cloneElement(child, {
-      ...child.props,
-      __internal_status: status,
-      __internal_isFirst: index === 0,
-      __internal_isLast: index === children.length - 1,
-      __internal_stepIndex: index,
-      __internal_currentStep: currentStep,
-    });
-  });
 
   return (
     <div className={styles.stepper} style={marginStyles as CSSProperties} {...props}>
-      {enhancedChildren}
+      {steps.map((step, index) => {
+        const status: StepStatus = index < currentStep ? 'done' : index === currentStep ? 'current' : 'undone';
+
+        return (
+          <StepperItem
+            key={index}
+            label={step.label}
+            icon={step.icon}
+            doneIcon={step.doneIcon}
+            status={status}
+            isFirst={index === 0}
+            isLast={index === steps.length - 1}
+            stepIndex={index}
+            currentStep={currentStep}
+          />
+        );
+      })}
     </div>
   );
 };
 
-export { StepperItem, type StepperItemProps } from './StepperItem';
+export type { StepperItemProps } from './StepperItem';
