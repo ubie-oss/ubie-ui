@@ -1,0 +1,26 @@
+import{j as c}from"./jsx-runtime-DuyR_K1q.js";import{v as Y}from"./v4-CQkTLCs1.js";import{r as V}from"./index-yUhCOHB4.js";import{B as k}from"./Box-CZGfP_BO.js";import{F as U}from"./Flex-FpX3-zGW.js";import"./clsx-B-dksMZM.js";import"./style-BhPSv9pv.js";const z="_card_1ac07_1",$={card:z},i=V.forwardRef(({children:e,type:r="button",...t},o)=>c.jsx("button",{type:r,ref:o,className:$.card,...t,children:e}));i.displayName="ButtonCard";try{i.displayName="ButtonCard",i.__docgenInfo={description:"",displayName:"ButtonCard",props:{}}}catch{}const{addons:G}=__STORYBOOK_MODULE_PREVIEW_API__,{ImplicitActionsDuringRendering:H}=__STORYBOOK_MODULE_CORE_EVENTS_PREVIEW_ERRORS__,{global:T}=__STORYBOOK_MODULE_GLOBAL__;var q=Object.defineProperty,J=(e,r)=>{for(var t in r)q(e,t,{get:r[t],enumerable:!0})},Q="storybook/actions",X=`${Q}/action-event`,Z={depth:10,clearOnStoryChange:!0,limit:50},M=(e,r)=>{let t=Object.getPrototypeOf(e);return!t||r(t)?t:M(t,r)},ee=e=>!!(typeof e=="object"&&e&&M(e,r=>/^Synthetic(?:Base)?Event$/.test(r.constructor.name))&&typeof e.persist=="function"),re=e=>{if(ee(e)){let r=Object.create(e.constructor.prototype,Object.getOwnPropertyDescriptors(e));r.persist();let t=Object.getOwnPropertyDescriptor(r,"view"),o=t==null?void 0:t.value;return typeof o=="object"&&(o==null?void 0:o.constructor.name)==="Window"&&Object.defineProperty(r,"view",{...t,value:Object.create(o.constructor.prototype)}),r}return e},te=()=>typeof crypto=="object"&&typeof crypto.getRandomValues=="function"?Y():Date.now().toString(36)+Math.random().toString(36).substring(2);function O(e,r={}){let t={...Z,...r},o=function(...a){var y,h;if(r.implicit){let E=(y="__STORYBOOK_PREVIEW__"in T?T.__STORYBOOK_PREVIEW__:void 0)==null?void 0:y.storyRenders.find(p=>p.phase==="playing"||p.phase==="rendering");if(E){let p=!((h=globalThis==null?void 0:globalThis.FEATURES)!=null&&h.disallowImplicitActionsInRenderV8),R=new H({phase:E.phase,name:e,deprecated:p});if(p)console.warn(R);else throw R}}let s=G.getChannel(),n=te(),d=5,f=a.map(re),F=a.length>1?f:f[0],W={id:n,count:0,data:{name:e,args:F},options:{...t,maxDepth:d+(t.depth||3),allowFunction:t.allowFunction||!1}};s.emit(X,W)};return o.isAction=!0,o.implicit=r.implicit,o}__STORYBOOK_MODULE_PREVIEW_API__;const{global:x}=__STORYBOOK_MODULE_GLOBAL__;var oe={};J(oe,{argsEnhancers:()=>ne,loaders:()=>ce});var N=(e,r)=>typeof r[e]>"u"&&!(e in r),se=e=>{let{initialArgs:r,argTypes:t,id:o,parameters:{actions:a}}=e;if(!a||a.disable||!a.argTypesRegex||!t)return{};let s=new RegExp(a.argTypesRegex);return Object.entries(t).filter(([n])=>!!s.test(n)).reduce((n,[d,f])=>(N(d,r)&&(n[d]=O(d,{implicit:!0,id:o})),n),{})},ae=e=>{let{initialArgs:r,argTypes:t,parameters:{actions:o}}=e;return o!=null&&o.disable||!t?{}:Object.entries(t).filter(([a,s])=>!!s.action).reduce((a,[s,n])=>(N(s,r)&&(a[s]=O(typeof n.action=="string"?n.action:s)),a),{})},ne=[ae,se],b=!1,ie=e=>{let{parameters:{actions:r}}=e;if(!(r!=null&&r.disable)&&!b&&"__STORYBOOK_TEST_ON_MOCK_CALL__"in x&&typeof x.__STORYBOOK_TEST_ON_MOCK_CALL__=="function"){let t=x.__STORYBOOK_TEST_ON_MOCK_CALL__;t((o,a)=>{let s=o.getMockName();s!=="spy"&&(!/^next\/.*::/.test(s)||["next/router::useRouter()","next/navigation::useRouter()","next/navigation::redirect","next/cache::","next/headers::cookies().set","next/headers::cookies().delete","next/headers::headers().set","next/headers::headers().delete"].some(n=>s.startsWith(n)))&&O(s)(a)}),b=!0}},ce=[ie];const me={title:"Form/ButtonCard",component:i,args:{onClick:O("on click"),children:"自分"}},m={},l={render:e=>c.jsx(i,{...e}),args:m},_={render:e=>c.jsx(k,{width:"200px",children:c.jsx(i,{...e})}),args:{...m,children:"自分自分自分自分自分自分自分自分自分自分自分自分自分自分自分自分"}},g={render:e=>c.jsx(i,{...e}),args:{...m,disabled:!0}},u={render:e=>c.jsxs(U,{spacing:"xs",children:[c.jsx(i,{...e}),c.jsx(i,{...e})]}),args:{...m}};var B,A,S;l.parameters={...l.parameters,docs:{...(B=l.parameters)==null?void 0:B.docs,source:{originalSource:`{
+  render: args => <ButtonCard {...args} />,
+  args: defaultArgs
+}`,...(S=(A=l.parameters)==null?void 0:A.docs)==null?void 0:S.source}}};var C,j,v;_.parameters={..._.parameters,docs:{...(C=_.parameters)==null?void 0:C.docs,source:{originalSource:`{
+  render: args => <Box width="200px">
+      <ButtonCard {...args} />
+    </Box>,
+  args: {
+    ...defaultArgs,
+    children: '自分自分自分自分自分自分自分自分自分自分自分自分自分自分自分自分'
+  }
+}`,...(v=(j=_.parameters)==null?void 0:j.docs)==null?void 0:v.source}}};var D,I,w;g.parameters={...g.parameters,docs:{...(D=g.parameters)==null?void 0:D.docs,source:{originalSource:`{
+  render: args => <ButtonCard {...args} />,
+  args: {
+    ...defaultArgs,
+    disabled: true
+  }
+}`,...(w=(I=g.parameters)==null?void 0:I.docs)==null?void 0:w.source}}};var L,P,K;u.parameters={...u.parameters,docs:{...(L=u.parameters)==null?void 0:L.docs,source:{originalSource:`{
+  render: args => <Flex spacing="xs">
+      <ButtonCard {...args} />
+      <ButtonCard {...args} />
+    </Flex>,
+  args: {
+    ...defaultArgs
+  }
+}`,...(K=(P=u.parameters)==null?void 0:P.docs)==null?void 0:K.source}}};const fe=["Default","WrapText","Disabled","Horizontal"];export{l as Default,g as Disabled,u as Horizontal,_ as WrapText,fe as __namedExportsOrder,me as default};
