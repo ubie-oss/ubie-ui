@@ -23,9 +23,9 @@ type BaseProps = {
    */
   onClose: () => void;
   /**
-   * ヘッダーに表示する見出しテキスト
+   * ヘッダーに表示する見出しテキストまたはReactノード
    */
-  header?: string;
+  header?: string | ReactNode;
   /**
    * プライマリーアクションボタンのカラースキーム
    */
@@ -72,7 +72,6 @@ type BaseProps = {
   hero?: ReactNode;
   /**
    * ヘッダーを固定表示
-   * heroが指定されている場合は無効
    */
   stickyHeader?: boolean;
   /**
@@ -195,11 +194,7 @@ export const ActionHalfModal: FC<Props> = ({
                   <Dialog.Title
                     tabIndex={-1}
                     ref={initialFocusRef}
-                    className={clsx(
-                      styles.header,
-                      !hero && stickyHeader && styles.sticky,
-                      canScrollUp && styles.canScroll,
-                    )}
+                    className={clsx(styles.header, stickyHeader && styles.sticky, canScrollUp && styles.canScroll)}
                   >
                     {header}
                   </Dialog.Title>
