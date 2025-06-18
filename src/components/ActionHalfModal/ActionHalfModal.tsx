@@ -25,7 +25,7 @@ type BaseProps = {
   /**
    * ヘッダーに表示する見出しテキストまたはReactノード
    */
-  header?: string | ReactNode;
+  header?: ReactNode;
   /**
    * プライマリーアクションボタンのカラースキーム
    */
@@ -131,9 +131,9 @@ export const ActionHalfModal: FC<Props> = ({
 
   const dialogRef = useCallback(
     (node: HTMLDivElement | null) => {
-      if (node !== null && header == null && ariaLabelledby != null) {
+      if (node !== null && (header == null || header === undefined) && ariaLabelledby != null) {
         node.setAttribute('aria-labelledby', ariaLabelledby);
-      } else if (node !== null && header == null && ariaLabelledby == null) {
+      } else if (node !== null && (header == null || header === undefined) && ariaLabelledby == null) {
         node.removeAttribute('aria-labelledby');
       }
     },
@@ -177,7 +177,7 @@ export const ActionHalfModal: FC<Props> = ({
               [styles.fullscreen]: fullscreen,
             })}
           >
-            {header === undefined ? (
+            {header === undefined || header === null ? (
               <VisuallyHidden as="p" tabIndex={-1} ref={initialFocusRef}>
                 ダイアログ
               </VisuallyHidden>
@@ -185,12 +185,12 @@ export const ActionHalfModal: FC<Props> = ({
             <div className={styles.scrollContainer} ref={scrollContainerRef}>
               <div
                 className={clsx(styles.mainContent, {
-                  [styles.headerLess]: header === undefined && hero === undefined,
+                  [styles.headerLess]: (header === undefined || header === null) && hero === undefined,
                   [styles.fullscreen]: fullscreen,
                 })}
               >
                 {hero !== undefined ? <div className={styles.hero}>{hero}</div> : null}
-                {header !== undefined ? (
+                {header !== undefined && header !== null ? (
                   <Dialog.Title
                     tabIndex={-1}
                     ref={initialFocusRef}
