@@ -1,6 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps, useCallback, useState } from 'react';
 import { ActionHalfModal } from './ActionHalfModal';
+import { Box } from '../Box/Box';
+import { Button } from '../Button/Button';
+import { Flex } from '../Flex/Flex';
+import { Text } from '../Text/Text';
 
 export default {
   title: 'Modal/ActionHalfModal',
@@ -332,5 +336,96 @@ export const StickyHeaderAndFooter: Story = {
     ...defaultArgs,
     stickyHeader: true,
     stickyFooter: true,
+  },
+};
+
+export const ReactNodeHeader: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(true);
+
+    const onClose = useCallback(() => {
+      setOpen(false);
+    }, []);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionHalfModal
+          primaryActionLabel="アクション"
+          onPrimaryAction={onClose}
+          {...args}
+          open={open}
+          onClose={onClose}
+        />
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    header: (
+      <Box>
+        <Flex gap="xs" alignItems="center" justifyContent="space-between">
+          <Text size="lg" color="main">
+            カスタムヘッダー
+          </Text>
+          <Button variant="text" size="small">
+            設定
+          </Button>
+        </Flex>
+      </Box>
+    ),
+    stickyHeader: true,
+  },
+};
+
+export const ReactNodeHeaderWithHero: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(true);
+
+    const onClose = useCallback(() => {
+      setOpen(false);
+    }, []);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionHalfModal
+          primaryActionLabel="アクション"
+          onPrimaryAction={onClose}
+          {...args}
+          open={open}
+          onClose={onClose}
+        />
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    header: (
+      <Box>
+        <Flex gap="xs" alignItems="center" justifyContent="space-between">
+          <Text size="lg" color="main">
+            Hero付きカスタムヘッダー
+          </Text>
+          <Button variant="text" size="small">
+            メニュー
+          </Button>
+        </Flex>
+      </Box>
+    ),
+    hero: (
+      <img
+        src="/images/placeholder.svg"
+        alt="Illustration: Modal"
+        style={{ width: '100%', height: 'auto', verticalAlign: 'bottom' }}
+        width={560}
+        height={315}
+      />
+    ),
+    stickyHeader: true,
   },
 };
