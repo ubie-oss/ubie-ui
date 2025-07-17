@@ -152,6 +152,18 @@
   --border-color-disabled: var(--color-background-black-darken);
 }
 
+.primaryGreen {
+  --text: var(--color-text-white);
+  --text-hover: var(--color-text-white);
+  --text-disabled: var(--color-text-disabled);
+  --bg: #10b981;
+  --bg-hover: #047857;
+  --bg-disabled: var(--color-background-black-darken);
+  --border-color: #10b981;
+  --border-color-hover: #047857;
+  --border-color-disabled: var(--color-background-black-darken);
+}
+
 .authGoogle {
   --text: var(--color-text-main);
   --text-hover: var(--color-text-main);
