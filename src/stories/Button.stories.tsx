@@ -24,6 +24,7 @@ export const Default: Story = {
       <Button {...defaultArgs} />
       <Button {...defaultArgs} variant="secondary" />
       <Button {...defaultArgs} variant="alert" />
+      <Button {...defaultArgs} variant="success" />
       <Button {...defaultArgs} variant="text" />
       <Button {...defaultArgs} variant="textAlert" />
     </div>
@@ -57,6 +58,7 @@ export const WithIcon: Story = {
             <Button prefixIcon={<Icon icon="UbieIcon" />} {...defaultArgs} />
             <Button prefixIcon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="secondary" />
             <Button prefixIcon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="alert" />
+            <Button prefixIcon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="success" />
             <Button prefixIcon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="text" />
             <Button prefixIcon={<Icon icon="TrashIcon" />} {...defaultArgs} variant="textAlert" />
           </div>
@@ -70,6 +72,7 @@ export const WithIcon: Story = {
             <Button suffixIcon={<BlankLinkIcon />} {...defaultArgs} />
             <Button suffixIcon={<BlankLinkIcon />} {...defaultArgs} variant="secondary" />
             <Button suffixIcon={<BlankLinkIcon />} {...defaultArgs} variant="alert" />
+            <Button suffixIcon={<BlankLinkIcon />} {...defaultArgs} variant="success" />
             <Button suffixIcon={<BlankLinkIcon />} {...defaultArgs} variant="text" />
             <Button suffixIcon={<TrashIcon />} {...defaultArgs} variant="textAlert" />
           </div>
@@ -83,6 +86,7 @@ export const WithIcon: Story = {
             <Button fixedIcon={<BlankLinkIcon />} {...defaultArgs} />
             <Button fixedIcon={<BlankLinkIcon />} {...defaultArgs} variant="secondary" />
             <Button fixedIcon={<BlankLinkIcon />} {...defaultArgs} variant="alert" />
+            <Button fixedIcon={<BlankLinkIcon />} {...defaultArgs} variant="success" />
             <Button fixedIcon={<BlankLinkIcon />} {...defaultArgs} variant="text" />
             <Button fixedIcon={<TrashIcon />} {...defaultArgs} variant="textAlert" />
           </div>
@@ -130,6 +134,7 @@ export const WithIcon: Story = {
             <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} />
             <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="secondary" />
             <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="alert" />
+            <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="success" />
             <Button icon={<Icon icon="UbieIcon" />} {...defaultArgs} variant="text" />
             <Button icon={<Icon icon="TrashIcon" />} {...defaultArgs} variant="textAlert" />
           </div>
@@ -166,6 +171,7 @@ export const Disabled: Story = {
       <Button {...defaultArgs} prefixIcon="UbieIcon" disabled />
       <Button {...defaultArgs} variant="secondary" disabled />
       <Button {...defaultArgs} variant="alert" disabled />
+      <Button {...defaultArgs} variant="success" disabled />
       <Button {...defaultArgs} variant="text" disabled />
       <Button {...defaultArgs} variant="textAlert" disabled />
     </div>
@@ -185,6 +191,7 @@ export const Loading: Story = {
         <Button {...args} />
         <Button {...args} variant="secondary" />
         <Button {...args} variant="alert" />
+        <Button {...args} variant="success" />
         <Button {...args} variant="text" />
         <Button {...args} variant="textAlert" />
       </div>
@@ -193,6 +200,7 @@ export const Loading: Story = {
         <Button {...args} size="medium" />
         <Button {...args} variant="secondary" size="medium" />
         <Button {...args} variant="alert" size="medium" />
+        <Button {...args} variant="success" size="medium" />
         <Button {...args} variant="text" size="medium" />
         <Button {...args} variant="textAlert" size="medium" />
       </div>
@@ -201,6 +209,7 @@ export const Loading: Story = {
         <Button {...args} size="small" />
         <Button {...args} variant="secondary" size="small" />
         <Button {...args} variant="alert" size="small" />
+        <Button {...args} variant="success" size="small" />
         <Button {...args} variant="text" size="small" />
         <Button {...args} variant="textAlert" size="small" />
       </div>
