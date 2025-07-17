@@ -12,7 +12,7 @@ export type BaseProps = {
    * ボタンの種類
    * @default primary
    */
-  variant?: 'primary' | 'secondary' | 'alert' | 'text' | 'textAlert' | 'authGoogle' | 'authLINE' | 'authApple';
+  variant?: 'primary' | 'secondary' | 'alert' | 'text' | 'textAlert' | 'success' | 'authGoogle' | 'authLINE' | 'authApple';
   /**
    * 種類
    * @default large

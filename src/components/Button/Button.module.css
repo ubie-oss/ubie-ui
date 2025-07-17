@@ -140,6 +140,18 @@
   --border-color-disabled: var(--color-background-black-darken);
 }
 
+.success {
+  --text: var(--color-text-white);
+  --text-hover: var(--color-text-white);
+  --text-disabled: var(--color-text-disabled);
+  --bg: var(--color-ubie-green-600);
+  --bg-hover: var(--color-ubie-green-700);
+  --bg-disabled: var(--color-background-black-darken);
+  --border-color: var(--color-ubie-green-600);
+  --border-color-hover: var(--color-ubie-green-700);
+  --border-color-disabled: var(--color-background-black-darken);
+}
+
 .authGoogle {
   --text: var(--color-text-main);
   --text-hover: var(--color-text-main);
