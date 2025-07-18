@@ -73,6 +73,9 @@
 .header.sticky {
   position: sticky;
   top: 0;
+
+  /* Ensure sticky header appears above content that might overlap it (e.g., with position or transform) */
+  z-index: 1;
 }
 
 .header.sticky.canScroll {
@@ -80,6 +83,14 @@
 }
 
 .body {
+  /*
+   * Ensure the header always appears in front of body content.
+   * - Place header and body in the same stacking context
+   * - Set body's z-index lower than header's z-index
+   * This prevents the header from being hidden by body content,
+   * regardless of how high z-index values are specified within the body.
+   */
+  z-index: 0;
   padding-right: var(--size-spacing-md);
   padding-left: var(--size-spacing-md);
   text-align: center;
