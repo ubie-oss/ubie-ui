@@ -189,7 +189,7 @@ export type CSSPercentage = `${string}%`;
 
 export type CSSLengthPercentage = CSSLength | CSSPercentage;
 
-export type CSSWitdh =
+export type CSSWidth =
   | 'auto'
   | CSSLengthPercentage
   | 'min-content'
@@ -207,14 +207,14 @@ export type CSSMaxWidth =
   | `fit-content(${CSSLengthPercentage})`
   | CSSVariable;
 
-export type CSSMinWidth = CSSWitdh;
+export type CSSMinWidth = CSSWidth;
 
 export type WidthProps = {
   /**
    * 幅を指定
    * @default auto
    */
-  width?: CSSWitdh;
+  width?: CSSWidth;
   /**
    * 最小幅
    * @default auto

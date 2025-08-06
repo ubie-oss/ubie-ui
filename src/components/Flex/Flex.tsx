@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { isValidElement, cloneElement, useMemo } from 'react';
 import styles from './Flex.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
-import { AlignItems, CSSWitdh, FlexDirection, JustifyContent, Spacing, WidthProps } from '../../types/style';
+import { AlignItems, CSSWidth, FlexDirection, JustifyContent, Spacing, WidthProps } from '../../types/style';
 import { gapVariables, marginVariables, paddingVariables, widthVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
 import { Box } from '../Box/Box';
@@ -44,7 +44,7 @@ type Props = {
    * 幅を指定。fullは後方互換のために残している
    * デフォルト<Flex>は横幅いっぱいを専有する。しかし例えば、フレックスコンテナの子要素として配置した場合、横幅が自身の子に合わせて小さくなる。これが不都合の場合に100%とする
    */
-  width?: 'full' | CSSWitdh;
+  width?: 'full' | CSSWidth;
   /**
    * inline-flexとして扱う
    */

@@ -3,13 +3,13 @@
 import { clsx } from 'clsx';
 import { CSSProperties, forwardRef, type HTMLAttributes, type PropsWithChildren } from 'react';
 import styles from './FlexItem.module.css';
-import { CSSWitdh, MarginProps, PaddingProps, WidthProps } from '../../types/style';
+import { CSSWidth, MarginProps, PaddingProps, WidthProps } from '../../types/style';
 import { marginVariables, paddingVariables } from '../../utils/style';
 
 type FlexProperty = {
   grow?: number;
   shrink?: number;
-  basis?: CSSWitdh;
+  basis?: CSSWidth;
 };
 
 type AllowedDivAttributes = Omit<HTMLAttributes<HTMLDivElement>, 'className'>;
