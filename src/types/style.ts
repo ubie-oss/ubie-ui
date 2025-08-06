@@ -187,7 +187,9 @@ export type CSSLength =
 
 export type CSSPercentage = `${string}%`;
 
-export type CSSLengthPercentage = CSSLength | CSSPercentage;
+export type CSSCalc = `calc(${string})`;
+
+export type CSSLengthPercentage = CSSLength | CSSPercentage | CSSCalc;
 
 export type CSSWidth =
   | 'auto'
