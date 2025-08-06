@@ -226,3 +226,27 @@ export type WidthProps = {
    */
   maxWidth?: CSSMaxWidth;
 };
+
+export type CSSHeight = CSSWidth;
+
+export type CSSMaxHeight = CSSMaxWidth;
+
+export type CSSMinHeight = CSSHeight;
+
+export type HeightProps = {
+  /**
+   * 高さを指定
+   * @default auto
+   */
+  height?: CSSHeight;
+  /**
+   * 最小高さ
+   * @default auto
+   */
+  minHeight?: CSSMinHeight;
+  /**
+   * 最大高さ
+   * @default none
+   */
+  maxHeight?: CSSMaxHeight;
+};
