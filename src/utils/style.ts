@@ -13,7 +13,7 @@ import {
   TagLeading,
   CSSMinWidth,
   CSSMaxWidth,
-  CSSWitdh,
+  CSSWidth,
   TextColorVariant,
   TextColorTokenKey,
   BackgroundColorVariant,
@@ -270,7 +270,7 @@ export const widthVariables = ({
   minWidth = 'auto',
   maxWidth = 'none',
 }: {
-  width?: CSSWitdh;
+  width?: CSSWidth;
   minWidth?: CSSMinWidth;
   maxWidth?: CSSMaxWidth;
 }) => {
