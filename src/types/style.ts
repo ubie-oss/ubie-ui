@@ -187,7 +187,9 @@ export type CSSLength =
 
 export type CSSPercentage = `${string}%`;
 
-export type CSSLengthPercentage = CSSLength | CSSPercentage;
+export type CSSCalc = `calc(${string})`;
+
+export type CSSLengthPercentage = CSSLength | CSSPercentage | CSSCalc;
 
 export type CSSWidth =
   | 'auto'
@@ -225,4 +227,28 @@ export type WidthProps = {
    * @default none
    */
   maxWidth?: CSSMaxWidth;
+};
+
+export type CSSHeight = CSSWidth;
+
+export type CSSMaxHeight = CSSMaxWidth;
+
+export type CSSMinHeight = CSSHeight;
+
+export type HeightProps = {
+  /**
+   * 高さを指定
+   * @default auto
+   */
+  height?: CSSHeight;
+  /**
+   * 最小高さ
+   * @default auto
+   */
+  minHeight?: CSSMinHeight;
+  /**
+   * 最大高さ
+   * @default none
+   */
+  maxHeight?: CSSMaxHeight;
 };

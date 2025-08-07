@@ -30,7 +30,6 @@
   flex-direction: column;
   width: 100%;
   max-width: 600px;
-  max-height: calc(100% - 24px);
   margin: 0 auto;
   overflow-y: hidden;
   background: #fff;

@@ -10,6 +10,7 @@ import { CustomDataAttributeProps } from '../../types/attributes';
 import { opacityToClassName } from '../../utils/style';
 import { AllOrNone } from '../../utils/types';
 import { Button } from '../Button/Button';
+import type { CSSMaxHeight } from '../../types/style';
 
 type Opacity = 'normal' | 'darker';
 
@@ -78,6 +79,11 @@ type BaseProps = {
    * フッターを固定表示
    */
   stickyFooter?: boolean;
+  /**
+   * モーダルの最大の高さ
+   * @default calc(100% - 24px)
+   */
+  maxHeight?: CSSMaxHeight;
 };
 
 type PrimaryActionProps = {
@@ -123,6 +129,7 @@ export const ActionHalfModal: FC<Props> = ({
   hero,
   stickyHeader = false,
   stickyFooter = false,
+  maxHeight = 'calc(100% - 24px)',
   ...props
 }) => {
   const opacityClassName = opacityToClassName(overlayOpacity);
@@ -176,6 +183,7 @@ export const ActionHalfModal: FC<Props> = ({
             className={clsx(styles.dialog, {
               [styles.fullscreen]: fullscreen,
             })}
+            style={{ maxHeight }}
           >
             {header === undefined || header === null ? (
               <VisuallyHidden as="p" tabIndex={-1} ref={initialFocusRef}>

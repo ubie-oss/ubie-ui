@@ -429,3 +429,32 @@ export const ReactNodeHeaderWithHero: Story = {
     stickyHeader: true,
   },
 };
+
+export const CustomMaxHeight: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+
+    const onClose = useCallback(() => {
+      setOpen(false);
+    }, []);
+
+    return (
+      <>
+        <button type="button" onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
+        <ActionHalfModal
+          primaryActionLabel="アクション"
+          onPrimaryAction={onClose}
+          {...args}
+          open={open}
+          onClose={onClose}
+        />
+      </>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    maxHeight: '80vh',
+  },
+};
