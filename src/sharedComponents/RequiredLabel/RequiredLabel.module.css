@@ -1,10 +1,10 @@
 .required {
   display: inline-block;
+  flex-shrink: 0;
   padding: 2px var(--size-spacing-xxs) 1px;
   font-size: var(--text-tag-md-size);
   line-height: var(--text-tag-md-line);
   color: var(--color-text-white);
   background-color: var(--color-background-red-inverse);
   border-radius: var(--radius-sm);
-  flex-shrink: 0;
 }
