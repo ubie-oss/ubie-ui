@@ -40,6 +40,10 @@ type Props = {
    * 初期状態で開く
    */
   initialOpen?: boolean;
+  /**
+   * 開閉時のイベントハンドラ
+   */
+  onToggle?: () => void;
 } & CustomDataAttributeProps;
 
 export const Accordion: FC<Props> = ({
@@ -50,10 +54,11 @@ export const Accordion: FC<Props> = ({
   id,
   buttonId,
   initialOpen,
+  onToggle,
   ...props
 }) => {
   return (
-    <details className={clsx(styles.container, styles[size])} id={id} {...props} open={initialOpen}>
+    <details className={clsx(styles.container, styles[size])} id={id} {...props} open={initialOpen} onToggle={onToggle}>
       <summary id={buttonId} className={styles.button}>
         <Stack spacing="xxs" as="span">
           <Text bold={size === 'medium'} leading="narrow" as="span" size={size === 'medium' ? 'md' : 'sm'}>
