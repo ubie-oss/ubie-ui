@@ -1,0 +1,35 @@
+.card {
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--size-spacing-md) var(--size-spacing-sm);
+  font-size: var(--text-button-lg-size);
+  font-weight: bold;
+  hyphens: auto;
+
+  /* TODO: Replaced by tokens when @ubie/design-tokens is up-to-date. */
+  line-height: 1.5;
+  color: var(--color-text-main);
+  text-align: left;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  background-color: var(--color-ubie-white);
+  border: 1px solid var(--color-border-black);
+  border-radius: var(--radius-md);
+  transition: background-color 0.3s var(--ease-out-quint);
+}
+
+@media (hover: hover) {
+  .card:hover:not(:disabled) {
+    background-color: var(--color-background-blue);
+  }
+}
+
+.card:disabled {
+  color: var(--color-text-disabled);
+  cursor: initial;
+  background-color: var(--color-background-black-darken);
+}

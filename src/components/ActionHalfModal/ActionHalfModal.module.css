@@ -1,19 +1,13 @@
 .modal {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   z-index: var(--z-index-modal);
   overflow: hidden;
 }
 
 .overlay {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
 }
 
 .normalOverlay {
@@ -28,19 +22,16 @@
   padding: 0 var(--size-spacing-md);
 }
 
-.modalBody {
+.dialog {
   position: fixed;
   bottom: 0;
   left: 50%;
   display: flex;
   flex-direction: column;
-  gap: var(--size-spacing-lg);
   width: 100%;
   max-width: 600px;
-  max-height: calc(100% - 24px);
-  padding: var(--size-spacing-lg) 0;
   margin: 0 auto;
-  overflow-y: auto;
+  overflow-y: hidden;
   background: #fff;
   border-radius: 12px;
   border-end-start-radius: 0;
@@ -48,32 +39,86 @@
   transform: translate3d(-50%, 0, 0);
 }
 
-.modalBody.headerLess {
-  padding-top: var(--size-spacing-xl);
-}
-
-.modalBody.fullscreen {
+.dialog.fullscreen {
   height: calc(100% - 24px);
 }
 
-.modalBody.fullscreen.contents {
+.scrollContainer {
   height: 100%;
-  min-height: 400px;
-  overflow: hidden;
+  overflow-y: auto;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent.headerLess {
+  padding-top: var(--size-spacing-xl);
+}
+
+.mainContent.fullscreen {
+  min-height: 100%;
 }
 
 .header {
+  padding: var(--size-spacing-lg) var(--size-spacing-md);
   font-size: var(--text-heading-xs-size);
   font-weight: bold;
   line-height: var(--text-heading-xs-line);
   text-align: center;
   white-space: pre-wrap;
+  background-color: var(--color-ubie-white);
+
+  /* May receive focus in the initial display. */
+  outline: none;
+}
+
+.header.sticky {
+  position: sticky;
+  top: 0;
+
+  /* Ensure sticky header appears above content that might overlap it (e.g., with position or transform) */
+  z-index: 1;
+}
+
+.header.sticky.canScroll {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.body {
+  /*
+   * Ensure the header always appears in front of body content.
+   * - Place header and body in the same stacking context
+   * - Set body's z-index lower than header's z-index
+   * This prevents the header from being hidden by body content,
+   * regardless of how high z-index values are specified within the body.
+   */
+  z-index: 0;
+  padding-right: var(--size-spacing-md);
+  padding-left: var(--size-spacing-md);
+}
+
+.body.fullscreen {
+  flex: 1;
+  min-height: 400px;
+  overflow: hidden;
 }
 
 .buttonContainer {
   display: grid;
   gap: var(--size-spacing-md);
-  padding: 0 var(--size-spacing-md);
+  padding: var(--size-spacing-lg) var(--size-spacing-md) var(--size-spacing-md);
+  background-color: var(--color-ubie-white);
+}
+
+.buttonContainer.sticky {
+  position: sticky;
+  bottom: 0;
+}
+
+.buttonContainer.sticky.canScroll {
+  border-top: 1px solid var(--color-border);
 }
 
 .overlayEnter {

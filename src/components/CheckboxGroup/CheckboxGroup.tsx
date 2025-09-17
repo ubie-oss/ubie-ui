@@ -1,30 +1,64 @@
 'use client';
 
+import { forwardRef, useMemo } from 'react';
 import styles from './CheckboxGroup.module.css';
+import { RequiredLabel } from '../../sharedComponents/RequiredLabel/RequiredLabel';
+import { CustomDataAttributeProps } from '../../types/attributes';
 import { Checkbox } from '../Checkbox/Checkbox';
+import { CheckboxCard } from '../CheckboxCard/CheckboxCard';
 import { Flex } from '../Flex/Flex';
-import type { FC, ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
+/**
+ * チェックボックス系コンポーネントをグルーピングするコンテナー
+ */
 export type Props = {
-  children: ReactElement<typeof Checkbox>[];
   /**
-   * チェックボックスグループの見出し（legend要素）
+   * チェックボックス系のコンポーネント
    */
-  label: string;
+  children: ReactElement<typeof Checkbox>[] | ReactElement<typeof CheckboxCard>[];
   /**
-   * チェックボックスの配置方向
-   * @default column
+   * グループの見出し
+   */
+  label?: string;
+  /**
+   * 必須ラベルの表示
+   */
+  showRequiredLabel?: boolean;
+  /**
+   * 配置方向
    */
   direction?: 'column' | 'row';
+} & CustomDataAttributeProps;
+
+const includesCheckboxCard = (children: Props['children']): boolean => {
+  return children.some((child) => child.type === CheckboxCard);
 };
 
-export const CheckboxGroup: FC<Props> = ({ children, label, direction = 'column' }) => {
-  return (
-    <fieldset className={styles.wrapper}>
-      <legend className={styles.legend}>{label}</legend>
-      <Flex spacing="md" direction={direction}>
-        {children}
-      </Flex>
-    </fieldset>
-  );
-};
+export const CheckboxGroup = forwardRef<HTMLFieldSetElement, Props>(
+  ({ children, label, showRequiredLabel, direction = 'column', ...otherProps }, ref) => {
+    const spacing = useMemo(() => {
+      return includesCheckboxCard(children) ? 'sm' : 'md';
+    }, [children]);
+
+    const wrap = useMemo(() => {
+      return direction === 'row';
+    }, [direction]);
+
+    return (
+      <fieldset className={styles.wrapper} ref={ref} {...otherProps}>
+        {label && (
+          <legend className={styles.legend}>
+            {label}
+            {showRequiredLabel && <RequiredLabel />}
+          </legend>
+        )}
+        <Flex spacing={spacing} direction={direction} wrap={wrap}>
+          {children}
+        </Flex>
+      </fieldset>
+    );
+  },
+);
+
+CheckboxGroup.displayName = 'CheckboxGroup';

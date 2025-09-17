@@ -1,0 +1,137 @@
+.stepper {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
+}
+
+.stepperItem {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.borderLine {
+  position: absolute;
+  top: 12px; /* Center the line with the 24px icon (12px from top) */
+  right: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.iconSpacer {
+  flex-shrink: 0;
+  width: 32px;
+}
+
+.leftBorder,
+.rightBorder {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.border.hidden {
+  display: none;
+}
+
+.border {
+  width: 100%;
+  height: 2px;
+  background-color: var(--stepper-border-color, var(--color-ubie-black-300));
+}
+
+.iconWrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+/* Border color variants */
+.borderColorBlue {
+  --stepper-border-color: var(--color-ubie-blue-600);
+}
+
+.borderColorGray {
+  --stepper-border-color: var(--color-ubie-black-300);
+}
+
+/* Circle styles for different statuses */
+.doneCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  color: var(--color-ubie-blue-600);
+  background-color: #fff;
+  border: 2px solid var(--color-ubie-blue-600);
+  border-radius: 50%;
+}
+
+.currentCircle {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-ubie-blue-600);
+  border-radius: 50%;
+}
+
+.undoneCircle {
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border: 2px solid var(--stepper-border-color, var(--color-ubie-black-300));
+  border-radius: 50%;
+}
+
+/* Icon colors for custom icons */
+.current .iconWrapper {
+  color: var(--color-ubie-blue-600);
+}
+
+.done .iconWrapper {
+  color: var(--color-ubie-blue-600);
+}
+
+.undone .iconWrapper {
+  color: var(--color-ubie-black-300);
+}
+
+.label {
+  width: 100%;
+  font-family: 'OT-UD Shin Go Pr6N', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.currentLabel {
+  font-weight: 600;
+  color: #000;
+}
+
+.doneLabel {
+  font-weight: 400;
+  color: #000;
+}
+
+.undoneLabel {
+  font-weight: 400;
+  color: #000;
+}

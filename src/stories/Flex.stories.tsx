@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Flex } from '..';
+import { Flex, Box, FlexItem } from '..';
 
 export default {
   component: Flex,
@@ -58,6 +58,16 @@ export const Spacing: Story = {
         <div>xxl</div>
       </Flex>
     </div>
+  ),
+};
+
+export const Gap: Story = {
+  render: () => (
+    <Flex gap="xl">
+      <div>xxl</div>
+      <div>xxl</div>
+      <div>xxl</div>
+    </Flex>
   ),
 };
 
@@ -164,9 +174,158 @@ export const AsSection: Story = {
   render: () => (
     <Flex as="section" spacing="md" alignItems="center">
       <h1>Heading</h1>
+      <p>text</p>
+      <p>text</p>
+      <p>text</p>
+    </Flex>
+  ),
+};
+
+export const MarginAndPadding: Story = {
+  render: () => (
+    <Flex spacing="md" alignItems="center" mt="lg" mr="lg" mb="lg" ml="lg" pt="xxl" pr="xxl" pb="xxl" pl="xxl">
+      <h1>Heading</h1>
       <p>Section</p>
       <p>Section</p>
       <p>Section</p>
     </Flex>
+  ),
+};
+
+export const AsBox: Story = {
+  render: () => (
+    <Flex spacing="md" as={<Box radius="md" backgroundColor="blue" pt="lg" pr="lg" pb="lg" pl="lg" />}>
+      <div>item</div>
+      <div>item</div>
+      <div>item</div>
+    </Flex>
+  ),
+};
+
+export const CustomDataAttribute: Story = {
+  render: () => (
+    <Flex data-test-id="flex-custom-attribute" spacing="md" alignItems="center">
+      <div>Flex component with custom data attribute</div>
+    </Flex>
+  ),
+};
+
+export const WithFlexItem: Story = {
+  render: () => (
+    <div style={{ height: 500 }}>
+      <Flex spacing="lg" alignItems="stretch" height="full">
+        <p style={{ margin: 0, background: '#DDD' }}>
+          column
+          <br />
+          Stretched
+        </p>
+        <FlexItem>
+          <p style={{ margin: 0, background: '#DDD' }}>
+            column
+            <br />
+            not
+            <br />
+            stretched
+          </p>
+        </FlexItem>
+        <FlexItem flex={{ grow: 1 }}>
+          <p style={{ margin: 0, background: '#DDD' }}>row grow</p>
+        </FlexItem>
+      </Flex>
+    </div>
+  ),
+};
+
+export const Width: Story = {
+  render: () => (
+    <div>
+      <Flex direction="row" alignItems="center" spacing="lg" wrap width="100%">
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+      </Flex>
+
+      <br />
+
+      <Flex direction="row" alignItems="center" spacing="lg" wrap maxWidth="500px">
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+      </Flex>
+
+      <Flex direction="row" alignItems="center" spacing="lg" wrap minWidth="500px">
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+        <span>Item</span>
+      </Flex>
+    </div>
+  ),
+};
+
+export const Inline: Story = {
+  render: () => (
+    <p>
+      文章文章文章文章文章文章
+      <Flex as="span" spacing="md" inline>
+        <Box as="span" inline backgroundColor="blue" p="xs" radius="md">
+          Item
+        </Box>
+        <Box as="span" inline backgroundColor="blue" p="xs" radius="md">
+          Item
+        </Box>
+        <Box as="span" inline backgroundColor="blue" p="xs" radius="md">
+          Item
+        </Box>
+      </Flex>
+      文章
+    </p>
   ),
 };

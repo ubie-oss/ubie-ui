@@ -1,21 +1,22 @@
 'use client';
 
 import clsx from 'clsx';
+import { isValidElement, cloneElement, useMemo } from 'react';
 import styles from './Flex.module.css';
-import { Spacing, AlignItems, JustifyContent, FlexDirection } from '../../types/style';
+import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
+import { AlignItems, CSSWidth, FlexDirection, JustifyContent, Spacing, WidthProps } from '../../types/style';
+import { gapVariables, marginVariables, paddingVariables, widthVariables } from '../../utils/style';
 import { HTMLTagname } from '../../utils/types';
-import type { FC, PropsWithChildren } from 'react';
+import { Box } from '../Box/Box';
+import type { MarginProps, PaddingProps } from '../../types/style';
+import type { ComponentType, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
 
 type Props = {
   /**
    * レンダリングされるHTML要素
    * @default div
    */
-  as?: HTMLTagname;
-  /**
-   * 子要素同士の間隔
-   */
-  spacing?: Spacing;
+  as?: HTMLTagname | ReactElement<ComponentType<typeof Box>>;
   /**
    * direction 重ねる向き
    * @default row
@@ -32,8 +33,7 @@ type Props = {
    */
   justifyContent?: JustifyContent;
   /**
-   * 折り返しの有無
-   * @default false
+   * 子要素の折り返しを許可
    */
   wrap?: boolean;
   /**
@@ -41,10 +41,40 @@ type Props = {
    */
   height?: 'full';
   /**
-   * デフォルトで<Flex>は横幅いっぱいを専有する。しかし例えば、フレックスコンテナの子要素として配置した場合、横幅が自身の子に合わせて小さくなる。これが不都合の場合に100%とする事が可能
+   * 幅を指定。fullは後方互換のために残している
+   * デフォルト<Flex>は横幅いっぱいを専有する。しかし例えば、フレックスコンテナの子要素として配置した場合、横幅が自身の子に合わせて小さくなる。これが不都合の場合に100%とする
    */
-  width?: 'full';
-};
+  width?: 'full' | CSSWidth;
+  /**
+   * inline-flexとして扱う
+   */
+  inline?: boolean;
+} & (
+  | {
+      /**
+       * 子要素の間隔。指定しない場合は0
+       * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+       */
+      spacing?: Spacing;
+      gap?: never;
+    }
+  | {
+      /**
+       * spacingのエイリアス（どちらかしか指定できません）
+       * xxs=4px, xs=8px, sm=12px, md=16px, lg=24px, xl=40px, xxl=64px
+       */
+      gap: Spacing;
+      spacing?: never;
+    }
+  | {
+      gap?: never;
+      spacing?: never;
+    }
+) &
+  MarginProps &
+  PaddingProps &
+  Omit<WidthProps, 'width'> &
+  CustomDataAttributeProps;
 
 export const Flex: FC<PropsWithChildren<Props>> = ({
   as: FlexCopmonent = 'div',
@@ -54,26 +84,83 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   justifyContent = 'flex-start',
   wrap,
   spacing,
+  gap,
   height,
-  width,
+  inline,
+  p,
+  px,
+  py,
+  pt,
+  pr,
+  pb,
+  pl,
+  m,
+  mx,
+  my,
+  mt,
+  mr,
+  mb,
+  ml,
+  width: _width,
+  minWidth,
+  maxWidth,
+  ...otherProps
 }) => {
-  // Directly specifying the markuplint will result in a markuplint error.
-  const gapStyle = spacing ? `var(--size-spacing-${spacing})` : '0';
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  const createElement = (props: any, children: ReactNode) => {
+    if (isValidElement(FlexCopmonent)) {
+      return cloneElement(FlexCopmonent, FlexCopmonent.props, <div {...props}>{children}</div>);
+    } else {
+      return <FlexCopmonent {...props}>{children}</FlexCopmonent>;
+    }
+  };
 
-  return (
-    <FlexCopmonent
-      className={clsx(styles.flex, height === 'full' && styles.heightFull, width === 'full' && styles.widthFull)}
-      style={
-        {
-          '--gap': gapStyle,
-          '--flex-direction': direction,
-          '--align-items': alignItems,
-          '--justify-content': justifyContent,
-          '--flex-wrap': wrap ? 'wrap' : 'nowrap',
-        } as React.CSSProperties
-      }
-    >
-      {children}
-    </FlexCopmonent>
+  const width = _width === 'full' ? '100%' : _width;
+  const _spacing = useMemo(() => {
+    if (gap != null) {
+      return gap;
+    } else if (spacing != null) {
+      return spacing;
+    } else {
+      return undefined;
+    }
+  }, [gap, spacing]);
+
+  return createElement(
+    {
+      className: clsx(styles.flex, height === 'full' && styles.heightFull, inline && styles.inline),
+      style: {
+        '--flex-direction': direction,
+        '--align-items': alignItems,
+        '--justify-content': justifyContent,
+        '--flex-wrap': wrap ? 'wrap' : 'nowrap',
+        ...gapVariables(_spacing),
+        ...paddingVariables({
+          p,
+          px,
+          py,
+          pt,
+          pr,
+          pb,
+          pl,
+        }),
+        ...marginVariables({
+          m,
+          mx,
+          my,
+          mt,
+          mr,
+          mb,
+          ml,
+        }),
+        ...widthVariables({
+          width,
+          minWidth,
+          maxWidth,
+        }),
+      },
+      ...otherProps,
+    },
+    children,
   );
 };

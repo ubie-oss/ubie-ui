@@ -2,10 +2,11 @@
 
 import { UnfoldMoreIcon } from '@ubie/ubie-icons';
 import clsx from 'clsx';
-import { FC, forwardRef, InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import styles from './Select.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes';
 
-type Props = {
+type Props = CustomDataAttributeProps & {
   /**
    * ネイティブ要素の `id` 属性。ページで固有のIDを指定
    */
@@ -16,8 +17,7 @@ type Props = {
    */
   isInvalid?: boolean;
   /**
-   * フィールドを無効化するかどうか
-   * @default false
+   * フィールドを無効化する
    */
   disabled?: boolean;
   /**
@@ -26,7 +26,7 @@ type Props = {
   className?: string;
 } & Omit<InputHTMLAttributes<HTMLSelectElement>, 'id' | 'disabled'>;
 
-const Select: FC<Props> = forwardRef<HTMLSelectElement, Props>(
+const Select = forwardRef<HTMLSelectElement, Props>(
   ({ isInvalid = false, disabled = false, children, className, ...props }, ref) => {
     return (
       <div className={clsx({ [styles.isInvalid]: isInvalid, [styles.disabled]: disabled }, styles.wrapper, className)}>

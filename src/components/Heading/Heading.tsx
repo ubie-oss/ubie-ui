@@ -1,32 +1,21 @@
 import { clsx } from 'clsx';
 import styles from './Heading.module.css';
-import { TextColor } from '../../types/style';
+import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
+import { HeadingFontSize, TextColorVariant } from '../../types/style';
 import { HTMLTagname } from '../../utils/types';
-import type { FC, PropsWithChildren, ReactNode } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
 type Props = {
   /**
-   * テキストの配置
-   * @default left
+   * テキストの配置。指定しない場合、親要素の配置を継承
    */
   textAlign?: 'left' | 'center' | 'right';
   /**
-   * アイコン。プライマラーカラーで表示。icon propはどれかひとつのみを指定してください
-   */
-  primaryIcon?: ReactNode;
-  /**
-   * アイコン。アクセントカラーで表示。icon propはどれかひとつのみを指定してください
-   */
-  accentIcon?: ReactNode;
-  /**
-   * アイコン。ホワイトカラーで表示。icon propはどれかひとつのみを指定してください
-   */
-  whiteIcon?: ReactNode;
-  /**
    * サイズ。Typographyトークンの値を指定
+   * xs=16px, sm=18px, md=20px, lg=24px, xl=28px
    * @default md
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: HeadingFontSize;
   /**
    * 行の先頭にボーダーを表示
    * @default false
@@ -41,7 +30,7 @@ type Props = {
    * テキストのカラーバリエーション
    * @default secondary
    */
-  color?: Extract<TextColor, 'main' | 'primary' | 'accent' | 'white'>;
+  color?: Extract<TextColorVariant, 'main' | 'white'>;
   /**
    * HTMLのID属性
    */
@@ -55,14 +44,15 @@ type Props = {
    * @default true
    */
   bold?: boolean;
-};
+  /**
+   * 領域が狭い場合でも折り返えさない
+   */
+  noWrap?: boolean;
+} & CustomDataAttributeProps;
 
 const Heading: FC<PropsWithChildren<Props>> = ({
   textAlign,
   children,
-  primaryIcon,
-  accentIcon,
-  whiteIcon,
   size = 'md',
   color = 'main',
   leadingBorder,
@@ -70,35 +60,22 @@ const Heading: FC<PropsWithChildren<Props>> = ({
   id,
   htmlFor,
   bold = true,
+  noWrap = false,
+  ...otherProps
 }) => {
   const className = clsx(
     styles.heading,
-    primaryIcon || accentIcon || whiteIcon ? styles.hasIcon : null,
     textAlign ? styles[textAlign] : null,
     styles[size],
     // For leadingBorder, only the main text colour is supported.
     leadingBorder ? styles.secondary : styles[color],
     leadingBorder ? styles.leadingBorder : null,
-    bold ? styles.bold : null,
+    bold && styles.bold,
+    noWrap && styles.noWrap,
   );
 
   return (
-    <HeadingComponent className={className} id={id} htmlFor={htmlFor}>
-      {primaryIcon && (
-        <span aria-hidden className={clsx(styles.icon, styles.primary)}>
-          {primaryIcon}
-        </span>
-      )}
-      {accentIcon && (
-        <span aria-hidden className={clsx(styles.icon, styles.accent)}>
-          {accentIcon}
-        </span>
-      )}
-      {whiteIcon && (
-        <span aria-hidden className={clsx(styles.icon, styles.white)}>
-          {whiteIcon}
-        </span>
-      )}
+    <HeadingComponent className={className} id={id} htmlFor={htmlFor} {...otherProps}>
       {children}
     </HeadingComponent>
   );

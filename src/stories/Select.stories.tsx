@@ -75,3 +75,23 @@ export const IsInvalid: StoryObj<typeof Select> = {
     isInvalid: true,
   },
 };
+
+export const CustomDataAttribute: StoryObj<typeof Select> = {
+  render: (args) => {
+    const options = ['option1', 'option2', 'option3'];
+
+    return (
+      <Select {...args} value={options[0]}>
+        {options.map((o) => (
+          <option key={o} data-test-id={args['data-test-id']}>
+            {o}
+          </option>
+        ))}
+      </Select>
+    );
+  },
+  args: {
+    ...defaultArgs,
+    'data-test-id': 'select-custom-data-attribute',
+  },
+};

@@ -1,10 +1,10 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { forwardRef } from 'react';
+import { type CSSProperties, forwardRef } from 'react';
 import styles from './Button.module.css';
-import { CircularProgress } from './CircularProgress';
-import { VariantIcon } from './VariantIcon';
+import { useIcon } from './useIcon';
+import { marginVariables } from '../../utils/style';
 import type { ButtonProps } from './ButtonTypes';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -14,20 +14,30 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       variant = 'primary',
       size = 'large',
       block = false,
-      icon: _icon,
+      icon,
+      prefixIcon: _prefixIcon,
       fixedIcon: _fixedIcon,
       suffixIcon: _suffixIcon,
       type = 'button',
       disabled = false,
       loading = false,
+      loadingLabel = '通信中',
       onClick,
+      whiteSpace = 'normal',
+      m,
+      mx,
+      my,
+      mt,
+      mr,
+      mb,
+      ml,
       ...props
     },
     ref,
   ) => {
-    const icon = loading ? <CircularProgress /> : _icon === 'default' ? <VariantIcon variant={variant} /> : _icon;
-    const fixedIcon = _fixedIcon === 'default' ? <VariantIcon variant={variant} /> : _fixedIcon;
-    const suffixIcon = _suffixIcon === 'default' ? <VariantIcon variant={variant} /> : _suffixIcon;
+    const prefixIcon = useIcon(icon || _prefixIcon, variant);
+    const fixedIcon = useIcon(_fixedIcon, variant);
+    const suffixIcon = useIcon(_suffixIcon, variant);
     const cls = clsx({
       [styles.button]: true,
       [styles[variant]]: true,
@@ -50,17 +60,32 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         type={type}
         className={cls}
+        style={
+          {
+            ...marginVariables({
+              m,
+              mx,
+              my,
+              mt,
+              mr,
+              mb,
+              ml,
+            }),
+            '--white-space': whiteSpace,
+          } as CSSProperties
+        }
         ref={ref}
         disabled={disabled}
         aria-disabled={loading}
         onClick={handleClick}
         {...props}
       >
+        {loading && <span className={styles.loadingLabel}>{loadingLabel}</span>}
         {fixedIcon && <span className={styles.fixedIcon}>{fixedIcon}</span>}
         <span className={styles.label}>
-          {icon && <span className={styles.icon}>{icon}</span>}
-          {children}
-          {suffixIcon && <span className={styles.suffixIcon}>{suffixIcon}</span>}
+          {prefixIcon && <span className={clsx(styles.icon, loading && styles.loading)}>{prefixIcon}</span>}
+          <span className={clsx(styles.children, loading && styles.loading)}>{children}</span>
+          {suffixIcon && <span className={clsx(styles.suffixIcon, loading && styles.loading)}>{suffixIcon}</span>}
         </span>
       </button>
     );

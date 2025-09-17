@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState, useCallback } from 'react';
-import { Checkbox, CheckboxGroup, Stack } from '../';
+import { Checkbox, CheckboxGroup, Stack } from '../../index';
 import type { ChangeEventHandler } from 'react';
 
 export default {
@@ -10,7 +10,7 @@ export default {
 
 type Story = StoryObj<typeof Checkbox>;
 
-const options = ['option1', 'option2', 'option3'];
+const options = ['option1', 'option2', 'option3', 'option4', 'option5'];
 
 export const Default: Story = {
   render: () => {
@@ -106,6 +106,22 @@ export const SingleUse: Story = {
   },
 };
 
+export const Intermediate: Story = {
+  render: () => {
+    return (
+      <Stack spacing="xs">
+        <Checkbox name="indeterminate" isIndeterminate checked>
+          Indeterminate (checked)
+        </Checkbox>
+
+        <Checkbox name="indeterminate" isIndeterminate>
+          Indeterminate
+        </Checkbox>
+      </Stack>
+    );
+  },
+};
+
 export const Size: Story = {
   render: () => (
     <Stack spacing="xs">
@@ -114,6 +130,12 @@ export const Size: Story = {
       </Checkbox>
       <Checkbox name="size" value="small" size="small">
         Small
+      </Checkbox>
+      <Checkbox name="size" value="medium" isIndeterminate>
+        Indeterminate & Medium
+      </Checkbox>
+      <Checkbox name="size" value="small" size="small" isIndeterminate>
+        Indeterminate & Small
       </Checkbox>
     </Stack>
   ),
@@ -128,6 +150,60 @@ export const Disabled: Story = {
 
       <Checkbox name="disabled" value="unchecked" disabled>
         Unchecked
+      </Checkbox>
+
+      <Checkbox name="disabled" value="isIndeterminate" disabled isIndeterminate checked>
+        isIndeterminate (checked)
+      </Checkbox>
+
+      <Checkbox name="disabled" value="isIndeterminate" disabled isIndeterminate>
+        isIndeterminate
+      </Checkbox>
+    </Stack>
+  ),
+};
+
+export const ShowRequiredLabel: Story = {
+  render: () => {
+    const [selectedItem, setSelectedItem] = useState<string[]>([options[0]]);
+
+    const onChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+      (event) => {
+        if (event.target.checked) {
+          setSelectedItem([...selectedItem, event.target.value]);
+        } else {
+          setSelectedItem(selectedItem.filter((item) => item !== event.target.value));
+        }
+      },
+      [selectedItem],
+    );
+
+    return (
+      <CheckboxGroup label="Checkbox" showRequiredLabel>
+        {options.map((option) => (
+          <Checkbox
+            name="default"
+            value={option}
+            onChange={onChange}
+            checked={selectedItem.includes(option)}
+            key={option}
+          >
+            {option}
+          </Checkbox>
+        ))}
+      </CheckboxGroup>
+    );
+  },
+};
+
+export const CustomDataAttribute: Story = {
+  render: () => (
+    <Stack spacing="xs">
+      <Checkbox name="custom-data" value="data1" data-test-id="checkbox-data1">
+        Data 1
+      </Checkbox>
+      <Checkbox name="custom-data" value="data2" data-test-id="checkbox-data2">
+        Data 2
       </Checkbox>
     </Stack>
   ),
