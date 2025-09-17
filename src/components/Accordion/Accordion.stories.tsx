@@ -51,3 +51,11 @@ export const InitialOpen: Story = {
     initialOpen: true,
   },
 };
+
+export const WithOnToggle: Story = {
+  render: (args) => <Accordion {...args} />,
+  args: {
+    ...defaultArgs,
+    onToggle: () => alert('アコーディオンが開閉されました！'),
+  },
+};
