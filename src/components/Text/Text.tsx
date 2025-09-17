@@ -1,47 +1,56 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { FC, ReactNode } from 'react';
+import { cloneElement } from 'react';
 import styles from './Text.module.css';
 import {
-  TextColor,
   BodyFontSize,
   BodyLeading,
   HeadingFontSize,
   HeadingLeading,
-  NoteFontSize,
-  NoteLeading,
   ButtonFontSize,
   ButtonLeading,
   TagFontSize,
   TagLeading,
+  TextColorVariant,
 } from '../../types/style';
-import { HTMLTagname } from '../../utils/types';
+import { fixedForwardRef } from '../../utils/component';
+import { colorVariable } from '../../utils/style';
+import { DistributiveOmit } from '../../utils/types';
+import type { ReactNode, ElementType, ForwardedRef, ComponentPropsWithRef, ReactElement } from 'react';
 
 type BaseProps = {
   /**
-   * コンポーネントのHTML要素
-   * @default p
+   * レンダリングされる要素を変更。フレームワークのリンクコンポーネントを想定しています
+   * 指定した場合、colorがデフォルトでlinkになります
    */
-  as?: HTMLTagname;
+  render?: ReactElement;
   /**
-   * 太字とするかどうか
-   * @default false
+   * 表示するテキスト
+   * pやdivなどを含めないでください（文法的にNGです）
+   */
+  children: ReactNode;
+  /**
+   * 太字とする
    */
   bold?: boolean;
   /**
    * 文字色の抽象値
    * @default main
    */
-  color?: TextColor;
-  /**
-   * 子要素
-   */
-  children: ReactNode;
+  color?: TextColorVariant;
   /**
    * HTMLのid属性
    */
   id?: string;
+  /**
+   * テキストの配置。指定しない場合、親要素の配置を継承
+   */
+  textAlign?: 'left' | 'center' | 'right';
+  /**
+   * 領域が狭い場合でも折り返えさない
+   */
+  noWrap?: boolean;
 };
 
 type BodyProps = BaseProps & {
@@ -77,22 +86,6 @@ type HeadingProps = BaseProps & {
   leading?: HeadingLeading;
 };
 
-type NoteProps = BaseProps & {
-  /**
-   * テキストの種類
-   */
-  type: 'note';
-  /**
-   * フォントサイズの抽象値
-   */
-  size?: NoteFontSize;
-  /**
-   * 行送りの抽象値（`line-height`）
-   * @default default
-   */
-  leading?: NoteLeading;
-};
-
 type ButtonProps = BaseProps & {
   /**
    * テキストの種類
@@ -125,27 +118,61 @@ type TagProps = BaseProps & {
   leading?: TagLeading;
 };
 
-type TextProps = BodyProps | HeadingProps | NoteProps | ButtonProps | TagProps;
+type TextProps = BodyProps | HeadingProps | ButtonProps | TagProps;
 
-/**
- * Design Systemに則ったTypographyのスタイルを提供
- */
-export const Text: FC<TextProps> = ({
-  as: TextComponent = 'p',
-  size = 'md',
-  type = 'body',
-  leading = 'default',
-  bold = false,
-  color = 'main',
-  children,
-  id,
-}) => {
-  return (
-    <TextComponent
-      id={id}
-      className={clsx(styles.text, bold && styles.bold, styles[size], styles[type], styles[leading], styles[color])}
-    >
-      {children}
-    </TextComponent>
+function TextInner<T extends ElementType>(
+  props: {
+    /**
+     * レンダリングされる要素を指定。renderとは違い、HTMLのネイティブ要素に限定
+     * また、指定した要素に応じて対応する属性も合わせて使用可能に
+     * @default p
+     */
+    as?: T;
+  } & TextProps &
+    DistributiveOmit<ComponentPropsWithRef<ElementType extends T ? 'p' : T>, 'as'>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ref: ForwardedRef<any>,
+) {
+  const {
+    render,
+    as: TextComponent = 'p',
+    size = 'md',
+    type = 'body',
+    leading = 'default',
+    bold = false,
+    noWrap = false,
+    color: _color,
+    children,
+    id,
+    textAlign,
+    ...rest
+  } = props;
+  const color =
+    _color != null ? _color : TextComponent === 'a' || TextComponent === 'button' || render != null ? 'link' : 'main';
+
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  const createElement = (props: any, children: ReactNode) => {
+    return render ? cloneElement(render, props, children) : <TextComponent {...props}>{children}</TextComponent>;
+  };
+
+  return createElement(
+    {
+      ref,
+      id,
+      className: clsx(
+        styles.text,
+        styles[size],
+        styles[type],
+        styles[leading],
+        textAlign && styles[textAlign],
+        bold && styles.bold,
+        noWrap && styles.nowrap,
+      ),
+      style: colorVariable(color),
+      ...rest,
+    },
+    <>{children}</>,
   );
-};
+}
+
+export const Text = fixedForwardRef(TextInner);

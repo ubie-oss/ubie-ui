@@ -1,7 +1,8 @@
 .error {
-  font-size: var(--text-body-sm-size);
-  line-height: var(--text-body-sm-narrow-line);
-  color: var(--color-text-sub);
-  color: var(--color-alert);
   margin: 0;
+  font-size: var(--text-body-sm-size);
+  hyphens: auto;
+  line-height: var(--text-body-sm-narrow-line);
+  color: var(--color-ubie-red-600);
+  overflow-wrap: anywhere;
 }

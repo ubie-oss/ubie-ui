@@ -1,8 +1,10 @@
 .text {
   font-size: var(--font-size);
-  line-height: var(--leading);
-  color: var(--color);
   font-weight: normal;
+  hyphens: auto;
+  line-height: var(--leading);
+  color: var(--text-color);
+  overflow-wrap: anywhere;
 }
 
 :where(.text) {
@@ -10,11 +12,53 @@
   margin-bottom: 0;
 }
 
+a.text {
+  text-decoration: underline;
+}
+
+@media (hover: hover) {
+  a.text:hover {
+    text-decoration: none;
+  }
+}
+
+a.text:focus-visible {
+  text-decoration: none;
+}
+
+a.text:active {
+  text-decoration: underline;
+}
+
+button.text {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+button.text.link:focus-visible {
+  color: var(--color-blue-900);
+}
+
+@media (hover: hover) {
+  button.text.link:hover {
+    color: var(--color-blue-900);
+  }
+
+  button.text.link:active {
+    color: var(--color-text-link);
+  }
+}
+
 .bold {
   font-weight: bold;
 }
 
 /* font-size */
+.body.xs {
+  --font-size: var(--text-body-xs-size);
+}
+
 .body.sm {
   --font-size: var(--text-body-sm-size);
 }
@@ -27,6 +71,10 @@
   --font-size: var(--text-body-lg-size);
 }
 
+.heading.xxs {
+  --font-size: var(--text-heading-xxs-size);
+}
+
 .heading.xs {
   --font-size: var(--text-heading-xs-size);
 }
@@ -36,7 +84,7 @@
 }
 
 .heading.md {
-  --font-size: var(--text-heading-sm-size);
+  --font-size: var(--text-heading-md-size);
 }
 
 .heading.lg {
@@ -45,18 +93,6 @@
 
 .heading.xl {
   --font-size: var(--text-heading-xl-size);
-}
-
-.note.sm {
-  --font-size: var(--text-note-sm-size);
-}
-
-.note.md {
-  --font-size: var(--text-note-md-size);
-}
-
-.note.lg {
-  --font-size: var(--text-note-lg-size);
 }
 
 .button.sm {
@@ -69,10 +105,6 @@
 
 .button.lg {
   --font-size: var(--text-button-lg-size);
-}
-
-.tag.sm {
-  --font-size: var(--text-tag-sm-size);
 }
 
 .tag.md {
@@ -111,43 +143,26 @@
   --leading: var(--text-body-md-narrow-line);
 }
 
-.tight {
-  --leading: var(--text-body-md-tight-line);
+.wide {
+  --leading: var(--text-body-md-wide-line);
 }
 
-/* color */
-.main {
-  --color: var(--color-text-main);
+.wide.heading {
+  --leading: var(--text-heading-md-wide-line);
 }
 
-.sub {
-  --color: var(--color-text-sub);
+.left {
+  text-align: left;
 }
 
-.link {
-  --color: var(--color-text-link);
+.center {
+  text-align: center;
 }
 
-.linkSub {
-  --color: var(--color-text-link-sub);
+.right {
+  text-align: right;
 }
 
-.disabled {
-  --color: var(--color-text-disabled);
-}
-
-.primary {
-  --color: var(--color-primary);
-}
-
-.accent {
-  --color: var(--color-accent);
-}
-
-.alert {
-  --color: var(--color-alert);
-}
-
-.white {
-  --color: var(--color-text-white);
+.nowrap {
+  white-space: nowrap;
 }

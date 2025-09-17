@@ -1,36 +1,27 @@
 'use client';
 
 import clsx from 'clsx';
-import { FC, TextareaHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './TextArea.module.css';
+import { CustomDataAttributeProps } from '../../types/attributes';
+import type { TextareaHTMLAttributes } from 'react';
 
 type Props = {
   /**
-   * ネイティブ要素の `id` 属性。ページで固有のIDを指定
-   */
-  id?: TextareaHTMLAttributes<HTMLTextAreaElement>['id'];
-  /**
-   * 有効でない入力を保持しているかどうか
-   * @default false
+   * 値が不正であることを示す
    */
   isInvalid?: boolean;
   /**
-   * 値
-   */
-  value: string;
-  /**
-   * フィールドを無効化するかどうか
-   * @default false
+   * フィールドを無効化する
    */
   disabled?: boolean;
-  /**
-   * 値が変化した場合のコールバック
-   */
-  onChange?: TextareaHTMLAttributes<HTMLTextAreaElement>['onChange'];
-} & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'id' | 'value' | 'onChange'>;
+} & TextareaHTMLAttributes<HTMLTextAreaElement> &
+  CustomDataAttributeProps;
 
-export const TextArea: FC<Props> = ({ isInvalid = false, className, ...props }) => {
+export const TextArea = forwardRef<HTMLTextAreaElement, Props>(({ isInvalid = false, className, ...props }, ref) => {
   const _className = clsx({ [styles.isInvalid]: isInvalid }, styles.textArea, className);
 
-  return <textarea {...props} className={_className} aria-invalid={isInvalid} />;
-};
+  return <textarea ref={ref} {...props} className={_className} aria-invalid={isInvalid} />;
+});
+
+TextArea.displayName = 'TextArea';

@@ -109,9 +109,32 @@ export const Types: Story = {
 };
 
 export const Disabled: Story = {
-  render: () => <Input value="lorem ipsum" />,
+  render: () => <Input value="lorem ipsum" disabled />,
 };
 
 export const IsInvalid: Story = {
   render: () => <Input value="wrong value" isInvalid />,
+};
+
+export const Required: Story = {
+  render: () => {
+    const [value, setValue] = useState('');
+
+    const onChangeValue: ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
+      setValue(event.target.value);
+    }, []);
+
+    return <Input required value={value} onChange={onChangeValue} />;
+  },
+};
+
+export const Placeholder: Story = {
+  render: () => <Input placeholder="placeholder" />,
+};
+
+export const CustomDataAttribute: Story = {
+  args: {
+    'data-test-id': 'input-custom-attribute',
+  },
+  render: (args) => <Input {...args} />,
 };
