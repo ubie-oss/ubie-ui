@@ -22,3 +22,11 @@ export const Small: Story = {
     </Accordion>
   ),
 };
+
+export const WithOnClick: Story = {
+  render: () => (
+    <Accordion header="クリック時のイベントハンドラ付き" onClick={() => alert('アコーディオンが開閉されました！')}>
+      このアコーディオンを開閉するとアラートが表示されます。
+    </Accordion>
+  ),
+};
