@@ -6,4 +6,5 @@
   color: var(--color-text-white);
   background-color: var(--color-background-red-inverse);
   border-radius: var(--radius-sm);
+  flex-shrink: 0;
 }
