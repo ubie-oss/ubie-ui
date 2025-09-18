@@ -196,6 +196,9 @@ export const Radius: Story = {
       <Box {...args} mt="md" pt="md" pr="md" pb="md" pl="md" radius="lg">
         lg
       </Box>
+      <Box {...args} mt="md" pt="md" pr="md" pb="md" pl="md" radius="full">
+        full
+      </Box>
     </div>
   ),
   args: defaultArgs,

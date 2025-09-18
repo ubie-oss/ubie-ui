@@ -125,7 +125,7 @@ export type JustifyContent =
   | 'space-around'
   | 'space-evenly';
 
-export type Radius = 'xs' | 'sm' | 'md' | 'lg';
+export type Radius = 'xs' | 'sm' | 'md' | 'lg' | 'full';
 
 export type RadiusProp = {
   /**
