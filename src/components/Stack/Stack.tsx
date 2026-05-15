@@ -1,7 +1,5 @@
-'use client';
-
 import { clsx } from 'clsx';
-import { cloneElement, isValidElement, useMemo } from 'react';
+import { cloneElement, isValidElement } from 'react';
 import styles from './Stack.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import { AlignItems, JustifyContent, Spacing, WidthProps } from '../../types/style';
@@ -103,15 +101,7 @@ export const Stack: FC<Props> = ({
     }
   };
 
-  const _spacing = useMemo(() => {
-    if (gap != null) {
-      return gap;
-    } else if (spacing != null) {
-      return spacing;
-    } else {
-      return undefined;
-    }
-  }, [gap, spacing]);
+  const _spacing = gap ?? spacing;
 
   return createElement(
     {
