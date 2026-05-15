@@ -1,7 +1,5 @@
-'use client';
-
 import clsx from 'clsx';
-import { isValidElement, cloneElement, useMemo } from 'react';
+import { isValidElement, cloneElement } from 'react';
 import styles from './Flex.module.css';
 import { CustomDataAttributeProps } from '../../types/attributes'; // 追加したインポート
 import { AlignItems, CSSWidth, FlexDirection, JustifyContent, Spacing, WidthProps } from '../../types/style';
@@ -116,15 +114,7 @@ export const Flex: FC<PropsWithChildren<Props>> = ({
   };
 
   const width = _width === 'full' ? '100%' : _width;
-  const _spacing = useMemo(() => {
-    if (gap != null) {
-      return gap;
-    } else if (spacing != null) {
-      return spacing;
-    } else {
-      return undefined;
-    }
-  }, [gap, spacing]);
+  const _spacing = gap ?? spacing;
 
   return createElement(
     {
