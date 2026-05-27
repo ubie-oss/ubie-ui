@@ -39,12 +39,18 @@ ReactDOM.render(<App />, document.querySelector('#app'));
 
 ## Development
 
+This repository uses [pnpm](https://pnpm.io/) for package management.
+
+```sh
+pnpm install
+```
+
 ### Creating a new component
 
 You can start creating a new component with the following command:
 
 ```sh
-npm run generate
+pnpm run generate
 ```
 
 This command will also update the `src/index.ts` file (it's called a ["Barrel"](https://basarat.gitbook.io/typescript/main-1/barrel)) at the same time.

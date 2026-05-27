@@ -26,12 +26,13 @@
     }
   },
   "sideEffects": false,
+  "packageManager": "pnpm@11.1.1",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "build": "tsup",
-    "postbuild": "npm run extract-component-props",
+    "postbuild": "pnpm run extract-component-props",
     "test": "run-p test:*",
     "test:unit": "vitest run",
     "test:unit:watch": "vitest watch",
@@ -43,13 +44,13 @@
     "lint:markuplint": "markuplint \"./src/**/*.tsx\" -p",
     "lint:tsc": "tsc --noEmit",
     "fix": "run-s fix:*",
-    "fix:eslint": "npm run lint:eslint -- --fix",
+    "fix:eslint": "pnpm run lint:eslint -- --fix",
     "fix:prettier": "prettier -w src",
-    "fix:stylelint": "npm run lint:stylelint -- --fix",
+    "fix:stylelint": "pnpm run lint:stylelint -- --fix",
     "generate": "scaffdog generate component",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "pnpm run build",
     "extract-component-props": "react-docgen 'src/components/**/*.tsx' --ignore 'src/components/**/*spec.tsx' --ignore 'src/components/**/*stories.tsx' -o ./dist/props.json"
   },
   "repository": {
