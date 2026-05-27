@@ -1,6 +1,6 @@
 {
   "include": ["src"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "src/**/*.stories.portable.ts"],
   "compilerOptions": {
     "target": "esnext",
     "lib": ["DOM", "ESNext"],

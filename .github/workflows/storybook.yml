@@ -18,7 +18,7 @@ jobs:
       - uses: ./actions/setup-node-and-install-deps
 
       - name: Generate Storybook
-        run: npm run build-storybook
+        run: pnpm run build-storybook
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

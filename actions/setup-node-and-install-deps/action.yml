@@ -3,20 +3,16 @@ description: Action for setting up Node.js and installing dependencies
 runs:
   using: 'composite'
   steps:
+    - uses: pnpm/action-setup@v4
+      with:
+        version: 11.1.1
+
     - uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version: 22
         registry-url: 'https://registry.npmjs.org'
+        cache: pnpm
 
-    - name: Cache node_modules
-      id: node_modules_cache
-      uses: actions/cache@v4
-      with:
-        path: './node_modules'
-        key: ${{ runner.os }}-modules-${{ hashFiles('./package-lock.json') }}-{{ checksum "patches.hash" }}
-        restore-keys: |
-          ${{ runner.os }}-modules-
-
-    - name: npm ci
+    - name: Install dependencies
       shell: bash
-      run: npm ci
+      run: pnpm install --frozen-lockfile

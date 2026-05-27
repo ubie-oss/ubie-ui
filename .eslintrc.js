@@ -33,9 +33,11 @@ module.exports = {
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
-    typescript: {
-      alwaysTryTypes: true,
-      project: './tsconfig.json',
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+        project: './tsconfig.json',
+      },
     },
   },
   rules: {
@@ -56,6 +58,7 @@ module.exports = {
     ],
     'unused-imports/no-unused-imports': 'error',
     'import/no-unresolved': 'off',
+    'import/no-named-as-default': 'off',
     'no-console': 'error',
     '@typescript-eslint/no-unused-vars': [
       'error',
